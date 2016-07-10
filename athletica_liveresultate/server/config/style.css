@@ -1,0 +1,87 @@
+.header-content {
+    height: 70px;
+    width: 100%;
+    background: #fff;
+    font-size: 15px;
+    color: rgb(76, 86, 108);
+    text-shadow: rgba(255,255,255,.8) 0 1px 0;
+    border-top: 0px solid rgba(76, 86, 108, .3);
+    position: relative;
+    display: table;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.header-content h2 {
+    color: #4C566C;
+}
+
+.list-live-small {
+    background: #FF8000;
+    color: #000;
+}
+
+.list-live-big {
+    background: #FF8000;
+    color: #000; 
+}
+
+.list-results-small {
+    background: #FF1A00;
+    color: #fff;
+}
+
+.list-results-big {
+    background: #FF1A00;
+    color: #000;
+}
+
+.list-results_combined-small {
+    background: #FF1A00;
+    color: #fff;
+}
+
+.list-results_combined-big {
+    background: #FF1A00;
+    color: #000;
+}
+
+.list-results_pending-small {
+    background: #FF8000;
+    color: #000;
+}
+
+.list-results_pending-big {
+    background: #FF8000;
+    color: #000;
+}
+
+.list-startlist-small {
+    background: #0404B4;
+    color: #fff;
+}
+
+.list-startlist-big {
+    background: #0404B4;
+    color: #fff;
+}
+
+.list-athletes-small {
+    background: #444444;
+    color: #fff;
+}
+
+.list-athletes-big {
+    background: #444444;
+    color: #fff;
+}
+
+@media screen and (max-width:500px) {
+
+    .logo_left {
+        display: none;
+    }
+    .logo_right {
+        display: none;
+    }
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+    <meta content="text/html; charset=iso-8859-1" />
+
+    <title>Documentation Athletica</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/stylesheet.css" />
+</head>
+
+<body><div class="helpmain">
+<h1>Hilfe</h1>
+
+<div class='helpnav'>
+<a href='../meeting/index.html'>Meeting</a>
+| <b>Épreuve</b>
+| <a href='../speaker/index.html'>Speaker</a>
+| <a href='../administration/index.html'>Administration</a>
+<br/>
+<a href='index.html'>Moniteur de compétition</a>
+| <a href='enrolement.html'>Appel</a>
+| <b>Serien</b>
+| <a href='results.html'>Résultats</a>
+| <a href='rankinglists.html'>Listes de résultats</a>
+</div>
+
+<h2>Séries</h2>
+Ici on procède à l’organisation des séries pour toutes les disciplines. Non seulement les disciplines de course, mais aussi les disciplines techniques peuvent être organisées en séries.
+<br/>
+
+<h3>Sélection des tours</h3>
+Si la fonction est appelée à partir du <a href='index.html'>moniteur</a>, le tour correspondant de l’épreuve est déjà sélectionné. Si la fonction est appelée par le menu, il faut d’abord sélectionner la catégorie, l’épreuve et le tour souhaités.
+<p/>
+En fonction du statut, le formulaire est un peu différent. Si des résultats sont déjà enregistrés, un avertissement approprié est affiché. Au moyen du bouton <i>Ouvrir aperçu des résultats</i> il est possible dans ce cas  d’activer directement la 
+<a href='results.html'>fonction correspondante</a>.
+
+<h3>Organisation des séries</h3>
+Si aucune série n’est encore organisée ou si l’organisation a été effacée, ce bouton ouvre le dialogue vers <a href='seeding.html'>
+Organisation des séries</a>, resp. vers <a href='qualification.html'>Qualification</a>.
+ <br/><br/>
+
+Pour les <strong>finales des courses</strong> les meilleurs athlètes sont automatiquement  répartis dans la dernière série. Les séries sont désignées par A, B, C etc. 
+(A pour la série la plus rapide).
+
+<br/><br/>
+
+Pour les <strong>concours multiples</strong> les athlètes sont répartis selon le nombre de points des disciplines précédentes pour disputer la dernière discipline de course ensemble. 
+
+<h3>Ajouter nouveaux athlètes/relais<a name='neu'/></h3>
+Si la liste de départ contient d’autres athlètes ou relais qui ne sont pas répartis dans une série, une fonction appropriée est à disposition pour les répartir. Ils peuvent soit être répartis dans une série existante soit dans une nouvelle série. Les nouvelles séries reçoivent automatiquement l’appellation '0'.
+<br/>
+Ici apparaissent tous les athlètes ou relais qui, à l’appel, ont été notés comme <i>pas présents</i>, qui ont été supprimés de la répartition dans les séries ou qui n’ont pas réussi à se qualifier pendant le tour précédent.
+
+<h3>Fonctions générales</h3>
+Si ce tour de compétition comprend plus qu’une série, des boutons de commande avec les noms des séries sont affichés pour pouvoir passer directement à la série souhaitée dans le formulaire.
+<br/>
+Aussi longtemps que les séries sont en traitement, un avertissement correspondant est affiché. Les fonctions générales suivantes sont à disposition:
+<h4>Attribuer l’installation à toutes les séries</h4>
+Parmi les installations du stade, la même peut être attribuée à toutes les séries, par ex. <i>Ligne droite d‘arrivée</i> pour les sprints.
+<br>
+Cette information n’est pas impérativement nécessaire pour la suite du déroulement. Elle n’est imprimée que pour information sur les feuilles de concours.
+<h4>Effacer des séries</h4>
+La répartition dans les séries est effacée et peut être refaite à nouveau.
+<h4>Terminer répartition</h4>
+Avec cette fonction, l’utilisateur peut terminer la répartition dans les séries.
+Le statut de ce tour de compétition est modifié en fonction et la
+<a href='print_heats.html'>Fonction d‘impression</a> est appelée.
+<h4>Imprimer</h4>
+Après avoir terminé la répartition dans les séries, la <a href='print_heats.html'>
+Fonction d‘impression</a> peut être appelée directement.
+
+<h3>Liste des séries</h3>
+<h4>Appellation des séries</h4>
+L’appellation attribuée automatiquement à la série (numérotation croissante) peut être modifiée manuellement. Cela ne doit pas être obligatoirement un numéro, les lettres font aussi l’affaire. Une appellation peut  au maximum comporter deux éléments et ne doit apparaître qu’une fois par tour.
+<h4>Installation</h4>
+Ici on peut attribuer une installation spéciale à une certaine série,
+par ex. <i>longueur 1</i> à la première de saut en longueur, <i>longueur 2</i> à la deuxième.
+<br/>
+Cette information n’est pas impérativement nécessaire pour la suite. Elle n’est imprimée que pour information sur les feuilles de concours.
+
+<h3>Liste de départ</h3>
+<h4>Modifier la répartition</h4>
+Les répartitions dans les séries ou les positions attribuées automatiquement peuvent être modifiées  manuellement, même après la clôture de la répartition. Pour cela il faut cliquer sur l’athlète ou le relais pour le sélectionner. Un deuxième clic de souris sur le couloir souhaité déclenche la modification. En cliquant à nouveau il est possible de supprimer une sélection.
+<p/>
+Une position peut être attribuée plusieurs fois. Pour les courses les couloirs peuvent ainsi être occupés à double. Pour les autres disciplines, la position sert uniquement à déterminer l’ordre de passage.
+<h4>Supprimer athlète/relais</h4>
+Un athlète ou un  relais peut être supprimé d’une liste de départ, en cliquant sur la ligne correspondante pour la sélectionner. En pressant le bouton de commande 
+<i>Supprimer</i> on enlève l’inscription de la répartition dans les séries. Une <a href='#neu'>nouvelle répartition</a> ultérieure est possible.
+<h4>Nouvelle série</h4>
+Pour créer une nouvelle série, un athlète ou un relais doit être sélectionné par un clic et être placé à la fin de la liste de départ sur la place de start prévue à cet effet. La nouvelle série reçoit l’appellation '0'</i>, apparaît donc tout en haut et doit être adaptée manuellement.
+
+<p/>
+
+<div class='helpnav'>
+<a href='../meeting/index.html'>Meeting</a>
+| <b>Épreuve</b>
+| <a href='../speaker/index.html'>Speaker</a>
+| <a href='../regie/index.html'>Régie</a>  
+| <a href='../administration/index.html'>Administration</a>
+<br/>
+<a href='index.html'>Moniteur de compétition</a>
+| <a href='enrolement.html'>Appel</a>
+| <b>Séries</b>
+| <a href='results.html'>Résultats</a>
+| <a href='rankinglists.html'>Listes de résultats</a>
+</div>
+
+</body>
+</html>
+

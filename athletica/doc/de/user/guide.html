@@ -1,0 +1,838 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<meta content="text/html; charset=iso-8859-1" />
+
+	<title>Athletica für Benutzer: Bedienungsanleitung</title>
+	<link rel="stylesheet" type="text/css" href="../../css/stylesheet.css" /></head>
+
+<body>
+<div class="helpmain">
+<h1>Bedienungsanleitung</h1>
+Die folgende Bedienungseinleitung gibt einen etwas tieferen Einblick in die
+Art und Weise, wie mit Athletica gearbeitet werden kann. Die
+<a href='../admin/install.html'>Installation</a> und
+<a href='../admin/config.html'>Konfiguration</a> wird bereits andernorts
+erklärt.
+<p/>
+Unsere ersten Erfahrungen haben gezeigt, dass die Benutzer schnell mit
+<i>Athletica</i> zurechtkommen und bereits nach einer kurzen Instruktion
+selbständig arbeiten können. Für einen erfolgreichen Einsatz ist es trotzdem
+unerlässlich, dass zumindest eine Person im Wettkampfbüro-Team genauer
+Bescheid weiss und bei Spezialfällen eingreifen kann. Diese Bedienungsanleitung
+unterstützt dich beim Einarbeitung in <i>Athletica</i>. Für das tiefere
+Verständnis ist es aber hilfreich, die oben erwähnten Installations- und
+Konfigurations-Kapitel ebenfalls zu lesen. Die Hilfetexte geben zusätzliche
+Tipps zu den einzelnen Funktionen.
+<p/>
+Falls du weitergehende Hilfe oder Support benötigst, stehen auf unserer
+Homepage <a href="http://code.google.com/p/athletica" target='_blank'>
+http://code.google.com/p/athletica</a> weitere Möglichkeiten zur Verfügung,
+um mit dem Entwickler-Team in Kontakt zu treten.
+
+<h2>1. Einstieg<a name="c1"/></a></h2>
+<h3>1.1 Applikation starten</h3>
+<i>Athletica</i> ist als Webapplikation konzipiert, d.h. sie wird über einen
+Webbrowser (z.B.&nbsp;Internet&nbsp;Explorer) bedient. Zum Starten, muss die
+interne Webadresse aufgerufen werden (z.B. <i>http://localhost/athletica</i>,
+die für die Installation verantwortliche Person kennt die richtige Adresse).
+
+<h3>1.2 Meeting auswählen</h3>
+Ausser zur Administration muss für (fast) alle andern Aufgaben zuerst ein
+Meeting ausgewählt werden. Dies geschieht durch Anklicken der entsprechenden
+Zeile in der <i>Meetings</i>-Tabelle (das nächste Kapitel erklärt übrigens,
+wie ein Meeting aufgesetzt wird). Das gewählte Meeting bleibt als sogenanntes
+Cookie für eine gewisse Zeit im Webbrowser gespeichert und wird beim nächsten
+Start falls möglich automatisch vorgewählt. Im laufenden Betrieb kann übrigens
+beliebig von einem Meeting zum andern gewechselt werden. 
+<p/>
+Im Weiteren müssen immer wieder Daten aus Listen ausgewählt werden,
+um mit Ihnen zu arbeiten. Der gewählte Datensatz wird farbig hervorgehoben
+und meist stehen jetzt zusätzliche Eingabefelder und Funktionen zur Verfügung.
+
+<h3>1.3 Navigation</h3>
+Die Navigation innerhalb der Applikation erfolgt mit den entsprechenden Menüs,
+welche immer am oberen Fensterrand dargestellt bleiben. Die Hauptmenüs
+<i>Meeting</i>, <i>Wettkampf</i>, <i>Speaker</i> und <i>Administration</i>
+sind jeweils in Untermenüs aufgeteilt. Durch Anklicken des Menütextes wird
+das entsprechende Fenster geöffnet.
+<h4>1.3.1 Meeting</h4>
+In diesem Menü wird das zu bearbeitende Meeting ausgewählt. Hier stehen
+alle Funktionen zur Verfügung zum Definieren eines Meetings, zum Aufsetzen
+des Zeitplans und zur Anmeldungserfassung. Hier können auch Statistiken zu
+einem Meeting generiert werden.
+<h4>1.3.2 Wettkampf</h4>
+Der Wettkampf selber wird meist über den Wettkampfmonitor abgewickelt. Hier
+werden Anwesenheitslisten geführt, Serien eingeteilt, Startlisten erstellt,
+Resultate erfasst und Ranglisten gedruckt.
+<h4>1.3.3 Speaker</h4>
+Diese Seiten geben dem Speaker Direktzugriff auf die Anmeldungslisten,
+die Serieneinteilung, die Resultate und die Ranglisten.
+<h4>1.3.4 Administration</h4>
+Im Administrations-Menü werden die applikationsweiten Basisdaten, wie
+Kategorien, Disziplinen, etc. verwaltet.
+
+<h3>1.4 Hilfesystem</h3>
+Immer am oberen Seitenrand steht ein Knopf zum Aufrufen der entsprechenden
+Hilfeseite zur Verfügung. Die Hilfeseite gibt detailliert Auskunft zu allen
+Funktionen der jeweiligen Seite. Unbedingt anschauen! 
+
+<h2>2. Meetingdefinition<a name="c2"/></a></h2>
+Ein neues Meeting wird auf der Einstiegsseite mit Name, Ort, Stadion und
+Datum erfasst. Es erscheint nach dem Speichern in der Meetingliste, wo es dann
+zur weiteren Bearbeitung ausgewählt werden kann.
+<p/>
+Bevor ein Meeting überhaupt durchgeführt werden kann, müssen Daten wie Ort,
+Datum, Kategorien, Disziplinen , etc. erfasst werden. Diese Angaben können
+teilweise auch später, ev. sogar während dem Meeting wieder geändert werden.
+<p/>
+Meetings können auch gesamthaft mit allen zugehörigen Daten wieder gelöscht
+werden.
+<h3>2.1 Meetingdaten</h3>
+Nebst Ort, Stadion, Datum und Meeting-Nummer wird hier zusätzlich der
+Wettkampfmodus gesetzt:
+<dl>
+<dt>Wettkampfbüro</dt>
+<dd>Die Erfassung der Resultate erfolgt im Wettkampfbüro, d.h. im Rahmen eines
+Wettkampfes werden alle Resultate eines Athleten nacheinander im Wettkampfbüro
+erfasst (z.B. alle Weitsprungversuche). Das Programm setzt den Eingabefokus
+entsprechend.</dd>
+<dt>dezentral</dt>
+<dd>Die Resultate werden (geeignete Infrastruktur vorausgesetzt) direkt durch
+die Kampfrichter auf dem Wettkampfplatz eingegeben. Dies bedeutet, dass
+innerhalb eines Versuchs ein Athlet nach dem andern erfasst wird.</dd>
+</dl>
+<h3>2.2 Kategorien und Disziplinen</h3>
+Kategorien und Disziplinen müssen nicht vordefiniert werden. Sie werden
+direkt als "Neuer Wettkampf" zusammen mit weiteren zughörigen Daten
+wie Haft- und Startgeld und Wettkampfinformationen  (z.B. Hürdenhöhe oder
+Kugelgewicht) erfasst.
+<br/>
+Hier wird auch definiert, ob eine Windmessung erfolgen soll.
+<br/>
+Ebenfalls an dieser Stelle werden die Zeitplandaten erfasst: Startzeit und
+Datum sowie Rundentyp. Der Gesamtzeitplan kann auch ausgedruckt werden.
+<p/>
+Kategorienweite Einstellungen können später gesetzt werden.
+Der Wettkampftyp gilt für die ganze Kategorie. Wird ein anderer Typ als
+<i>Einzel</i> gewählt, muss zusätzlich die vom jeweiligen Reglement geforderte
+Punktetabelle ausgewählt werden.
+<p/>
+Durch Anklicken der entsprechenden Verknüpfung können die Definitionen der
+einzelnen Kategorien eingesehen und geändert werden. Falls eine Punktetabelle
+ausgewählt wurde, muss auch die entsprechende Wertungsformel pro Disziplin
+gesetzt werden, was in den meisten Fällen aber automatisch geschieht.
+<p/>
+Kategorien und Disziplinen können nur gelöscht werden, wenn noch keine
+Anmeldungen dafür erfasst wurden.
+<p/>
+Wird die Punktetabelle geändert wenn bereits Resultate erfasst sind, werden
+die Resultatpunkte auf 0 zurückgesetzt. Das nachfolgende Setzen der
+Wertungsformel pro Disziplin berechnet die Punkte dann neu.
+<h3>2.3 Statistiken</h3>
+Die folgenden Statistiken können angezeigt oder direkt ausgedruckt werden:
+<dl>
+<dt>Anmeldungen</dt>
+<dd>Anzahl gemeldete Athleten und Staffeln pro Kategorie und die jeweiligen
+Totalzahlen.</dd>
+
+<dt>Disziplinenstarts</dt>
+<dd>Anzahl Anmeldungen pro Wettkampf (d.h. pro Kategorie und Disziplin).
+Es werden Totals pro Kategorie und für das ganze Meeting ermittelt.</dd>
+
+<dt>Disziplinenstarts</dt>
+<dd>Anzahl Anmeldungen pro Wettkampf (d.h. pro Kategorie und Disziplin).
+Es werden Totals pro Kategorie und für das ganze Meeting ermittelt.</dd>
+
+<dt>Startgelder</dt>
+<dd>Falls bei der Meetingdefinition Start- und/oder Haftgeldbeträge
+eingesetzt wurden, werden hier die Totals pro Verein sowie für das ganze
+Meeting aufgelistet.</dd>
+</dl>
+
+<h2>3. Anmeldungen<a name="c3"/></a></h2>
+Sobald das Meeting aufgesetzt wurde, können die Anmeldungen erfasst werden.
+<h3>3.1 Einzelanmeldung</h3>
+Nach Aufruf des Untermenus <i>Anmeldungen</i> werden alle gemeldeten Athleten
+in der linken Kolonne angezeigt. Durch Anklicken können die individuellen
+Daten eines Athleten angesehen und auch verändert werden.<br/>
+Im Suchfeld kann entweder der Geschlechtsname des Athleten oder seine
+Startnummer eingegeben werden. Beim Verlassen des Eingabefeldes wird die Suche
+ausgelöst und das Ergebnis ebenfalls in der Liste dargestellt. Auch hier
+kann ein Athlet dann durch Anklicken ausgewählt werden.
+<p/>
+Die Liste ist standardmässig nach Startnummern sortiert. Durch Anklicken der
+jeweiligen Spaltenüberschrift kann das Sortierkriterium geändert werden.
+<h4>3.1.1 Neue Anmeldung</h4>
+Um eine neue Anmeldung zu erfassen, ist die entsprechende Funktion am oberen
+Seitenrand aufzurufen. Danach müssen Verein und Kategorie ausgewählt werden.
+<p/>
+Nach erfolgter Auswahl, können die Athletendaten eingegeben werden. Falls
+bereits Startnummern zugeteilt wurden, wird die nächste frei Nummer automatisch
+eingefüllt. Falls gewünscht kann die Nummer überschrieben werden. Andernfalls
+wird das Feld auf Null gesetzt gesetzt.
+<p />
+Nach einmaligem Betätigen der Tabulatortaste steht der Cursor im Namensfeld.
+Nacheinander kann <i>Name, Vorname</i> und <i>Jahrgang</i> ausgefüllt werden.
+Falls es sich um einen Mannschaftswettkampf handelt (z.B. SVM) muss der Athlet
+einer Mannschaft des gleichen Vereins zugeteilt werden.
+<p/>
+Mit der Tabulatortaste kann weiter eine Disziplin nach der andern angesprungen
+und durch Betätigen der Leerschlagteste ausgewählt werden. Neben jeder
+Disziplin steht ein Feld zur Verfügung, um falls gewünscht die jeweilige
+Bestleistung einzugeben. Diese dient später dazu, die Serienzuteilung zu
+steuern.
+<p/>
+Nach dem Drücken der Taste <i>Speichern</i> überprüft das System, ob die
+Startnummer noch frei ist und ob der Athlet nicht bereits in dieser Kategorie
+erfasst wurde. Ist alles OK, wird die Anmeldung in die Datenbank geschrieben.
+Falls der Wettkampf bereits im Gange ist und in einer gewählten Disziplin
+bereits Serien eingeteilt sind, zeigt das System eine entsprechende Warnung
+mit dem Hinweis, die Serieneinteilung nochmals vorzunehmen.
+<br />
+Das Formular wird jetzt gelöscht, Verein und Kategorie aber beibehalten für
+die Eingabe der nächsten Anmeldung.
+<h4>3.1.2 Startnummern</h4>
+Mit dem Dialog zur Startnummernzuordnung können jederzeit (also auch während
+des Meetings!) die Startnummern neu verteilt oder auch gelöscht werden.
+Die Sortierkriterien bestimmen, wie die Nummern verteilt werden:
+<dl>
+<dt>Name</dt>
+<dd>Sämtliche Athleten werden aufsteigend nach Name und Vorname sortiert
+und die Nummern beginnend mit dem gesetzten Wert entsprechend zugeteilt.</dd>
+
+<dt>Kategorie</dt>
+<dd>Sämtliche Athleten werden aufsteigend nach Kategorie, Name und Vorname
+sortiert und die Nummern beginnend mit dem gesetzten Wert entsprechend
+zugeteilt. Nach jeder Kategorie kann eine wählbare Anzahl Nummern
+freibleiben (kann auch Null sein).</dd>
+
+<dt>Verein</dt>
+<dd>Sämtliche Athleten werden aufsteigend nach Verein, Name und Vorname
+sortiert und die Nummern beginnend mit dem gesetzten Wert entsprechend
+zugeteilt. Nach jedem Verein kann eine wählbare Anzahl Nummern freibleiben
+(kann auch Null sein).</dd>
+
+<dt>Verein & Kategorie</dt>
+<dd>Sämtliche Athleten werden aufsteigend nach Verein und innerhalb des
+Vereins nach Kategorie, Name und Vorname sortiert. Die Nummern werden
+beginnend mit dem gesetzten Wert entsprechend zugeteilt. Nach jedem Verein
+und nach jeder Kategorie kann eine wählbare Anzahl Nummern freibleiben.
+(kann auch Null sein).</dd>
+</dl>
+
+<h4>3.1.3 Drucken und Anzeigen</h4>
+Startlisten können sortiert nach Namen oder Startnummern ausgedruckt oder
+angezeigt werden.  Zusätzlich lässt sich eine Liste nach Verein und/oder
+Kategorie gruppieren. Je nach Bedarf kann jeder Verein und/oder jede
+Kategorie auf einer neuen Seite gedruckt werden. Die Liste der zu
+druckenden Athleten lässt sich nach Kategorie, Disziplin und/oder Verein
+einschränken.
+
+<h4>3.1.4 Einzelanmeldung ändern</h4>
+Um eine Anmeldung zu mutieren ist der Athlet auf der Anmeldungslist mit einem
+Mausklick auf den Namen zu selektieren. Ausser dem Verein können
+alle Daten geändert werden. Name, Vorname und Jahrgang werden dabei in der
+Basisdatentabelle nachgeführt, z.B. wenn während eines Meetings Schreibfehler
+zu korrigieren sind.
+<p />
+Die Kategorie kann nur geändert werden, wenn der Athlet in keiner Disziplin
+(mehr) gemeldet ist.
+<p />
+Eine Disziplin kann nur gelöscht werden, wenn der Athlet nicht bereits in
+einer Serie eingeteilt ist.
+<p />
+Die Anmeldung kann auch als Ganzes durch Mausklick auf <i>Löschen</i> gelöscht
+werden. Dabei gelten die gleichen Einschränkungen wie oben.
+
+<h3>3.2 Staffeln</h3>
+Nach Aufruf des Untermenus <i>Staffeln</i> werden alle gemeldeten Staffeln
+in der Liste links angezeigt. Eine einzelne Staffel wird durch Anklicken
+ausgewählt.
+<p/>
+Die Liste ist standardmässig nach Staffelnamen sortiert. Durch Anklicken der
+jeweiligen Spaltenüberschrift kann das Sortierkriterium geändert werden.
+
+<h4>3.2.1 Neue Anmeldung</h4>
+Um eine neue Staffel zu melden, müssen Verein, Kategorie und Disziplin
+ausgewählt werden. Danach muss zumindest ein Staffelname vergeben werden.
+Bei Mannschaftswettkämpfen (z.B. SVM) muss die Staffel einer Mannschaft
+der gleichen Kategorie und des gleichen Vereins zugeteilt werden. Es kann
+ebenfalls eine Bestleistung für die spätere Serieneinteilung erfasst werden.
+<p />
+Die Liste der Athleten umfasst all jene Athleten, welche für diesen Verein
+in dieser Kategorie und Staffeldisziplin gemeldet wurden. Sie können durch
+Vergabe einer Staffelposition zugeteilt werden.
+<p />
+Nach dem Drücken der <i>Speichern</i>-Taste wird geprüft, ob dieser Staffelname
+für den gewählten Verein und die gewählte Kategorie nicht bereits vergeben ist.
+Ist alles OK, werden die Daten gespeichert.
+
+<h4>3.2.2 Drucken und Anzeigen</h4>
+Startlisten können falls gewünscht nach Verein und/oder Kategorie gruppiert
+werden. Je nach Bedarf kann jeder Verein und/oder jede Kategorie auf einer neuen
+Seite gedruckt werden. Die Liste der zu druckenden Staffeln lässt sich nach
+Kategorie, Disziplin und/oder Verein einschränken.
+
+<h4>3.2.3 Staffelanmeldung ändern</h4>
+Um eine Anmeldung zu mutieren ist die Staffel auf der Anmeldungslist mit einem
+Mausklick auf den Namen zu selektieren. Es können der Staffelname, die
+Bestleistung sowie die Mannschaft geändert werden.
+<p />
+Die Anmeldung kann auch als Ganzes durch Mausklick auf <i>Löschen</i> gelöscht
+werden, sofern die Staffel noch in keiner Serie eingeteilt wurde.
+<p />
+Die Athleten lassen sich neu positionieren. Eine Position kann nur einmal
+vergeben werden. Es lassen sich allerdings beliebig viele Position zuteilen.
+Um ein Athlet zu löschen, ist seine Position zu löschen oder auf Null zu
+setzen.
+<p />
+Die Drop-Down-Liste der nicht zugeteilten Athleten umfasst alle jene Athleten
+des Vereins, welche zwar in dieser Kategorie und Staffeldisziplin gemeldet
+sind, aber noch keiner Staffel zugeteilt wurden.
+<br />
+Nach Auswahl eines Athleten wird dieser durch Vergabe einer Position der
+Staffel zugeteilt.
+<p />
+Die Drop-Down-Liste der weiteren Athleten umfasst alle weiteren Athleten
+des Vereins ungeachtet davon, in welcher Kategorie sie gemeldet wurden.
+Mit dieser Funktions lassen sich beinahe nach Belieben und unbürokratisch
+Athleten einer Staffel zuteilen. Ob dies im Einzelfall zulässig ist, hat
+der Benutzer zu entscheiden.
+<br />
+Auch hier wird der Athlet durch Vergabe einer Position der Staffel zugeteilt.
+
+<h3>3.3 Mannschaften</h3>
+Nach Aufruf des Untermenus <i>Mannschaften</i> werden alle gemeldeten Teams
+in der Liste links angezeigt. Die Liste ist standardmässig nach Staffelnamen
+sortiert. Durch Anklicken der gewünschten Mannschaft kann diese administriert
+werden.
+
+<h4>3.3.1 Neue Anmeldung</h4>
+Um eine neue Mannschaft zu melden, müssen Verein und Kategorie ausgewählt
+werden. Es stehen nur diejenigen Kategorien zur Verfügung welche als
+Mannschaftswettkampf definiert wurden. Danach muss zumindest ein frei
+wählbarer Mannschaftsname vergeben werden.
+<p />
+Nach dem Drücken der <i>Speichern</i>-Taste wird geprüft, ob dieser
+Mannschaftsname für den gewählten Verein und die gewählte Kategorie nicht
+bereits vergeben ist. Ist alles OK, werden die Daten gespeichert.
+
+<h4>3.3.2 Drucken und Anzeigen</h4>
+Die Mannschaftsliste umfasst alphabetisch sortiert alle Athleten und 
+Staffeln mit den jeweiligen Disziplinen, welche für diese Mannschaft
+gemeldet wurden.
+<p />
+Die Disziplinenliste zeigt pro Mannschaft eine Auflistung aller Disziplinen
+mit den dafür gemeldeten Athleten.
+<p />
+Der Benutzer kann wählen, ob jede Mannschaft auf einer neuen Seite ausgedruckt
+werden soll. Die Liste der zu druckenden Staffeln lässt sich nach Kategorie
+und/oder Verein einschränken.
+
+<h2>4. Wettkampfmonitor<a name="c4"/></a></h2>
+Der Wettkampfmonitor bildet das Kontrollzentrum bei der Meetingdurchführung.
+Er bietet eine Zeitplanmässige Übersicht aller Wettkämpfe, zeigt deren Status
+an und bietet Direktzugriff zu den gerade aktuellen Funktionen.
+<p/>
+Der Monitor zeigt so dem Benutzer jederzeit, welche Arbeiten als nächstes
+anstehen oder wo etwas noch nicht erledigt ist.
+
+<h3>4.1 Anzeige</h3>
+Pro Kategorie werden alle Wettkämpfe in zeitlicher Abfolge gezeigt. Der Wert
+in Klammern neben der Disziplin gibt Auskunft über die Anzahl gemeldeten
+Athleten. Die Zahl wird korrigiert aufgrund der Ergebnisse beim Appell. Bei
+Zwischen- und Finalrunden wird die Anzahl der qualifizierten Athleten gezeigt.
+<p/>
+Je nach Status, wird der Wettkampf farbig hinterlegt. Der Grundzustand (ohne
+Farbe) bedeutet, das noch keine Aktivitäten vorgenommen worden sind. Im Laufe
+des Wettkampfs ändert sich der Status entsprechend der Legende am oberen
+Bildschirmrand.
+
+<h3>4.2 Funktionen</h3>
+Die aktuelle Funktion pro Wettkampf wird durch einen Mausklick auf die
+Disziplinenbezeichnung aufgerufen. Falls Appellblätter gedruckt wurden,
+wird die Appellfunktion aufgerufen. Haben noch keine Aktivitäten stattgefunden
+oder ist der Appell abgeschlossen wird zuerst der Dialog zu Serieneinteilung
+gezeigt. Ist diese erfolgt, ändert der Status zu <i>Serien in Bearbeitung</i>.
+Ab jetzt wird direkt das Formular zur Serienbearbeitung gezeigt, ebenso wenn
+die <i>Serien eingeteilt</i> sind.
+<p/>
+Sind die <i>Resultate in Bearbeitung</i> wird direkt die entsprechende
+Funktion zur Resultaterfassung gezeigt, ebenso wenn die <i>Resultate erfasst</i>
+sind.
+
+<h2>5. Appell<a name="c5"/></a></h2>
+Die Appell-Funktion dient zum Erfassen der anwesenden Athleten am Wettkampftag.
+Nach Auswahl von Kategorie und Wettkampf erscheint eine alphabetische Liste
+aller Athleten, welche für diesen Wettkampf angemeldet sind. Standardmässig
+sind alle als <i>anwesend</i> erfasst. Dies einerseits um die Arbeit des
+Benutzers zu erleichtern, da erfahrungsgemäss die meisten gemeldeten Athleten
+auch an den Start gehen.<br/>
+Andererseits ist dadurch der Benutzer nicht gezwungen, diese Funktion auch
+anzuwenden.
+<p/>
+Bei der späteren Serieneinteilung werden die abwesenden Athleten nicht mehr
+berücksichtigt. 
+
+<h3>5.1 Drucken</h3>
+Die Appellblätter können selbstverständlich auch ausgedruckt werden. Auf diesen
+Blättern erscheint ein zusätzliches Feld pro Athlet, wo dieser seine
+Anwesenheit durch Ankreuzen bestätigen kann.
+<p/>
+Und hier noch ein verstecktes Zückerchen: Wird die Druckfunktion ausgelöst,
+bevor ein Wettkampf ausgewählt wurde, werden alle Appellblätter gedruckt,
+eventuell eingeschränkt nur auf eine bestimmt Kategorie. Damit diese Funktion
+etwas gesteuert werden kann, werden nur jene Displinen berücksichtigt, für die
+der Administrator eine Appellzeit grösser als Null gesetzt hat.
+
+<h2>6. Serien<a name="c6"/></a></h2>
+Die Serien-Funktion wird normalerweise über den Wettkampfmonitor aufgerufen,
+kann aber auch über das entsprechende Untermenü aktiviert werden. Zuerst sind
+dann allerdings Kategorie und Wettkampf auszuwählen, danach die gewünschte
+Runde.
+<p/>
+Sind bereits mehrere Serien eingeteilt, erscheinen zusätzlich Navigationstasten
+um direkt zu der gewünschten Serie zu scrollen.
+
+<h3>6.1 Serieneinteilung</h3>
+Sind noch keine Serien eingeteilt, muss zuerst ein Dialog zur Serieneinteilung
+aufgerufen werden, um die Einteilungsparameter zu setzen. Dabei unterscheiden
+das System automatisch zwischen der Einteilung für eine Erstrunde und der
+Qualifikation aus einer Vorrunde (gesteuert durch den Zeitplan).
+
+<h4>6.1.1 Erstrundeneinteilung</h4>
+Bei der Erstrundeneinteilung wird zuoberst die Anzahl der anwesenden Athleten
+angezeigt. Der Benutzer muss dann angeben, wieviele Athleten gemeinsam in einer
+Serie starten. Der Administrator kann dafür einen Standardwert pro Disziplin
+definieren, der hier angezeigt wird.
+<br/>
+Bei Bahnwettbewerben, kann die Anzahl der zur Verfügung stehende Bahnen
+angegeben werden. Ist diese Zahl grösser, als die Anzahl Athleten pro Serie
+werden diese Bahnen später sozusagen als Reserve leer angezeigt.
+<br/>
+Die Anzahl der Serien ergibt sich rechnerisch durch die Division der anwesenden
+Athleten durch die Anzahl Athleten pro Serie.
+<br/>
+Die folgenden Einteilungs-Modi stehen zur Verfügung:
+<dl>
+<dt>offen</dt>
+<dd>Die Athleten werden nach dem Zufallsprinzip auf die Serien und Bahnen
+verteilt.</dd>
+<dt>Bestleistung gemeinsam</dt>
+<dd>Falls bei der Anmeldung Bestleistungen erfasst wurden, starten die besten
+Athleten gemeinsam in derselben Serie.</dd>
+<dt>Bestleistung verteilt</dt>
+<dd>Falls bei der Anmeldung Bestleistungen erfasst wurden, werden die besten
+Athleten gleichmässig auf alle Serien verteilt.</dd>
+</dl>
+
+<h4>6.1.2 Qualifikation</h4>
+Bei der Qualifikation aus einer vorhergehende Runde wird zuoberst der Name
+dieser Runde gezeigt, sowie die Anzahl der qualifizierten Athleten.
+angezeigt. Der Benutzer muss dann angeben, wieviele Athleten gemeinsam in einer
+Serie starten. Der Administrator kann dafür einen Standardwert pro Disziplin
+definieren, der hier angezeigt wird.
+<br/>
+Bei Bahnwettbewerben, kann die Anzahl der zur Verfügung stehende Bahnen
+angegeben werden. Ist diese Zahl grösser, als die Anzahl Athleten pro Serie
+werden diese Bahnen später sozusagen als Reserve leer angezeigt.
+<br/>
+Die Anzahl der Serien ergibt sich rechnerisch durch die Division der anwesenden
+Athleten durch die Anzahl Athleten pro Serie.
+<br/>
+Handelt es sich um die letzte Runde dieses Wettbewerbs und wird diese in
+mehreren Serien ausgetragen, starten die besten Athleten gemeinsam in einer
+Serie.
+<br/>
+Die folgenden Einteilungs-Modi stehen dafür zur Verfügung:
+<dl>
+<dt>Bestleistung</dt>
+<dd>Bei einer Einteilung nach Bestleistung werden die Athleten leistungsmässig
+pro Serie von den zentralen Bahnen nach aussen verteilt.</dd>
+<dt>IWB Regel 166</dt>
+<dd>Erfolgt die Einteilung nach IWB Regel 166 wird pro Serie die bessere Hälfte
+der Athleten den zentralen Bahnen zugelost, die schlechtere den äusseren
+Bahnen. </dd>
+</dl>
+
+<h3>6.2 Serienadministration</h3>
+<h4>6.2.1 Bezeichnung</h4>
+Jeder generierte Serie erhält automatisch eine Nummer als Bezeichnung. Diese
+bestimmt die Reihenfolge der Anzeige, kann aber vom Benutzer überschrieben
+werden. Dafür stehen maximal zwei Zeichen zur Verfügung. Nach einer Änderung
+werden die Serien automatisch in ihrer neuen Reihenfolge angezeigt.
+<h4>6.2.2 Anlage</h4>
+Den Serien kann eine der definierten Wettkampfanlagen zugewiesen werden.
+Entweder geschieht dies für alle Serien gemeinsam oder individuell pro Serie.
+Die Anlagenbezeichnung erscheint nachher auf den Startblättern. Die Angabe
+einer Anlage ist dann sinnvoll, wenn nicht alle Serien auf der gleichen
+Anlagen stattfinden (z.B. Weit 1 und Weit 2).
+<h4>6.2.3 Einteilung ändern</h4>
+Um ein Athlet von einer Serie in eine andere zu Verschieben, muss dieser zuerst
+per Mausklick ausgewählt werden. Der Athlet wird farbig hervorgehoben. Ein
+erneuter Mausklick auf die neue Bahn, eventuell auch in einer anderen Serie,
+löst die Änderung aus. Falls die neue Bahn schon belegt ist, sind jetzt zwei
+oder mehrer Athleten dort aufgeführt.
+<br/>
+Auch leere Bahnen stehen dafür zur Verfügung. Um eine zusätzliche Serie zu
+bilden, gibt es am Listenende ein speziell dafür aufgeführtes Feld. Wird
+ein Athlet hier platziert, wird die neues Serie definiert. Die
+Serienbezeichnung muss manuell angepasst werden.
+<br/>
+Wird der letzte Athlet aus einer Serie wegverschoben, wird diese gelöscht.
+<h4>6.2.4 Serien löschen</h4>
+Mit der Taste <i>Serien löschen</i> kann die gesamte Serieneinteilung
+aufgehoben und nachher neu gestartet werden.
+<h4>6.2.4 Einteilung abschliessen</h4>
+Mit dieser Funktion wird der Status der Wettkampfrunde auf <i>Serien
+eingeteilt</i> geändert. Die Startblätter können jetzt durch Mausklich auf
+die <i>Drucken</i>-Taste ausgedruckt werden. Der nachfolgende Druckdialog
+erlaubt die Eingabe der folgenden Parameter:
+<dl>
+<dt>Anzahl Bahnen</dt>
+<dd>Damit kann bei Bahndisziplinen nochmals die Anzahl der anzuzeigenden Bahnen
+geändert werden.</dd>
+</dl>
+
+Folgen noch weitere Runden, können zusätzlich die Qualifikationsparameter
+gesetzt werden:
+<dl>
+<dt>Anzahl Serien</dt>
+<dd>Wieviele Serien soll die nächste Runde umfassen.</dd>
+<dt>Anzahl Bahnen</dt>
+<dd>Bei Bahndisziplinen kann angegeben werden, wieviel Bahnen dabei
+belegt werden sollen.</dd>
+<dt>Anzahl Seriensieger</dt>
+<dd>Ist diese Zahl grösser als Null, qualifziert sich die entsprechende Anzahl
+toprangierter Athleten pro Serie für die nächste Runde. Die weiteren
+Startplätze werden gemäss der erzielten Leistung auf die weiteren Athleten
+verteilt. Ist die Zahl Null, wird für die Qualifikation einzig die erzielte
+Leistung berücksichtigt.</dd>
+</dl>
+
+Die Startliste zeigt am Listenanfange die Totalzahl der aufgeführten Athleten,
+die Anzahl Serien sowie gegebenenfalls die Qualifikationsparameter für die
+nächste Runde.
+
+<h2>7. Resultaterfassung<a name="c7"/></a></h2>
+<h3>7.1 Allgemeines</h3>
+Die Resultaterfassung funktioniert abhängig vom Disziplinentyp immer etwas
+unterschiedlich. Gemeinsam ist allen Listen (ausser Hochsprung), dass
+Resultateingaben im Hintergrund verarbeitet und in der Statusleiste am unteren
+Fensterrand angezeigt werden. Im Fehlerfall meldet sich Athletica mit einer
+entsprechenden Meldung. 
+<p/>
+Zahlen können immer mit Komma oder Punkt getrennt werden. Minuten, bzw. Stunden
+sind in jedem Fall von den kleineren Einheiten zu trennen, d.h. <i>1.02,44</i>
+statt <i>62,44</i>. Die Applikation versucht selbständig, die eingegebene
+Leistung sinnvoll zu interpretieren und formatiert den Wert einheitlich.
+Falls dies nicht gelingt, bleibt das Feld leer.
+<p/>
+Negativleistungen (-1, -2, -3 für <i>nicht angetreten, aufgegeben</i> und
+<i>disqualifiziert</i>) können natürlich ebenfalls eingegeben werden.
+<p/>
+Ein Athlet kann aus seiner Serie gelöscht werden. Nachher erscheint er in
+der Auswahlliste der neuen Athleten und könne neu eingeteilt werden. Diese
+Funktion macht es möglich, auch jetzt noch Änderungen an der Serieneinteilung
+vorzunehmen.
+
+<h3>7.2 Neue Athleten</h3>
+Falls zusätzliche Athleten für diesen Wettkampf gemeldet aber nicht in einer
+Serie eingeteilt sind, erscheint oberhalb der Liste ein Formular, um einen
+solchen Athleten noch nachträglich einer Serie und Position zuteilten zu
+können.
+<br/>
+Die Athletenauswahl umfasst auch Athleten, welche beim Appell als abwesend
+vermerkt wurden oder welche sich nicht für diese Runde qualifiziert haben.
+<p/>
+Diese Funktion erlaubt es, flexibel auf spezielle Situationen am Wettkampftag
+zu reagieren, z.B. um nachträglich Serieneinteilungen zu ändern oder Athleten
+nachzuqualifizieren.
+
+<h3>7.3 Resultateingabe</h3>
+<h4>7.3.1 Bahnläufen</h4>
+Pro Serie kann eine Filmnummer eingegeben werden und bei Disziplinen mit
+Windmessung der gemessene Wind. Danach kann die Leistung für den ersten
+Athleten eingegeben werden.
+<h4>7.3.2 Technische Disziplinen</h4>
+Wird das Meeting im <i>Wettkampfbüro</i>-Modus betrieben, wird nur das beste
+Resultat eingegeben, allenfalls zusammen mit dem gemessenen Wind.
+<p/>
+Im <i>dezentral</i>-Modus können pro Athlet sechs Resultate erfasst werden.
+Der Fokus wird nach der Resultateingabe innerhalb desselben Versuchs
+automatisch auf den nächsten Athleten gesetzt.
+<p/>
+Dieser Modus erlaubt es, bei geeigneter Infrastruktur die Resultaterfassung
+direkt auf dem Wettkampfplatz vorzunehmen!
+<h4>7.3.3 Hochsprung, Stabhochsprung</h4>
+Bei Vertikalsprüngen müssen jeweils die Sprunghöhe und die Versuche eingegeben
+werden. <i>Athletica</i> akzeptiert dafür alle möglichen Varianten (X, x, O, o,
+0, -).
+<p/>
+Bevor Resultate eingegeben werden können, ist der gewünschte Athlet durch
+Mausklick zu aktivieren. Die entsprechende Zeile ist jetzt gelb unterlegt
+und die Eingabefelder sind aufgesetzt.
+<br/>
+Beim ersten Athleten sind noch alle Felder auszufüllen. Später versucht die
+Applikation dann, eine geeignete Vorgabe für die Sprunghöhe zu machen. Dabei
+wird zuerst die tiefste bisher eingegebene Höhe angezeigt. Natürlich kann
+diese Vorgabe mit dem tatsächlichen Wert überschrieben werden. Danach wird
+der nächsthöhere Wert vorgegeben, der bereits einmal eingegeben wurde.
+
+<h3>7.3 Resultaterfassung abschliessen</h3>
+Diese Funktion setzt den Rundenstatus auf <i>Resultate erfasst</i>, rangiert
+die Athleten gemäss dem Rundentyp und nimmt eine allfällige Qualifikation für
+eine nächste Runde vor.
+<p/>
+Sowohl der Rang als auch die Qualifikation können manuell übersteuert werden.
+<p/>
+Mit der Funktion <i>Resultate ändern</i> kann wieder zur Leistungserfassung
+zurückgewechselt werden, dabei wird der Rundenstatus wieder auf
+<i>Resultate in Bearbeitung</i> zurückgesetzt. Danach muss die Auswertung
+erneut vorgenommen werden. Achtung: Dies hat unter Umständen
+eine Änderung der Rangierung und der Qualifikation zur Folge, was vor allem
+bei bereits publizierten Ranglisten berücksichtigt werden muss!
+<p/>
+Mit Mausklick auf die <i>Drucken</i>-Taste kann der entsprechende Dialog für
+den Ranglistendruck aufgerufen werden.
+
+<h2>8. Ranglisten<a name="c8"/></a></h2>
+Der Druckdialog für die Ranglistenerstellung umfasst die zwei Filterfunktionen
+<i>Kategorie</i> und <i>Wettkampf</i>. Wird ein Wettkampf ausgewählt, kann
+zusätzlich noch die Runde eingeschränkt werden.
+<h3>8.1 Typen</h3>
+Nebst den Einzelranglisten können zusätzlich auch Mehrkampf- oder
+Mannschaftswettkampf-Ranglisten (Vereinsranglisten und Notenblätter) erstellt
+werden, was aber nur Sinn macht, wenn das Meeting auch entsprechend
+konfiguriert wurde. Ist dies der Fall, werden zusätzlich auch Leistungspunkte
+errechnet, welche auch auf den Einzelranglisten erscheinen.
+<dl>
+<dt>Einzel</dt>
+<dd>Auflistung der Einzelresultat pro Serie oder je nach Rundentyp auch
+gemeinsam. Bei Mehrkämpfen oder Mannschaftswettkämpfen werden zusätzlich
+auch die Leistungspunkte angezeigt.</dd>
+<dt>Mehrkampf</dt>
+<dd>Die Mehrkampfrangliste zeigt pro Athlet die Gesamtpunktzahl sowie eine
+Auflistung der gewerteten Disziplinen mit den Einzelleistungen.</dd>
+<dt>Mannschaft: Vereinsrangliste</dt>
+<dd>Die Vereinsrangliste zeigt pro Mannschaft die Totalpunktzahl sowie die
+bereits gewerteten Disziplinen zusammen mit der Anzahl dafür gewerteten
+Resulte.</dd>
+<dt>Mannschaft: Notenblätter</dt>
+<dd>Das Notenblatt listet alle gewerteten Einzelresultat für eine Mannschaft
+auf, weist die Totalpunktzahl aus und enthält zusätzliche Infos zum Wettkampf
+und den gegnerischen Teams. Die Notenblätter können von den Schiedsrichtern und
+Mannschaftsführern unterzeichnet werden.</dd>
+</dl>
+
+<h3>8.2 Seitenumbruch</h3>
+Fakultativ kann nach einer Kategorie oder auch nach jeder Disziplin ein
+Seitenumbruch eingefügt werden.
+
+<h3>8.3 Option Titelblatt</h3>
+<p>Wird diese Option gewählt, generiert <i>Athletica</i> ein Titelblatt mit
+  den wichtigsten Angaben zum Meeting und hängt dieses der Rangliste voran. </p>
+<h3>8.4 Bestleistungen  </h3>
+<p>Ist diese Option aktiviert, werden in der Rangliste hinter jedem Athleten die   Informationen zu den Bestleistungen (Saison- und pers&ouml;nliche Bestleistung) angezeigt. </p>
+<p class='warn'>Bei vielen Resultaten kann die Ausgabezeit mehrere Minuten dauern</p>
+
+<h3>8.5 Funktionen</h3>
+
+<p><strong>Drucken:</strong> Ein neues Browserfenster wird ge&ouml;ffnet und die Druckfunktion gestartet.  </p>
+<p><strong>Anzeigen:</strong> Die Rangliste wird im selben Browserfenster dargestellt und eignet sich f&uuml;r die Ansicht auf dem Bildschirm. </p>
+<p>&nbsp;</p>
+<h2>9. Administration<a name="c9"/></a></h2>
+Mit den Administrationsfunktionen werden die Basisdaten von <i>Athletica</i>
+administriert. Obwohl diese Funktionen nicht so häufig verwendet werden
+müssen, ist das Wissen über die hier abgelegten Daten sehr nützlich, um die
+Applikation besser zu verstehen.
+
+<h3>9.1 Allgemeine Funktionen</h3>
+<p>Auf der Einstiegsseite kann der Benutzer die Applikationssprache auswählen.
+  Der hier gewählte Wert wird als Cookie im Browser des Benutzers gespeichert.
+  Zudem stehen dort Links zur Dokumentation im HTML- und im PDF-Format zur
+  Verfügung, sowie zu den Lizenzvereinbarungen. </p>
+<p>Mit dem Knopf <em>Version pr&uuml;fen</em> wird (bei verf&uuml;gbarer Internetverbindung) auf dem Swiss Athletics Server gepr&uuml;ft ob eine neuere <em>Athletica</em>-Verion verf&uuml;gbar ist und heruntergeladen werden kann.</p>
+<h4>9.1.1 Datenbank - Daten sichern</h4>
+<p>Mit den Funktionen unter dem Titel <i>Datenbank - Daten sichern </i>können sämtliche Daten
+  in eine externe Datei gesichert und z.B. auf Diskette gespeichert werden.<br />
+Es k&ouml;nnen alle Meetings der Datenbank in eine Sicherungs-Datei gespeichert werden oder durch Auswahl nur ein bestimmtes Meeting. Ist die Option <em>Auch Stammdaten sichern</em> aktiviert, werden die Tabellen mit den Lizenzdaten und Leistungen der Athleten (PB, SB und Meldeleistung) ebenfalls gesichert. Dies hat zur Folge, dass die Sicherungsdatei um ein vielfaches gr&ouml;sser wird (&uuml;ber 15MB).</p>
+<h4>9.1.2 Datenbank - Sicherung einspielen</h4>
+<p>Diese Sicherung kann auch wieder eingespielt werden und überschreibt die
+  aktuelle Datenbank! <br/>
+  Werden Daten einer veralteten <i>Athletica</i>-Version
+  eingelesen, so werden diese ins Format der aktuellen Version konvertiert und k&ouml;nnen nicht mehr mit der urspr&uuml;nglichen Version eingelesen werden. </p>
+<h4>9.1.3 Cache leeren</h4>
+<p>Mit dieser Funktion k&ouml;nnen Sie erfasste Athleten und Vereine (eigene &Auml;nderungen) l&ouml;schen.</p>
+<p class="warn"><strong>Achtung:</strong> F&uuml;hren Sie diese Funktion nur aus, wenn Sie zur Zeit <strong>keine Anmeldungen</strong> f&uuml;r jegliche Meetings in Athletica erfasst haben.</p>
+<p>  Empfohlener Ablauf:<br />
+  1. Cache leeren<br />
+  2. Meeting erfassen<br />
+  3. Stammdatenupdate und Meeting-Abgleich</p>
+<h4>9.1.4 Update der Stammdaten</h4>
+<p>Mit dieser Funktion k&ouml;nnen Sie die Stammdaten (Athleten, Bestleistungen, Staffeln, Vereine) aktualisieren.</p>
+<p class="warn"><strong>Hinweis: </strong>Da &uuml;ber 15'000 Athleten mit insgesamt 85'000 Resultaten (Stand April 08) heruntergeladen und verarbeitet werden, kann diese Funktion einige Zeit dauern... </p>
+<h4>9.1.5 Abgleich mit der Online-Meetingbewilligung</h4>
+<p>Mittels Vereinscode und Passwort kannst du dich am Swiss Atheltics Server anmelden und die erfassten Meetings, welche Online-Anmeldungen zulassen, werden angezeigt. Beim Abgleich mit der Meetingbewilligung werden die Disziplinen-Defninitionen und die Athleten-Anmeldungen ins aktive Meeting importiert.</p>
+<p class="warn"><strong>Achtung:</strong> Ein Abgleich mit der Meetingbewilligung kann zu ungewollten &Auml;nderungen f&uuml;hren!
+Erstellen Sie zu erst eine Sicherung der Datenbank bevor Sie fortfahren.</p>
+<h4>9.1.6 Resultate in Bestenliste eintragen</h4>
+<p>Die Resultete des aktiven Wettkampfes werden auf den Swiss Athletics Server &uuml;bermittelt und stehen danach in der Bestenlisten-Applikation zur Abfrage bereit</p>
+<p class="warn"><strong>Wichtig:</strong> Es werden alle rangierten Runden &uuml;bertragen.
+  Diese k&ouml;nnen kein 2tes mal gesendet werden!</p>
+<h3>9.2 Kategorien</h3>
+Es können beliebig viele Kategorien konfiguriert werden. Die Werte können
+auch im Wettkampfbetrieb geändert werden und die Änderung wird sofort
+überall wirksam. Die Liste kann durch Mausklick auf eine Kolonnenüberschrift
+entsprechend sortiert werden.
+<p/>
+Kategorienamen und Kurznamen sind frei wählbar. <i>Athletica</i> stützt
+keinerlei Funktionalität auf das Vorhandensein eines bestimmten Namens ab.
+Trotzdem ist es natürlich im Alltag hilfreich, gängige Bezeichnungen zu
+verwenden.
+<p/>
+Die Alterslimite dient zur Prüfung des Maximalalters bei der Anmeldung eines
+Athleten für eine Kategorie.
+<p/>
+Die Kategorien werden dem Wert <i>Reihenfolge</i> nach aufsteigend sortiert.
+Der Wert ist applikationsweit für jede Anzeige wirksam.
+<p/>
+Eine Kategorie kann nur gelöscht werden, wenn sie in keinem Meeting
+referenziert wird.
+
+<h3>9.3 Disziplinen</h3>
+Es können beliebig viele Disziplinen konfiguriert werden. Die Werte können
+auch im Wettkampfbetrieb geändert werden und die Änderung wird sofort
+überall wirksam. Die Liste kann durch Mausklick auf eine Kolonnenüberschrift
+entsprechend sortiert werden. Auch hier sind Namen und Kurznamen frei wählbar.
+<p/>
+Der Typ bestimmt, wie eine Diszipline von <i>Athletica</i> behandelt wird.
+Das Wechseln des Typs hat grundlegende Auswirkungen auf den Betrieb und darf
+nicht ohne Grund vorgenommen werden!
+<p/>
+Die Appellzeit in Minuten dient zur Berechnung der aufgedruckten Zeit auf
+den Appellblättern (Startzeit - Appellzeit). All jene Disziplinen welche
+hier einen Wert grösser als Null gesetzt haben, können mit dem Druckbefehl
+der Appellfunktion gemeinsam ausgedruckt werden.
+<p/>
+Die Staffelgrösse besagt, wieviel Athleten einer Staffel zugeordnet werden
+dürfen.
+<p/>
+Die Seriegrösse dient als Standardwert für die Serieneinteilung.
+<p/>
+Die Kategorien werden dem Wert <i>Reihenfolge</i> nach aufsteigend sortiert.
+Der Wert ist applikationsweit für jede Anzeige wirksam.
+<p/>
+<p>Eine Disziplin kann nur gelöscht werden, wenn sie in keinem Meeting
+  referenziert wird. </p>
+<h3>9.4 Wertungstabellen</h3>
+<p>Athletica unerst&uuml;tzt neben den fest eingebauten Wertungtabellen (SLV 94, IAAF 85) auch eigene Punktetabellen.</p>
+<p>Es k&ouml;nnen beiliebig viele Punktetabellen erfasst werden. </p>
+<p>Wiederum jeder Punktetabelle k&ouml;nnen beliebig viele verschiedene Disziplinen hinzugef&uuml;gt werden. Bei der Disziplin muss zus&auml;tzlich noch das Geschlecht definiert werden.</p>
+<p>Beispiel-Punktetabelle f&uuml;r 100m M&auml;nner:</p>
+<table>
+  <tr>
+    <td>Punkte</td>
+    <td>Leistung</td>
+    <td>Geschlecht</td>
+  </tr>
+  <tr>
+    <td>100</td>
+    <td>10.00</td>
+    <td>M</td>
+  </tr>
+  <tr>
+    <td>90</td>
+    <td>11.00</td>
+    <td>M</td>
+  </tr>
+  <tr>
+    <td>80</td>
+    <td>12.00</td>
+    <td>M</td>
+  </tr>
+  <tr>
+    <td>70</td>
+    <td>13.00</td>
+    <td>M</td>
+  </tr>
+  <tr>
+    <td>60</td>
+    <td>14.00</td>
+    <td>M</td>
+  </tr>
+  <tr>
+    <td>50</td>
+    <td>15.00</td>
+    <td>M</td>
+  </tr>
+  <tr>
+    <td>40</td>
+    <td>16.00</td>
+    <td>M</td>
+  </tr>
+  <tr>
+    <td>30</td>
+    <td>17.00</td>
+    <td>M</td>
+  </tr>
+  <tr>
+    <td>20</td>
+    <td>18.00</td>
+    <td>M</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>19.00</td>
+    <td>M</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>20.00</td>
+    <td>M</td>
+  </tr>
+</table>
+<p>Athleten mit Leistung 10.00 und besser erhalten 100 Punkte, die Leistung zwischen 11.00 und 11.99 ergibt 90 Punkte usw. ... jeder Athlet, welcher ins Ziel kommt erh&auml;lt mindestens 5 Punkte.</p>
+<h3>9.5 Verein</h3>
+<p>Nebst dem Vereinsnamen kann auch ein Sortierwert eingegeben werden, nach
+  welchem Vereinslisten sortiert werden. Auch ein Verein kann nur gelöscht werden
+  wenn er nirgends mehr refenziert wierden. </p>
+<h3>9.6 Region</h3>
+<p>Die hier erfassten Regionen stehen bei den Anmeldungen (Personen) zur Auswahl.</p>
+<p>Eine neue Region wird mit dem Formular am oberen Seitenende aufgesetzt  und muss gespeichert werden. <br />
+&Auml;nderungen an bestehenden Daten werden direkt in der Datenbank gespeichert,  wenn zum n&auml;chsten Feld gewechselt wird. <br />
+Eine Region kann nur gel&ouml;scht werden, wenn er nicht mehr referenziert  wird. </p>
+<h3>9.7 Athleten</h3>
+Die Athletenliste ist sehr umfassend und kann darum nicht gemeinsam editiert
+werden. Hier muss der Athlet erst angeklickt werden.
+<p/>
+Um einen Athleten zu erfassen, muss vorher sein Verein vorhanden sein.
+<p/>
+Jede Neuanmeldung eines Athleten für ein Meeting überprüft diese Liste, ob
+der Athlet schon vorhanden ist. Ist das der Fall, wird nur eine Referenz
+auf den entsprechendn Athleteneintrag in dieser Liste gesetzt. Ist der
+Athlet neu, werden seine Daten automatisch auch hier gespeichert.
+
+<h3>9.8 Stadion</h3>
+Um überhaupt ein Meeting durchführen zu können, muss hier mindestens ein
+Stadion erfasst sein. Der Wert <i>Bahnen</i> definert den Standard, der
+verwendet wird, wenn ein Meeting in diesem Stadion stattfinden soll.
+
+<h3>9.8.1 Anlagen</h3>
+Pro Stadion können beliebig viele Anlagen verwendet werden, welchen später
+die Wettkämpfe zugeteilt werden können.
+
+<h3>9.9 Rundentypen</h3>
+<p>Die Rundentypen und ihre Kurzformen können ebenfalls beliebig gewählt werden.
+  Aber auch hier macht es Sinnd, traditionelle Begriffe zu verwenden. <i>Wertung</i> definiert, wie die Serien einer Wettkampfrunde ausgewertet
+  und die Athleten rangiert werden: In einer gemeinsamen Rangliste oder jede
+  Serie separat in einer eigenen Rangliste.</p>
+<h3>9.10 FAQ</h3>
+<p>FAQ = H&auml;ufig gestellte Fragen</p>
+<p>Hier k&ouml;nnen die farbigen K&auml;stchen, welche dem Inhalt &uuml;berlagert der Website &uuml;berlagert werden und die hoffentlich den einen oder anderen guten Tipp gegeben haben wieder aktiviert werden, falls diese zuvor mit <em>Nicht mehr anzeigen</em> geschlossen wurden. Mit dem Befehl <em>Alle ausschalten</em> werden alle Hinweis-K&auml;stchen deaktiviert.</p>
+</div>
+</body>
+</html>

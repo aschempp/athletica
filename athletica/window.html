@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test</title>
+<script type="text/javascript">
+    function FensterOeffnen(Adresse) {
+      var MeinFenster = window.open(Adresse, "Test2", "width=300,height=200,scrollbars=yes");    
+    }
+    function FensterUpdate() {
+        MeinFenster.reload();    
+    }
+</script>
+</head>
+<body>
+<a href="http://www.google.ch" onclick="FensterOeffnen(this.href); return false">Test</a>  
+<a href="http://www.google.ch" onclick="FensterOeffnen(this.href); return false">Update</a>  
+</body>
+</html>

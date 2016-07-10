@@ -1,0 +1,1 @@
+cfg_reload_time = '60000'; // Definiert die Reload-Zeit, nach der das Fenster automatisch aktualisiert wird (milliseconds)

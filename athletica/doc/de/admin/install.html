@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<meta content="text/html; charset=iso-8859-1" />
+
+	<title>Athletica für Administratoren: Installation</title>
+	<link rel="stylesheet" type="text/css" href="../../css/stylesheet.css" />
+</head>
+
+<body>
+<div class="helpmain">
+<h1>Installation</h1>
+<dl>
+<dt><a href="#basic">Einsteiger-Installation</a></dt>
+<dd>
+Für alle jene, welche Athletica ohne grossen Aufwand auf einem Windows-System
+zum Laufen bringen möchten. Webserver und Datenbank werden mitinistalliert.
+</dd>
+
+<dt><a href="#professional">Profi-Installation</a></dt>
+<dd>Diese richtet sich an alle Benutzer welche etwas genauer wissen möchten,
+wie Athletica aufgebaut ist und darum die einzelnen Komponenten selber
+installieren möchten.
+<br/>
+Eine zweite Zielgruppe sind Benutzer von anderen Betriebssystemen, wie Linux
+oder Mac.
+</dd>
+
+<dt><a href="#upgrade">Upgrade</a></dt>
+<dd>
+Die neueste Version für alle, die <i>Athletica</i> bereits im Einsatz haben.
+</dd>
+
+</dl>
+
+<h2><a name="basic">Einsteiger</a></h2>
+Dank unserem <i>Athletica_WinMAX</i>-Paket ist die Installation von
+<i>Athletica</i> ein Kinderspiel. Mit diesem Paket erhält der Benutzer
+ein pfannenfertiges, vorkonfiguriertes System. Mindestanforderung in diesem
+Fall ist Windows 98, besser wären allerdings Windows 2000 oder XP. Zusätzlich
+dürfen MySQL und Apache nicht bereits auf deinem System installiert sein,
+was aber kaum der Fall sein wird.
+
+<dl>
+<dt>1. Software beziehen</dt>
+<dd>Auf der <a href="http://www.swiss-athletics.ch/index.php?option=com_content&amp;task=view&amp;id=140&amp;Itemid=358">Athletica-Website</a> von Swiss-Athletics zuerst
+  unser <i>Athletica_WinMAX</i>-Paket herunterladen, was je nach Internet-Verbindung
+  einige Zeit beansprucht (das EXE-File ist ca. 35MB gross). <br />
+  Bei kleinere Software-Korrekturen werden 
+  jeweils nur Update-Installationen angeboten. Das heisst, dass evtl. neben der WinMax Installation noch eine Update-Datei heruntergeladen und installiert werden muss (z.B. Update 3.3 welches nach der Installation von WinMAX 3.2 installiert werden muss)
+  <p/>
+</dd><dt>2. Installation starten</dt>
+<dd><i>athletica_winmax_VERSION.exe</i> durch Doppelklick starten.<p/>
+</dd>
+
+<dt>3. Optionen wählen</dt>
+<dd>Lizenzbestimmungen akzeptieren, die gewünschten Basisdaten (Kategorien,
+Disziplinen, Schweizer Vereine) auswählen und nach Abschluss der Installation
+<i>Athletica</i> aufstarten lassen.<p/></dd> 
+
+<dt>4. Nachkonfiguration</dt>
+<dd>Die MySQL-Datenbank arbeitet mit einem eigenen Benutzersystem, welches
+nichts mit allfälligen Benutzer-Konten des Betriebssystems zu tun hat. Der
+DB-Benutzer zur MySQL-Administration heisst <i>root</i> und wurde ohne
+Passwort erstellt. Aus Sicherheitsgründen empfehlen wir, an dieser Stelle
+ein Passwort für diesen Benutzer zu setzen.
+<p/>
+Dies geschieht folgendermassen, wobei wir davon ausgehen, dass <i>Athletica</i>
+bereits gestartet wurde:
+<ol>
+	<li>Mit dem Verweis auf dem Desktop <i>phpMyAdmin</i> starten.</li>
+	<li>Es erscheint ein Eingabefenster zur Benutzeridentifikation. Hier ist
+	<i>User = root</i> zu setzen (ohne Passwort).</li>
+	<li>Nach dem öffnen der Applikation kann die Gelegenheit benützt werden, um
+	oben rechts die Sprache auszuwählen (z.B. <i>German</i>).</li>
+	<li>Im <i>MySQL-Menu</i> die Funktion <i>Rechte</i> aufrufen.</li>
+	<li>Benutzer <i>root</i> zum Bearbeiten auswählen.</li>
+	<li>Unter <i>Kennwort ändern</i> ein sinnvolles Passwort wählen.</li>
+</ol>
+</dd>
+</dl>
+
+<h2><a name="professional">Profi-Installation</a></h2>
+<h3>1.) Software beziehen</h3>
+Dieser Anleitung beschreibt einen gängigen Weg zur Installation der unter
+<a href="basics.html">"Systemvoraussetzungen"</a> beschriebenen Tools.
+Die Links zum Bezug dieser Tools befindet sich ebenfalls dort.
+Die detaillierten Anweisungen zu deren Installation sind der jeweiligen
+Installationsanleitung zu entnehmen.
+
+<h3>2.) Betriebssystem</a></h3>
+Die Installation erfolgt zweckmässigerweise in mehreren Schritten und
+wird im folgenden für ein Windows-System erklärt. Für Mac-Benutzer funktioniert
+die Installation sinngemäss gleich. Wer auf ein Linux-System setzt, hat es
+bedeutend einfacher, da die verwendeten Komponenten bei den gängigen
+Distribution mit der Installation des Betriebssystems aufgesetzt werden können.
+
+<h3><a name='network'>3.) Netzwerk</a></h3>
+Sollen mehrere Computer eingesetzt werden, muss die Installation nur auf
+einer einzigen Maschine, dem <i>Server</i>, vorgenommen werden. Alle
+eingesetzten Computer müssen aber über ein funktionierendes Netzwerk
+miteinander kommunizieren können.
+<p/>
+Wurde ein Netzwerk aufgesetzt, besitzt der Server eine sogenannte IP-Adresse
+oder gar einen definierten Namen, unter dem er aufgerufen werden kann. Wenn
+im folgenden von [HOST] die Rede ist, ist dieser Aufruf gemeint.
+<p/>
+Falls <i>Athletica</i> nur mit einem einzigen Computer betrieben wird,
+erfolgt der Aufruf mit den Namen <i>"localhost"</i>.
+
+<h3><a name='mysql'>4.) MySQL</a></h3>
+Für den Betrieb von Athletica genügt die Standardversion des
+Datenbankmanagement-Systems. Transaktionsunterstützung ist nicht nötig.
+Vorzugsweise wird MySQL so installiert, dass beim Aufstarten des Servers
+MySQL automatisch als Service gestartet wird.
+<p/>
+Im folgenden wird beispielhaft die Installation von MySQL 4.1.22 unter
+Windows 2000 beschrieben. Für andere Versionen dürften in etwa die gleichen
+Angaben gelten.
+<ol>
+	<li>Nach dem Download muss MYSQL-4.1.22-WIN.ZIP ausgepackt werden. Durch
+	Doppelklicken von <i>"Setup.exe"</i> wird der Installationsprozess
+	gestartet.</li>
+	<li>Der Ziel-Ordner für die Installation kann frei gewählt werden. Wir
+	empfehlen, den Vorschlag des Installationsprogrammes zu verwenden. Er wird
+	im weiteren mit [MYSQL_DIR] referenziert.</li>
+	<li>Der Setuptyp <i>"Typical"</i> genügt für unsere Zwecke. Damit wird
+	MySQL im oben erwähnten Ordner installiert. Dort befindet sich ein File
+	<i>"Readme"</i>, welches die Installation und die Konfiguration detailliert
+	beschreibt.</li>
+	<li>Als nächstes muss <span class='src'>"[MYSQL_DIR]\bin\winmysqladmin.exe"
+	</span>gestartet werden.
+	Beim erstmaligen Start muss ein User <i>"root"</i> und ein beliebiges
+	Passwort (wir nennen es ab jetzt [PASSWORT]) definiert werden, mit dem
+	das Administrationstool auf die Datenbank zugreifen soll.</li>
+	<li>Auf der Task-Leiste unten rechts erscheint neben der Zeitanzeige
+	eine Verkehrsampel. Steht diese auf Grün, wurde MySQL als Service
+	gestartet, d.h. die Datenbankapplikation läuft im Hintergrund und wird
+	beim Aufstarten des Computers automatisch mitgestartet.</li>
+</ol>
+
+<h3>5.) Apache</h3>
+Der Webserver wird vorzugsweise ebenfalls als Service installiert.
+Zum Betrieb der Applikation genügt eine Standardinstallation.
+<ol>
+	<li>Die Installation wird durch Doppelklick auf das heruntergeladene
+	File gestartet.</li>
+	<li>Für die Server-Information gehen wir davon aus, dass die Maschine
+	nicht in ein übergeordnetes Netz eingebunden ist. In diesem Fall können
+	Network Domain, Server Name und Email des Administratoren frei gewählt
+	werden. Ist der Server in ein grösseres Netztwerk eingebunden, werden diese
+	Angaben vom Netzwerkadministratoren vergeben.</li>
+	<li>Die Option <i>"Run as service for All Users"</i> ist unbedingt
+	anzuklicken.</li>
+	<li>Als Setuptyp ist <i>"complete"</i> geeignet.</li>
+	<li>Der Zielordner kann frei gewählt werden. Auch hier darf der Vorschlag
+	des Installationsprogrammes ruhig verwendet werden. Wir referenzieren ihn
+	hier als [APACHE_DIR].</li>
+	<li>Die Installation wird jetzt durchgeführt und Apache als Service
+	gestartet.</li>
+	<li>Im Apache-Konfigurationsfile muss die IP-Adresse des Servers
+	eingegeben werden, welche beim Aufsetzen des Netwerks gesetzt wurde.<br/>
+	Bei der Installation wurde ein Apache-Ordner in <i>"Startmenu->Programme"</i>
+	kreiert. Dort befindet sich unter anderem ein Link <i>"Edit httpd.conf"</i>.
+	Mit diesem lässt sich das Konfigurationsfile öffnen und editieren. Unter
+	<span class='src'>"Section 2"</span> ist die IP-Adresse des Servers
+	einzusetzen, mit der der Webserver später aufgerufen werden soll. Falls
+	der Server in einem Netzwerk betrieben wird, ist hier der Wert für [HOST]
+	einzutragen, andernfalls kann der folgende Standardwert für
+  	<i>"localhost"</i> eingesetzt werden:
+	<pre>ServerName 127.0.0.1</pre>
+	</li>
+</ol>
+
+<h3><a name='php'>6.) PHP</a></h3>
+PHP wird nicht mit einem Installationsprogramm aufgesetzt. Das Zip-File
+kann einfach unter Beibehaltung der Pfadangaben in eigenes, frei wählbares
+Verzeichnis extrahiert werden, z.B. <span class='src'>"C:\php\"</span>
+(ab hier nennen wir das [PHP_DIR]). Das weitere Vorgehen wird im File
+install.txt erklärt:
+<ol>
+	<li>Das File php4ts.dll ist von [PHP_DIR] in den Windows-System-Ordner
+	(c:\winnt\system32) zu kopieren.</li>
+	<li>Eines der Beispiel php.ini-Files ist in den Windows-Ordner (c:\winnt)
+	zu kopieren. Die folgenden Direktiven müssen angepasst werden:
+	<pre>
+max_execution_time = 60
+memory_limit = 32M
+error_reporting = E_ALL & ~E_NOTICE
+track_errors = ON
+extension_dir = [PHP_DIR]\extensions
+session_save_path = c:\winnt\temp
+session_auto_start = 1
+upload_max_filesize = 50MB
+	</pre>
+	</li>
+	<li>Als nächstes muss die Apache-Konfiguration so angepasst werden,
+	dass beim Starten des Webservers PHP eingebunden wird. Dort müssen
+	folgende Anpassungen vorgenommen werden:
+	<br/>
+	Unter <span class='src'>"Dynamic Shared Object (DSO) Support"</span>:
+	<pre>LoadModule php4_module [PHP_DIR]/sapi/php4apache</pre>
+	Unter <span class='src'>"AddType</span> sind die folgenden Zeilen
+	freizuschalten:
+	<pre>
+AddType application/x-httpd-php .php
+AddType application/x-httpd-php-source .phps</pre>
+	</li>
+	<li>Im oben erwähnten Startmenü muss der Apache-Server jetzt neu gestartet
+	werden. Hat etwas nicht geklappt, erscheint hier eine Fehlermeldung.</li>
+</ol>
+
+<h3><a name='phpmyadmin'>7.) phpMyAdmin</a></h3>
+phpMyAdmin wird ebenfalls als ZIP-Datei installiert und muss nach
+<span class='src'>"[APACHE_DIR]/htdocs"</span> extrahiert werden. Nach der
+Installation sind in der Datei <i>"config.inc.php"</i> die cfgServers-Variabeln
+so anzupassen, dass auf die MySQL-Datenbank in der Grundinstallation
+zugegriffen werden kann. <a href="#network">[HOST]</a> ist selbstverständlich
+durch den richtigen Wert zu ersetzen. Das gleiche gilt für
+<a href="#mysql">[PASSWORT]</a>.
+	<pre>
+$cfgPmaAbsoluteUri = 'http://[HOST]/phpMyAdmin/';
+
+$cfgServers[$i]['host']        = 'localhost';
+$cfgServers[$i]['controluser'] = 'root';
+$cfgServers[$i]['controlpass'] = '[PASSWORT]';
+$cfgServers[$i]['auth_type']   = 'http';
+$cfgServers[$i]['user']        = 'root';
+$cfgServers[$i]['password']    = '';
+	</pre>
+
+<h3><a name='athletica'>8.) Athletica</a></h3>
+Athletica kommt auch als ZIP-Datei und muss ebenfalls nach [APACHE_DIR]\htdocs
+extrahiert werden. <i>"athletica"</i> wird in ein eigenes Unterverzeichnis
+mit dem sinnigen Namen <i>"athletica"</i> installiert (ab hier [ATHLETICA_DIR].
+Die <a href='config.html'>Konfiguration</a> der Applikation erfolgt erst
+später.
+
+<h3><a name='explorer'>9.) Internet Explorer</a></h3>
+Auf den Client-PC's ist der Internet Explorer zu installieren. Damit das
+Drucken befriedigend funktioniert sind folgende Einstellungen zu ändern:
+Unter <i>"Datei->Seite einrichten..."</i> ist die Papiergrösse auf A4 zu
+stellen, der Wert für die Kopfzeile auf <span class='src'>"&w&bVereinsname"
+</span> zu setzen, jener für die Fusszeile auf <span class='src'>
+"&d, &t&bhttp://code.google.com/p/athletica/&bSeite &p von &P"</span>.
+Die Margins sollten abhängig vom eingesetzten Drucker möglichst klein gewählt
+werden (z.B. alle auf 0 setzen). Wir empfehlen, später ein paar Probedrucke
+durchzuführen und die Werte allenfalls zu ändern.
+
+<h3>10.) Installationstest</h3>
+Über den Browser kann mit Aufruf von <span class='src'>"http://[HOST]"</span>
+überprüft werden, ob der Apache-Webserver funktioniert. Ein nächster Aufruf
+von <span class='src'>"http://[HOST]/phpMyAdmin/index.php"</span> zeigt,
+ob die andern Tools auch funktionieren. Falls dies der Fall ist, wird der
+Benutzer aufgefordert, in MySQL einzuloggen (user: <i>"root"</i>; passwort:
+<i>"[PASSWORT]"</i>).
+<p/><i>Athletica</i> wird mit <span class='src'>"http://[HOST]/athletica/index.php"</span> gestartet.
+
+<h3><a name='db'>11.) Datenbank</a></h3>
+Zum Aufsetzen der Datenbank benützen wir das oben installierte
+<a href='#phpmyadmin'>phpMyAdmin</a>. Nach der Grundinstallation von
+<a href='#mysql'>MySQL</a> und dem Einstieg als Benutzer <i>"root"</i>
+geschieht das Aufsetzen der Applikationsdatenbank in drei Schritten:
+<ol>
+<li>Auf der Einstiegsseite von phpMyAdmin kann zuerst einmal die gewünschte
+Sprache ausgewählt werden, z.B. <i>"German"</i>
+<li>Dann muss eine neue Datenbank <span class="src">"athletica</span>
+angelegt werden.</li>
+<li>Im linken Menu-Fenster ist aus der Liste oben jetzt die Datenbank
+<i>"mysql"</i> auszuwählen.</li>
+<li>Zum Definieren der benötigen Spezielle Benutzer-Rechte haben wir ein Script geschrieben. Um dieses zu starten ist im rechten Fenster die 
+<i>"SQL</i>-Funktion aufzurufen, dann kann unten die Datei <span class="src">
+"[ATHLETICA_DIR]\sql\user.sql"</span> ausgewählt und mit <i>"OK"</i> gestartet
+werden.
+<li>Wieder im linken Menu-Fenster jetzt <i>"Home"</i> anklicken und dort
+dann MySQL neu starten,  um die generierten Benutzerrechte zu aktivieren.</li>
+<li>Jetzt geht's wieder zurück ins Menu-Fenster, um die vorher erstellte
+Datenbank <i>"athletica"</i> zu selektieren.</li>
+<li>Als nächstes wird die Datenbank-Struktur aufgebaut. Auch dazu gibt's ein
+Script welches alles Wichtige erledigt und genau gleich wie oben gestartet
+wird. Datei <span class="src">"[ATHLETICA_DIR]\sql\athletica.sql"</span>
+wählen und mit <i>"OK"</i> starten.</li> 
+</ol>
+<p class='warn'>
+<b>Achtung:</b> Das Script ist nur für eine Grundinstallation geeignet, da
+eine bereits bestehende Datenbank gelöscht wird. Dabei gehen die Daten
+verloren!<br/>
+Vor einer Neuinstallation sind also die Daten zu sichern.
+</p>
+
+Es ist vollbracht! Die nächsten Schritte sind fakultativ und helfen, möglichst
+schnell mit <i>Athletica</i> arbeiten zu können.
+
+<ul>
+<li>Fürs Aufsetzen der Basisdaten für <i>Kategorien</i> und <i>Disziplinen</i>
+haben wir ebenfalls ein Script bereitgestellt. Die deutsche Version heisst
+<span class="src">"[ATHLETICA_DIR]\sql\basics_de.sql"</span> und kann gleich
+wie die anderen Scripts gestartet werden.<br/>
+Es gibt übrigens auch Versionen in Französisch, Italienisch und Englisch.</li>
+<li>Zusätzlich gibts ein Script, welches die Daten vieler Schweizer
+Leichtathletik-Vereine aufsetzt:
+<span class="src">"[ATHLETICA_DIR]\sql\clubs_ch.sql"</span>.</li>
+</ul>
+
+</p>
+Selbstverständlich können Administratoren mit MySQL-Erfahrung auch andere
+Tools zu Administration verwenden oder andere Datenbanknamen, Benutzer und
+Passwörter wählen. Die Datenbank kann falls gewünscht auf einem anderen
+System installiert werden, usw.. In diesem Fall müssen aber die entsprechenden
+<a href='config.html#config'>Konfigurationsparameter</a> angepasst werden,
+damit alles rund läuft.
+
+<h2><a name="upgrade">Upgrade</a></h2>
+
+<p class='warn'>
+<b>Achtung:</b> Alle Daten stehen auch nach einem Upgrade weiterhin zur
+Verfügungen. Wurden allerdings an <a href="config.html">Konfigurationsfiles</a>
+Änderungen vorgenommen, gehen diese beim Upgrade verloren. Allfällige
+geänderte Dateien (z.B. <i>parameters.inc.php</i> oder Stylesheets im
+<i>css</i>-Verzeichnis) vorgängig sichern und nach dem Upgrade mit den
+neuen Dateien abgleichen.
+</p>
+
+<dl>
+<dt>1. Software beziehen</dt>
+<dd>Auf der <a href="http://www.swiss-athletics.ch/index.php?option=com_content&amp;task=view&amp;id=140&amp;Itemid=358">Athletica-Website von Swiss Athletics </a> zuerst
+unsere <i>Athletica</i>-Upgrade Datei herunterladen (nicht WinMax-Version).</dd>
+
+<dt>2. Upgrade installieren</dt>
+<dd>Setup-Datei starten und den Anweisungen am Bildschirm folgen. Normalerweise sind hier keine Eingriffe durch den Benutzer notwendig.</dd>
+<dd>Nach einer <i>Einsteiger-Installation</i> findet sich die Applikation
+unter <span class='src'>c:\athletica\www\athletica</span>.
+</br>
+Bei einer <i>Profi-Installation</i> konnte der Benutzer den Installationsort
+frei wählen (standardmässig ist das
+<span class='src'>[APACHE_DIR]\htdocs\athletica</span>).</dd>
+
+<dt>&nbsp;</dt>
+</dl>
+</div>
+</body>
+</html>

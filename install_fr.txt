@@ -1,0 +1,64 @@
+
+   Bienvenue chez  A T H L E T I C A, T E C H N I C A L - C L I E N T, L I V E  R E S U L T A T E
+   ----------------------------------------------------------------------------------------------
+
+Pour installer Athletica, Athletica-Technical Client und Live Resultate sur un serveur avec Apache / IIS (avec PHP) et
+MySQL préinstallés, vous devez procéder comme suit:
+
+
+Etape 1: empaqueter Athletica
+******************************
+Créez dans votre répertoire web (Apache: htdocs, IIS: wwwroot) des nouveaux 
+dossiers portant les nom "athletica", "athletica_technical" und "athletica_liveresultate".
+Empaquetez tous les fichiers des dossiers de l’archive Zip dans les 
+répertoires nouvellements créés sur votre ordinateur.
+
+
+ATTENTION: si une ancienne version devait se trouver sur votre ordinateur, vous êtes prié de la désinstaller. Effacer également la banque de données Athletica-MySQL créée.
+Avant de désinstaller, créez une sauvegarde des données, pour que vous puissiez ensuite lire vos données dans la nouvelle version.
+
+
+Etape 2: créer une banque de données
+****************************
+Créez trois nouvelles banques de données portant les noms "athletica", "athletica_technical" et "athletica_liveresultate" dans un 
+manager de banque de données de votre choix
+Merci de télécharger dans la base de données les images inclues dans 
+l'Archive-Zip.
+
+
+Etape 3: créer un utilisateur pour la banque de données
+************************************
+Pour qu’athletica puisse accéder à la banque de données, il faut enregistrer 
+un utilisateur pour la banque de données, ce que vous pouvez faire dans 
+votre manager de banque de données.
+Utilisez les ajustages suivants:
+Nom d’utilisateur: athletica
+Host: localhost
+Mot de passe: athletica
+Droits globaux: SUPER
+Droits sur la banque de données athletica, athletica_technical, athletica_liveresultate: tous
+
+
+Info sur les étapes 2 et 3
+*****************************
+Si pour une raison quelconque vous ne pouviez pas utiliser les noms prévus 
+pour la banque de données ou l’utilisateur, vous pouvez naturellement aussi 
+utiliser vos propres appellations.
+Vous devez toutefois adapter le fichier de configuration athletica.
+Pour ce faire, ouvrez le ficher dossier Web\athletica\parameters.inc.php.
+A la ligne 12, vous pouvez changer la valeur ("athletica") du nom de la 
+banque de données, à la ligne 13 la valeur du nom d’utilisateur.
+
+Etape 4: max_upload_size
+************************
+Assourez-vous que la configuration PHP "max_upload_size" est mise sur "50M".
+
+
+Installation terminée
+**************************
+Vous avez terminé toutes les étapes nécessaires à l’installation 
+d’athletica.
+Ouvrez votre webbrowser et naviguez vers l’adresse "localhost\athletica".
+
+
+Bien du plaisir avec Athletica,  Athletica-Technical Client und LiveResultate!

@@ -1,0 +1,131 @@
+body {
+    background-color: #FFFFFF;
+    color: #000000;
+    padding: 0px;
+    margin: 0px;
+    font-family:Verdana,'Trebuchet MS',Arial,Helvetica,sans-serif,'Academy Engraved Let';   
+    font-size:0.9em; 
+}
+
+
+/* ----------container zentriert das layout-------------- */
+#container {    
+    width: 250px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: auto;
+    background-color: #DDDDDD; 
+    border-right: 1px solid #000000;  
+     
+}
+
+/* ----------banner for logo-------------- */
+#banner {
+    height: 40px;
+    padding: 0px;
+    margin: 0px; 
+}
+
+
+
+/* -----------------Navigation-------------------- */
+
+#navi_pc {  
+    display: none;     
+}
+
+#navi_left {   
+    background-color: #DDDDDD;    
+    float: left;
+    padding: 0px;
+    width: 250px;   
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left:0px;
+    padding-right:0px;  
+    
+}    
+
+
+.navi { 
+    background-color: #DDDDDD;
+    padding: 5px;   
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;    
+}
+
+#content {
+    display: none;
+}
+
+#content _pc{
+    display: none;
+}
+
+/* -----------------Inhalt--------------------- */
+#content_pda {    
+  
+    background-color: #FFFFFF;
+    padding-left: 0px;
+    margin-left: 0px;
+    margin-right: 0px; 
+
+}
+
+div#content_pda	{
+	min-height:200px;
+    height:expression(this.scrollHeight < 200? "200px": "auto" );
+	
+} 
+
+
+	/* -----------------Footer--------------------- */
+
+
+.clear {
+    clear: left;  
+}	  
+
+#footer {
+    clear: left;
+     width: 240px;   
+    background-color: #cc3300;
+    padding: 5px;
+    margin: 0px;  
+    color: white;
+    text-align: center;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;  
+   font-size: 0.7em;  
+    border-top: 1px solid #000000; 
+    border-bottom: 1px solid #000000;  
+    border-left: 1px solid #000000; 
+    border-right: 1px solid #000000;  
+}
+
+#footer a { 
+    color: white; 
+    font-family: Arial,Helvetica,sans-serif;  
+     font-size: 0.9em;
+    font-weight: bold;  
+}
+
+
+div#footer a:hover {
+    color: #FFFFFF;
+    text-decoration: none; 
+     font-family: Arial,Helvetica,sans-serif;  
+     font-size: 0.9em;
+}        
+
+.right {
+    text-align: right;  
+    padding-right: 30px;  
+}
+
+.top {    
+    padding-top: 0px;  
+}
+

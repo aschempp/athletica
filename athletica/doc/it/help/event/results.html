@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+    <meta content="text/html; charset=iso-8859-1" />
+
+    <title>Documentazione Athletica</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/stylesheet.css" />
+</head>
+
+<body><div class="helpmain">
+<h1>Hilfe</h1>
+
+<div class='helpnav'>
+<a href='../meeting/index.html'>Meeting</a>
+| <b>Prova</b>
+| <a href='../speaker/index.html'>Speaker</a>
+| <a href='../administration/index.html'>Amministrazione</a>
+<br/>
+<a href='index.html'>Monitor di competizione</a>
+| <a href='enrolement.html'>Appello</a>
+| <a href='heats.html'>Batterie</a>
+| <b>Risultati</b>
+| <a href='rankinglists.html'>Classifiche</a>
+</div>
+
+<h2>Risultati</h2>
+Qui si procede alla registrazione dei risultati di tutti i turni di gara. Questo formulario è disponibile dopo aver terminato. 
+<a href='heats.html'>l’organizzazione delle batterie</a>.
+
+<h3>Selezione della disciplina </h3>
+Questa funzione è richiamata a partire dal<a href='index.html'>monitor</a>, la prova richiesta è già selezionata. Se la funzione è selezionata dal menu, bisogna dapprima selezionare la categoria desiderata, la disciplina e il turno di gara.
+
+<h3>Selezione della batteria</h3>
+Se il turno di gara comprende più di una batteria, il tasto di comando con il nominativo delle batterie è visualizzato così da permettere di passare alla batteria desiderata.
+
+<h3>Aggiungere nuovi atleti/staffette<a name='neu'/></h3>
+Se una lista di partenza comprende atleti o staffette che non sono ripartiti in una batteria, una funzione appropriata é disponibile per inserirli. Si possono ripartire in una batteria esistente o in una nuova. Le nuove batterie ricevono automaticamente la numerazione '0'.
+<br/>
+Qui sono elencati tutti gli atleti o staffette che all’appello sono stati definiti come<i>non presenti</i>,  o che sono stati cancellati durante l’assegnazione delle batterie o che non si sono qualificati dal turno precedente.
+
+<h3>Qualificazione</h3>
+Se sono previsti altri turni, qui è possibile<a href='print_heats.html'>
+cambiare i parametri di qualifica inseriti precedentemente.</a>.
+
+<h3>Concludere la registrazione dei risultati<a name='abschliessen'></h3>
+
+Se tutti i risultati sono stati inseriti, essi sono valutati con questa funzione. La classificazione viene eseguita come pure un’eventuale qualificazione per il prossimo turno.
+br>
+In funzione della <a href='../administration/roundtypes.html'>modalità dei turni</a>
+la classificazione si fa per batteria o per tutte le batterie combinate.
+
+<h3>Cambiare i risultati</h3>
+Questa funzione è disponibile unicamente dopo la registrazione dei risultati.
+E’ utilizzata per eseguire dei cambiamenti ulteriori. Inseguito
+<a href='#abschliessen'>la registrazione dei risultati</a> deve ancora essere conclusa, per procedere a una nuova valutazione. 
+<h3>Classifica</h3>
+Nell’intestazione di ogni batteria, la designazione può essere cambiata.
+Essa può essere scelta liberamente, ma è possibile unicamente una volta per modalità di turno.
+<br/>
+Se si lascia la casella dopo aver inserito un valore per es. premendo il tasto tabulatore, il nuovo valore è registrato automaticamente nella banca dati e un simbolo corrispondente sarà visualizzato nella linea di stato in basso.
+Se oltre alla prestazione propriamente detta, e altre informazioni sono ancora necessarie (vento, prova salto in alto), il salvataggio dei dati sarà eseguito unicamente dopo aver riempito tutte le caselle.
+
+<h4>Corse su pista</h4>
+Per le corse su pista e possibile utilizzare per ogni batteria il numero del film d’arrivo. Il tempo realizzato può essere inserito in qualsiasi formato. Il programma cerca di interpretare il formato giusto. Naturalmente un risultato può essere sempre modificato.
+<h4>Corse in pista con vento</h4>
+Per ogni batteria si può anche inserire la misura del vento.
+<h4>Discipline tecniche </h4>
+Secondo la <a href='../meeting/definition.html'>modalità di programma</a>si può inserire per atleta unicamente la migliore prestazione o registrare i risultati di ogni tentativo.<br/>
+Oltre alle lunghezze in metri, anche dei codici speciali sono ammessi per i risultati nulli (0, -1, -2, -3, -4, '-' o 'X').
+<h4>Discipline tecniche con vento</h4>
+Ad eccezione dei risultati nulli, il vento misurato deve essere inserito per ogni tentativo.
+Solamente in questo caso il risultato sarà registrato nella banca dati.
+<h4>Salto in alto</h4>
+Per poter registrare i risultati, l’atleta deve essere dapprima selezionato con un click del mouse.
+<br/>
+Per ogni altezza di salto si registra ogni tentativo con (valido con '0', 'O', 'o', nullo con 'x' o 'X', rinuncia con '-'). Se il tentativo è valido o tre tentativi sono già stati registrati, il programma propone una misura seguente. E’ possibile sovrascrivere la misura proposta.<br>
+Dopo <i>XXX</i> o dopo un risultato negativo (-1, -2, -3, -4, '-') al posto di una misura in altezza, l’inserimento della misura per questo atleta è terminato e si passa all’atleta seguente. Selezionando un’atleta, si può cambiare, cancellare o aggiungere dei risultati a posteriori.<br>
+Per cancellare un risultato, bisogna premere il comando appropriato
+<i>X</i>.
+
+<h3>Cancellare atleta/staffetta</h3>
+Un’atleta o una staffetta può essere cancellato dalle classifiche selezionando la linea corrispondente con un click. Premendo il tasto di comando<i>cancellare</i> si toglie l’iscrizione dalla lista. Una <a href='#neu'>nuova ripartizione</a> è possibile ulteriormente.
+
+
+<h3>Classificazione e qualifiche</h3>
+Dopo aver terminato la<a href='#abschliessen'>registrazione dei risultati</a> classificazioni e qualifiche posso essere modificate manualmente. Se c’è un conflitto al momento della qualificazione (stesso piazzamento, prestazione, ecc.), il programma ha già proposto una soluzione. L’utente può comunque cambiarla in ogni momento.
+<h3>Stampare</h3>
+Questo tasto richiama la<a href='rankinglists.html'>Funzione classifica </a> per questo turno di gara.
+<p/>
+
+<div class='helpnav'>
+<a href='../meeting/index.html'>Meeting</a>
+| <b>Prova</b>
+| <a href='../speaker/index.html'>Speaker</a>
+| <a href='../administration/index.html'>Amministrazione</a>
+<br/>
+<a href='index.html'>Monitor di competizione</a>
+| <a href='enrolement.html'>Appello</a>
+| <a href='heats.html'>Batterie</a>
+| <b>Risultati</b>
+| <a href='rankinglists.html'>Classifiche</a>
+</div>
+
+</body>
+</html>
+

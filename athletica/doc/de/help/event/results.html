@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<meta content="text/html; charset=iso-8859-1" />
+
+	<title>Athletica Dokumentation</title>
+	<link rel="stylesheet" type="text/css" href="../../../css/stylesheet.css" />
+</head>
+
+<body><div class="helpmain">
+<h1>Hilfe</h1>
+
+<div class='helpnav'>
+<a href='../meeting/index.html'>Meeting</a>
+| <b>Wettkampf</b>
+| <a href='../speaker/index.html'>Speaker</a>
+| <a href='../regie/index.html'>Regie</a> 
+| <a href='../administration/index.html'>Administration</a>
+<br/>
+<a href='index.html'>Wettkampfmonitor</a>
+| <a href='enrolement.html'>Appell</a>
+| <a href='heats.html'>Serien</a>
+| <b>Resultate</b>
+| <a href='rankinglists.html'>Ranglisten</a>
+</div>
+
+<h2>Resultate</h2>
+Hier wird die Resultaterfassung für alle Wettkampfrunden vorgenommen. Dieses
+Formular steht nach Abschluss der <a href='heats.html'>Serieneinteilung
+</a> zur Verfügung.
+
+<h3>Wettkampfauswahl</h3>
+Wird die Funktion vom <a href='index.html'>Monitor</a> aus aufgerufen, ist der
+entsprechende Wettkampf bereits ausgewählt. Wird die Funktion über das Menu
+gestartet, muss zuerst die gewünschte Kategorie, Wettkampf und Runde
+ausgewählt werden.
+
+<h3>Serienauswahl</h3>
+Falls diese Wettkampfrunde mehr als eine Serie umfasst, werden Schaltflächen
+mit den Seriebezeichnungen gezeigt, um innerhalb des Formulars direkt zur
+gewünschte Serie zu springen.
+
+<h3>Neue Athleten/Staffel hinzufügen<a name='neu'/></h3>
+Falls sich auf der Startliste weitere Athleten oder Staffeln befinden,
+welche nicht einer Serie zugeteilt sind, steht eine entsprechende Funktion
+zur Verfügung, um diese einzuteilen. Diese können einer bereits bestehenden
+Serie oder einer neuen Serie zugeteilt werden. Neue Serien erhalten automatisch
+die Bezeichnung '0'.
+<br/>
+Hier erscheinen alle Athleten oder Staffeln, welche beim Appell als <i>nicht
+anwesend</i> bezeichnet wurden, welche aus der Serieneinteilung gelöscht
+wurden oder welche sich aus einer vorhergehenden Runde nicht qualifizieren
+konnten.
+
+<h3>Qualifikation</h3>
+Sind weitere Runden vorgesehen, können hier die <a href='print_heats.html'>
+früher</a> gesetzten Qualifikationsparameter verändert werden.
+
+<h3>Resultaterfassung abschliessen<a name='abschliessen'></h3>
+Sind alle Resultate erfasst, werden sie mit dieser Funktion ausgewertet. Die
+Rangierung wird vorgenommen und eine allfällige Qualifikation für die nächste
+Runde durchgeführt.
+<br>
+Aufgrund des <a href='../administration/roundtypes.html'>Rundentyps</a>
+erfolgt die Rangierung pro Serie oder über alle Serien hinweg.
+
+<h3>Resultate ändern</h3>
+Diese Funktion steht erst nach Abschluss der Resulterfassung zur Verfügung.
+Sie wird benötigt, um nachträgliche Änderungen vorzunehmen. Danach muss die
+<a href='#abschliessen'>Resultaterfassung</a> wieder abgeschlossen werden,
+um die Neuauswertung vorzunehmen.
+
+<h3>Resultatliste</h3>
+In der Kopfzeile der jeweiligen Serie kann die Bezeichnung geändert werden.
+Sie kann frei gewählt werden, darf pro Wettkampfrunde jedoch nur einmal
+vorkommen.
+<br/>
+Wird das Eingabefeld nach einer Änderung z.B. durch Drücken der Tabulatortaste
+verlassen, wird der neue Wert automatisch in die Datenbank geschrieben und
+ein entsprechender Hinweise erscheint in der Statuszeile unten. Sind nebst
+der eigentlichen Leistung noch andere Angaben nötig (Wind, Hochsprungversuche),
+erfolgt die Datenübermittlung erst nachdem diese Felder auch ausgefüllt sind.
+
+<h4>Bahnläufe</h4>
+Bei Bahnläufen kann pro Serie eine Zielfilmnummer eingesetzt werden. Die
+erzielte Zeit kann in einem beliebigen Format eingegeben werden. Das Programm
+versucht, dieses sinnvoll zu interpretieren. Selbstverständlich kann ein
+Resultat immer wieder geändert werden.
+<h4>Bahnläufe mit Wind</h4>
+Zusätzlich kann pro Serie der gemessene Wind erfasst werden.
+<h4>Technische Disziplinen</h4>
+Je nach  <a href='../meeting/definition.html'>Programm Modus</a> kann pro
+Athlet nur die Bestleistung eingegeben werden oder es können die Resultate
+aller Versuche erfasst werden.<br/>
+Nebst Weiten in Metern sind auch spezielle Codes für ungültige Resultate
+zulässig (0, -1, -2, -3, -4, '-' oder 'X').
+<h4>Technische Disziplinen mit Wind</h4>
+Ausser bei ungültigen Resultaten muss zusätzlich pro Versuch der gemessene
+Wind eingegeben werden. Erst danach, wird das Resultat in die Datenbank
+geschrieben.
+<h4>Hochsprung</h4>
+Um Resultate erfassen zu können, muss der Athlet zuerst mit Mausklick
+ausgewählt werden.
+<br/>
+Pro Sprunghöhe werden zusätzlich die Versuche erfasst (gültige mit '0', 'O'
+oder 'o', ungültige mit 'x' oder 'X', Verzicht mit '-'). Ist der Versuch
+gültig oder sind bereits drei Versuche eingegeben macht das Programm einen
+Vorschlag für die nächste Höhe. Der Vorschlag kann überschrieben werden
+kann.<br>
+Nach <i>XXX</i> oder nach einem Minusresultat (-1, -2, -3, -4, '-') anstatt einer Höhe
+wird die Eingabe für diesen Athleten abgeschlossen und zum nächsten Athleten
+gewechselt. Durch Anklicken eines Athleten können nachträglich Resultate
+verändert, gelöscht oder hinzugefügt werden.<br>
+Um ein Resultat zu löschen ist die zugehörige Schaltfläche <i>X</i> zu drücken.
+
+<h3>Athlet/Staffel Löschen</h3>
+Ein Athlet oder eine Staffel kann aus der Resultatliste gelöscht werden, indem
+die entsprechende Zeile durch anklicken selektiert wird. Durch Drücken der
+Schaltfläche <i>Löschen</i> wird der Eintrag aus der Liste
+entfernt. Eine spätere <a href='#neu'>Wiedereinteilung</a> ist möglich.
+
+
+<h3>Rangierung und Qualifikation</h3>
+Nach Abschluss der <a href='#abschliessen'>Resultaterfassung</a> können
+Rangierung und Qualifikation manuell geändert werden. Falls es bei der
+Qualifikation zu Konflikten gekommen ist (gleiche Rangierung, Leistung, etc.)
+hat das Programm bereits eine Auslosung vorgenommen. Der Benutzer kann diese
+aber jederzeit ändern.
+
+<h3>Drucken</h3>
+Diese Schaltfläche ruft die <a href='rankinglists.html'>Ranglistenfunktion</a>
+für diese Wettkampfrunde auf.
+<p/>
+
+<div class='helpnav'>
+<a href='../meeting/index.html'>Meeting</a>
+| <b>Wettkampf</b>
+| <a href='../speaker/index.html'>Speaker</a>
+| <a href='../regie/index.html'>Regie</a> 
+| <a href='../administration/index.html'>Administration</a>
+<br/>
+<a href='index.html'>Wettkampfmonitor</a>
+| <a href='enrolement.html'>Appell</a>
+| <a href='heats.html'>Serien</a>
+| <b>Resultate</b>
+| <a href='rankinglists.html'>Ranglisten</a>
+</div>
+
+</body>
+</html>

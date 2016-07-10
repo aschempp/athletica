@@ -1,0 +1,980 @@
+/*
+
+	STYLE SHEET: Printing System
+	----------------------------
+
+*/
+body,a,p,h1,h2,h3,h4,ul,ol,li,div,td,th,address,blockquote,b,i,form,
+input,select,textarea
+	 { font-family: Arial, Helvetica,sans-serif; font-size:12px; }
+
+body { background-color:#FFFFFF; color:#000000;
+	margin:0px;
+	scrollbar-face-color:#999999; scrollbar-highlight-color:#FFFFFF;
+	scrollbar-3dlight-color:#000000; scrollbar-darkshadow-color:#222222;
+	scrollbar-shadow-color:#999999; scrollbar-arrow-color:#000000;
+	scrollbar-track-color:#000000;}
+
+pre { font-family:Courier; font-size:12px; padding:0px; margin:0px; }
+
+div.hdr1 { font-size:16px; font-weight: bold;
+			padding-top:0px; padding-bottom:8px;  }
+div.hdr2  { font-size:14px; font-weight: bold;
+			padding-top:19px; padding-bottom:3px; }
+div.hdr3  { font-style:italic; }
+
+table { border-width:0px; border-style:none; table-layout:fixed;
+		border-collapse:collapse; }
+tr { }
+th { vertical-align:middle; text-align:left; font-weight:bold; padding:2px; }
+td { vertical-align:middle; text-align:left; padding:2px; }
+
+table.frame { width:728px; } 
+tr.frame {  border:0px none #FFFFFF;}
+td.frame {	border-width:0px; padding:20px;  }
+
+td.relay_athletes	{	font-style:italic; }
+
+
+/*
+ * Timetable
+ * ---------
+ */
+table.timetable	{ table-layout:auto; }
+th.timetable_date	{ width: 60px; font-size:10px; text-align:center; }
+th.timetable_cat	{ font-size:10px; text-align:center; }
+th.timetable_time	{ width: 60px; font-size:10px; text-align:center; }
+td.timetable_round	{ font-size:10px; text-align:center; }
+
+/*
+ * TimetableComp
+ * ---------
+ */
+span.timetableComp_date { font-size: 18px; font-weight: bold; }
+table.timetableComp_header	{ table-layout: auto; width: 100%; border-top: solid 2px #000000; border-bottom: solid 2px #000000; }
+table.timetableComp_header th	{ font-size: 14px; font-weight: bold; text-align: left; vertical-align: top; border-left:none; }
+table.timetableComp	{ table-layout: auto; width: 100%; border-top: solid 1px #000000; }
+table.timetableComp td { font-size: 14px; text-align: left; vertical-align: bottom; border-bottom: solid 1px #000000; height: 1.9em; }
+table.timetableComp td.rightline { border-right: solid 1px #000000; }
+table.timetableComp td.rightlineBold { border-right: solid 2px #000000; }
+table.timetableComp td.remarks { font-size: 11px; }
+
+/*
+ * Enrolement sheets
+ * -----------------
+ */
+table.enrolmt { table-layout:auto; border-collapse:collapse; }
+table.enrolmt_disc { table-layout:auto; border-collapse:collapse; width:680px;}
+
+th.enrolmt_event	{ width: 200; font-size:20px; text-align:left;
+							padding-top:6px; padding-bottom:3px; }
+th.enrolmt_cat		{ width: 200; font-size:20px; text-align:left;
+							padding-top:6px; padding-bottom:3px; }
+th.enrolmt_time	{ width: 270; font-size:20px; text-align:right;
+							padding-top:6px; padding-bottom:3px; }
+th.enrolmt_timeinfo { text-align:right; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:3px;
+				text-decoration: none; font-weight: normal; }
+th.enrolmt_disc_comb	{ width: 200; font-size:20px; text-align:left;
+							padding-top:0px; padding-bottom:3px; }
+th.enrolmt_cont        { width: 500; font-size:20px; text-align:left;
+                            padding-top:6px; padding-bottom:3px; }
+
+/* list header line */
+th.enrolmt_tic { width:10px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.enrolmt_nbr { width:35px; padding-left:5px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.enrolmt_pos { width:35px; padding-left:5px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                border-bottom:1px solid #000000; }
+th.enrolmt_name { width:230px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.enrolmt_year { width:40px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.enrolmt_club { width:220px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.enrolmt_top { text-align:right; width:70px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.enrolmt_empty { width:70px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                border-bottom:1px solid #000000; }
+
+/* list item */
+td.enrolmt_tic { padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.enrolmt_nbr { text-align:right; padding-left:0px; padding-right:10px;
+				padding-top:0px; padding-bottom:2px; }
+td.enrolmt_pos { text-align:right; padding-left:0px; padding-right:10px;
+                padding-top:0px; padding-bottom:2px; }
+td.enrolmt_name { padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.enrolmt_year { padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.enrolmt_club { padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.enrolmt_top { text-align:right; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.enrolmt_empty { padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px; }
+td.enrolmt_atLine { padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px; 
+                font-style: italic;
+                }
+
+
+/*
+ * Entry lists
+ * -----------
+ */
+table.entry { table-layout:auto; border-collapse:collapse; }
+
+/* list header line */
+th.entry_nbr { width:35px; padding-left:0px; padding-right:2px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.entry_name { width:180px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.entry_year { width:20px; padding-left:0px; padding-right:2px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.entry_ioc { width:25px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.entry_cat { width:35px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.entry_club { width:170px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.entry_disc { width:200px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.entry_perf { text-align:right;
+				width:80px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+
+/* list item */
+td.entry_nbr { vertical-align:top; text-align:right;
+				padding-left:0px; padding-right:10px;
+				padding-top:0px; padding-bottom:2px; }
+td.entry_name { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.entry_year { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.entry_ioc { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.entry_cat { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.entry_club { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.entry_disc { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }  
+td.entry_perf { vertical-align:top; text-align:right;
+				padding-left:0px; padding-right:10px;
+				padding-top:0px; padding-bottom:2px; }
+
+
+/*
+ * Receipt athlete
+ * ---------------
+ */
+ table.receipt { table-layout:fixed; border-collapse:collapse;}
+	
+/* list header line */
+
+th.receipt {    width:250px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				font-size:30px; font-weight: bold; 
+				}
+th.receipt_hd_meeting { width:120px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                font-size:16px; font-weight: bold; 
+                vertical-align: top;
+                 }
+th.receipt_hd_stadion {  padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                font-size:16px; font-weight: bold; 
+                vertical-align: top;
+                }
+th.receipt_hd_date { width:120px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                font-size:16px; font-weight: bold; 
+                vertical-align: top;
+                }
+th.receipt_hd_organizer {  width:120px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                font-size:16px; font-weight: bold; 
+                vertical-align: top;
+                }   
+th.receipt_name { width:60px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				font-size:16px; font-weight: bold; 
+                vertical-align: top;
+				}
+th.receipt_year { width:50px; padding-left:0px; padding-right:2px;
+				padding-top:0px; padding-bottom:2px;
+				font-size:16px; font-weight: bold; 
+				} 
+th.receipt_cat { padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				font-size:16px; font-weight: bold;
+				}
+th.receipt_club { width:80px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+			    font-size:16px; font-weight: bold;
+				}
+th.receipt_disc { width:80px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+			    font-size:16px; font-weight: bold;
+                vertical-align: top; 
+				}
+th.receipt_fee {  padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+			    font-size:16px; font-weight: bold; 
+			   }
+th.receipt_date { width:120px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				font-size:16px; font-weight: bold; 
+				}
+th.receipt_place {  width:120px; padding-left:0px; padding-right:2px;
+				padding-top:0px; padding-bottom:2px;
+				font-size:16px; font-weight: bold;
+				}
+th.receipt_subscribe { width: 200px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				font-size:16px; font-weight: bold; 
+				}
+
+/* list item */   
+
+td.receipt_hd_meeting {  width:250px; vertical-align:top; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px; 
+                font-size:16px;
+                }
+td.receipt_hd_stadion {   vertical-align:top; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px; 
+                font-size:16px;
+                }
+td.receipt_hd_date {  width:180px; vertical-align:top; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px; 
+                font-size:16px;
+                }
+td.receipt_hd_organizer {  vertical-align:top; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px; 
+                font-size:16px;
+                }  
+td.receipt_name { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; 
+				font-size:16px;
+				}
+td.receipt_year { width:50px; vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				font-size:16px; 
+				} 
+td.receipt_cat {  vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; 
+				font-size:16px;
+				}
+td.receipt_club { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; 
+				font-size:16px;
+				}
+td.receipt_disc { width:200px; vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				font-size:16px; 
+				}
+td.receipt_fee { vertical-align:top; padding-left:0px; padding-right:0px;
+				padding-top:0px; padding-bottom:2px; font-weight: bold; 
+				font-size:16px;  
+				} 
+td.receipt_fee_bold {vertical-align:top; padding-left:0px; padding-right:0px;
+                padding-top:0px; padding-bottom:2px; 
+                font-size:16px; font-weight: bold;   
+                }  
+td.receipt_date {  width: 250px; vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; 
+				font-size:16px;
+				  }
+td.receipt_place {  width:180px; vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				font-size:16px; 
+				}
+                  
+/* list per club */
+
+th.receipt_cl_club {  width: 120px; padding-left:0px; padding-right:5px;
+               padding-top:0px; padding-bottom:2px;
+               font-size:16px; font-weight: bold;
+               }  
+th.receipt_cl_part {  width: 120px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                font-size:16px; font-weight: bold;
+                } 
+th.receipt_cl_name {  width: 170px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                font-size:16px; font-weight: bold;
+                }  
+th.receipt_cl_fee {   width: 120px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                font-size:16px; font-weight: bold; 
+                } 
+td.receipt_cl_club {  width: 170px; vertical-align:top; padding-left:0px; padding-right:0px;
+                padding-top:0px; padding-bottom:2px; 
+                font-size:16px;
+                }
+td.receipt_cl_name {  width: 170px; vertical-align:top; padding-left:0px; padding-right:0px;
+                padding-top:0px; padding-bottom:2px; 
+                font-size:14px; 
+                }
+td.receipt_cl_year {   width: 40pt; vertical-align:top; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                font-size:14px; 
+                vertical-align: top; 
+                } 
+td.receipt_cl_cat {  width: 50pt; vertical-align:top; padding-left:0px; padding-right:0px;
+                padding-top:0px; padding-bottom:2px; 
+                font-size:14px;
+                } 
+td.receipt_cl_disc { width: 200pt; vertical-align:top; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                font-size:14px; 
+                } 
+td.receipt_cl_fee {width: 80pt; vertical-align:top; padding-left:0px; padding-right:0px;
+                padding-top:0px; padding-bottom:2px;  text-align: right;
+                font-size:14px;  
+                }  
+td.receipt_cl_fee_bold {width: 140pt; vertical-align:top; padding-left:0px; padding-right:10px;
+                padding-top:0px; padding-bottom:2px;  text-align: right;
+                font-size:16px; font-weight: bold;   
+                }   
+                  
+
+/*
+ * Relay lists
+ * -----------
+ */
+table.relay { table-layout:auto; border-collapse:collapse; }
+
+/* list header line */
+th.relay_nbr { width:35px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.relay_name { width:240px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.relay_cat { width:35px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.relay_club { width:170px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.relay_disc { width:80px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.relay_perf { text-align:right;
+				width:80px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+
+
+/* list item */
+td.relay_nbr { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.relay_name { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.relay_cat { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.relay_club { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.relay_disc { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.relay_perf { vertical-align:top; text-align:right;
+				padding-left:0px; padding-right:10px;
+				padding-top:0px; padding-bottom:2px; }
+
+td.relay_athletes { vertical-align:top; font-style:italic;
+				padding-left:40px; padding-right:5px;
+				padding-top:2px; padding-bottom:7px; }
+
+/*
+ * Team entry lists
+ * ----------------
+ */
+ 
+
+table.team_entry_disc { table-layout:auto; border-collapse:collapse; width:680px; }
+
+th.team_entry_event    { width: 200; font-size:20px; text-align:left;
+                            padding-top:6px; padding-bottom:3px; }
+th.team_entry_cat_header        { width: 200; font-size:20px; text-align:left;
+                            padding-top:6px; padding-bottom:3px; }
+th.team_entry_time    { width: 270; font-size:20px; text-align:right;
+                            padding-top:6px; padding-bottom:3px; }
+th.team_entry_timeinfo { text-align:right; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:3px;
+                text-decoration: none; font-weight: normal; }
+
+ 
+ 
+ 
+ 
+ 
+ 
+table.team_entry { table-layout:auto; border-collapse:collapse; }
+
+/* list header line */
+th.team_entry_tic { width:10px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                border-bottom:1px solid #000000; }
+th.team_entry_nbr { width:35px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.team_entry_name { width:250px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.teams_entry_name { width:200px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                border-bottom:1px solid #000000; }
+th.team_entry_year { width:40px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                border-bottom:1px solid #000000; }
+th.team_entry_cat { width:50px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.team_entry_club { width:200px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                border-bottom:1px solid #000000; }
+th.team_entry_disc { width:100px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.team_entry_quali { width:50px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                border-bottom:1px solid #000000; }
+th.team_entry_perf { width:50px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                border-bottom:1px solid #000000; }
+th.teams_entry_disc { width:400px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                border-bottom:1px solid #000000; }
+
+/* list item */
+td.team_entry_tic { vertical-align:top; text-align:right;
+				padding-left:0px; padding-right:10px;
+				padding-top:0px; padding-bottom:2px; }
+td.team_entry_name { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.team_entry_year { vertical-align:top; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px; }
+td.team_entry_cat { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.team_entry_club { vertical-align:top; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px; }
+td.team_entry_disc { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.team_entry_quali { vertical-align:top; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px; }
+td.team_entry_perf { vertical-align:top; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px; }
+                
+
+/* discipline list header line */
+th.team_disc { width:150px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.team_disc_nbr { width:35px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.team_disc_name { width:200px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.team_disc_year { width:50px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+
+/* discipline list tem */
+td.team_disc { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.team_disc_nbr { vertical-align:top; text-align:right;
+				padding-left:0px; padding-right:10px;
+				padding-top:0px; padding-bottom:2px; }
+td.team_disc_name { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.team_disc_year { vertical-align:top; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+
+
+/*
+ * Ranking lists
+ * -------------
+ */
+table.rank { table-layout:auto; border-collapse:collapse; }
+
+/* cover page */
+td.cover_title  {	font-size:26px; font-weight:bold;
+				padding-left:20px; padding-right:0px;
+				padding-top:150px; padding-bottom:25px; }
+td.cover_param  { font-size:12px; width:170px;
+				padding-left:40px; padding-right:0px;
+				padding-top:0px; padding-bottom:10px; }
+td.cover_value  { font-size:12px; font-weight:bold;
+				padding-left:20px; padding-right:0px;
+				padding-top:0px; padding-bottom:10px; }
+td.cover_slogan  { font-size:10px; font-weight:bold;
+				padding-left:40px; padding-right:0px;
+				padding-top:15px; padding-bottom:0px; }
+
+/* category/discipline title */
+th.rank_cat  { width:200px; font-size:16px;
+				padding-left:0px; padding-right:0px;
+				padding-top:20px; padding-bottom:2px; }
+th.rank_disc  { width:200px; font-size:16px;
+				padding-left:0px; padding-right:0px;
+				padding-top:20px; padding-bottom:2px; }
+th.rank_round  { width:200px; font-size:16px;
+				padding-left:0px; padding-right:0px;
+				padding-top:20px; padding-bottom:2px; }
+
+
+/* heat info line */
+th.rank_heat  { font-size:14px; font-weight: normal;
+				padding-left:0px; padding-right:0px;
+				padding-top:20px; padding-bottom:2px; }
+th.rank_heatwind  { font-size:14px; font-weight: normal;
+				padding-left:0px; padding-right:0px;
+				padding-top:20px; padding-bottom:2px; }
+th.rank_datetime  { font-size:14px; font-weight: normal; text-align:right;
+				padding-left:0px; padding-right:0px;
+				padding-top:20px; padding-bottom:2px; }
+
+/* list header line */
+th.rank_rank { width:36px; padding-left:3px; padding-right:0px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.rank_stnr { width:20px; padding-left:0px; padding-right:0px;
+                padding-top:0px; padding-bottom:2px;
+                border-bottom:1px solid #000000; }
+th.rank_name { width:197px; padding-left:3px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.rank_year { width:20px; padding-left:0px; padding-right:3px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.rank_club { width:150px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.rank_perf { width:60px; text-align:right;
+				padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.rank_qual { width:15px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.rank_points { width:60px; text-align:right;
+				padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.rank_wind { width:40px; text-align:right;
+				padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.rank_remark { width:30px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                border-bottom:1px solid #000000; }
+
+/* list item */
+td.rank_rank {	text-align:right; padding-left:0px; padding-right:3px;
+				padding-top:2px; padding-bottom:0px; }
+td.rank_stnr {  text-align:right; padding-left:0px; padding-right:6px;
+                padding-top:2px; padding-bottom:0px;
+               font-size: 10px; font-style:italic}  
+td.rank_name { padding-left:3px; padding-right:5px;
+				padding-top:2px; padding-bottom:0px; }
+td.rank_year {	padding-left:0px; padding-right:5px;
+				padding-top:2px; padding-bottom:0px; }
+td.rank_club { padding-left:0px; padding-right:5px;
+				padding-top:2px; padding-bottom:0px; }
+td.rank_perf { font-size:12px; text-align:right;
+				padding-left:0px; padding-right:5px;
+				padding-top:2px; padding-bottom:0px; }
+td.rank_qual {	padding-left:0px; padding-right:5px;
+				padding-top:2px; padding-bottom:0px; }
+td.rank_points { font-size:12px; text-align:right;
+				padding-left:0px; padding-right:5px;
+				padding-top:2px; padding-bottom:0px; }
+td.rank_wind { font-size:12px; text-align:right;
+				padding-left:0px; padding-right:5px;
+				padding-top:2px; padding-bottom:0px; }
+td.rank_remark { padding-left:0px; padding-right:5px;
+                padding-top:2px; padding-bottom:0px; }
+td.rank_attempts   { padding-left:3px; padding-right:5px;
+                padding-top:2px; padding-bottom:0px; 
+                font-size: 11px;}            
+
+/* combined header line */
+th.comb_rank { width:35px; padding-left:5px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.comb_name { width:250px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.comb_year { width:25px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.comb_club { width:200px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.comb_points { width:60px; text-align:right;
+				padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.comb_remark { width:30px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px;
+                border-bottom:1px solid #000000; }
+th.comb_datetime  { font-size:14px; font-weight: normal; text-align:right;
+				padding-left:0px; padding-right:0px;
+				padding-top:10px; padding-bottom:4px; }
+
+/* list item */
+td.comb_rank {	text-align:right; padding-left:0px; padding-right:15px;
+				padding-top:2px; padding-bottom:0px; }
+td.comb_name { padding-left:0px; padding-right:5px;
+				padding-top:2px; padding-bottom:0px; }
+td.comb_year {	padding-left:0px; padding-right:5px;
+				padding-top:2px; padding-bottom:0px; }
+td.comb_club { padding-left:0px; padding-right:5px;
+				padding-top:2px; padding-bottom:0px; }
+td.comb_points { font-size:12px; text-align:right;
+				padding-left:0px; padding-right:5px;
+				padding-top:2px; padding-bottom:0px; }
+td.comb_remark { padding-left:0px; padding-right:5px;
+                padding-top:2px; padding-bottom:0px; }
+
+/* list info line */
+td.comb_info {	text-align:left; font-size:10px;
+				padding-left:20px; padding-right:0px;
+				padding-top:2px; padding-bottom:5px; }
+
+
+/* team header line */
+th.team_rank { width:35px; padding-left:5px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.team_name { width:240px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.team_club { width:230px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.team_points { width:110px; text-align:right;
+				padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }  
+
+/* team item */
+td.team_rank {	text-align:right; padding-left:0px; padding-right:15px;
+				padding-top:2px; padding-bottom:0px; }
+td.team_name { padding-left:0px; padding-right:5px;
+				padding-top:2px; padding-bottom:0px; }
+td.team_club { padding-left:0px; padding-right:5px;
+				padding-top:2px; padding-bottom:0px; }
+td.team_points { font-size:12px; text-align:right;
+				padding-left:0px; padding-right:5px;
+				padding-top:2px; padding-bottom:0px; }  
+
+/* list info line */
+td.team_info {	text-align:left; font-size:10px;
+				padding-left:20px; padding-right:0px;
+				padding-top:2px; padding-bottom:5px; }
+
+/*
+ * Contest sheets
+ * --------------
+ */
+table.contest { width:660px; table-layout:fixed; border-collapse:collapse; }
+
+th.contest_meeting	{ width: 670px; font-size:14px; text-align:left;
+							padding-top:0px; padding-bottom:6px; }
+th.contest_event	{  font-size:20px; text-align:left;
+							padding-top:6px; padding-bottom:6px; }
+th.contest_cat		{  font-size:20px; text-align:left;
+							padding-top:6px; padding-bottom:6px; }
+th.contest_time	{  font-size:20px; text-align:right;
+							padding-top:6px; padding-bottom:6px; }
+th.contest_timeinfo { text-align:right; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:6px;
+				text-decoration: none; font-weight: normal; }
+
+/* heat title */
+th.contest_heat	{ width: 130px; font-size:14px;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+th.contest_installation	{ width: 135px; font-size:14px; 
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+th.contest_info	{ width: 175px; font-size:14px; 
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+th.contest_wind	{ width: 90px; font-size:14px; 
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+th.contest_film	{ width: 70px; font-size:14px; 
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+
+/* free text line */
+td.contest_free	{ width: 670px; font-size:12px; padding:6px; }
+
+
+/* track disciplines: heat headerline */
+th.contest_track_track	{ width: 30px; font-size:12px; text-align:center;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding-bottom:6px; padding-top:6px}
+th.contest_track_pos	{ width: 30px; font-size:12px; text-align:center;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding-bottom:6px; padding-top:6px}
+th.contest_track_nbr	{ width: 40px; font-size:12px; text-align:center;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding-bottom:6px; padding-top:6px}
+th.contest_track_name	{ width: 200px; font-size:12px;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+th.contest_track_year	{ width: 30px; font-size:12px; text-align:center;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+th.contest_track_club	{ width: 180px; font-size:12px;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+th.contest_track_country	{ width: 50px; font-size:12px;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+th.contest_track_result	{ width: 70px; font-size:12px; text-align:center;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+th.contest_track_rank	{ width: 50px; font-size:12px; text-align:center;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+th.contest_track_relay	{ width: 278px; font-size:12px;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+
+/* track disciplines: athlete */
+td.contest_track_track	{ width: 30px; font-size:12px; text-align:center;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding-bottom:6px; padding-top:6px}
+td.contest_track_pos	{ width: 30px; font-size:12px; text-align:center;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding-bottom:6px; padding-top:6px}
+td.contest_track_nbr	{ width: 40px; font-size:12px; text-align:center;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding-bottom:6px; padding-top:6px}
+td.contest_track_name	{ width: 200px; font-size:12px;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+td.contest_track_year	{ width: 20px; font-size:12px; text-align:center;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+td.contest_track_club	{ width: 178px; font-size:12px;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+td.contest_track_country    { width: 50px; font-size:12px;
+                            border-width:1px; border-style:solid; border-color:#000000;
+                            padding:6px;}  
+td.contest_track_result	{ width: 70px; font-size:12px; text-align:center;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+td.contest_track_rank	{ width: 50px; font-size:14px; text-align:center;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+td.contest_track_relay	{ width: 278px; font-size:12px;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+
+/* technical disciplines: athlete */
+th.contest_tech_nbr	{ width: 50px; font-size:12px; text-align:center;
+							border-width:0px; padding:6px; }
+th.contest_tech_name	{ width: 200px; font-size:12px;
+							border-width:0px; padding:6px; }
+th.contest_tech_year	{ width: 50px; font-size:12px; text-align:center;
+							border-width:0px; padding:6px; }
+th.contest_tech_club	{ width: 270px; font-size:12px;
+							border-width:0px; padding:6px; }
+                            
+td.contest_tech_country    { width: 50px; font-size:12px;
+                            border-width:0px; padding:6px; }
+
+/* technical disciplines: line */
+td.contest_tech_field	{ width: 44px; font-size:12px; text-align:center;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+td.contest_tech_result	{ width: 60px; font-size:12px; text-align:center;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+td.contest_tech_high	{ width: 37px; font-size:12px; text-align:center;
+							border-width:1px; border-style:solid; border-color:#000000;
+							padding:6px;}
+td.contest_tech_high_bottom {
+	font-size: 12px;
+	text-align: center;
+	padding: 6px;
+	width: 37px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: solid;
+	border-bottom-style: none;
+	border-left-style: solid;
+	border-top-color: #000000;
+	border-right-color: #000000;
+	border-bottom-color: #000000;
+	border-left-color: #000000;
+}
+
+/*
+ * Team sheets
+ * -----------
+ */
+
+hr.sep { width: 100%; height:2px; border:1px solid; color:#000000;
+	text-align:center; vertical-align:middle; }
+hr.line { width: 100%; height:1px; border:1px solid; color:#000000;
+	text-align:center; vertical-align:bottom; }
+
+table.sheet { table-layout:auto; border-collapse:collapse; }
+
+/* title line */
+td.sheet_title	{ width: 670px; font-size:14px; font-weight:bold;
+				padding-left:0px; padding-right:0px;
+				padding-top:0px; padding-bottom:5px; }
+
+/* title item */
+td.sheet_col1 { width:150px; padding-left:5px; padding-right:5px;
+				padding-top:2px; padding-bottom:2px; }
+td.sheet_col2 { width:200px; padding-left:0px; padding-right:5px;
+				padding-top:2px; padding-bottom:2px; }
+td.sheet_team { width:200px; font-weight:bold;
+				padding-left:0px; padding-right:5px;
+				padding-top:2px; padding-bottom:2px; }
+td.sheet_col3 { width:80px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.sheet_col4 { padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.sheet_cat { font-weight:bold;
+				padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+
+/* separator line */
+td.sheet_sep { padding:0px; }
+
+/* subheader item */
+td.sheet_subheader { font-weight:bold; }
+
+/* list item */
+td.sheet_disc { width:150px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.sheet_name{ width:200px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.sheet_perf { width:80px; text-align:right;
+				padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.sheet_wind { width:50px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.sheet_pts { width:60px; text-align:right;
+				padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.sheet_tot { width:60px; text-align:right;
+				padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.sheet_remark{ width:60px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px; }
+
+/* relay athlete */
+td.sheet_relay_athlete { font-size:11px; width:330px;
+				padding-left:190px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+
+/* combined item */
+td.sheet_athlete{ width:150px; padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.sheet_year { width:200px; text-align:left;
+				padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.sheet_country{ width:50px; padding-left:0px; padding-right:5px;
+                padding-top:0px; padding-bottom:2px; }
+td.sheet_points { width:60px; text-align:right;
+				padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+
+/* combined discipline line */
+td.sheet_info {	text-align:left; font-size:10px;
+				padding-left:20px; padding-right:0px;
+				padding-top:2px; padding-bottom:5px; }
+
+
+
+/* total line */
+td.sheet_total { width:60px; font-weight:bold;
+				padding-left:5px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+td.sheet_totalpts { width:60px; font-weight:bold; text-align:right;
+				padding-left:0px; padding-right:5px;
+				padding-top:0px; padding-bottom:2px; }
+
+/*
+ * Statistics
+ * -----------
+ */
+th.stats_col1 { width:150px; padding:5px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.stats_col2 { width:250px; text-align:right; padding:5px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+th.stats_col3 { width:100px; text-align:right; padding:5px; padding-bottom:2px;
+				border-bottom:1px solid #000000; }
+td.stats_col1 { padding-left:0px; padding:5px; 
+				padding-top:2px; padding-bottom:2px; }
+td.stats_col1_intend { padding-left:0px; padding:5px; padding-left:30px;  
+                padding-top:2px; padding-bottom:2px; }
+td.stats_col2 { text-align:right; padding:5px; 
+				padding-top:2px; padding-bottom:2px; }
+td.stats_col2_bold { text-align:right; padding:5px; font-weight: bold; 
+                padding-top:2px; padding-bottom:2px; }
+td.stats_col3 { text-align:right; padding:5px; 
+				padding-top:2px; padding-bottom:2px; }
+td.stats_col3_bold { text-align:right; padding:5px; font-weight: bold; 
+                padding-top:2px; padding-bottom:2px; }
+td.stats_tot1 { font-weight: bold; text-align: right; padding:5px;
+				padding-top:2px; padding-bottom:2px; 
+				border-width:1px; border-style:solid; border-color:#000000; }
+td.stats_tot2 { font-weight: bold; text-align: right; padding:5px;
+				padding-top:2px; padding-bottom:2px; 
+				border-width:1px; border-style:solid; border-color:#000000; }
+td.stats_tot3 { font-weight: bold; text-align: right; padding:5px;
+				padding-top:2px; padding-bottom:2px; 
+				border-width:1px; border-style:solid; border-color:#000000; }
+
+
+/*
+ * Page header and footer
+ *
+ */
+table.page_footer { width:709px; table-layout:auto; }
+table.page_footer td { font-weight: bold; font-size:12px; padding:0px;}
+table.page_header { width:709px; table-layout:auto; }
+table.page_header td { font-weight: bold; font-size:12px; padding:0px;}
+td.page_footer_left {text-align:left; width:236px; vertical-align: top;}
+td.page_footer_center {text-align:center; width:237px; vertical-align: top;}
+td.page_footer_right {text-align:right; width:236px; vertical-align: top;}
+td.page_header_left {text-align:left; width:236px; vertical-align: top;}
+td.page_header_center {text-align:center; width:237px; vertical-align: top;}
+td.page_header_right {text-align:right; width:236px; vertical-align: top;}
+

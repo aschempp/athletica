@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+    <meta content="text/html; charset=iso-8859-1" />
+
+    <title>Documentation Athletica</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/stylesheet.css" />
+</head>
+
+<body><div class="helpmain">
+<h1>Hilfe</h1>
+
+<div class='helpnav'>
+<b>Meeting</b>
+| <a href='../event/index.html'>Épreuve</a>
+| <a href='../speaker/index.html'>Speaker</a>
+| <a href='../administration/index.html'>Administration</a>
+<br/>
+<a href='index.html'>Sélection de meeting</a>
+| <b>Définition</b>
+| <a href='entries.html'>Inscriptions</a>
+| <a href='relays.html'>Relais</a>
+| <a href='teams.html'>Équipes</a>
+| <a href='teams_sm.html'>Équipes CS Team</a> 
+| <a href='timing.html'>Chronométrage</a> 
+| <a href='print_layout.html'>Mise en page pour l’impression</a></div>
+
+<h2> Définition du meeting</h2>
+Cette fonction permet de définir le meeting actif. Dans la partie supérieure il est possible d’adapter les paramètres généraux, la colonne gauche montre un aperçu de toutes les catégories définies. Si on sélectionne une catégorie par un clic de souris, une liste de sélection de toutes les épreuves de cette catégorie est affichée en-dessous. Dans la partie principale de cette fenêtre (en bas à droite), des masques de saisie spécifiques etc. sont représentés.
+
+<h3>Données du meeting</h3>
+<h4>Nom, lieu</h4>
+En plus du nom du meeting et de l’organisateur, il est possible d’enregistrer le lieu et de sélectionner le stade à partir de la liste des <a href='../administration/stadium.html'>stades</a> définis.
+<h4>No du meeting</h4>
+La Fédération attribue des numéros aux meetings autorisés; on peut les placer ici. Lors de l’impression des résultats ceux-ci sont placés sur la page titre.
+<h4>Mode de programme</h4>
+<p>Le mode de programme définit comment utiliser l’application.
+  Les modes suivants sont possibles et influencent la manière comment l’enregistrement des résultats des disciplines techniques est représenté: </p>
+<h4>Saison</h4>
+<p>La saison détermine quels résultats sont recherchés dans la liste des meilleurs pour l’affichage de la PB (Personal Best) et dans la liste de résultats pour la SB (Season Best).</p>
+<h4>Finance de garantie, finance d’inscription et finance d’inscription réduite</h4>
+<p>Données référentielles pour les différentes disciplines. La finance de garantie et la finance d’inscription sont définies pour la discipline et peuvent différer des montants enregistrés pour les données du meeting. <br />
+Le montant enregistré dans le champ <strong>finance d’inscription à partir de la deuxième discipline </strong>est soustrait de la finance d’inscription (de la discipline) de chaque inscription du même athlète à une deuxième discipline et suivantes.</p>
+<p>Finance d’inscription pour concours multiples: Bien que pour chaque discipline de concours multiple on puisse enregistrer la finance d’inscription et de garantie, elle ne charge l’athlète qu’une seule fois.</p>
+<dl>
+<dt>Bureau des calculs</dt><dd>Tous les résultats sont traités au bureau des calculs.
+Par athlète, seule la meilleure performance est introduite. Au saut en hauteur et à la perche tous les essais d’un athlète sont  introduites.</dd>
+<dt>décentralisé</dt><dd>Les résultats sont directement enregistrés sur le terrain de compétition. Par essai, resp. hauteur de saut, un athlète après l’autre est affiché.</dd>
+</dl>
+<h4>Date</h4>
+Si un meeting ne dure qu’un jour, il faut que la date de et la date à soient identiques.
+
+<h3>Ordres</h3>
+<h4>Imprimer</h4>
+Imprime un aperçu des paramètres du meeting enregistrés ici.
+<h4>Nouvelle épreuve</h4>
+Dans la partie principale apparaît un formulaire pour enregistrer une nouvelle épreuve.
+Lors de la première inscription, il faut sélectionner une catégorie et la discipline choisie. Si souhaité on peut définir finances de garantie et d’inscription. Lors d’appels ultérieurs, les dernières inscriptions sont à chaque fois reprises comme propositions  
+br />
+Dans le champ des informations complémentaires, on peut entrer la hauteur des haies ou le poids du boulet. Cette information apparaît ultérieurement sur les feuilles de départ imprimées. 
+<br />
+Pour le moment on peut définir trois tours de compétition avec leur heure de départ (par ex. éliminatoire, demi-finale, finale). Dans la plupart des cas cela devrait suffire. Si nécessaire il est possible d’enregistrer ultérieurement des tours supplémentaires.
+
+<h4>Créer CSI</h4>
+Dans la partie principale apparaît un formulaire pour enregistrer un nouveau concours.
+Lors de la première inscription, il faut sélectionner une catégorie et <i>"créer CSI" </i>. Ensuite apparaît une sélection de catégories CSI.
+<br />  <br />  
+En sélectionnant les ligues nationales A-C hommes et femmes, les horaires fixes sont automatiquement introduits. Pour les disciplines marquées en rouge, l’heure zéro peut être modifiée ; cela implique un recalcul automatique des heures des autres disciplines.
+<br />  <br />  
+ Pour la 1ère ligue, U20 M1 etU20 W, il faut introduire l’heure zéro aux disciplines marquées en rouge; les autres heures sont ensuite attribuées automatiquement.
+
+<br />
+Type de compétition et barème sont automatiquement attribués.
+
+<h4>Statistiques</h4>
+Cette commande livre un aperçu de l’état des inscriptions. Les inscriptions (nombre d’athlètes et relais) par catégories, les départs par discipline ainsi qu’un aperçu des finances d’inscription et de garantie dues par société sont affichés. Les redevances par catégorie au sein de la société sont affichées.
+<h4>Imprimer statistiques</h4>
+Même aperçu qu’avant, mais prêt à être imprimé et avec appel automatique de la fonction d’impression du navigateur.
+<h4>Imprimer horaire</h4>
+Un aperçu de tous les tours de compétition définis sous forme de tableau prêt à être imprimé est affiché et la fonction d’impression du navigateur est automatiquement appelée.
+
+<h3>Administrer les données des catégories</h3>
+Si sur la liste à gauche on sélectionne une catégorie, les informations générales la concernant peuvent être enregistrées dans la partie principale. 
+Un changement apporté à ces données concerne toujours toutes les épreuves de cette catégorie. Les formules d’évaluation doivent être replacées après un changement.
+<h4>Type de compétition</h4>
+Le type de compétition définit comment les résultats sont évalués à la fin. Le type de compétition peut être changé à tout moment. Un meeting peut aussi être évalué ultérieurement selon différents points de vue.
+<dl>
+<dt>Simple</dt><dd>Épreuve simple comme type standard.</dd>
+<dt>Concours multiple</dt><dd>Pour le concours multiple, toutes les disciplines définies pour cette catégorie sont évaluées.</dd>
+<dt>CSI ligue national 2007</dt><dd>Classement aux points par rang. Les équipes sont classées en fonction du nombre total de points obtenus. En cas d’égalité, le nombre de victoires de discipline est déterminant, ensuite le nombre de deuxièmes places etc.</dd>
+<!--<dt>CSI hommes LNA</dt><dd>[pas encore implémenté]</dd>    -->
+<!--<dt>CSI hommes LNB</dt><dd>[ pas encore implémenté]</dd>    --> 
+<!--<dt>CSI hommes LNC</dt><dd>[ pas encore implémenté]</dd>    --> 
+<!--<dt>CSI femmes LNA</dt><dd>[ pas encore implémenté]</dd>    --> 
+<!--<dt>CSI femmes LNB</dt><dd>[ pas encore implémenté]</dd>    --> 
+<dt>CSI (1 athlète plus relais)</dt><dd>Évaluation standard pour concours CSI. Le meilleur résultats par discipline plus un résultat de relais sont évalués.</dd>
+<dt>CSI (2 athlètes plus relais)</dt><dd>Évaluation standard pour concours CSI. La moyenne des deux meilleurs résultats plus un résultat de relais sont évalués.</dd>
+<dt>Concours CSI par équipe (5 athlètes plus relais)</dt><dd>Classement CSI par équipe avec cinq résultats qui comptent par discipline simple plus un résultat de relais </dd>
+<dt>Concours multiple CSI (5 athlètes)</dt><dd>Classement concours multiple CSI. Les cinq meilleurs résultats de concours multiples comptent. Des relais peuvent certes être définis, mais ne comptent pas pour le classement. </dd> 
+<dt>CSI Mixed-Team (6 athlètes plus relais)</dt><dd>Pour le concours Mixed, le barème des hommes est valable. Les six meilleurs résultats comptent (les trois meilleurs des hommes et les trois meilleurs des femmes) par discipline et le relais.</dd>
+</dl>
+<h4>Barème</h4>
+Pour tous les types à part <i>simple</i> il faut sélectionner un barème de points. S’il y a déjà des résultats enregistrés au moment où le barème est mis ou changé, les points des résultats sont remis à 0 (en plaçant ultérieurement la formule de la discipline, les points seront à nouveau calculés). Dans la liste de disciplines en dessous, les formules correspondantes sont automatiquement attribuées. Le champ de formule reste vide, si aucune formule n’est définie dans le barème pour une discipline.
+<br>
+Les tableaux suivants sont actuellement implémentés:
+<dl>
+<dt>FSA 2010, hommes et femmes</dt>
+<dd>Évaluation CSI de Swiss Athletics (excepté LNA-C hommes et LNA-B femmes)</dd>
+<dt>IAAF 85, hommes et femmes</dt><dd>Évaluation concours multiple</dd>
+<!--<dt>CSI LNA-C hommes</dt>  -->
+<!--<dd>Évaluation CSI LNA-C</dd> -->  
+<!--<dt>CSI LNA-B femmes</dt> -->  
+<!--<dd>Évaluation CSI LNA-C femmes</dd> -->  
+<dt>Points par rang</dt>
+<dd>Les points sont calculés en fonction du rang. Si ce mode d’évaluation est choisi, il faut introduire la formule suivant dans le champ &quot;points&quot;: [points pour premier rang]-[déduction de points par rang] <strong>ou</strong> [points pour premier rang]+[points par rang] <br />
+Exemple: <strong>16-1</strong> </dd>
+<dt>&nbsp; </dt>
+
+<dd>
+  <table cellpadding="0" cellspacing="0" border="0" style="margin:0px; padding:0px">
+      <tr>
+        <td>Rang</td>
+        <td>Points</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>16</td>
+      </tr>
+    <tr>
+      <td>2</td>
+        <td>15</td>
+      </tr>
+    <tr>
+      <td>3</td>
+        <td>14</td>
+      </tr>
+    <tr>
+      <td>4</td>
+        <td>13</td>
+      </tr>
+    <tr>
+      <td>...</td>
+        <td>...</td>
+      </tr>
+    </table>
+</dd>
+
+
+<dt>[Propres barèmes]</dt>
+<dd>Il est possible de définir beaucoup de barèmes propres voire des tabelles de points. Voir: <a href="../administration/scoring_tables.html">Barèmes</a></dd>
+</dl>
+
+<h3>Administrer les concours</h3>
+Après avoir sélectionné une catégorie dans la colonne gauche, une liste de toutes les épreuves est affichée en-dessous. Avec un clic de souris il est possible de sélectionner différentes épreuves. Dans la partie principale les détails des disciplines sont affichés.
+<h4>Information</h4>
+Ce petit champ sert à entrer des infos pour les aides. Les infos seront plus tard imprimées sur les feuilles de concours et servent en premier lieu à indiquer hauteurs des haies, poids des boulets.<br /> 
+Un changement dans ce champ ne doit se faire qu’après le dernier ajustement du meeting, car sinon les disciplines seraient enregistrées à double.
+<h4>Vent</h4>
+Pour les disciplines définies avec la mesure du vent, on peut passer ici au niveau compétition, que les mesures correspondantes soient indiquées ou non.
+Conformément à cela, lors de l’entrée des résultats, il y a ultérieurement des cases à disposition pour les données de mesure du vent et celles-ci sont indiquées sur les listes de résultats.
+<h4>Finance de garantie, d‘inscription</h4>
+Finance de garantie et d’inscription peuvent être adaptées individuellement par discipline.
+Ces données servent ultérieurement à calculer les montants totaux correspondants par société.
+<h4>Formule d‘évaluation</h4>
+Pour tous les types de compétition à part <i>simple</i> il faut sélectionner un type de formule conformément au barème choisi. Si le nom de la formule correspond à l’abréviation de la discipline, cette formule est automatiquement choisie.
+Si en mettant ou changeant la formule un résultat est déjà enregistré pour cette épreuve, les points du résultat sont à nouveau calculé en conséquence.
+<h4>Tours de compétition</h4>
+Les tours de compétition définis sont affichés dans leur ordre temporel. Type, date et heure de début peuvent être changés en tout temps. Si aucune série n’est organisée, on peut supprimer un tour. On peut à volonté ajouter de nouveaux tours. Il est aussi possible de définir deux fois le même type de tour (pour série et sans).  
+
+<h4>Regrouper des tours de compétition</h4>
+Les tours de concours simples et les tours de concours multiples des mêmes disciplines de deux catégories peuvent être regroupés. Sur la liste de résultats ils peuvent à nouveau être séparés.<br> 
+Les concours multiples qui sont organisés en groupe, ne peuvent pas être regroupés.
+<p/>
+
+<div class='helpnav'>
+<b>Meeting</b>
+| <a href='../event/index.html'>Épreuve</a>
+| <a href='../speaker/index.html'>Speaker</a>
+| <a href='../regie/index.html'>Régie</a>  
+| <a href='../administration/index.html'>Administration</a>
+<br/>
+<a href='index.html'>Sélection de meeting</a>
+| <b>Définition</b>
+| <a href='entries.html'>Inscriptions</a>
+| <a href='relays.html'>Relais</a>
+| <a href='teams.html'>Équipes</a>
+| <a href='teams_sm.html'>Équipes CS Team</a> 
+| <a href='timing.html'>Chronométrage</a> 
+| <a href='print_layout.html'>Mise en page pour l’impression</a></div>
+</div>
+
+</body>
+</html>

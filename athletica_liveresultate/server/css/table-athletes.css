@@ -1,0 +1,116 @@
+.table-athletes {
+    width: 100%;
+    margin: auto;   
+}
+.table-athletes thead th {
+    height: 35px;
+    vertical-align: middle;
+    padding-top: 0px !important;
+    font-size: 15px !important;
+}
+
+.table-athletes thead th[data-sort]{
+    cursor:pointer;
+}
+
+.table-athletes tbody td {
+    height: 50px;
+    vertical-align: top;
+    font-size: 15px !important;
+}
+
+.table-athletes tbody td {
+    height: 30px;
+    vertical-align: middle;
+    font-size: 15px !important;
+}
+
+.table-athletes .bib {
+    width: 40px !important;
+    text-align: right;
+    padding-right: 15px;
+    padding-top: 3px;
+}
+.table-athletes .name {
+    width: 225px;
+	line-height: 150%;
+    text-align: left;
+    padding-right: 15px;
+}
+.table-athletes .yob {
+    width: 50px;
+	text-align: center !important;
+    padding-top: 3px;
+}
+.table-athletes .country {
+    width: 80px;
+	text-align: center !important;
+    padding-top: 3px;
+}
+.table-athletes .club {
+    width: 300px;
+    text-align: left;
+    padding-top: 3px;
+}
+.table-athletes .topPerf {
+    min-width: 150px;
+    text-align: left;
+    padding-top: 3px;
+}
+
+.table-athletes th span.short {
+    display: none;
+}
+.table-athletes th span.long {
+    display: inline;
+}
+
+.table-athletes #empty {
+    font-size: 15px;
+    font-style: italic;
+}
+
+@media screen and (max-width: 500px) {
+    .table-athletes th span.short {
+        display: inline;
+    }
+    .table-athletes th span.long {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 545px) {
+    .table-athletes .club {
+        display: none;
+    }
+    .table-athletes .yob {
+        display: none;
+    }
+    .table-athletes .country {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 625px) {
+    .table-athletes .yob {
+        display: none;
+    }
+    .table-athletes .country {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 675px) {
+    .table-athletes .country {
+        display: none;
+    }
+    .table-athletes .topPerf {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 825px) {
+    .table-athletes .topPerf {
+        display: none;
+    }
+}

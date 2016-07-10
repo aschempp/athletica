@@ -1,0 +1,122 @@
+.table-results-combined {
+    width: 100%;
+    margin: auto;   
+}
+.table-results-combined thead th {
+    height: 35px;
+    vertical-align: middle;
+    padding-top: 0px !important;
+    font-size: 15px !important;
+}
+
+.table-results-combined tbody td {
+    height: 45px;
+    vertical-align: top;
+    font-size: 15px !important;
+}
+
+.table-results-combined .rank {
+    width: 40px !important;
+    text-align: right;
+    padding-right: 15px;
+    padding-top: 3px;
+}
+.table-results-combined .name {
+    width: 450px;
+	line-height: 150%;
+    text-align: left;
+    padding-right: 15px;
+}
+.table-results-combined .yob {
+    width: 50px;
+	text-align: center !important;
+    padding-top: 3px;
+}
+.table-results-combined .country {
+    width: 80px;
+	text-align: center !important;
+    padding-top: 3px;
+}
+.table-results-combined .club {
+    width: 230px;
+    text-align: left;
+    padding-top: 3px;
+}
+.table-results-combined .points {
+    text-align: center !important;
+    width: 100px;
+    padding-top: 3px;
+}
+
+.table-results-combined th span.short {
+    display: none;
+}
+.table-results-combined th span.long {
+    display: inline;
+}
+
+@media screen and (max-width: 500px) {
+    .table-results-combined th span.short {
+        display: inline;
+    }
+    .table-results-combined th span.long {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .table-results-combined .rank {
+        width: 35px !important;
+    }
+    .table-results-combined .yob {
+        display: none;
+    }
+    .table-results-combined .club {
+        display: none;
+    }
+    .table-results-combined .country {
+        display: none;
+    }
+}
+
+@media screen and (max-width:750px) {
+    .table-results-combined .yob{
+        display: none;
+    }
+    .table-results-combined .club {
+        display: none;
+    }
+    .table-results-combined .country {
+        display: none;
+    }   
+}
+
+@media screen and (max-width:805px) {
+    .table-results-combined .yob{
+        display: none;
+    }
+    .table-results-combined .country {
+        display: none;
+    }   
+}
+
+@media screen and (max-width:920px) {
+    .table-results-combined .country {
+        display: none;
+    }   
+}
+
+@media screen and (max-width:1000px) {
+    .table-results-combined .country {
+        display: none;
+    }  
+}
+
+@media screen and (max-width:1110px) {
+       
+}
+
+.table-results-combined #attempts {
+	font-size: 13px;
+	font-style: italic;
+}

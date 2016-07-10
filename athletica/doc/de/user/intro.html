@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<meta content="text/html; charset=iso-8859-1" />
+
+	<title>Athletica für Benutzer: Einführung</title>
+	<link rel="stylesheet" type="text/css" href="../../css/stylesheet.css" />
+</head>
+
+<body><div class="helpmain">
+<h1>Einführung</h1>
+<h2>Zweck</h2>
+<h3>Leichtathletik</h3>
+Athletica ist eine Software zur Administration von
+Leichtathletik-Veranstaltungen und stützt sich auf die Internationalen
+Bestimmungen (IWB) des DLV / OeLV / Swiss Athletics, die Wettkampfordnung
+für Leichtathletik (WO) von Swiss Athletics und die praktische Erfahrung der Programmierer
+aus der Durchführung von Dutzenden von Leichtathletikveranstaltungen in der
+Schweiz.
+<p/>
+Mit den Verhältnissen in Österreich, Deutschland oder anderen Ländern sind
+wir nicht vertraut, denken aber, dass die Applikation mit geringen Anpassungen
+auch dafür geeignet ist.
+<p/>
+Athletica bietet alle Funktionen, die nötig sind, um einen
+Leichtathletik-Wettkampf abwickeln zu können. Das Programm ist als sogenannte
+Webapplikation konzipiert, was bedeutet, dass die gesamte Funktionalität von
+einem Webserver zur Verfügung gestellt und von theoretisch beliebig vielen
+Anwendern gleichzeitig benützt werden kann. Der Zugriff auf die Applikation
+durch die Anwender erfolgt mittels Webbrowsern. In der Praxis hängt die
+Leistungsfähigkeit von der verwendeten Serverhardware ab.</body>
+<p/>
+<img src='../../img/network.gif' width='480' height='208' alt='Netz' />
+<p/>
+
+<h3>Andere Sportarten</h3>
+Generell ist Athletica so konzipiert, dass Wettkämpfe in verschiedensten
+Einzelsportarten damit administriert werden können. Falls dafür ein Bedarf
+vorhanden ist, werden wir die Details gerne abklären und allenfalls spezifische
+Erweiterungen z.B. für Schwimmen, Skisport, etc. zur Verfügung stellen.
+
+
+<h2>Philosophie</h2>
+Dieses Programm soll den Anwender bei der Durchführung einer
+Leichtathletikveranstaltung unterstützen und nicht unnötig einengen.
+Im Laufe einer Veranstaltung treten immer wieder Situation auf, die den
+eigentlich strukturierten Ablauf durchbrechen. Um in solchen Fällen eine
+möglichst hohe Flexibilität zu gewährleisten haben wir darauf verzichtet,
+allzu starre Abläufe ins Programm einzubauen.
+<br/>
+Das bedeutet, dass der Anwender die meisten automatisch generierten Ergebnisse
+(z.B. Serienauslosungen, Rangierungen, Abfolge von Runden, Startnummern, etc.)
+manuell übersteuern kann. Wir gehen davon aus, dass der Anwender die
+grundlegenden Regeln und Abläufe einer Leichtathletikveranstaltung kennt
+und diese auch einhält. Die Applikation überprüft die manuellen Eingaben
+nicht auf mögliche Regelverstösse.
+<br/>
+Die Applikation ist generell nicht sehr gesprächig, das heisst, dass wir
+weitgehend darauf verzichtet haben, jeden möglichen Fehler abzufangen und mit
+einer entsprechenden Meldung anzuzeigen. Die meisten Eingaben werden so in der
+Datenbank gespeichert, wie sie eingegeben wurden (z.B. eine Zahl als Name).
+Dort wo dies zu unvorhersehbarem Verhalten führen könnte, wird einfach nichts
+gespeichert und das entsprechende Feld bleibt leer.
+<h2>Module</h2>
+Die Applikation besteht aus drei Modulen, welche über die Hauptmenuleiste
+aktiviert werden können:
+
+<h3>Administration</h3>
+Im Administrations-Modul werden alle Basisdaten verwaltet. Hier werden
+Kategorien, Disziplinen, Vereins- und Athletendaten verwaltet, die
+Stadioninfrastruktur erfasst sowie Wettkampfrundentypen (Vorrunde,
+Zwischenrunde, Final, etc.) definiert.
+<br/>
+Diese Daten müssen vorgängig definiert werden, damit ein Meeting abgewickelt
+werden kann.
+
+<h3>Meeting</h3>
+Das Meeting-Modul dient dazu, ein Meeting zu definieren und zu administrieren.
+<br/>
+Auf der Einstiegsseite kann aus der Liste der erfassten Meetings jenes
+ausgewählt werden, mit dem der Benutzer arbeiten will. Hier können auch neue
+Meetings erfasst werden.
+<br/>
+Im Menu <i>Definition</i> werden alle Wettkämpfe pro Kategorie erfasst. Unter
+<i>Zeitplan</i> werden die einzelnen Wettkämpfe zeitlich geordnet. Dies ist
+notwendig, um die einzelnen Runden eines Wettkampfes ordnen zu können.
+<br/>
+Athleten werden im Menu <i>Anmeldungen</i> erfasst. Hier kann der Anwender
+auch die Startnummernverteilung vornehmen. Staffeln werden separat im
+gleichnamigen Menu erfasst.
+
+<h3>Wettkampf</h3>
+Am Wettkampftag wird primär mit dem Wettkampf-Modul gearbeitet. Der Monitor
+auf der Einstiegsseite gibt eine Übersicht über den Stand der einzelnen
+Wettkämpfe. Von hier aus kann direkt auf die jeweils aktuelle Funktion
+zugegriffen werden.
+<br/>
+Im Menu <i>Appell</i> werden Appellblätter gedruckt und wird die
+Anwesenheitskontrolle geführt.
+<br/>
+Die Serieneinteilung erfolgt im Menu <i>Serien</i>. Unter <i>Resultate</i>
+werden die Wettkampfergebnisse erfasst. Hier erfolgt ebenfalls die
+Qualifikation für eine folgende Runde.
+<br/>
+Unter <i>Ranglisten</i> können die Ergebnisse entweder gedruckt oder im
+HTML-Format exportiert werden.
+
+<h3>Speaker</h3>
+Dieses Modul unterstützt den Speaker am Wettkampftag. Der Monitor auf der
+Einstiegsseite zeigt den Status aller Wettkämpfe. Mit Direktlinks kann
+direkt auf Anmeldungslisten, Serieneinteilungen, Resultate und Ranglisten
+zugegriffen werden. Der Speaker hat damit jederzeit Zugriff auf die
+aktuellsten Daten.
+</div>
+</body>
+</html>

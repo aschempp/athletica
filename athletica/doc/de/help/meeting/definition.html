@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<meta content="text/html; charset=iso-8859-1" />
+
+	<title>Athletica Dokumentation</title>
+	<link rel="stylesheet" type="text/css" href="../../../css/stylesheet.css" />
+</head>
+
+<body><div class="helpmain">
+<h1>Hilfe</h1>
+
+<div class='helpnav'>
+<b>Meeting</b>
+| <a href='../event/index.html'>Wettkampf</a>
+| <a href='../speaker/index.html'>Speaker</a>
+| <a href='../regie/index.html'>Regie</a> 
+| <a href='../administration/index.html'>Administration</a>
+<br/>
+<a href='index.html'>Meetingauswahl</a>
+| <b>Definition</b>
+| <a href='entries.html'>Anmeldungen</a>
+| <a href='relays.html'>Staffeln</a>
+| <a href='teams.html'>Mannschaften</a>
+| <a href='teams_sm.html'>Team SM Mannschaften</a> 
+| <a href='timing.html'>Zeitmessung</a> 
+| <a href='print_layout.html'>Drucklayout</a></div>
+
+<h2>Meeting Definition</h2>
+Mit dieser Funktion wird das aktive Meeting definiert. Im Kopfteil können
+die allgemeinen Parameter angepasst, die linke Spalte zeigt eine Übersicht
+aller definierten Kategorien. Wird eine Kategorie durch Mausklick ausgewählt,
+wird darunter eine Auswahlliste alle Wettkämpfe dieser Kategorie gezeigt.
+Im Hauptteil dieses Fensters (unten rechts) werden spezifische Eingabemasken,
+etc. dargestellt.
+
+<h3>Meetingdaten</h3>
+<h4>Name, Ort</h4>
+Nebst Meetingname und Organisator kann der Ort erfasst und das Stadion aus der Liste der
+definierten <a href='../administration/stadium.html'>Stadien</a> ausgewählt
+werden.
+<h4>Meeting-Nr.</h4>
+Der Verband vergibt für bewilligungspflichtige Meetings Nummern, welche hier gesetzt werden können. Diese wird später beim Drucken von Resultaten aufs Titelblatt gesetzt.
+<h4>Programm Modus</h4>
+<p>Der Programm Modus definiert, wie die Applikation eingesetzt werden soll.
+  Folgende Modi sind möglich und beeinflussen die Art und Weise, wie die
+  Resultaterfassung für die technische Disziplinen dargestellt wird: </p>
+<h4>Saison</h4>
+<p>Die Saison bestimmt, welche Resultate in der Bestenliste f&uuml;r die Anzeige der PB (Personal Best) und SB (Season Best) in der Rangliste gesucht werden.</p>
+<h4>Haftgeld, Startgeld und Reduktion Startgeld</h4>
+<p>Vorgabe-Daten f&uuml;r die einzelnen Disziplinen. Das Haftgeld und Startgeld ist bei der Disziplin definiert und kann von den bei den Meeting-Daten erfassten Betr&auml;gen abweichen. <br />
+Der  im Feld <strong>Startgeld Reduktion ab zweiter Disziplin </strong>erfasster Betrag wird bei jeder zweiten und weiteren Disziplinen-Anmeldung desselben Athleten vom Startgeld (der Disziplin) subtrahiert.</p>
+<p>Startgeld bei Mehrk&auml;mpfen: Obwohl bei jeder Mehrkampf-Disziplin das Start- und Haftgeld erfasst werden kann, wird dieses nur einmal dem Athleten belastet.</p>
+<dl>
+<dt>Wettkampfbüro</dt><dd>Alle Resultate werden im Wettkampfbüro verarbeitet.
+Pro Athlet wird nur die Bestleistung eingegeben. Bei Hochsprung und Stab werden
+für einen Athleten jeweils alle Versuche eingetragen.</dd>
+<dt>dezentral</dt><dd>Die Resultate werden direkt auf dem Wettkampfplatz
+erfasst. Pro Versuch, bzw. Sprunghöhe wird ein Athlet nach dem andern
+angezeigt.</dd>
+</dl>
+<h4>Datum</h4>
+Dauert ein Meeting nur einen Tag, sind Vom- und Bis-Datum gleichzusetzen.
+
+<h3>Befehle</h3>
+<h4>Drucken</h4>
+Druckt eine Übersicht der hier erfassten Meetingparameter.
+<h4>Neuer Wettkampf</h4>
+Im Hauptteil erscheint ein Formular zur Erfassung eines neuen Wettkampfs.
+Bei der ersten Eingabe muss eine Kategorie und die gewünschte Disziplin
+ausgewählt werden. Falls gewünscht können Haft- und Startgeldbeträge
+definiert werden. Bei späteren Aufrufen werden die letzten Einträge jeweils
+als Vorschlag übernommen
+<br />
+Im Feld für zusätzliche Informationen können Hürdenhöhe oder Kugelgewicht
+eingegeben werden. Diese Information erscheint später auf den gedruckten
+Startblättern. 
+<br />
+Vorerst können drei Wettkampfrunden (z.B. Vorrunde, Zwischenlauf, Final)
+mit Startzeit definiert werden. Dies sollte in den meisten Fällen genügen.
+Falls nötig, können später zusätzliche Runden erfasst werden.
+
+<h4>SVM erstellen</h4>
+Im Hauptteil erscheint ein Formular zur Erfassung eines neuen Wettkampfs.
+Bei der ersten Eingabe muss eine Kategorie und <i>"SVM erstellen" </i>
+ausgewählt werden. Danach erscheint eine Auswahl der SVM Kategorien.
+<br />  <br />  
+Bei Wahl der Nationalligen A-C Männner und Frauen werden die fixen Zeitpläne 
+direkt eingefügt. Bei den rot markierten Disziplinen kann die Nullzeit verändert 
+werden, was zu einer automatischen Nachberechnung der Zeiten der restlichen Disziplinen führt.
+<br />  <br />  
+ Bei 1. Liga, U20 M1 und U20 W muss bei der rot markierten Disziplin die Nullzeit eingegeben werden, wobei dann
+ die restlichen Zeiten automatisch vergeben werden.
+
+<br />
+Wettkampftyp und Wertungstabelle werden automatisch vergeben.
+
+<h4>Statistiken</h4>
+Dieser Befehl liefert einen Überblick über den Stand der Anmeldungen. Gezeigt
+werden die Anmeldungen (Anzahl Athleten und Staffeln) pro Kategorie, die
+Disziplinenstarts sowie eine Übersicht über die fälligen Start- und Haftgelder
+pro Verein. Pro Kategorie innerhalb des Vereins werden die Verbandsabgaben angezeigt.
+<h4>Statistiken drucken</h4>
+Dieselbe Übersicht wie vorher, allerdings aufbereitet zum Druck und mit
+automatischem Aufruf der Druckfunktion des Browsers.
+<h4>Zeitplan drucken</h4>
+Eine zum Druck aufbereitete tabellarische Übersicht aller definierten
+Wettkampfrunden wird angezeigt und die Druckfunktion des Browsers automatisch
+aufgerufen.
+
+<h3>Kategoriedaten verwalten</h3>
+Wird in der Liste links eine Kategorie ausgewählt können die allgemeinen
+Angaben dazu im Hauptteil erfasst werden.
+Änderung an diesen Daten betreffen immer alle Wettkämpfe dieser Kategorie
+gemeinsam. Wertungsformeln müssen nach einer Änderung neu gesetzt werden.
+<h4>Wettkampftyp</h4>
+Der Wettkampftyp bestimmt, wie am Schluss die Resultat ausgewertet werden
+können. Der Wettkampftyp kann jederzeit gewechselt werden. Damit kann ein
+Meeting auch nachträglich noch nach verschiedenen Gesichtspunkten gewertet
+werden.
+<dl>
+<dt>Einzel</dt><dd>Einzelwettkampf als Standardtyp.</dd>
+<dt>Mehrkampf</dt><dd>Für den Mehrkampf werden alle für diese Kategorie
+definierten Disziplinen gewertet.</dd>
+<dt>SVM Nationalliga 2007</dt><dd>Rangpunktebewertung. Die Mannschaften werden aufgrund der erreichten Gesamtpunktzahl klassiert. Bei Punktgleichheit ist 
+für die Klassierung die Anzahl Disziplinensiege massgebend, anschliessend die Anzahl zweite Plätze etc.</dd>
+<!--<dt>SVM Männer NLA</dt><dd>[noch nicht implementiert]</dd>    -->
+<!--<dt>SVM Männer NLB</dt><dd>[noch nicht implementiert]</dd>    --> 
+<!--<dt>SVM Männer NLC</dt><dd>[noch nicht implementiert]</dd>    --> 
+<!--<dt>SVM Frauen NLA</dt><dd>[noch nicht implementiert]</dd>    --> 
+<!--dt>SVM Frauen NLB</dt><dd>[noch nicht implementiert]</dd>    --> 
+<dt>SVM (1 Athlet plus Staffel)</dt><dd>Standardauswertung für SVM-Wettkämpfe. Pro Disziplin wird das beste Resultat gewertet plus ein Staffelresultat.</dd>
+<dt>SVM (2 Athleten plus Staffel)</dt><dd>Standardauswertung für SVM-Wettkämpfe. Pro Disziplin wird der Durchschnitt der zwei besten Resultate gewertet plus ein Staffelresultat.</dd>
+<dt>SVM Mannschaftswettkampf (5 Athleten plus Staffel)</dt><dd>SVM-Mannschaftswertung mit fünf Zählresultaten pro Einzeldisziplin plus ein Staffelresultat</dd>
+<dt>SVM Mehrkampf (5 Athleten)</dt><dd>SVM mit Mehrkampfwertung. Gewertet werden die fünf besten Mehrkampfresultate. Staffeln können zwar definiert werden, werden aber nicht in die Wertung einbezogen</dd> 
+<dt>SVM Mixed-Team (6 Athleten plus Staffel)</dt><dd>Für den Mixed-Wettkampf gilt die WErtungstabelle der Männer. Gewertet werden die sechs besten Einzelresultate (die drei besten Männlichen und die drei besten Weiblichen) pro Disziplin und die Staffel.</dd>
+</dl>
+<h4>Wertungstabelle</h4>
+Für alle Typen ausser <i>Einzel</i> muss eine Wertungspunktetabelle
+ausgewählt werden. Sind bereits Resultate erfasst wenn die Wertungstabelle
+gesetzt oder geändert wird, werden die Resultatpunkte auf 0 zurückgesetzt
+(beim späteren Setzen der Disziplinenformel werden die Punkte neu berechnet).
+In der Disziplinenliste darunter werden automatisch die entsprechenden
+Formeln zugeordnet. Das Formelfeld bleibt leer, falls für eine Disziplin
+in einer Punktetabelle keine Formel definiert ist.
+<br>
+Folgende Tabellen sind derzeit implementiert:
+<dl>
+<dt>SLV 2010, Männer und Frauen</dt>
+<dd>SVM-Wertung von Swiss Athletics (Ausgenommen NLA-C M&auml;nner und NLA-B Frauen)</dd>
+<dt>IAAF 85, Männer und Frauen</dt><dd>Mehrkampfwertung</dd>
+<!--<dt>SVM NLA-C M&auml;nner</dt>  -->
+<!--<dd>SVM-Wertung NLA-C M&auml;nner</dd> -->  
+<!--<dt>SVM NLA-B Frauen</dt> -->  
+<!--<dd>SVM-Wertung NLA-B Frauen</dd> -->  
+<dt>Rangpunkte</dt>
+<dd>Die Punkte werden aufgrund des Ranges berechnet. Wenn dieser Wertungsmodus ausgew&auml;hlt wird, muss im Feld &quot;Punkte&quot; folgende Formel eingetragen werden: [Punkte f&uuml;r ersten Rang]-[Punkteabzug pro Rang] <strong>oder</strong> [Punkte f&uuml;r ersten Rang]+[Punkte pro Rang] <br />
+Beispiel: <strong>16-1</strong> </dd>
+<dt>&nbsp; </dt>
+
+<dd>
+  <table cellpadding="0" cellspacing="0" border="0" style="margin:0px; padding:0px">
+      <tr>
+        <td>Rang</td>
+        <td>Punkte</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>16</td>
+      </tr>
+    <tr>
+      <td>2</td>
+        <td>15</td>
+      </tr>
+    <tr>
+      <td>3</td>
+        <td>14</td>
+      </tr>
+    <tr>
+      <td>4</td>
+        <td>13</td>
+      </tr>
+    <tr>
+      <td>...</td>
+        <td>...</td>
+      </tr>
+    </table>
+</dd>
+
+
+<dt>[Eigene Wertungstabellen]</dt>
+<dd>Es k&ouml;nnen beliebig viele eigene Wertungstabellen bzw. Puktetabellen definiert werden. Siehe: <a href="../administration/scoring_tables.html">Wertungstabellen</a></dd>
+</dl>
+
+<h3>Wettkämpfe verwalten</h3>
+Nach auswählen einer Kategorie in der linken Spalte wird darunter eine
+Liste aller Wettkämpfe angezeigt. Durch Mausklick können einzelne
+Wettkämpfe ausgewählt werden. Im Hauptteil werden die Disziplinendetails
+angezeigt.
+<h4>Information</h4>
+Dieses kurze Feld dient zur Eingabe von Infos an die Helfer. Die Infos
+werden später auf den Wettkampfblättern aufgedruckt und dienen in erster
+Linie dazu, Hürdenhöhen oder Kugelgewichte anzugeben.<br /> 
+Eine Änderung dieses Info Feldes darf erst nach dem letzten Meetingabgleich erfolgen,
+da sonst die Disziplinen doppelt erfasst würden.
+<h4>Wind</h4>
+Bei Disziplinen, welche mit Windmessung definiert sind, kann hier auf
+Wettkampfebene gesteuert werden, ob entsprechende Messungen eingegeben
+werden oder nicht. Entsprechend stehen später bei der Resultateingabe
+Felder für Windmessdaten zur Verfügung und diese werden auf den Ranglisten
+angezeigt.
+<h4>Haft-, Startgeld</h4>
+Pro Disziplin können Haftgeld und Startgeld individuell angepasst werden.
+Diese Daten dienen später zum Berechnen der entsprechenden Totalbeträge pro
+Verein.
+<h4>Wertungsformel</h4>
+Bei allen Wettkampftypen ausser <i>Einzel</i> muss entsprechend der gewählten
+Punktetabelle ein Formeltyp ausgewählt werden. Wenn der Formelname dem
+Disziplinenkurznamen entspricht, wird diese Formel automatisch ausgewählt.
+Sind beim Setzen oder Ändern der Formel bereits Resultat für diesen Wettkampf
+erfasst, werden die Resultatpunkte entsprechend neu berechnet.
+<h4>Wettkampfrunden</h4>
+Die definierten Wettkampfrunden werden in ihrer zeitlichen Reihenfolge
+angezeigt. Typ, Datum und Startzeit können jederzeit geändert werden.
+Sind noch keine Serien eingeteilt, kann eine Runde gelöscht werden.
+Es können beliebig viele neue Runden hinzugefügt werden. Es ist auch möglich zwei 
+Mal den gleichen Rundentyp (bei Serie und ohne) zu definieren.  
+
+<h4>Wettkampfrunden zusammenfassen</h4>
+Einzelwettkampfrunden und Mehrkampfrunden gleicher Disziplinen zweier Kategorien 
+können zusammengefasst werden. In der Rangliste können sie auch wieder getrennt werden.<br>
+Mehrkämpfe, die in Gruppen eingeteilt sind, können nicht zusammengefasst werden.
+<p/>
+
+<div class='helpnav'>
+<b>Meeting</b>
+| <a href='../event/index.html'>Wettkampf</a>
+| <a href='../speaker/index.html'>Speaker</a>
+| <a href='../regie/index.html'>Regie</a> 
+| <a href='../administration/index.html'>Administration</a>
+<br/>
+<a href='index.html'>Meetingauswahl</a>
+| <b>Definition</b>
+| <a href='entries.html'>Anmeldungen</a>
+| <a href='relays.html'>Staffeln</a>
+| <a href='teams.html'>Mannschaften</a>
+| <a href='teams_sm.html'>Team SM Mannschaften</a> 
+| <a href='timing.html'>Zeitmessung</a> 
+| <a href='print_layout.html'>Drucklayout</a></div>
+</div>
+
+</body>
+</html>

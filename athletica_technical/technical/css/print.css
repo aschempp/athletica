@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+html, body, td {
+	font-size: 9pt;
+	font-family: Verdana,Arial,sans-serif;
+}
+
+.entries_licensecategory_title {
+	padding: 2px;
+
+	border: solid 1px #D60000;
+	color: #D60000;
+}
+
+.entries_account_title {
+	padding: 2px;
+
+	background-color: #D60000;
+	color: #FFFFFF;
+}
+
+.hidden {
+	display: none;
+}

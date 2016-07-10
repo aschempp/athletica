@@ -1,0 +1,51 @@
+.table-timetable {
+    width: 100%;
+    margin: auto;   
+}
+
+.table-timetable tbody td {
+    height: 30px;
+    vertical-align: middle;
+    font-size: 17px !important;
+    cursor: pointer;
+}
+
+.table-timetable .dis {
+    width: 250px !important;
+    text-align: left;
+    font-weight: bold;
+    padding-right: 15px;
+    padding-top: 3px;
+}
+.table-timetable .time {
+    min-width: 60px;
+	line-height: 150%;
+    text-align: left;
+    padding-right: 15px;
+}
+.table-timetable .status {
+    width: 130px;
+	text-align: right !important;
+}
+
+.table-timetable span.short {
+    display: none;
+}
+.table-timetable span.long {
+    display: inline;
+}
+
+@media screen and (max-width: 560px) {
+    .table-timetable span.short {
+        display: inline;
+    }
+    .table-timetable span.long {
+        display: none;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .table-timetable .time {
+        display: none;
+    }   
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+    <meta content="text/html; charset=iso-8859-1" />
+
+    <title>Documentation Athletica</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/stylesheet.css" />
+</head>
+
+<body><div class="helpmain">
+<h1>Hilfe</h1>
+
+<div class='helpnav'>
+<a href='../meeting/index.html'>Meeting</a>
+| <b>Épreuve</b>
+| <a href='../speaker/index.html'>Speaker</a>
+| <a href='../administration/index.html'>Administration</a>
+<br/>
+<a href='index.html'>Moniteur de compétition</a>
+| <a href='enrolement.html'>Appel</a>
+| <a href='heats.html'>Séries</a>
+| <b>Résultats</b>
+| <a href='rankinglists.html'>Listes de résultats</a>
+</div>
+
+<h2>Résultats</h2>
+Ici on procède à l’enregistrement des résultats de tous les tours de la compétition. Ce formulaire est à disposition après avoir terminé 
+<a href='heats.html'>l’organisation des séries </a>.
+
+<h3>Sélection d’épreuve </h3>
+Si cette fonction est appelée à partir du <a href='index.html'>moniteur</a>, l’épreuve concernée est déjà sélectionnée. Si la fonction est démarrée par le menu, il faut tout d’abord sélectionner la catégorie, souhaitée, l’épreuve et le tour.
+.
+
+<h3>Sélection de série </h3>
+Si ce tour de compétition comprend plus d’une série, des boutons de commande avec les appellations des séries sont affichés, pour sauter directement sur la série souhaitée du formulaire.
+
+<h3>Ajouter de nouveaux athlètes/relais<a name='neu'/></h3>
+Si une liste de départ comporte d’autres athlètes ou relais qui ne sont pas répartis dans une série, une fonction appropriée est à disposition pour les répartir. Ceux-ci peuvent être répartis dans une série déjà existante ou dans une nouvelle série. Les nouvelles séries reçoivent automatiquement l’appellation '0'.
+<br/>
+Ici apparaissent tous les athlètes ou relais qui, à l’appel, ont été définis comme <i>non présents</i>, qui ont été supprimés de l’organisation des séries ou qui n’ont pas pu se qualifier au tour précédent.
+
+<h3>Qualification</h3>
+Si d’autres tours sont prévus, il est possible ici <a href='print_heats.html'>
+de changer les paramètres de qualification mis auparavant </a>.
+
+<h3>Terminer l’enregistrement des résultats<a name='abschliessen'></h3>
+Si tous les résultats sont enregistrés, ils sont évalués avec cette fonction. Le classement est effectué et une éventuelle qualification pour le prochain tour.
+br>
+En fonction du <a href='../administration/roundtypes.html'>type de tour</a>
+le classement se fait par série ou pour toutes les séries confondues.  
+
+<h3>Changer les résultats</h3>
+Cette fonction n’est disponible qu’après l’enregistrement des résultats.
+Elle est utilisée pour procéder à des changements ultérieurs. Ensuite 
+<a href='#abschliessen'>l’enregistrement des résultats</a> doit à nouveau être terminé,
+pour procéder à une nouvelle évaluation.
+
+<h3>Liste de résultats</h3>
+Dans l’en-tête de chaque série, l’appellation peut être changée.
+Elle peut être choisie librement, mais n’est possible qu’une seule fois par tour de compétition.
+<br/>
+Si on quitte le champ de saisie après un changement par ex. en pressant la touche tabulateur, la nouvelle valeur est inscrite automatiquement dans la banque des données et une remarque correspondante apparaît dans la ligne du statut en bas. Si outre la performance proprement dite, d’autres informations sont encore nécessaires (vent, essais saut en hauteur), la transmission des données ne se fait qu’après avoir rempli ces cases.
+
+<h4>Courses sur piste</h4>
+Pour les courses sur piste, il est possible d’utiliser par série un numéro de film d’arrivée. Le temps réalisé peut être entré sous un format à choix. Le programme essaie d’interpréter cela judicieusement. Un résultat peut naturellement toujours être changé.
+<h4>Courses sur piste avec vent</h4>
+Par série on peut en plus enregistrer le vent mesuré.
+<h4>Disciplines techniques </h4>
+Selon le  <a href='../meeting/definition.html'>mode programme</a> on peut entrer par athlète seulement la meilleure performance ou enregistrer les résultats de tous les essais.<br/>
+Outre les l’ongueurs en mètres, des codes spéciaux sont aussi admis pour les résultats nuls 
+(0, -1, -2, -3, -4, '-' ou 'X').
+<h4>Disciplines techniques avec vent</h4>
+À part pour les résultats nuls, le vent mesuré doit en plus être entré pour chaque essai.
+Seulement ensuite le résultat est inscrit dans la banque des données.
+<h4>Saut en hauteur</h4>
+Afin de pouvoir enregistrer les résultats, l’athlète doit d’abord être sélectionné par un clic de souris.
+<br/>
+Les essais sont en plus enregistrés par hauteur de saut (valable avec '0', 'O' ou 'o', nul 'x' ou 'X', renonciation avec '-'). Si l’essai est valable ou si déjà trois essais ont déjà été entrés, le programme fait une proposition pour la hauteur suivante. Il est possible d’écrire par-dessus la proposition.<br>
+Après <i>XXX</i> ou après un résultat moins (-1, -2, -3, -4, '-') au lieu d’une hauteur, l’entrée pour cet athlète est terminée et on passe à l’athlète suivant. En cliquant sur un athlète, on peut changer, supprimer ou ajouter des résultats après coup.<br>
+Pour supprimer un résultat, il faut presser le bouton de commande adéquat <i>X</i>.
+
+<h3>Supprimer athlète/relais</h3>
+Un athlète ou un relais peut être supprimé de la liste de résultats en sélectionnant la ligne correspondante par un clic. En pressant le bouton de commande <i>supprimer</i> on enlève l’inscription de la liste. Une <a href='#neu'>nouvelle répartition</a> ultérieure est possible.
+
+
+<h3>Classement et qualification</h3>
+Après avoir terminé l‘<a href='#abschliessen'>enregistrement des résultats</a> classement et qualification peuvent être changés à la main. S’il y a eu conflit lors de la qualification (même classement, performance, etc.), le programme a déjà proposé une solution. L’utilisateur peut toutefois la changer à tout moment. 
+
+<h3>Imprimer</h3>
+Ce bouton de commande appelle la <a href='rankinglists.html'>Fonction liste de résultats </a> pour ce tour de la compétition.
+<p/>
+
+<div class='helpnav'>
+<a href='../meeting/index.html'>Meeting</a>
+| <b>Épreuve</b>
+| <a href='../speaker/index.html'>Speaker</a>
+| <a href='../regie/index.html'>Régie</a> 
+| <a href='../administration/index.html'>Administration</a>
+<br/>
+<a href='index.html'>Moniteur de compétition</a>
+| <a href='enrolement.html'>Appel</a>
+| <a href='heats.html'>Séries</a>
+| <b>Résultats</b>
+| <a href='rankinglists.html'>Listes de résultats</a>
+</div>
+
+</body>
+</html>
+

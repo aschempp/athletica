@@ -1,0 +1,161 @@
+/*
+
+	STYLE SHEET: Documentation
+	--------------------------
+
+*/
+
+body,a, p,h1,h2,h3,h4,ul,ol,li,div,td,th,address,blockquote,b,i,form {
+  	font-family: Verdana,Arial,Helvetica,sans-serif;
+  	font-size:12px;
+	line-height:140%;
+}
+
+body {
+  	background-color:#AAAACC;
+  	color:#000000;
+  	margin:20px;
+	background-image:url(../img/background.gif);
+	background-repeat:repeat-y;
+	background-position:left top;
+}
+
+div.helpmain {
+	width:800px;
+	background-color:#FFFFFF;
+}
+
+a.chap {
+  	font-size:11px;
+  	padding-left:5px;
+}
+a:link {
+ 	color: #000093;
+  	text-decoration: none;
+}
+a:activ {
+ 	color: #000093;
+  	text-decoration: none;
+}
+a:visited {
+ 	color: #000093;
+  	text-decoration: none;
+}
+a:hover {
+  	color: #CC0033;
+  	text-decoration: underline;
+}
+
+pre {
+  	font-size:11px;
+}
+
+p.warn {
+  	background-color:#FFFF80;
+  	padding:5px;
+}
+
+div.helpnav {
+  	background-color:#DDDDDD;
+  	padding:5px;
+}
+div.nav {
+  	font-size:13px;
+  	font-weight:bold;
+  	padding-left:7px;
+  	padding-top:2px;
+}
+
+span.src {
+  	font-size:11px;
+  	font-family: Courier, monospace;
+}
+
+dt {
+ 	font-size:11px;
+  	font-weight:bold;
+  	padding-left:25px;
+}
+dl {
+ 	font-size:11px;
+  	font-weight:normal;
+}
+
+ul {
+  	list-style-type:square;
+}
+
+li {
+  	padding-bottom:2px;
+}
+
+h1 {
+  	font-size:15px;
+  	font-weight: bold;
+	background-color:#CCCCCC;
+	padding-left:7px;
+  	padding-top:3px;
+  	padding-bottom:3px;
+}
+
+h2 {
+  	font-size:13px;
+  	font-weight: bold;
+  	font-style:italic; 
+	background-color:#CCCCCC;
+	padding-left:7px;
+  	padding-top:2px;
+  	padding-bottom:2px;
+}
+
+h3 {
+  	font-size:12px;
+  	font-weight: bold;
+  	font-style:italic;
+}
+
+h4 {
+  	font-size:12px;
+  	font-weight: normal;
+  	text-decoration: underline;
+}
+
+img {
+  	vertical-align:middle;
+  	border-width:0px;
+}
+
+table {
+  	border-collapse:collapse;
+}
+
+tr.nav {
+  	background-color:#CCCCCC;
+}
+
+th {
+  	text-align:left;
+  	vertical-align:middle;
+  	padding:3px;
+	border-width:1px;
+  	border-style:solid;
+  	border-color:#888888;
+}
+
+td {
+  	text-align:left;
+  	vertical-align:top;
+  	padding:3px;
+	border-width:1px;
+  	border-style:solid;
+  	border-color:#888888;
+}
+td.sep {
+	border-width:0px;
+  	border-style:none;
+}
+td.logo {
+	text-align:center;
+  	vertical-align:middle;
+} 
+

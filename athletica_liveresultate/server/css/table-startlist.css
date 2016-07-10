@@ -1,0 +1,131 @@
+.table-startlist {
+    width: 100%;
+    margin: auto;   
+}
+.table-startlist thead th {
+    height: 35px;
+    vertical-align: middle;
+    padding-top: 0px !important;
+    font-size: 15px !important;
+}
+
+.table-startlist thead th[data-sort]{
+    cursor:pointer;
+}
+
+.table-startlist tbody td {
+    height: 50px;
+    vertical-align: top;
+    font-size: 15px !important;
+}
+
+.table-startlist tbody td {
+    height: 30px;
+    vertical-align: middle;
+    font-size: 15px !important;
+}
+
+.table-startlist .pos {
+    width: 40px !important;
+    text-align: right;
+    padding-right: 15px;
+    padding-top: 3px;
+}
+.table-startlist .bib {
+    width: 40px !important;
+    text-align: center;
+    padding-right: 15px;
+    padding-top: 3px;
+}
+.table-startlist .name {
+    width: 225px;
+	line-height: 150%;
+    text-align: left;
+    padding-right: 15px;
+}
+.table-startlist .yob {
+    width: 50px;
+	text-align: center !important;
+    padding-top: 3px;
+}
+.table-startlist .country {
+    width: 80px;
+	text-align: center !important;
+    padding-top: 3px;
+}
+.table-startlist .club {
+    width: 300px;
+    text-align: left;
+    padding-top: 3px;
+}
+.table-startlist .topPerf {
+    min-width: 150px;
+    text-align: left;
+    padding-top: 3px;
+}
+
+.table-startlist th span.short {
+    display: none;
+}
+.table-startlist th span.long {
+    display: inline;
+}
+
+.table-startlist #empty {
+    font-size: 15px;
+    font-style: italic;
+}
+
+@media screen and (max-width: 500px) {
+    .table-startlist th span.short {
+        display: inline;
+    }
+    .table-startlist th span.long {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .table-startlist .bib {
+        display: none;
+    }
+    .table-startlist .country {
+        display: none;
+    }
+    .table-startlist .club {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .table-startlist .bib {
+        display: none;
+    }
+    .table-startlist .country {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .table-startlist .yob {
+        display: none;
+    }
+    .table-startlist .country {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .table-startlist .country {
+        display: none;
+    }
+    .table-startlist .topPerf {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .table-startlist .topPerf {
+        display: none;
+    }
+}

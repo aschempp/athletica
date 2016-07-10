@@ -1,0 +1,169 @@
+.table-results {
+    width: 100%;
+    margin: auto;   
+}
+.table-results thead th {
+    height: 35px;
+    vertical-align: middle;
+    padding-top: 0px !important;
+    font-size: 15px !important;
+}
+
+.table-results tbody td {
+    height: 30px;
+    vertical-align: middle;
+    font-size: 15px !important;
+}
+
+.table-results .rank {
+    width: 40px !important;
+    text-align: right;
+    padding-right: 15px;
+    padding-top: 3px;
+}
+.table-results .name {
+    width: 400px;
+	line-height: 150%;
+    text-align: left;
+    padding-right: 15px;
+}
+.table-results .yob {
+    width: 50px;
+	text-align: center !important;
+    padding-top: 3px;
+}
+.table-results .country {
+    width: 80px;
+	text-align: center !important;
+    padding-top: 3px;
+}
+.table-results .club {
+    width: 220px;
+    text-align: left;
+    padding-top: 3px;
+}
+.table-results .result {
+    text-align: right !important;
+    width: 100px;
+    padding-top: 3px;
+}
+.table-results .qual {
+    width: 20px;
+    text-align: center;
+}
+.table-results .points {
+    text-align: center !important;
+    width: 100px;
+    padding-top: 3px;
+}
+.table-results .wind {
+    text-align: center !important;
+    width: 100px;
+    padding-top: 3px;
+}
+.table-results .remark {
+    text-align: left !important;
+    min-width: 100px;
+    padding-left: 15px;
+    padding-top: 3px;
+}
+
+.table-results th span.short {
+    display: none;
+}
+.table-results th span.long {
+    display: inline;
+}
+
+@media screen and (max-width: 500px) {
+    .table-results th span.short {
+        display: inline;
+    }
+    .table-results th span.long {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .table-results .rank {
+        width: 35px !important;
+    }
+    .table-results .yob {
+        display: none;
+    }
+    .table-results .club {
+        display: none;
+    }
+    .table-results .country {
+        display: none;
+    }
+    .table-results .result {
+        width: 70px;
+    }
+    .table-results .points {
+        display: none;
+    }
+    .table-results .remark {
+        display: none;
+    }
+}
+
+@media screen and (max-width:635px) {
+    .table-results .yob{
+        display: none;
+    }
+    .table-results .club {
+        display: none;
+    }
+    .table-results .country {
+        display: none;
+    }   
+    .table-results .points {
+        display: none;
+    }
+    .table-results .remark {
+        display: none;
+    }
+}
+
+@media screen and (max-width:690px) {
+    .table-results .yob{
+        display: none;
+    }
+    .table-results .country {
+        display: none;
+    }   
+    .table-results .points {
+        display: none;
+    }
+    .table-results .remark {
+        display: none;
+    }
+}
+
+@media screen and (max-width:805px) {
+    .table-results .country {
+        display: none;
+    }   
+    .table-results .points {
+        display: none;
+    }
+    .table-results .remark {
+        display: none;
+    }
+}
+
+@media screen and (max-width:885px) {
+    .table-results .country {
+        display: none;
+    }
+    .table-results .points {
+        display: none;
+    }   
+}
+
+@media screen and (max-width:995px) {
+    .table-results .points {
+        display: none;
+    }   
+}

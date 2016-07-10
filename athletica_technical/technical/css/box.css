@@ -1,0 +1,128 @@
+@charset "utf-8";
+
+div#box_success, div#box_error, div#box_info, div#box_warning, div#box_filter {
+	width: 80%;
+	padding: 2px;
+}
+
+div#box_success {
+	border: solid 1px #78CF19;
+}
+
+div#box_error {
+	border: solid 1px #E58484;
+}
+
+div#box_info {
+	border: solid 1px #ABCBF2;
+}
+
+div#box_warning {
+	border: solid 1px #EDB56B;
+}
+
+div#box_filter {
+	border: solid 1px #AEADAD;
+}
+
+div#box_success .title, div#box_error .title, div#box_info .title, div#box_warning .title, div#box_filter .title {
+	padding: 5px;
+	margin-bottom: 2px;
+
+	font-weight: bold;
+}
+
+div#box_success .title {
+	background-image: url(../img/box/success/bg_title.png);
+	background-repeat: repeat-x;
+}
+
+div#box_error .title {
+	background-image: url(../img/box/error/bg_title.png);
+	background-repeat: repeat-x;
+}
+
+div#box_info .title {
+	background-image: url(../img/box/info/bg_title.png);
+	background-repeat: repeat-x;
+}
+
+div#box_warning .title {
+	background-image: url(../img/box/warning/bg_title.png);
+	background-repeat: repeat-x;
+}
+
+div#box_filter .title {
+	background-image: url(../img/box/filter/bg_title.png);
+	background-repeat: repeat-x;
+
+	cursor: pointer;
+}
+
+div#box_success .message, div#box_error .message, div#box_info .message, div#box_warning .message, div#box_filter .message {
+	padding: 5px;
+}
+
+div#box_success .message {
+	background-color: #D7FDAC;
+}
+
+div#box_error .message {
+	background-color: #FCCACA;
+}
+
+div#box_info .message {
+	background-color: #DDE8F4;
+}
+
+div#box_warning .message {
+	background-color: #FFE5B8;
+}
+
+div#box_filter .message {
+	background-color: #E8E8E8;
+}
+
+div#box_success .icon, div#box_error .icon, div#box_info .icon, div#box_warning .icon, div#box_filter .icon {
+	width: 25px;
+	float: left;
+
+	background-repeat: no-repeat;
+}
+
+div#box_success .icon {
+	display: none;
+}
+
+div#box_error .icon {
+	display: none;
+}
+
+div#box_info .icon {
+	display: none;
+}
+
+div#box_warning .icon {
+	display: none;
+}
+
+div#box_filter .icon {
+	background-image: url(../../img/icon_filter.png);
+}
+
+div#box_success .hidden, div#box_error .hidden, div#box_info .hidden, div#box_warning .hidden, div#box_filter .hidden {
+	display: none;
+}
+
+div#box_success .button {
+	background-image: url(../img/box/success/button.png);
+}
+
+div#box_error .button {
+}
+
+div#box_info .button {
+}
+
+div#box_warning .button {
+}

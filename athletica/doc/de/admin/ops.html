@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<meta content="text/html; charset=iso-8859-1" />
+
+	<title>Athletica für Administratoren: Betrieb</title>
+	<link rel="stylesheet" type="text/css" href="../../css/stylesheet.css" />
+</head>
+
+<body>
+<div class="helpmain">
+<h1>Betrieb</h1>
+Wir empfehlen, regelmässig <a href='#backup'>Datensicherungen</a> vorzunehmen
+und nach grösseren Daten-Änderungen die Datenbank zu <a href='#optimize'>
+optimieren</a> (z.B. nach dem Erfassen aller Wettkampfanmeldungen,
+nachdem viele Resultate eingegeben wurde oder wenn ein Meeting gelöscht
+wurde).
+
+<h2><a name='backup'>Starten und Stoppen</a></h2>
+Um <i>Athletica</i> betreiben zu können, muss sowohl die MySQL-Datenbank
+als auch der Apache-Webserver gestartet werden. Bereits bei der Installation
+wurden diese Komponenten so aufgesetzt, dass sie als Service (Win NT, 2000, XP)
+oder mit <i>Startup</i> im Startmenu (Win 98) gestartet werden. Unter Linux
+werden sie ebenfalls beim Booten mitgestartet.
+<p/>
+Erfolgte die Installation mit dem <i>Athletica_WinMAX</i>-Paket, stehen im
+Startmenu und auf dem Desktop Links zum Starten der Applikation zur Verfügung.
+
+<h3>Athletica</h3>
+Die Applikation wird mit dem Webbrowser mit <span class='src'>"http://[HOST]/athletica/index.php"</span> gestartet.
+Der [HOST]-Name wird bei der Installation durch den Administrator
+vergeben und entspricht der IP-Adresse des Servers (bei Einzelplatzbetrieb
+wäre das <span class='src'>"localhost"</span>).
+
+<h3>MySQL</h3>
+MySQL kann unter Windows mit dem Tool <i>WinMySQLAdmin</i> gestartet und
+gestoppt werden. <i>/WinMySQLAdmin</i> wurde mitinstalliert und kann über
+<i>Start->Programme->Athletica->MySQL</i> erreicht werden.
+<br/>
+Weiterführende Informationen finden sich im Installationsverzeichnis von MySQL
+unter <i>Docs</i>.
+
+<h3>Apache</h3>
+Unter Windows stehen in <i>Start->Programme->Athletica->Apache</i> Links zur
+Verfügung, um den Webserver auch manuell starten und stoppen zu können.
+<br/>
+Mit <span class='src'>"http://[HOST]/manual"</span> kann auf die
+Apache-Dokumentation zugegriffen werden.
+
+<h2><a name='backup'>Datensicherung</a></h2>
+<p class='warn'>
+<b>Achtung:</b> Bei einem Upgrade der Applikation kann sich unter Umständen
+die Struktur der Datenbank ändern. Führe darum nach dem Upgrade zuerst eine
+Gesamtsicherung aller Daten aus.
+</p>
+
+<h3>Gesamtsicherung</h3>
+Wenn die Applikation gestoppt ist, kann zum Backup aller Daten das
+<i>mysql/data</i>-Verzeichnis kopiert werden. Bei einem Restore kann das
+bestehende Verzeichnis durch die gesicherte Version ersetzt werden.
+
+<h3>Sicherung während dem Betrieb</h3>
+<ol>
+<li>Administrations-Menu in <i>athletica</i> öffnen.</li>
+<li>Unter <i>Datenbank</i> die Funktion <i>Daten sichern</i> auswählen.</li>
+<li>Mit <i>OK</i> die Sicherung starten.</li>
+<li>Bei der entsprechenden Aufforderung Name und Ort der Sicherungsdatei
+eingeben (SQL-Format).</li>
+<li>Die exportierten Daten als SQL-Datei am Besten auf einem separaten
+Speichermedium sichern (Diskette sollte in den meisten Fällen genügen).
+</li>
+</ol>
+
+<h3>Gesicherte Daten einspielen</h3>
+Die Sicherung und das Wiedereinspielen müssen mit derselben <i>Athletica</i>
+Version geschehen.
+<ol>
+<li>Administrations-Menu in <i>athletica</i> öffnen.</li>
+<li>Unter <i>Datenbank</i> die Funktion <i>Sicherung einspielen</i>
+auswählen.</li>
+<li>Mit <i>Durchsuchen</i> die Sicherungsdatei auswählen.</i>
+<li>Mit <i>OK</i> die Einspielung starten.</li>
+</ol>
+<p class='warn'>
+<b>Achtung:</b> Alle bestehende Daten werden dabei überspielt.
+</p>
+Tritt beim Einspielen ein Fehler auf, befindet sich die Applikation in einem
+undefinierten Zustand und kann wahrscheinlich nicht richtig benützt werden.
+Mit entsprechenden SQL-Kenntnissen kann die Sicherungsdatei eventuell
+korrigiert werden.
+<br/>
+Wir empfehlen auf jeden Fall, von Zeit zu Zeit eine Gesamtsicherung wie
+oben erklärt durchzuführen.
+
+<h2><a name='optimize'>Optimierung</a></h2>
+<i>Apache</i> und <i>MySQL</i> müssen bereits laufen.
+<ol>
+<li><i>phpMyAdmin</i> starten</li>
+<li>Im Navigationsmenu links die Datenbank <i>athletica</i> auswählen.
+<li>Auf der rechten Seite müssen alle Tabellen markiert werden. Im Feld
+<i>markierte Tabellen</i> ist der Befehl <i>Optimiere Tabellen</i> auszuführen.
+</li>
+</ol>
+
+<h2>Log Dateien</h2>
+Apache und MySQL schreiben während dem Betrieb Log-Files, welche manchmal
+hilfreich bei Fehlerauswertungen sind, im allgemeinen aber nicht benötigt
+werden. Sind diese Anwendungen gestoppt, können die Files von Zeit zu Zeit
+gelöscht werden. Sie befinden sich im Apache-Verzeichnis unter <i>logs</i>
+(access.log, error.log) sowie im MySQL-Verzeichnis und <i>data</i> (log.xxx
+und mysql.err)
+
+<p class='warn'>
+<b>Achtung:</b> Im MySQL-Verzeichnis unter <i>data</i> befindet sich auch
+die eigentlich Datenbank. Diese Verzeichnisse dürfen auf keinen Fall gelöscht
+werden.
+</p>
+</div>
+
+</body>
+</html>

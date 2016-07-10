@@ -1,0 +1,55 @@
+body,a,table,td { font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-style:bold ; font-weight:bold; }
+
+body { background-color:#000000; color:#FFFFFF; margin:0px; }
+body.status { margin-top:3px; margin-left:10px; font-size:11px; }
+
+a { color:#FFFFFF; font-weight:bold; text-decoration:none; }
+
+a:hover { color:#A0C0F0; text-decoration:underline; }
+
+table {
+	border-width:0px;
+	border-collapse:collapse;
+	padding:0px;
+	margin:0px;
+}
+
+/* for firefox: menu is now as big as in internet explorer *w‰‰h* */
+tr {
+	height: 24px;
+}
+
+td {
+	border-width:1px;
+	border-style:solid;
+	border-color:#000000;
+}
+
+td.main {
+	font-size:12px;
+	text-align:center;
+	vertical-align:middle;
+	background-color:#000080;
+}
+
+td.main_inactive {
+	font-size:12px;
+	text-align:center;
+	vertical-align:middle; 
+	background-color:#666666; 
+}
+
+td.subitem { 
+	font-size:12px;
+	text-align:center;
+	vertical-align:middle;
+	background-color:#000080;
+}
+
+td.subitem_inactive {
+	font-size:12px;
+	text-align:center;
+	vertical-align:middle;
+	background-color:#999999;
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<meta content="text/html; charset=iso-8859-1" />
+
+	<title>Athletica für Administratoren: Systemvoraussetzungen</title>
+	<link rel="stylesheet" type="text/css" href="../../css/stylesheet.css" />
+</head>
+
+<body>
+<div class="helpmain">
+<h1>Systemvoraussetzungen</h1>
+<i>Athletica</i> ist als sogenanntes Client-Server-System voll netzwerkfähig,
+kann aber auch auf einem einzelnen Rechner eingesetzt werden. Die
+Applikationssoftware muss nur auf einem Computer installiert werden, dem
+Server.
+<br/>
+Die Bedienung der Applikation erfolgt über einen Webbrowser, welcher im
+allgemeinen schon auf allen Betriebssystem vorinstalliert ist.
+<p/>
+Die unten aufgeführte <a href='#server_sw'>Server-Software</a> muss für den
+Betrieb von <i>Athletica</i> installiert sein. Bei den uns bekannten
+Linux-Distributionen sind diese Komponenten bereits enthalten und können
+mit dem jeweiligen Installationswerkzeug in Betrieb genommen werden.
+<p/>
+Für Windows-Systems müssen die Komponenten selber von den untenstehenden
+Bezugsadressen beschafft und installiert werden, was gerade für Einsteiger
+nicht immer ganz einfach ist. Speziell für diesen Fall bieten wir unser
+<i>Athletica_WinMAX</i>-Paket an, welches über ein einfach zu bedienendes
+Installationsprogramm ein vorkonfiguriertes System aufsetzt (siehe
+<a href="install.html#basic">Einsteiger-Installation</a>).
+<p/>
+Weiter unten erklären wir, wie ein <a href='#network'>Netzwerk</a>
+für <i>Athletica</i> aussehen könnte.
+<p class='warn'>
+<b>Achtung:</b> Die Applikation ist für den Intranet-Betrieb ausgelegt
+und für den Einsatz in einem öffentlichen Netz nicht genügen abgesichert!
+</p>
+
+<h2>Client-Software</h2>
+<table>
+	<tr>
+		<th>Typ</th><th>Produkt</th><th>Version</th><th>Bemerkungen</th>
+	</tr>
+	<tr>
+		<td>Web Browser</td>
+		<td>MS Internet Explorer</td>
+		<td>7.0</td>
+		<td>Bei anderen Browsern / Versionen können allenfalls Javascript- oder
+		Druckprobleme auftreten.<br />
+		Die HTML-Druckfunktionen müssen für die Browserumgebung konfiguriert
+		werden. Die Client-Geräte welche diese Funktionen benötigen müssen mit
+		identischen Betriebssystemen und Browser ausgerüstet sein, um befriedigende
+		Ergebnisse zu erzielen.
+		</td>
+	</tr>
+</table>
+<p />
+<h2><a name='server_sw'>Server-Software</a></h2>
+Die verwendete Software steht allesamt als Open-Source zur Verfügung und darf
+entsprechend der jeweiligen Lizenz frei verwendet werden.
+<table>
+	<tr>
+		<th>Typ</th><th>Produkt</th><th>Version</th><th>Bemerkungen</th>
+	</tr>
+	<tr>
+		<td>Hypertext-Processor</td>
+		<td><a href='http://www.php.net' target='_blank'>PHP</a></td>
+		<td>ab 4.2.0, empfohlen 4.4.8</td>
+		<td>Dies ist der Kern der Athletica-Laufzeitumgebung. Aus diesem Grund
+		arbeiten wir jeweils mit den aktuellsten stabilen PHP-Versionen.	
+		</td>
+	</tr>
+	<tr>
+		<td>Webserver</td>
+		<td><a href='http://httpd.apache.org' target='_blank'>Apache</a></td>
+		<td>ab 1.3.29, empfohlen 2.0.59</td>
+	  <td>Grundsätzlich kann jeder Webserver verwendet werden, für den PHP
+		Modulunterstützung bietet.</td>
+	</tr>
+	<tr>
+		<td>Datenbank</td>
+		<td><a href='http://www.mysql.com' target='_blank'>MySQL</a></td>
+		<td><p>ab 4.0,<br />
+		  empfohlen 4.0.12</p>
+	    </td>
+		<td>Um andere relationale Datenbanken verwenden zu können sind umfangreiche
+		Anpassungen am Sourcecode nötig.</td>
+	</tr>
+	<tr>
+		<td>Datenbank-Administration</td>
+		<td><a href='http://www.phpmyadmin.net' target='_blank'>phpMyAdmin</a></td> <td>2.2.6, <br />
+		  empfohlen 2.11.5.1</td>
+	  <td>Ein beliebtes, webbasiertes Tool zur Administration der
+		MySQL-Datenbank. Andere Tools können selbstverständlich auch eingesetzt
+		werden.</td>
+	</tr>
+</table>
+<p />
+
+<h2>Client-Hardware</h2>
+<table>
+	<tr>
+		<th>System</th><th>Bemerkungen</th>
+	</tr>
+	<tr>
+		<td>PC mit Netzwerkunterstützung (TCP/IP)</td>
+		<td>Hardware und Betriebssystem
+		müssen den eingesetzten Webbrowser unterstützen.<br />
+		Grundsätzlich kommen alle gängigen Betriebssysteme in Frage, z.B. Windows,
+		Mac, Linux, etc. Allerdings müssen die oben erwähnten Einschränkungen
+		beim Webbrowser in Betracht gezogen werden.
+		</td>
+	</tr>
+</table>
+<p />
+
+<h2>Server-Hardware</h2>
+<table>
+	<tr>
+		<th>System</th><th>Bemerkungen</th>
+	</tr>
+	<tr>
+		<td>Server</td>
+		<td>Die Hardware-Ausstattung hängt primär von der Anzahl der Benutzer ab,
+		die gleichzeitig mit dem System arbeiten. 
+		Im einfachsten Fall genügt auch ein Pentium-II-PC mit 64MB RAM. Um eine vern&uuml;nftige Geschwindikeit zu garantieren empfehlen wir allerdings den Einsatz eines neueren PC's ab 1GB RAM</td>
+	</tr>
+	<tr>
+		<td>Betriebssystem</td>
+		<td>Jedes Betriebssystem, dass die oben aufgelistete Server-Software
+		unterstützt kann eingesetzt werden.
+		</td>
+	</tr>
+</table>
+
+<h2><a name='#network'>Netzwerk</a></h2>
+Im folgenden kann nicht detailliert beschrieben werden, wie ein Intranet
+aufgesetzt werden muss. Trotzdem ein paar Hinweise, welche dabei helfen sollen.
+
+<h3>Einzelplatzbetrieb</h3>
+Wird <i>Athletica</i> auf einem einzelnen Rechner betrieben ist keine
+zusätzliche Hardware nötig. Die Applikation kann nach dem Aufstarten von
+Webserver und Datenbank via Browser unter dem Hostnamen <i>localhost</i>,
+bzw der IP-Adresse <i>127.0.0.1</i> erreicht werden.
+
+<h3>Mehrere Computer (Client-Server-Betrieb)</h3>
+<h4>Hardware</h4>
+Mehrere Computer werden in einem Netzwerk miteinander verbunden werden.
+Statt mit Kabeln zu arbeiten kann selbstverständlich auch ein drahtloses
+sogenanntes Wireless LAN installiert werden.
+<p/>
+Je nach Netzwerktopografie unterscheidet sich die benötigte Hardware und 
+deren Konfiguration erheblich. Wir können darum nicht näher auf dieses
+Thema eingeben.
+
+<h4>Drucker anschliessen</h4>
+Es ist möglich, Athletica mit nur einem Drucker zu betreiben. Ist der Drucker
+netzwerkfähig, ist er für jeden Computer als eigenständige Resource sichtbar.
+Andernfalls kann er auf einem dafür vorgesehenen Computer so installiert
+werden, dass die anderen Rechner ebenfalls darauf zugreifen können. Auch dazu
+sollte die Betriebssystem-Dokumentation Hilfe anbieten können.
+
+<h4>Athletica Installation</h4>
+<i>Athletica</i> muss nur auf einem einzigen Computer installiert werden, dem
+sogenannten Server. Am besten wählt man dafür jene Maschine, mit dem stärksten
+Prozessor und dem grössten Hauptspeicher (RAM).
+
+<h4>Browser Installation</h4>
+Wie <a href='#client_sw'>oben</a> erwähnt muss auf allen Computern (den
+sogenannten <i>Clients</i>) ein Webbrowser zum Zugriff auf Athletica
+installiert sein. Auch mit dem Browser auf dem Server kann selbstverständlich
+gearbeitet werden.
+</div>
+</body>
+</html>

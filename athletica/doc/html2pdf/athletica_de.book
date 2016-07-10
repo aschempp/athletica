@@ -1,0 +1,12 @@
+#HTMLDOC 1.8.23
+-t pdf14 -f ../de/athletica.pdf --book --toclevels 4 --no-numbered --toctitle "Inhaltsverzeichnis" --title --titleimage title.html --linkstyle underline --size A4 --left 1.00in --right 1.00in --top 0.50in --bottom 0.50in --header ... --footer t.1 --nup 1 --tocheader ... --tocfooter t.i --portrait --color --no-pscommands --no-xrxcomments --no-compression --jpeg=0 --fontsize 11.0 --fontspacing 1.2 --headingfont Helvetica --bodyfont Helvetica --headfootsize 9.0 --headfootfont Helvetica --charset iso-8859-1 --links --no-embedfonts --pagemode outline --pagelayout single --firstpage p1 --pageeffect none --pageduration 10 --effectduration 1.0 --no-encryption --permissions all  --owner-password ""  --user-password "" --browserwidth 680
+../de/home.html
+../de/user/intro.html
+../de/user/functions.html
+../de/user/guide.html
+../de/admin/basics.html
+../de/admin/install.html
+../de/admin/config.html
+../de/admin/ops.html
+../de/user/todo.html
+../de/user/faq.html

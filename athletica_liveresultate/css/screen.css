@@ -1,0 +1,137 @@
+body {
+    background-color: #FFFFFF;
+    color: #000000;
+    padding: 0px;
+    margin: 0px;
+    font-family:Verdana,'Trebuchet MS',Arial,Helvetica,sans-serif,'Academy Engraved Let';   
+    font-size:0.9em; 
+}
+
+
+/* ----------container zentriert das layout-------------- */
+#container {    
+    width: 960px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: auto;
+    background-color: #FFFFFF;   
+    border-right: 1px solid #000000;  
+}
+
+/* ----------banner for logo-------------- */
+#banner {   
+    color: #1A1A1A; 
+    height: 120px;   
+    padding: 0px;
+    margin: 0px; 
+}
+
+
+/* -----------------Navigation-------------------- */
+#navi {       
+    background-color: #DDDDDD;
+    padding: 0px;
+    width: 200px;
+    float: left; 
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left:0px;
+    padding-right:0px;      
+}
+
+#navi_pc {       
+    background-color: #DDDDDD;
+    padding: 0px;
+    width: 200px;
+    float: left; 
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left:0px;
+    padding-right:0px;      
+}
+
+.navi { 
+    background-color: #DDDDDD;
+    padding: 5px;   
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;    
+}
+
+
+
+/* -----------------Inhalt--------------------- */
+#content {    
+    background-color: #FFFFFF;
+    padding-left: 20px;
+    margin-left: 200px;
+    margin-right: 0px; 
+     
+}
+
+div#content	{min-height:400px;
+	height:expression(this.scrollHeight < 400? "400px": "auto" );
+	
+} 
+
+#content_pc {    
+    background-color: #FFFFFF;
+    padding-left: 20px;
+    margin-left: 200px;
+    margin-right: 0px;      
+}
+
+div#content_pc    {min-height:400px;
+    height:expression(this.scrollHeight < 400? "400px": "auto" );
+    
+} 
+
+
+	/* -----------------Footer--------------------- */
+
+
+.clear {
+    clear: left;  
+}	  
+
+#footer {
+    clear: left;
+    background-color: #cc3300;
+    padding: 5px;
+    margin: 0px;  
+    color: white;
+    text-align: center;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;  
+     font-size: 10px;  
+    border-top: 1px solid #000000; 
+    border-bottom: 1px solid #000000;  
+    border-left: 1px solid #000000; 
+    border-right: 1px solid #000000;  
+}
+
+#footer a { 
+    color: white; 
+    font-family: Arial,Helvetica,sans-serif;  
+     font-size: 10px;   
+    font-weight: bold;  
+}
+
+div#footer a:hover {
+    color: #FFFFFF;
+    text-decoration: none; 
+     font-family: Arial,Helvetica,sans-serif;  
+     font-size: 10px;  
+}        
+
+.right {
+    text-align: right;  
+    padding-right: 30px;  
+}
+
+.top {    
+    padding-top: 0px;  
+}
+
+

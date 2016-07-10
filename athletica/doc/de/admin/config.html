@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<meta content="text/html; charset=iso-8859-1" />
+
+	<title>Athletica für Administratoren: Konfiguration</title>
+	<link rel="stylesheet" type="text/css" href="../../css/stylesheet.css" />
+</head>
+
+<body>
+<div class="helpmain">
+<h1>Konfiguration</h1>
+In diesem Kapitel werden die Möglichkeiten zur Individuellen Konfiguration
+der Applikation beschrieben. Dabei werden die folgenden Themen betrachtet:
+
+<ol>
+	<li><a href='#data'>Basisdaten</a>
+	<li><a href='#params'>Konfigurationsdatei parameters.inc.php</a>
+	<li><a href='#css'>Stylesheets</a>
+</ol>
+
+<h2><a name='data'>Basisdaten</a></h2>
+Die Basisdaten werden im Menu <i>Administration</i> der Applikation verwaltet.
+Die jeweiligen Hilfeseiten geben Auskunft zu den einzelnen Parametern. Bei
+einem Upgrade werden diese Daten beibehalten.
+
+<h2><a name='params'>Konfigurationsdatei parameters.inc.php</a></h2>
+Die Konfiguration der Applikation erfolgt mit der Datei
+<i>parameters.inc.php</i>. Da diese Datei bei einem allfälligen Upgrade
+überschrieben wird, ist sie vorher unbedingt zu sichern.
+
+<h3>MySQL-Database</h3>
+Diese Parameter müssen nur geändert werden, falls die Datenbank nicht gemäss
+der <a href='install.html#database'>Installationsanleitung</a> aufgesetzt
+wurde.
+
+<h3>Start number distribution</h3>
+Diese Parameter definieren die Standardwerte für die automatische
+Startnummernzuordnung. Folgende Werte können gesetzt werden:
+<ul>
+<li>Erste zu vergebende Nummer</li>
+<li>Freie Nummern zwischen Kategorien</li>
+<li>Freie Nummern zwischen Vereinen</li>
+</ul>
+
+<h3>Result presentation</h3>
+Die Darstellung der Resultate kann hier definiert werden. Die folgenden
+Werte können angepasst werden:
+<ul>
+<li>Standard-Trennzeichen</li>
+<li>Stunden-Trennzeichen</li>
+<li>Minuten-Trennzeichen</li>
+<li>Sekunden-Trennzeichen</li>
+<li>Meter-Trennzeichen</li>
+<li>Wind-Trennzeichen</li>
+<li>Zeichen zur Kennzeichnung leerer Infofelder</li>
+<li>Anzahl Rundungsstellen bei Punkteberechnungen (Vereinswettkämpfe)</li>
+<li>Gültige Hochsprungresultate (in Klammern, getrennt durch Vertikalbalken)</li>
+<li>Gültige Trennzeichen in Benutzereingaben (werden intern übersetzt)</li>
+</ul>
+
+<h3>Ranking lists</h3>
+Mit diesen Optionen kann die Darstellung der Ranglisten gesteuert werden.
+Diese Angaben erscheinen zusammen mit den allgemeinen Meetingdaten auf der
+Titelseite der Ranglisten.
+<dl>
+<dt>Organisator</dt><dd>Der Name des Organisators kann hier gesetzt werden.</dd>
+<dt>Timing</dt><dd>Hier kann Art und/oder Marke der eingesetzten Zeitmessanlage
+definiert werden.</dd>
+</dl>
+
+<h3>Track distribution</h3>
+Die Bahnverteilung erfolgt in der Reihenfolge der hier definierten Bahnen.
+Das übergeordnete Array definiert die Anzahl der Bahnen (6, 7 oder 8). Das
+jeweils untergeordnete Array definiert die Reihenfolge.
+<br/>
+Die hier gesetzen Werte bestimmen die Bahnauswahl zum Beispiel bei der
+Administration von Stadion oder bei der Serieneinteilung.
+
+<h3>Various other options</h3>
+Folgende weiteren Parameter können definiert werden
+<dl>
+<dt>Anzahl Zeilen pro Seite</dt><dd>Dieser Parameter setzt die Anzahl der zu
+druckenden Zeilen pro Seite. Er ist stark abhängig vom eingesetzten Drucker.
+</dd>
+<dt>Cookie Ablaufzeit</dt><dd>Vom Benutzer gewählte Parameter, wie die Sprache
+und das aktuell gewählte Meeting werden als Cookies gesetzt. Der anzugebende
+Wert definiert, wie lange diese Cookies gültig sind (in Sekunden).</dd>
+<dt>Monitor Reload</dt><dd>Anzahl Sekunden, nach deren Ablauf die Wettkampf-
+und Speakermontitorseiten neu geladen werden.</dd>
+</dl>
+
+<h2><a name='css'>Stylesheets</a></h2>
+Administratoren mit HTML- und CSS-Knowhow können das Aussehen der Applikation
+und der druckbaren Listen mit verschiedenen Stylesheets im Verzeichnis
+<i>css</i> steuern. Gemachte Änderungen werden bei einem allfälligen Upgrade
+allerdings wieder überschrieben. Darum empfehlen wir, die Dateien vorher
+separat zu sichern.
+<dl>
+<dt>navigation.css</dt><dd>Layout der Navigationsleisten.</dd>
+<dt>printing.css</dt><dd>Dies ist für den Benutzer das wohl wichtigste
+Stylesheet. Es steuert den Ausdruck der diversen Listen.</dd>
+<dt>stylesheet.css</dt><dd>Definiert das Aussehen der Applikation.</dd>
+</dl>
+</div>
+</body>
+</html>

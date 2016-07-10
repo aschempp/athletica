@@ -1,0 +1,12 @@
+/**
+ * Global CSS-File
+ *
+ * @author Dominik Hadorn
+ *
+ */
+
+@charset "utf-8";
+
+.cursor_pointer {
+	cursor:pointer;
+}
