@@ -282,7 +282,6 @@ else		// no DB error
 ?>
     </td>
     <td>
-	<input type="button" onclick="create_combined()" value="<?php echo $strCreateCombined ?>">
 	</td>
 </tr>
      <?php
@@ -293,7 +292,7 @@ else		// no DB error
 <?php
 		$dd = new GUI_DisciplineDropDown(0, true, false, $keys, 'check_discipline()', '' ,$ukc_meeting);
 ?>
-<td>
+<td style="display:none">
 
    <input type="button" onclick="create_svm()" value="<?php echo $strCreateSVM ?>">  
   
@@ -303,7 +302,7 @@ else		// no DB error
   }
   ?>
 
-<tr>
+<tr style="display:none">
 	<th class='dialog'><?php echo $strWind; ?></th>
 	<td class='forms'>
 		<input type="checkbox" name="wind" id="wind" value="yes"><span id="nowind"><?php echo $strNoWind ?></span>
@@ -314,7 +313,7 @@ else		// no DB error
 </tr>
 
 
-<tr>
+<tr style="display:none">
 	<th class='dialog'><?php echo $strDeposit; ?></th>
 	<td class='forms'>
 		<input class='nbr' name='deposit' type='text' maxlength='10'
@@ -322,7 +321,7 @@ else		// no DB error
 	</td>
 </tr>
 
-<tr>
+<tr style="display:none">
 	<th class='dialog'><?php echo $strFee; ?></th>
 	<td class='forms'>
 		<input class='nbr' name='fee' type='text' maxlength='10'
@@ -338,11 +337,11 @@ else		// no DB error
 	</td>
 </tr>
 
-<tr id="timing">
+<tr id="timing" style="display:none">
 	<th class='dialog'><?php echo $strTiming; ?></th>
 	<td class='forms' colspan='3'>
-		<input type="checkbox" name="timing" value="yes"> <?php echo $strOn ?> /
-		<input type="checkbox" name="timingAuto" value="yes"> <?php echo $strAutomatic ?>
+		<input type="hidden" name="timing" value="yes">
+		<input type="hidden" name="timingAuto" value="">
 	</td>
 	<script language="javascript">
 		document.getElementById('timing').style.visibility = "hidden";
@@ -361,8 +360,6 @@ else		// no DB error
 	<th class='dialog'><?php echo $strType; ?></th>
 	<th class='dialog'><?php echo $strDate; ?></th>
 	<th class='dialog'><?php echo $strTimeFormat; ?></th>
-	<th class='dialog'><?php echo $strEnrolementTime; ?></th>
-	<th class='dialog'><?php echo $strManipulationTime; ?></th>
 </tr>
 <tr>
 	<?php
@@ -377,62 +374,6 @@ else		// no DB error
 	?>
 	<td class='forms'>
 		<input size="4" type='text' name='time_1' maxlength='5'
-			value='' />
-	</td>
-	<td class='forms'>
-		<input size="4" type='text' name='etime_1' maxlength='5'
-			value='' />
-	</td>
-	<td class='forms'>
-		<input size="4" type='text' name='mtime_1' maxlength='5'
-			value='' />
-	</td>
-</tr>
-
-<tr>
-	<?php
-	$dd = new GUI_RoundtypeDropDown(0, 2); 
-    if ($date_keep == '' ) {   
-	    $dd = new GUI_DateDropDown(0, 2, 'change_date(this.id, this.selectedIndex)'); 
-    }
-    else {
-         $dd = new GUI_DateDropDown($date_keep, 2, 'change_date(this.id, this.selectedIndex)'); 
-    } 
-	?>
-	<td class='forms'>
-		<input size="4" type='text' name='time_2' maxlength='5'
-			value='' />
-	</td>
-	<td class='forms'>
-		<input size="4" type='text' name='etime_2' maxlength='5'
-			value='' />
-	</td>
-	<td class='forms'>
-		<input size="4" type='text' name='mtime_2' maxlength='5'
-			value='' />
-	</td>
-</tr>
-
-<tr>
-	<?php
-	$dd = new GUI_RoundtypeDropDown(0, 3); 
-    if ($date_keep == '' ) {   
-	    $dd = new GUI_DateDropDown(0, 3, 'change_date(this.id, this.selectedIndex)');
-    }
-    else {
-         $dd = new GUI_DateDropDown($date_keep, 3, 'change_date(this.id, this.selectedIndex)');
-    }
-	?>
-	<td class='forms'>
-		<input size="4" type='text' name='time_3' maxlength='5'
-			value='' />
-	</td>
-	<td class='forms'>
-		<input size="4" type='text' name='etime_3' maxlength='5'
-			value='' />
-	</td>
-	<td class='forms'>
-		<input size="4" type='text' name='mtime_3' maxlength='5'
 			value='' />
 	</td>
 </tr>

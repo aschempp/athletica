@@ -84,7 +84,6 @@ else {
 		case 'meeting_relays':
 		case 'meeting_teams':
 		case 'meeting_teamsms':
-		case 'meeting_timing':
 		case 'meeting_page_layout':
 
 			$meeting_class = 'main';
@@ -93,40 +92,27 @@ else {
 			// submenus
 			$subitems= array(0 => 'meeting_definition'
 								, 1 => 'meeting_entries'
-								, 2 => 'meeting_relays'
-								, 3 => 'meeting_teams'
-								, 4 => 'meeting_teamsms'
-								, 5 => 'meeting_timing'
-								, 6 => 'meeting_page_layout');
+								, 2 => 'meeting_page_layout');
 			// submenu titles
 			$subtitles= array(0 => $strMeetingDefinition
 								, 1 => $strEntries
-								, 2 => $strRelays
-								, 3 => $strTeams
-								, 4 => $strTeamsTeamSM
-								, 5 => $strTiming
-								, 6 => $strPageLayoutShort);
+								, 2 => $strPageLayoutShort);
 			// submenu style
 			$subitem_class= array(0 => 'subitem_inactive'
 								, 1 => 'subitem_inactive'
 								, 2 => 'subitem_inactive'
-								, 3 => 'subitem_inactive'
-								, 4 => 'subitem_inactive'
-								, 5 => 'subitem_inactive'
-								, 6 => 'subitem_inactive');
+								, 3 => 'subitem_inactive');
             }
              else {
                  $subitems= array(0 => 'meeting_definition'
                                 , 1 => 'meeting_entries'
                                
-                                , 2 => 'meeting_timing'
-                                , 3 => 'meeting_page_layout');
+                                , 2 => 'meeting_page_layout');
             // submenu titles
             $subtitles= array(0 => $strMeetingDefinition
                                 , 1 => $strEntries
                                
-                                , 2 => $strTiming
-                                , 3 => $strPageLayoutShort);
+                                , 2 => $strPageLayoutShort);
             // submenu style
             $subitem_class= array(0 => 'subitem_inactive'
                                 , 1 => 'subitem_inactive'
@@ -145,20 +131,8 @@ else {
 				case 'meeting_entries':
 					$subitem_class[1]='subitem';
 					break;
-				case 'meeting_relays':
-					$subitem_class[2]='subitem';
-					break;
-				case 'meeting_teams':
-					$subitem_class[3]='subitem';
-					break;
-				case 'meeting_teamsms':
-					$subitem_class[4]='subitem';
-					break;
-				case 'meeting_timing':
-					$subitem_class[5]='subitem';
-					break;
 				case 'meeting_page_layout':
-					$subitem_class[6]='subitem';
+					$subitem_class[2]='subitem';
 					break;
 			}
 			break;
@@ -299,36 +273,18 @@ else {
 			// submenus
 			$subitems= array(0 => 'admin_categories'
 								, 1 => 'admin_disciplines'
-								, 2 => 'admin_scoretables'
-								, 3 => 'admin_clubs'
-								, 4 => 'admin_region'
-								, 5 => 'admin_athletes'
-								, 6 => 'admin_stadiums'
-								, 7 => 'admin_roundtypes'
-								, 8 => 'admin_faq'
-								, 9 => 'admin_service');
+								, 2 => 'admin_clubs'
+								, 3 => 'admin_stadiums');
 			// submenu titles
 			$subtitles= array(0 => $strCategories
 								, 1 => $strDisciplines
-								, 2 => $strScoreTables
-								, 3 => $strClubs
-								, 4 => $strRegion
-								, 5 => $strAthletes
-								, 6 => $strStadiums
-								, 7 => $strRoundtypes
-								, 8 => $strFaq
-								, 9 => $strService);
+								, 2 => $strClubs
+								, 3 => $strStadiums);
 			// submenu style
 			$subitem_class= array(0 => 'subitem_inactive'
 								, 1 => 'subitem_inactive'
 								, 2 => 'subitem_inactive'
-								, 3 => 'subitem_inactive'
-								, 4 => 'subitem_inactive'
-								, 5 => 'subitem_inactive'
-								, 6 => 'subitem_inactive'
-								, 7 => 'subitem_inactive'
-								, 8 => 'subitem_inactive'
-								, 9 => 'subitem_inactive');
+								, 3 => 'subitem_inactive');
              }
              else {
                  // submenus
@@ -370,29 +326,14 @@ else {
 				case 'admin_disciplines':
 					$subitem_class[1]='subitem';
 					break;
-				case 'admin_scoretables':
+				case 'admin_clubs':
 					$subitem_class[2]='subitem';
 					break;
-				case 'admin_clubs':
+				case 'admin_stadiums':
 					$subitem_class[3]='subitem';
 					break;
-				case 'admin_region':
-					$subitem_class[4]='subitem';
-					break;
-				case 'admin_athletes':
-					$subitem_class[5]='subitem';
-					break;
-				case 'admin_stadiums':
-					$subitem_class[6]='subitem';
-					break;
-				case 'admin_roundtypes':
-					$subitem_class[7]='subitem';
-					break;
 				case 'admin_faq':
-					$subitem_class[8]='subitem';
-					break;
-				case 'admin_service':
-					$subitem_class[9]='subitem';
+					$subitem_class[4]='subitem';
 					break;
 			}
 			break;

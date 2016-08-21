@@ -85,7 +85,7 @@ if($_GET['arg'] == "export_timing"){
 		
 	}else{
 		
-		AA_printErrorMsg($strErrTimingNotConfigured);
+		//AA_printErrorMsg($strErrTimingNotConfigured);
 		
 	}
 	

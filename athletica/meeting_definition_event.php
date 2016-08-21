@@ -418,7 +418,7 @@ else if(mysql_num_rows($result) > 0)  // data found
 <?php
 	}
 ?>
-<tr>
+<tr style="display:none">
 	<th class='dialog'><?php echo $strDeposit; ?></th>
 	<td class='forms'>
 		<input class='nbr' name='deposit' type='text' maxlength='10'
@@ -427,7 +427,7 @@ else if(mysql_num_rows($result) > 0)  // data found
 	</td>
 </tr>
 
-<tr>
+<tr style="display:none">
 	<th class='dialog'><?php echo $strFee; ?></th>
 	<td class='forms'>
 		<input class='nbr' name='fee' type='text' maxlength='10'
@@ -687,7 +687,7 @@ else			// no DB error
 
 ?>
 <br>
-<table class="dialog">
+<table class="dialog" style="display:none">
 <tr><th class="dialog"><?php echo $strMergeRounds ?></th></tr>
 <?php
 

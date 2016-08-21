@@ -1774,28 +1774,6 @@ function change_licensenr(){
      
 
 </script>
- 
-<table>
- <tr>
-    <td > 
-         <?php   
-         $btn = new GUI_Button("meeting_entry.php?arg=del&item=$row[0]", $strDelete);
-         $btn->printButton();
-         ?> 
-    </td>    
-    <td>
-        <form action='print_meeting_receipt.php' method='get' name='printdialog'>
-            <input type='hidden' name='formaction' value=''>
-            <input type='hidden' name='item' value='<?php echo $row[0]; ?>'>
-            <button name='print' type='submit' onClick='setPrint()' valign="bottom">
-                <?php echo $strReceipt; ?>
-            </button> 
-    </td>
-    </form> 
-   </tr>  
-</table>
-
-  
 
 <table class='dialog'>
 <tr>
@@ -2141,7 +2119,7 @@ else {
     else {    
         
         ?>
-<tr>
+<tr style="display:none">
     <th class='dialog'><?php echo $strCountry; ?></th>
     <form action='meeting_entry.php' method='post' name='data_country'>
         <input name='arg' type='hidden' value='change_country' />
@@ -2229,7 +2207,7 @@ else {
     if (!$teamsm){
  ?>
  
-<tr>
+<tr style="display:none">
     <th class='dialog'><?php echo $strTeam; ?></th>
     <form action='meeting_entry.php' method='post' name='data_team'>
         <input name='arg' type='hidden' value='change_team' />
@@ -2599,7 +2577,7 @@ else {
                         . " value='$start_row[0]' checked/>$event_row[1] $info $span_end</td>\n");
                         
                         
-                        printf("<td class=\"dialog-top\" nowrap=\"nowrap\">
+                        printf("<td class=\"dialog-top\" nowrap=\"nowrap\" style=\"display:none\">
                             <input class='perf$class$manual' name='topperf_$start_row[0]'
                             type='text' maxlength='12'
                             onchange='updateStarts(\"change_top\", $start_row[0], $event_row[0])'

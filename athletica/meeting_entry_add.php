@@ -1864,7 +1864,7 @@ function meeting_get_disciplines(){
 			  			
 			$effort = (isset($discs_def[$event_row[2]]) && $effort=='' && $first!='') ? $discs_def[$event_row[2]] : $effort;
 			
-			printf("<td class=\"dialog-top\" nowrap=\"nowrap\">
+			printf("<td class=\"dialog-top\" nowrap=\"nowrap\" style=\"display:none\">
 				<input name='type_$event_row[2]' type='hidden' value='$class' />
 				<input class='perf$class' name='topperf_$event_row[2]' type='text'
 				value='$effort' maxlength='12' id='topperf$event_row[2]' /></td>");
@@ -1890,7 +1890,6 @@ function meeting_get_disciplines(){
 
 $page = new GUI_Page('meeting_entry_add',false,'stylesheet_small-fonts.css');
 $page->startPage();
-$page->printPageTitle($strNewEntryFromBase);
 
 ?>
 
@@ -2825,128 +2824,7 @@ if ($_POST['arg']=="add")
 	<?php
 }
 
-?>   
-<table >
-<tr>                   
-	<td class='forms'>
-		<?php echo $strSearchForLicense ?>
-	</td>
-	<td class='forms' colspan="2">
-		<?php
-		$menu = new GUI_Menulist();
-		$menu->addSearchfield('meeting_entry_add.php', '_self', 'post', '', false);
-		$menu->printMenu();
-		?>
-	</td>    
-</tr>
-<tr>
-	<td>&nbsp;
-	</td>
-</tr>
-<tr> 
-	 <?php
-     
-     
-    
-     
-	  if ( !(isset($_POST['searchfield']) && (!is_numeric($_POST['searchfield'])) ) )  {  
-              
-			?>    
-			<th class='dialog'>
-			<?php echo $strSearchForClub ?>
-			</th>
-			 
-			<td class='forms'>  
-			<form action='meeting_entry_add.php' method='post' name='clubSearch'> 
-			<input name='arg' type='hidden' value='change_clubSearch' />
-			
-           
-			<?php
-	   
-			if ($_POST['arg']=="change_clubSearch")         
-				$dd = new GUI_ClubDropDown($club, true, 'document.clubSearch.submit()', false);  
-			else
-				$dd = new GUI_ClubDropDown(0, true, 'document.clubSearch.submit()', false);  
-			?>
-			  
-			</form>  
-			</td>   
-			<?php 
-	   } 
-											 
-	   if ( $_POST['arg']=="change_clubSearch")  { 
-               
-			$sql_athlets="SELECT b.lastname, b.firstname, b.license,v.Name, v.xCode FROM base_athlete as b , verein as v WHERE b.account_code=v.xCode AND v.xVerein=" . $club . " ORDER BY b.lastname, b.firstname";                                                                                                         
-			$result_a=mysql_query($sql_athlets);  
-			if(mysql_num_rows($result_a) > 0) {  
-				?> <td>&nbsp;</td>                  
-				<th class='dialog'><?php echo $strAthlete ?></th> 
-				<?php 
-			}
-			?> 
-			<td class='forms'>    
-			<form action='meeting_entry_add.php' method='post' name='athleteSearch'>   
-			<input name='arg' type='hidden' value='change_athlete' />  
-            
-			<?php  
-		
-			$dropdown = new GUI_Select('athleteSearch', 1, "document.athleteSearch.submit()"); 
-			 
-			 if(mysql_num_rows($result_a) > 0)  {  
-				while( $row_athlets=mysql_fetch_row($result_a)) { 
-					  $name_athlete=$row_athlets[0] . " " . $row_athlets[1];
-					  $dropdown->addOption($name_athlete, $row_athlets[2]); 
-				}
-				$dropdown->selectOption($athleteSearch);
-				$dropdown->addOptionNone();
-				$dropdown->printList();  
-			}  
-			else
-				{$search_occurred=true;     
-				} 
-			?>  
-			<!--</form> -->      
-			</td>  
-	   <?php   
-	 } 
-
-	 if ( (isset($_POST['searchfield']) && (!is_numeric($_POST['searchfield'])) ) ) {   
-          
-		 ?>          
-		 <th class="dialog"><?php echo $strAthlete ?></th> 
-		 <td class="forms">   
-		 <form action='meeting_entry_add.php' method='post' name='athleteSearch'> 
-		 <input name='arg' type='hidden' value='change_athlete' />  
-		 <?php  
-		
-		 $dropdown = new GUI_Select('athleteSearch', 1, "document.athleteSearch.submit()");
-		
-		 $sql_athlets = "SELECT lastname, firstname, license FROM base_athlete " . $searchparam; 
-															 
-		 $result_a=mysql_query($sql_athlets);
-		 if(mysql_num_rows($result_a) > 0)  {   
-			   while( $row_athlets=mysql_fetch_row($result_a)) {
-					$name_athlete=$row_athlets[0] . " " . $row_athlets[1];
-					$dropdown->addOption($name_athlete, $row_athlets[2]); 
-				}
-				$dropdown->selectOption($athleteSearch);
-				$dropdown->addOptionNone();
-				$dropdown->printList();  
-		 }
-		 else
-			  {$search_occurred=true;
-			  $search_match;   
-			  } 
-		?>
-		</form>      
-		</td>  
-	   <?php   
-	 } 
-   ?>    
-</tr>  
-</table>
-<br>
-
+?> 
 <?php   
 
 if($search_occurred){ 
@@ -3302,7 +3180,7 @@ if(!empty($club2) && false){ // not yet in use
         <input name='argument' id='argument' type='hidden' value='' /> 
 	</td>
 </tr>
-<tr>
+<tr style="display:none">
 	<th class='dialog'><?php echo $strCountry; ?></th>
 	<?php $dd = new GUI_CountryDropDown($country, ""); ?>
 	<th class='dialog'><?php echo $strRegion ?></td>
@@ -3341,7 +3219,7 @@ if(!empty($club2) && false){ // not yet in use
 	<th class='dialog'><?php echo $strCategory ?></th>
 	<?php $dd = new GUI_CategoryDropDown($category, "check_category($allow_search_from_base)", true); ?>
 </tr>
-<tr>
+<tr style="display:none">
 	<th class='dialog'><?php echo $strTeam; ?>Test</th>
 	<?php
 		$dd = new GUI_TeamDropDown($category, $club, $team);

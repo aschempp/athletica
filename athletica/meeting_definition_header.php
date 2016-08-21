@@ -131,9 +131,9 @@ else		// no DB error
 	  <input style="width:98%;" type="text" name="organisator" value="<?php echo $row['Organisator'] ?>"
 			onchange='document.change_def.submit()' />    </td>
 	<td width="15" ></td>
-	<th class='dialog'>
+	<th class='dialog' style="display:none">
 	  <?php echo $strDeposit; ?>    </th>
-	<td class='forms'><input name="deposit" type="text" class="currency"
+	<td class='forms' style="display:none"><input name="deposit" type="text" class="currency"
 			onchange='document.change_def.submit()' value="<?php echo ($row['Haftgeld']/100) ?>" size="10" /></td>
   </tr>
   <tr>
@@ -149,10 +149,10 @@ else		// no DB error
 			$dd = new GUI_StadiumDropDown($row['xStadion']);
 		}?>	
 	<td></td>
-	<th class='dialog'>
+	<th class='dialog' style="display:none">
 	  <?php echo $strFee; ?>   
 	 </th>
-	<td class='forms'>
+	<td class='forms' style="display:none">
 	  <input name="fee" type="text"  class="currency"
 			onchange='document.change_def.submit()' value="<?php echo ($row['Startgeld']/100) ?>" size="10" />
 	</td>
@@ -173,9 +173,9 @@ else		// no DB error
 		</tr>
 	  </table>    </td>
 	<td></td>
-	<th  class="dialog">
+	<th  class="dialog" style="display:none">
 	  <?php echo $strFeeReduction;?>    </th>
-	<td class='forms'>
+	<td class='forms' style="display:none">
 	  <input name="feereduction" type="text"  class="currency"
 			onchange='document.change_def.submit()' value="<?php echo ($row['StartgeldReduktion']/100) ?>" size="10" />
 	</td>
