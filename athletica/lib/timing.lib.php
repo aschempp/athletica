@@ -122,7 +122,7 @@ function AA_timing_saveConfiguration(){
  * export start information on round for timing software
  *
  */
-function AA_timing_setStartInfo($round, $silent = false){
+function AA_timing_setStartInfo($round, $silent = true){
 	
 	$timing = AA_timing_getTiming();
 	if($timing == "omega"){

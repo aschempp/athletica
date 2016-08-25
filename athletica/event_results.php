@@ -221,7 +221,7 @@ else if($_POST['arg'] == 'add_start') {	// add new athlete/relay
 	if(!empty($GLOBALS['AA_ERROR'])) {
 		AA_printErrorMsg($GLOBALS['AA_ERROR']);
 	}            
-    AA_timing_setStartInfo($round, false);   
+    AA_timing_setStartInfo($round);
 }
 
 else if($_GET['arg'] == 'del_start') {	// delete athlete/relay  
@@ -229,7 +229,7 @@ else if($_GET['arg'] == 'del_start') {	// delete athlete/relay
 	if(!empty($GLOBALS['AA_ERROR'])) {
 		AA_printErrorMsg($GLOBALS['AA_ERROR']);
 	}
-     AA_timing_setStartInfo($round, false);   
+     AA_timing_setStartInfo($round);
 }
 
 elseif($_GET['arg'] == "del_results"){ // delete all results
