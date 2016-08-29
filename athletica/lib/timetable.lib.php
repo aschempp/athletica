@@ -33,12 +33,15 @@ function AA_timetable_display($arg = 'monitor')
      
     $result = mysql_query("
         SELECT DISTINCT
-            k.Name
+            k.Name,
+            TIME_FORMAT(r.Startzeit, '$cfgDBtimeFormat')
         FROM
             wettkampf AS w
             , kategorie AS k
+            , runde AS r
         WHERE w.xMeeting = " . $_COOKIE['meeting_id'] . "
         AND w.xKategorie = k.xKategorie
+        AND r.xWettkampf = w.xWettkampf
         ORDER BY
             k.Anzeige,
             k.Kurzname
@@ -50,16 +53,16 @@ function AA_timetable_display($arg = 'monitor')
     }
     else            // no DB error
     {
-        $headerline = "";
+        $headerline = array();
         // assemble headerline and category array
         $cats = array();
         while ($row = mysql_fetch_row($result))
         {
-            $headerline = $headerline . "<th class='timetable'>$row[0]</th>";
+            $headerline[$row[1]] = $headerline[$row[1]] . "<th class='timetable'>$row[0]</th>";
             $cats[] = $row[0];        // category array
         }
         mysql_free_result($result);
-       
+
         // all rounds ordered by date/time
         // - count nbr of present athletes or relays (don't include
         //   athletes starting in relays)
@@ -133,14 +136,14 @@ function AA_timetable_display($arg = 'monitor')
             $events = array();    // array to hold last processed round per event
             ?>
 <table class=timetable> 
-            <?php   
-            
+            <?php
+
             while ($row = mysql_fetch_row($res))
             {   
                  //
                 // read merged rounds an select all events
                 //
-     
+
                 $sqlEvents = "";
                 $eventMerged = false;
                 $result = mysql_query("SELECT xRundenset FROM rundenset
@@ -156,7 +159,7 @@ function AA_timetable_display($arg = 'monitor')
                 }
                 $event = $row[10];
    
-    
+
                 if($rsrow[0] > 0){
                     $sql = "SELECT
                                 r.xWettkampf 
@@ -209,24 +212,22 @@ function AA_timetable_display($arg = 'monitor')
                     if($date != 0) {        // not first item
                         ?>
     </td>
+</tr>
+</table><br><table class=timetable>
                         <?php
                         // fill previous line with cell items if necessary
                         while(current($cats) == TRUE) {
-                            ?>
-    <td class='monitor' />
-                            <?php
                             next($cats);
                         }
                         ?>
-</tr>
                         <?php
                     }
 
-                    if($date != $row[8])    {    // new date -> headerline with date
+                    if(true || $date != $row[8])    {    // new date -> headerline with date
                         ?>
 <tr>
     <th class='date' id='<?php echo "$row[9]$row[7]"; ?>'><?php echo $row[8]; ?></th>
-    <?php echo $headerline; ?>
+    <?php echo $headerline[$row[6]]; ?>
 </tr>
                         <?php
                     }
@@ -234,7 +235,7 @@ function AA_timetable_display($arg = 'monitor')
                         ?>
 <tr>
     <th class='timetable_sub' id='<?php echo "$row[9]$row[7]"; ?>' />
-    <?php echo $headerline; ?>
+    <?php echo $headerline[$row[6]]; ?>
 </tr>
                         <?php
                     }        // ET new date or new hour
@@ -257,16 +258,16 @@ function AA_timetable_display($arg = 'monitor')
                 $time = $row[6];
                 $hour = $row[7];
                 $date = $row[8];
-                
+
                 // check round status and set correct link
                 if($arg == 'monitor')        // event monitor
-                {   
+                {
                     // check status
                     switch($row[1]) {
                     case($cfgRoundStatus['open']):
                         $class = "";
                         //$href = "event_heats.php?round=$row[0]";
-                        if($combined){ 
+                        if($combined){
                             $href = "event_enrolement.php?category=$row[11]&comb=$row[11]_$row[18]_$row[21]&group=$row[15]&round=$row[0]";
                         }else{
                             if ($teamsm){
@@ -275,20 +276,20 @@ function AA_timetable_display($arg = 'monitor')
                             else {
                                 $href = "event_enrolement.php?category=$row[11]&event=$row[10]&round=$row[0]";
                             }
-                                
+
                         }
                         break;
                     case($cfgRoundStatus['enrolement_pending']):
                         $class = "st_enrlmt_pend";
-                        if($combined){  
-                            $href = "event_enrolement.php?category=$row[11]&comb=$row[11]_$row[18]_$row[21]&round=$row[0]&group=$row[15]";    
+                        if($combined){
+                            $href = "event_enrolement.php?category=$row[11]&comb=$row[11]_$row[18]_$row[21]&round=$row[0]&group=$row[15]";
                         }else{
-                             if ($teamsm){  
-                                 $href = "event_enrolement.php?category=$row[11]&event=$row[10]&round=$row[0]&teamsm=$teamsm&group=$row[15]";   
+                             if ($teamsm){
+                                 $href = "event_enrolement.php?category=$row[11]&event=$row[10]&round=$row[0]&teamsm=$teamsm&group=$row[15]";
                              }
                              else {
-                                  $href = "event_enrolement.php?category=$row[11]&event=$row[10]&round=$row[0]"; 
-                             }                                    
+                                  $href = "event_enrolement.php?category=$row[11]&event=$row[10]&round=$row[0]";
+                             }
                         }
                         break;
                     case($cfgRoundStatus['enrolement_done']):
@@ -310,11 +311,11 @@ function AA_timetable_display($arg = 'monitor')
                     case($cfgRoundStatus['results_live']):
                         $class = "st_res_live";
                         $href = "event_results.php?round=$row[0]";
-                        break;       
+                        break;
                     case($cfgRoundStatus['results_done']):
                         $class = "st_res_done";
                         $href = "event_results.php?round=$row[0]";
-                        break;                      
+                        break;
                     }
                     if($row[14] == 1 && $row[1] == $cfgRoundStatus['heats_done']){ // results importet from timing
                         $class = "st_res_timing";
@@ -325,23 +326,23 @@ function AA_timetable_display($arg = 'monitor')
                     // check round status and set CSS class
                     switch($row[1]) {
                     case($cfgRoundStatus['open']):
-                    case($cfgRoundStatus['enrolement_pending']): 
-                        $class = "";  
-                        if ($teamsm){  
-                            $href = "speaker_entries.php?round=$row[0]&teamsm=$teamsm&group=$row[15]";   
+                    case($cfgRoundStatus['enrolement_pending']):
+                        $class = "";
+                        if ($teamsm){
+                            $href = "speaker_entries.php?round=$row[0]&teamsm=$teamsm&group=$row[15]";
                         }
                         else {
-                             $href = "speaker_entries.php?round=$row[0]&group=$row[15]";   
+                             $href = "speaker_entries.php?round=$row[0]&group=$row[15]";
                         }
-                        break;  
-                    case($cfgRoundStatus['enrolement_done']): 
-                       $class = "st_enrlmt_done"; 
+                        break;
+                    case($cfgRoundStatus['enrolement_done']):
+                       $class = "st_enrlmt_done";
                         $href = "speaker_entries.php?round=$row[0]&group=$row[15]";
-                        break;   
-                    case($cfgRoundStatus['heats_in_progress']): 
-                         $class = "st_heats_work"; 
+                        break;
+                    case($cfgRoundStatus['heats_in_progress']):
+                         $class = "st_heats_work";
                         $href = "speaker_entries.php?round=$row[0]&group=$row[15]";
-                        break;                  
+                        break;
                     case($cfgRoundStatus['heats_done']):
                         $class = "st_heats_done";
                         $href = "speaker_results.php?round=$row[0]";
@@ -353,7 +354,7 @@ function AA_timetable_display($arg = 'monitor')
                     case($cfgRoundStatus['results_live']):
                         $class = "st_res_live";
                         $href = "speaker_results.php?round=$row[0]";
-                        break;    
+                        break;
                     case($cfgRoundStatus['results_done']):
                         $class = "st_res_done";
                         $href = "speaker_results.php?round=$row[0]";
@@ -374,7 +375,7 @@ function AA_timetable_display($arg = 'monitor')
                     }
                 }
 
-                
+
                 // next event is in a different category: go to next cell
                 if($k != $row[3])
                 {  
@@ -387,7 +388,7 @@ function AA_timetable_display($arg = 'monitor')
                     $k = $row[3];        // keep current category
                     while(current($cats) != $k) {
                         ?>
-    <td class='monitor' />
+    <!--<td class='monitor' />-->
                         <?php
                         if((next($cats)) == FALSE) {        // after end of array
                             break;
