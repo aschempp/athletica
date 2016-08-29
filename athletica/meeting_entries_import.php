@@ -23,8 +23,6 @@ if(isset($_POST["submit"])) {
     } else {
         require_once __DIR__ . '/lib/PHPExcel.php';
 
-        $disziplinId  = $_POST['disziplin'];
-
         $kategorieMap = array();
         $res = mysql_query("SELECT xKategorie, Geschlecht, Alterslimite FROM kategorie WHERE aktiv=1 AND Kurzname LIKE 'J%'");
         if(mysql_errno() > 0){
