@@ -41,6 +41,7 @@ else {
 }
 
 
+$menu->addButton("meeting_entries_import.php", "Anmeldungen importieren", "detail");
 $menu->addButton("meeting_entries_startnumbers.php", "$strStartnumbers", "detail");
 $menu->addButton('meeting_entries_print.php', "$strPrint ...", "detail");
 $menu->addButton($cfgURLDocumentation . 'help/meeting/entries.html', $strHelp, '_blank');
