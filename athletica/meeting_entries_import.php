@@ -51,7 +51,7 @@ if(isset($_POST["submit"])) {
             $wettkampfMap[$row[1]] = $row[0];
         }
 
-        $data = PHPExcel_IOFactory::createReader('Excel2007')
+        $data = PHPExcel_IOFactory::createReader('Excel5')
             ->load($_FILES['file']['tmp_name'])
             ->getSheet(0)
             ->toArray()
