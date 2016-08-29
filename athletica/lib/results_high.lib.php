@@ -697,7 +697,9 @@ if($_GET['arg'] == 'results_done')
                     }
 
                     // count total invalid attempts
-                    $totX = $totX + substr_count($row[1], 'X');                     
+                    if($tt == TRUE) {
+                        $totX = $totX + substr_count($row[1], 'X'); 
+                    }                    
                     $ss = $row[2];                // keep athlete's ID
                 }
                 mysql_free_result($result);

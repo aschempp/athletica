@@ -146,6 +146,7 @@ function AA_speaker_Track($event, $round, $layout)
                     , LPAD(s.Bezeichnung,5,'0') as heatid
                     , r.xRunde
                     , st.xStart
+                    , ss.rundeZusammen
                 FROM
                     runde AS r
                     LEFT JOIN serie AS s ON (s.xRunde = r.xRunde)
@@ -273,6 +274,11 @@ function AA_speaker_Track($event, $round, $layout)
 				else {	// relay
 					
 					// get Athletes
+                    if ($row[17] > 0)
+                        $sqlRound=$row[17];     // merged round
+                    else
+                        $sqlRound=$row[15]; 
+                    
 					$arrAthletes = array();
 					$sql = "SELECT at.Vorname, at.Name, at.Jahrgang, a.Startnummer FROM
 								staffelathlet as sfat
@@ -281,7 +287,7 @@ function AA_speaker_Track($event, $round, $layout)
 								LEFT JOIN athlet as at USING(xAthlet)
 							WHERE
 								sfat.xStaffelstart = $row[16]
-							AND	sfat.xRunde = $row[15]
+							AND	sfat.xRunde = $sqlRound
 							ORDER BY
 								sfat.Position";
 					$res_at = mysql_query($sql);

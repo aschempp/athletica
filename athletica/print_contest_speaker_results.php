@@ -92,6 +92,7 @@ $sql = "SELECT
                 , k.Geschlecht
                 , k.Code
                 , k.Kurzname
+                , rt.Wertung
 
          FROM 
                 runde AS r
@@ -138,9 +139,13 @@ else
     $maxRunners = $row[11];
     $discipline_id = $row[18];
     
-    $xWettkampf = $row[4];   
+    $xWettkampf = $row[4];
+    
+    $eval = $row[23];
+    
+       
     $round_temp = $round;
-    $r = 0;
+    $r = 0;    
     while(AA_getNextRound($row[4], $round_temp) > 0){
         $round_temp = AA_getNextRound($row[4], $round_temp);
         $round_following[$r] = $round_temp;
@@ -157,43 +162,84 @@ else
     
     $silent = ($row[13]==0);
     $hasWind=$row[8];
+    
+    if(!$combined && !$svm) {
 
-    switch($layout) {
-        case($cfgDisciplineType[$strDiscTypeNone]):
-            $doc = new PRINT_Contest_speaker_pdf($_COOKIE['meeting']);
-        case($cfgDisciplineType[$strDiscTypeTrack]):
-            if($row[8] == 1) {
+        switch($layout) {
+            case($cfgDisciplineType[$strDiscTypeNone]):
+                $doc = new PRINT_Contest_speaker_pdf($_COOKIE['meeting']);
+            case($cfgDisciplineType[$strDiscTypeTrack]):
+                if($row[8] == 1) {
+                    $doc = new PRINT_ContestTrack_speaker_pdf($_COOKIE['meeting'],false, false, false, false);
+                }
+                else {
+                    $doc = new PRINT_ContestTrack_speaker_pdf($_COOKIE['meeting'],false, false, false, false);
+                }
+                break;
+            case($cfgDisciplineType[$strDiscTypeTrackNoWind]):
+            case($cfgDisciplineType[$strDiscTypeDistance]):
                 $doc = new PRINT_ContestTrack_speaker_pdf($_COOKIE['meeting'],false, false, false, false);
-            }
-            else {
-                $doc = new PRINT_ContestTrack_speaker_pdf($_COOKIE['meeting'],false, false, false, false);
-            }
-            break;
-        case($cfgDisciplineType[$strDiscTypeTrackNoWind]):
-        case($cfgDisciplineType[$strDiscTypeDistance]):
-            $doc = new PRINT_ContestTrack_speaker_pdf($_COOKIE['meeting'],false, false, false, false);
-            break;
-        case($cfgDisciplineType[$strDiscTypeRelay]):
-            $doc = new PRINT_ContestRelay_pdf($_COOKIE['meeting']);
-            break;
-        case($cfgDisciplineType[$strDiscTypeJump]):
-            if($row[8] == 1) {
+                break;
+            case($cfgDisciplineType[$strDiscTypeRelay]):
+                $doc = new PRINT_ContestRelay_pdf($_COOKIE['meeting']);
+                break;
+            case($cfgDisciplineType[$strDiscTypeJump]):
+                if($row[8] == 1) {
+                    $doc = new PRINT_ContestTech_speaker_pdf($_COOKIE['meeting'], false, false, false, false );
+                }
+                else {
+                    $doc = new PRINT_ContestTech_speaker_pdf($_COOKIE['meeting'], false, false, false, false );
+                }
+                break;
+            case($cfgDisciplineType[$strDiscTypeJumpNoWind]):
                 $doc = new PRINT_ContestTech_speaker_pdf($_COOKIE['meeting'], false, false, false, false );
-            }
-            else {
+                break;
+            case($cfgDisciplineType[$strDiscTypeThrow]):
+                $doc = new PRINT_ContestTech_speaker_pdf($_COOKIE['meeting'],false ,false, false, false);
+                break;
+            case($cfgDisciplineType[$strDiscTypeHigh]):
                 $doc = new PRINT_ContestTech_speaker_pdf($_COOKIE['meeting'], false, false, false, false );
-            }
-            break;
-        case($cfgDisciplineType[$strDiscTypeJumpNoWind]):
-            $doc = new PRINT_ContestTech_speaker_pdf($_COOKIE['meeting'], false, false, false, false );
-            break;
-        case($cfgDisciplineType[$strDiscTypeThrow]):
-            $doc = new PRINT_ContestTech_speaker_pdf($_COOKIE['meeting'],false ,false, false, false);
-            break;
-        case($cfgDisciplineType[$strDiscTypeHigh]):
-            $doc = new PRINT_ContestTech_speaker_pdf($_COOKIE['meeting'], false, false, false, false );
-            break;
-    }   
+                break;
+        } 
+    } else {
+        switch($layout) {
+            case($cfgDisciplineType[$strDiscTypeNone]):
+                $doc = new PRINT_Contest_pdf($_COOKIE['meeting']);
+            case($cfgDisciplineType[$strDiscTypeTrack]):
+                if($row[8] == 1) {
+                    $doc = new PRINT_ContestTrackCombined_speaker_pdf($_COOKIE['meeting'],false, false, false, false);
+                }
+                else {
+                    $doc = new PRINT_ContestTrackCombined_speaker_pdf($_COOKIE['meeting'],false, false, false, false);
+                }
+                break;
+            case($cfgDisciplineType[$strDiscTypeTrackNoWind]):
+            case($cfgDisciplineType[$strDiscTypeDistance]):
+                $doc = new PRINT_ContestTrackCombined_speaker_pdf($_COOKIE['meeting'],false, false, false, false);
+                break;
+            case($cfgDisciplineType[$strDiscTypeRelay]):
+                $doc = new PRINT_ContestRelay_pdf($_COOKIE['meeting']);
+                break;
+            case($cfgDisciplineType[$strDiscTypeJump]):
+                if($row[8] == 1) {
+                    $doc = new PRINT_ContestTechCombined_speaker_pdf($_COOKIE['meeting'], false, false, false, false );
+                }
+                else {
+                    $doc = new PRINT_ContestTechCombined_speaker_pdf($_COOKIE['meeting'], false, false, false, false );
+                }
+                break;
+            case($cfgDisciplineType[$strDiscTypeJumpNoWind]):
+                $doc = new PRINT_ContestTechCombined_speaker_pdf($_COOKIE['meeting'], false, false, false, false );
+                break;
+            case($cfgDisciplineType[$strDiscTypeThrow]):
+                $doc = new PRINT_ContestTechCombined_speaker_pdf($_COOKIE['meeting'],false ,false, false, false);
+                break;
+            case($cfgDisciplineType[$strDiscTypeHigh]):
+                $doc = new PRINT_ContestTechCombined_speaker_pdf($_COOKIE['meeting'], false, false, false, false );
+                break;
+        }
+        
+    }  
    
     if (empty($mRounds)){
         $doc->cat = "$row[5]";   
@@ -415,7 +461,8 @@ else
     // read round data
     if($round > 0)
     {
-        $order2 = "ss.Bahn";
+        $order1 = ($eval != $cfgEvalType[$strEvalTypeHeat]) ? "Rang_Sort ASC, s.Film ASC, Position" : "heatid ". $order.", Rang_Sort ASC";
+        
         // display all heats
         if($relay == FALSE) {        // single event
             if ($teamsm){
@@ -436,7 +483,6 @@ else
                             , s.Film
                             , IF(at.xRegion = 0, at.Land, re.Anzeige) AS Land  
                             , s.Wind
-                            , d.Strecke
                      FROM 
                             runde AS r
                             LEFT JOIN serie AS s ON (s.xRunde = r.xRunde)
@@ -477,7 +523,7 @@ else
                             , IF(ss.Rang > 0, ss.Rang, 99999) As Rang_sort
                             , d.Typ
                             , s.Wind
-                            , d.Strecke
+                            , ss.Qualifikation
                      FROM 
                             runde AS r
                             LEFT JOIN serie AS s ON (s.xRunde = r.xRunde)
@@ -493,9 +539,8 @@ else
                             LEFT JOIN wettkampf AS w ON r.xWettkampf = w.xWettkampf
                             LEFT JOIN disziplin_" . $_COOKIE['language'] . " as d ON (d.xDisziplin = w.xDisziplin)
                     WHERE 
-                            r.xRunde = " . $round ."  
-                            $where_final                    
-                     ORDER BY s.Film ASC, heatid ". $order.", $order2";  
+                            r.xRunde = " . $round ."                    
+                     ORDER BY $order1";  
                            
             }
             //echo $query;
@@ -518,7 +563,8 @@ else
                             , r.xRunde
                             , s.Film
                             , sf.Startnummer
-                            , ss.RundeZusammen   
+                            , ss.RundeZusammen  
+                            , ss.Qualifikation 
                      FROM 
                             runde AS r
                             LEFT JOIN serie AS s ON (s.xRunde = r.xRunde)
@@ -544,7 +590,10 @@ else
         else
         {
             $doc->printFollowing();
+            $doc->freetext_bool = true;
             
+            $prev_rnd_name = $strResult_short;   
+        
             // set up free text line (statistical info)
             // ----------------------------------------
             if($relay == FALSE) {
@@ -564,9 +613,8 @@ else
             else {
                 $doc->addFreetxt("$actStrHeats");
             }
-            $doc->freetext_bool = true; 
-            
             $doc->printFreeTxt();
+            
             //
             // track disciplines
             // -----------------
@@ -695,7 +743,11 @@ else
 
                     while($row = mysql_fetch_row($result))
                     {
-                        
+                        if($eval != $cfgEvalType[$strEvalTypeAll]) {
+                            $wind = ($teamsm) ? $row[15] : $row[19];
+                        } else {
+                            $wind = "";
+                        }
                         
                         $sql_base = "SELECT
                                 d.Name as DiszName
@@ -808,31 +860,65 @@ else
                                 $palmares = $palmares_national;
                             }
                         }
-
-                        $sql_res_prv = "SELECT
-                                            re.Leistung 
-                                        FROM athletica.resultat As re
-                                            INNER JOIN athletica.serienstart As ss
-                                                USING(xSerienstart)
-                                            INNER JOIN serie As s
-                                                USING(xSerie)
-                                            INNER JOIN start As st
-                                                USING(xStart)
-                                            INNER JOIN anmeldung As a
-                                                USING(xAnmeldung)
-                                            INNER JOIN athlet As at
-                                                USING(xAthlet)    
-                                        WHERE s.xRunde = $prev_rnd
-                                            AND a.xAthlet = $row[15]";
-                        $res_res_prv = mysql_query($sql_res_prv);
-                                            
-                        if(mysql_num_rows($res_res_prv)==0){
-                            $res_prev_text = "";
-                        }else{  
-                            $row_res_prv = mysql_fetch_array($res_res_prv);
-                            $res_prev_text = AA_formatResultTime($row_res_prv['Leistung'], true);
-                        }  
                         
+                        $result_qual = "";
+                        $sql_result = "SELECT 
+                                        re.Leistung As result
+                                        , re.Punkte  As points
+                                    FROM athletica.resultat As re
+                                        INNER JOIN athletica.serienstart As ss
+                                            USING(xSerienstart)
+                                        INNER JOIN athletica.serie As s
+                                            USING(xSerie)
+                                        INNER JOIN athletica.start as st
+                                            USING(xStart)
+                                        INNER JOIN athletica.Anmeldung as a
+                                            USING(xAnmeldung)        
+                                    WHERE s.xRunde = $round
+                                        AND a.xAthlet = $row[15]
+                                    ORDER BY result ASC
+                                    LIMIT 1";
+                        //echo $sql_result;
+                        $res_result = mysql_query($sql_result);
+                        
+                        if(mysql_num_rows($res_result)==0){
+                            $res_prev_text = "";    
+                        } else {
+                            $res_prev_text = "";
+                            $row_result = mysql_fetch_array($res_result);
+                            if($row_result['result'] > 0) {
+                                $res_prev_text = AA_formatResultTime($row_result['result'], true);
+                            } else {
+                                $pointTxt="" ;   
+                                 foreach($cfgInvalidResult as $value)    // translate value
+                                        {
+                                         if($value['code'] == $row_result['result']) {
+                                            $res_prev_text = $value['short'];
+                                         }
+                                 }
+                             
+                            }
+                        }
+                        $row[12] = $row[16];           // show rank
+                        
+                        $res_remark = '';
+                        if($row[20] > 0) {    // Athlete qualified
+                            foreach($cfgQualificationType as $qtype)
+                            {
+                                if($qtype['code'] == $row[20]) {
+                                    $res_remark = $qtype['token'];
+                                }
+                            }
+                        }    // ET athlete qualified
+                        
+                        if ($res_prev_text > 0) {
+                            if ($res_prev_text < $best_effort_res && $best_effort_res > 0 && $wind <=2.0) {
+                                $res_remark .= " PB";    
+                            } elseif($res_prev_text < $season_effort_res && $season_effort_res > 0 && $wind <=2.0) {
+                                $res_remark .= " SB";
+                            } 
+                        }
+                                                              
                     
                           
                         $filmnr = $row[13];
@@ -841,7 +927,7 @@ else
                         $tracks = $row[0];    // keep nbr of planned tracks
                         $b++;                        // current track
                         
-                        if($id != $row[3] || $h == 0)        // new heat
+                        if(($id != $row[3] && !$combined && $eval != $cfgEvalType[$strEvalTypeAll]) || ($h == 0))        // new heat
                         {                      
                             if($h != 0)    {        // not first heat
                                 $doc->printEndHeat();
@@ -852,17 +938,17 @@ else
                             $b = 1;                        // (re-)start with track one
                             if(is_null($row[1]))        // only one round
                             {
-                                $heat = "$strFinalround $row[3]";
+                                $heat = ($eval == $cfgEvalType[$strEvalTypeAll]) ? $strFinalround : "$strFinalround $row[3]";
                             }
                             else
                             {
                                 if($row[2] == '0'){ // do not show "(ohne)"
                                     $heat = "$strHeat $row[3]";
                                 }else{
-                                    if($combined) {
+                                    if($combined || $eval == $cfgEvalType[$strEvalTypeAll]) {
                                         $heat = "$row[1]";
                                     } else {
-                                        $heat = "$row[1] $strHeat $row[3]";
+                                        $heat = "$row[1] $row[3]";
                                     }
                                 }
                             }
@@ -872,9 +958,11 @@ else
                                 $doc->printRecordSL($sl_result[$i], $sl_name[$i], $sl_cat[$i]);
                             }
                             
-                            
-                            $doc->printHeatTitle($heat, $row[5], $filmnr, $prev_rnd_name);
-                            
+                            if($combined || $svm) {
+                                $doc->printHeatTitleCombined($heat, $row[5], $filmnr, $prev_rnd_name);
+                            } else  {
+                                $doc->printHeatTitle($heat, $row[5], $filmnr, $prev_rnd_name, $wind);
+                            }
                             $doc->printStartHeat($svm, $teamsm);
 
                             $id = $row[3];
@@ -892,33 +980,24 @@ else
                                 $doc->printRecordSL($sl_result[$i], $sl_name[$i], $sl_cat[$i]);
                             }
                             
-                            
-                            $doc->printHeatTitle("$heat $strCont", $row[5], $filmnr, $prev_rnd_name);
-                            
+                            if($combined) {
+                                $doc->printHeatTitleCombined("$heat $strCont", $row[5], $filmnr, $prev_rnd_name);
+                            } else  {
+                                $doc->printHeatTitle("$heat $strCont", $row[5], $filmnr, $prev_rnd_name, $wind);
+                            }
 
                             $doc->printStartHeat($svm, $teamsm);
                         }
-
-
-                        // show empty track if current track and position not identical
-                        
-                        while($b < $row[12])
-                        {
-                            $doc->printHeatLine($b, $strEmpty);
-                            $b++;
-                        }
-                        
                         
                         if($relay == FALSE) {
                             
-                            if($layout == $cfgDisciplineType[$strDiscTypeDistance]) {
-                                if ($row[20] == "800") {
-                                    $row[12] = $row[12] . " (" . $row[4] . ")";
-                                }    
-                            }
-                            
-                            $doc->printHeatLine($row[12], $row[6], "$row[8] ".strtoupper($row[7])
+                            if($combined || $svm) {
+                                $doc->printHeatLine($row[12], $row[6], "$row[8] ".strtoupper($row[7])
+                                    , AA_formatYearOfBirth($row[9]), $row[10], $row[4], $row[14],$season_effort,$best_effort, $palmares, $res_prev_text.$res_remark, $row_result['points'], $wind);
+                            } else {
+                                $doc->printHeatLine($row[12], $row[6], "$row[8] ".strtoupper($row[7])
                                     , AA_formatYearOfBirth($row[9]), $row[10], $row[4], $row[14],$season_effort,$best_effort, $palmares, $res_prev_text.$res_remark);
+                            }
                         }
                         else
                         {    
@@ -970,15 +1049,6 @@ else
                             }                         
                             $doc->printHeatLine($row[4], $row[12].". ".$team, $row[8]);  
                         }
-                    }
-                    
-                    // fill last heat with empty tracks
-                    
-                    $b++;
-                    while(($b > 1) && ($b <= $tracks))
-                    {
-                        $doc->printHeatLine($b, $strEmpty);
-                        $b++;
                     }
 
                     $doc->printEndHeat();        // terminate last heat
@@ -1196,9 +1266,85 @@ else
                         }
                         
                     }
+                    
+                    $result_qual = "";
+                    
+                    if($row[18] == $cfgDisciplineType[$strDiscTypeHigh])
+                    {
+                        $valid_result =    " AND (re.Info LIKE '%O%'"
+                                                    . " OR re.Leistung < 0)";
+                    }
+                    if($row[18] == $cfgDisciplineType[$strDiscTypeJump] && $hasWind == 1)
+                    {
+                        $sql_wind = ", re.Info As wind";        
+                    } else {
+                        $sql_wind = ", '' As wind";
+                    }
+                    $sql_result = "SELECT 
+                                    re.Leistung As result
+                                    , re.Punkte  As points
+                                    $sql_wind
+                                FROM athletica.resultat As re
+                                    INNER JOIN athletica.serienstart As ss
+                                        USING(xSerienstart)
+                                    INNER JOIN athletica.serie As s
+                                        USING(xSerie)
+                                    INNER JOIN athletica.start as st
+                                        USING(xStart)
+                                    INNER JOIN athletica.Anmeldung as a
+                                        USING(xAnmeldung)        
+                                WHERE s.xRunde = $round
+                                    AND a.xAthlet = $row[15]
+                                    $valid_result
+                                ORDER BY result DESC
+                                    , wind ASC
+                                LIMIT 1";
+                    //echo $sql_result;
+                    $res_result = mysql_query($sql_result);
+                    
+                    if(mysql_num_rows($res_result)==0){
+                        $res_prev_text = "";   
+                    } else {
+                        $res_prev_text = "";                            
+                        $row_result = mysql_fetch_array($res_result);
+                        if($row_result['result'] > 0) {
+                            $result_qual = AA_formatResultMeter($row_result['result']);
+                            $res_wind = $row_result['wind'];
+                        } else {
+                            $pointTxt="" ;   
+                             foreach($cfgInvalidResult as $value)    // translate value
+                                    {
+                                     if($value['code'] == $row_result['result']) {
+                                        $result_qual = $value['short'];
+                                     }
+                             }
+                             $res_wind = "";
+                         
+                        }
+                    }
+                    $row[4] = $row[16];           // show rank
+                    
+                    
+                    $res_remark = "";$res_remark = '';
+                        if($row[20] > 0) {    // Athlete qualified
+                            foreach($cfgQualificationType as $qtype)
+                            {
+                                if($qtype['code'] == $row[20]) {
+                                    $res_remark = $qtype['token'];
+                                }
+                            }
+                        }    // ET athlete qualified
                         
+                    if($result_qual > 0) {
+                        if (is_numeric($result_qual) && $result_qual > $best_effort_res && $best_effort_res > 0) {
+                            $res_remark .= " PB";    
+                        } elseif(is_numeric($result_qual) && $result_qual > $season_effort_res && $season_effort_res > 0) {
+                            $res_remark .= " SB";
+                        } 
+                    }                                 
+                    
                     // new heat
-                    if(($id != $row[3]) || ($h == 0))
+                    if(($id != $row[3] && $eval == $cfgEvalType[$strEvalTypeAll]) || ($h == 0))
                     {
                         if($h != 0)    {        // not first heat          
                             $doc->printEndHeat();                            
@@ -1208,14 +1354,18 @@ else
                         $b = 1;                        // (re-)start with track one
                         if(is_null($row[1]))        // only one round
                         {
-                            $heat = "$strFinalround $row[3]";
+                            $heat = ($eval == $cfgEvalType[$strEvalTypeAll]) ? $strFinalround : "$strFinalround $row[3]";
                         }
                         else
                         {
-                            if($row[2] == 0){ // do not show "(ohne)"
+                            if($row[2] == "0"){ // do not show "(ohne)"
                                 $heat = "$strHeat $row[3]";
                             }else{
-                                $heat = "$row[1] $strHeat $row[3]";
+                                if($combined || $eval == $cfgEvalType[$strEvalTypeAll]) {
+                                        $heat = "$row[1]";
+                                    } else {
+                                        $heat = "$row[1] $row[3]";
+                                    }
                             }
                         }
                         
@@ -1224,7 +1374,11 @@ else
                             $doc->printRecordSL($sl_result[$i], $sl_name[$i], $sl_cat[$i]);
                         }
                         
-                        $doc->printHeatTitle("$heat", $row[5], '', $prev_rnd_name);
+                        if($combined || $svm) {
+                                $doc->printHeatTitleCombined($heat, $row[5], '', $prev_rnd_name);
+                        } else  {
+                            $doc->printHeatTitle("$heat", $row[5], '', $prev_rnd_name);
+                        }
 
                         $h++;
                         $id = $row[3];
@@ -1249,10 +1403,14 @@ else
                         $b = 1;
                     }
                     
-                    
-                    $doc->printHeatLine($row[6], "$row[8] ".strtoupper($row[7])
-                        , AA_formatYearOfBirth($row[9]), $row[10], $row[14],$season_effort,$best_effort, $row[4], $palmares, $result_qual.$res_remark);
-                    
+                    if($combined || $svm) {  
+                                     
+                        $doc->printHeatLine($row[6], "$row[8] ".strtoupper($row[7])
+                        , AA_formatYearOfBirth($row[9]), $row[10], $row[14],$season_effort,$best_effort, $row[4], $palmares, $result_qual.$res_remark, $row_result['points'], $res_wind);
+                    } else {
+                        $doc->printHeatLine($row[6], "$row[8] ".strtoupper($row[7])
+                            , AA_formatYearOfBirth($row[9]), $row[10], $row[14],$season_effort,$best_effort, $row[4], $palmares, $result_qual.$res_remark, $res_wind);
+                    }
                 }
                 break;
             }        // end switch "Layout"

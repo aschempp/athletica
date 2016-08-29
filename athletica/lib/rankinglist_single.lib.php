@@ -1032,6 +1032,7 @@ else {
                         if ($relay && !$svm){   
                            $points = false;
                         }
+                        
                         $list->printHeaderLine($title, $relay, $points, $wind, $heatwind, $row[11], $svm, $base_perf, $qual_mode, $eval, $withStartnr, $teamsm);
                         
                           
@@ -1258,6 +1259,8 @@ else {
                         $ioc = $row_res[13];
                     }
                     
+                    $checkWind = ($is_jump) ? $row_res[4] : $row_res[6];
+                    
                     //show performances from base
                     if($show_efforts == 'sb_pb' && $relay == false){
                                                                                                
@@ -1309,37 +1312,38 @@ else {
                                     $sb_perf = AA_formatResultMeter(str_replace(".", "", $row_perf['season_effort']));
                                     $pb_perf = AA_formatResultMeter(str_replace(".", "", $row_perf['best_effort']));
                                     $bp_perf = AA_formatResultMeter(str_replace(".", "", $best_previous));
-                                    
-                                    if($bp_perf>0 && $bp_perf>$sb_perf){
-                                        $sb_perf = $bp_perf;
-                                        $row_perf['season_effort_event'] = $_SESSION['meeting_infos']['Name'];
-                                        $row_perf['sb_date'] = date('d.m.Y', strtotime($previous_date));
-                                    }
-                                    
-                                    if($bp_perf>0 && $bp_perf>$pb_perf){
-                                        $pb_perf = $bp_perf;
-                                        $row_perf['best_effort_event'] = $_SESSION['meeting_infos']['Name'];
-                                        $row_perf['pb_date'] = date('d.m.Y', strtotime($previous_date));
-                                    }
-                                    
-                                    //highlight sb or pb if new performance is better
-                                    if (is_numeric($perf)){ //prevent special-codes (disq, n.a. usw)
-                                        if ($formaction!='print'){
-                                            if ($pb_perf!='' && $perf>$pb_perf){
-                                                $perf = "<b>PB $perf</b> ";
+                                    if($checkWind <= 2) {
+                                        if($bp_perf>0 && $bp_perf>$sb_perf){
+                                            $sb_perf = $bp_perf;
+                                            $row_perf['season_effort_event'] = $_SESSION['meeting_infos']['Name'];
+                                            $row_perf['sb_date'] = date('d.m.Y', strtotime($previous_date));
+                                        }
+                                        
+                                        if($bp_perf>0 && $bp_perf>$pb_perf){
+                                            $pb_perf = $bp_perf;
+                                            $row_perf['best_effort_event'] = $_SESSION['meeting_infos']['Name'];
+                                            $row_perf['pb_date'] = date('d.m.Y', strtotime($previous_date));
+                                        }
+                                        
+                                        //highlight sb or pb if new performance is better
+                                        if (is_numeric($perf)){ //prevent special-codes (disq, n.a. usw)
+                                            if ($formaction!='print'){
+                                                if ($pb_perf!='' && $perf>$pb_perf){
+                                                    $perf = "<b>PB $perf</b> ";
+                                                } else {
+                                                    if ($sb_perf!='' && $perf>$sb_perf){
+                                                        $perf = "<b>SB $perf</b>";
+                                                    }
+                                                }                                        
                                             } else {
-                                                if ($sb_perf!='' && $perf>$sb_perf){
-                                                    $perf = "<b>SB $perf</b>";
-                                                }
-                                            }                                        
-                                        } else {
-                                            if ($pb_perf!='' && $perf>$pb_perf){
-                                                $perf = "<b>PB</b> $perf";
-                                            } else {
-                                                if ($sb_perf!='' && $perf>$sb_perf){
-                                                    $perf = "<b>SB</b> $perf";
-                                                }
-                                            }                                        
+                                                if ($pb_perf!='' && $perf>$pb_perf){
+                                                    $perf = "<b>PB</b> $perf";
+                                                } else {
+                                                    if ($sb_perf!='' && $perf>$sb_perf){
+                                                        $perf = "<b>SB</b> $perf";
+                                                    }
+                                                }                                        
+                                            }
                                         }
                                     }
 
@@ -1351,41 +1355,44 @@ else {
                                     $best_effort = ($timepices[0] * 360 * 1000) + ($timepices[1] * 60 * 1000) +($timepices[2] *  1000) + ($timepices[3]);
                                     $previous_effort = intval($best_previous);
                                     
-                                    if($previous_effort>0 && $previous_effort<$season_effort){
-                                        $season_effort = $previous_effort;
-                                        $row_perf['season_effort_event'] = $_SESSION['meeting_infos']['Name'];
-                                        $row_perf['sb_date'] = date('d.m.Y', strtotime($previous_date));
-                                    }
+                                    if($checkWind <= 2) {
                                     
-                                    if($previous_effort>0 && $previous_effort<$best_effort){
-                                        $best_effort = $previous_effort;
-                                        $row_perf['best_effort_event'] = $_SESSION['meeting_infos']['Name'];
-                                        $row_perf['pb_date'] = date('d.m.Y', strtotime($previous_date));
-                                    }
-                                    
-                                    if(($row[3] == $cfgDisciplineType[$strDiscTypeTrack])
-                                    || ($row[3] == $cfgDisciplineType[$strDiscTypeTrackNoWind])){
-                                        $sb_perf = AA_formatResultTime($season_effort, true, true);
-                                        $pb_perf = AA_formatResultTime($best_effort, true, true);
-                                    }else{
-                                        $sb_perf = AA_formatResultTime($season_effort, true);
-                                        $pb_perf = AA_formatResultTime($best_effort, true);
-                                    }
-                                    if ($formaction!='print'){
-                                        //highlight sb or pb if new performance is better
-                                        if ($pb_perf!='' && $perf<$pb_perf){
-                                            $perf = "<b>PB $perf</b>";
-                                        } else {
-                                            if ($sb_perf!='' && $perf<$sb_perf){
-                                                $perf = "<b>SB $perf</b>";
-                                            }
+                                        if($previous_effort>0 && $previous_effort<$season_effort){
+                                            $season_effort = $previous_effort;
+                                            $row_perf['season_effort_event'] = $_SESSION['meeting_infos']['Name'];
+                                            $row_perf['sb_date'] = date('d.m.Y', strtotime($previous_date));
                                         }
-                                    } else {
-                                        if ($pb_perf!='' && $perf<$pb_perf){
-                                            $perf = "<b>PB</b> $perf";
+                                        
+                                        if($previous_effort>0 && $previous_effort<$best_effort){
+                                            $best_effort = $previous_effort;
+                                            $row_perf['best_effort_event'] = $_SESSION['meeting_infos']['Name'];
+                                            $row_perf['pb_date'] = date('d.m.Y', strtotime($previous_date));
+                                        }
+                                        
+                                        if(($row[3] == $cfgDisciplineType[$strDiscTypeTrack])
+                                        || ($row[3] == $cfgDisciplineType[$strDiscTypeTrackNoWind])){
+                                            $sb_perf = AA_formatResultTime($season_effort, true, true);
+                                            $pb_perf = AA_formatResultTime($best_effort, true, true);
+                                        }else{
+                                            $sb_perf = AA_formatResultTime($season_effort, true);
+                                            $pb_perf = AA_formatResultTime($best_effort, true);
+                                        }
+                                        if ($formaction!='print'){
+                                            //highlight sb or pb if new performance is better
+                                            if ($pb_perf!='' && $perf<$pb_perf){
+                                                $perf = "<b>PB $perf</b>";
+                                            } else {
+                                                if ($sb_perf!='' && $perf<$sb_perf){
+                                                    $perf = "<b>SB $perf</b>";
+                                                }
+                                            }
                                         } else {
-                                            if ($sb_perf!='' && $perf<$sb_perf){
-                                                $perf = "<b>SB</b> $perf";
+                                            if ($pb_perf!='' && $perf<$pb_perf){
+                                                $perf = "<b>PB</b> $perf";
+                                            } else {
+                                                if ($sb_perf!='' && $perf<$sb_perf){
+                                                    $perf = "<b>SB</b> $perf";
+                                                }
                                             }
                                         }
                                     }

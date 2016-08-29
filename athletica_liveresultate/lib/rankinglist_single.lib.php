@@ -15,7 +15,7 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
         require('./lib/cl_gui_page.lib.php'); 
         require('./lib/common.lib.php');   
         require('./config.inc.php');  
-        require('./config.inc.end.php'); 
+        //require('./config.inc.end.php'); 
                  
         if(AA_connectToDB_live() == FALSE)	{ // invalid DB connection
 	        return;		// abort
@@ -140,10 +140,10 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
             $content_res = "<?php\r\n ";
             $content_res .= "include('include/header.php');\r\n ";
             $content_res .= "?>\r\n ";
-            $content_res .= "<div data-role='page' id='page' data-title='Live Resultate'>\r\n";
+            $content_res .= "<div data-role='page' id='page' data-title='".$GLOBALS['strLiveResults']."'>\r\n";
             $content_res .= "<div data-role='header' data-theme='b' data-id='header' data-position='fixed' data-tap-toggle='false'>\r\n";
-            $content_res .= "<a href='timetable".$id_back.".php' data-icon='back' data-transition='slide' data-direction='reverse'>back</a>\r\n";
-            $content_res .= "<a data-icon='refresh' onclick='refreshPage();'>refresh</a>\r\n";
+            $content_res .= "<a href='timetable".$id_back.".php' data-icon='back' data-transition='slide' data-direction='reverse'>".$GLOBALS['strBack']."</a>\r\n";
+            $content_res .= "<a data-icon='refresh' onclick='refreshPage();'>".$GLOBALS['strRefresh']."</a>\r\n";
             
             while($row_rnd = mysql_fetch_assoc($res_rnd)){
                 $show_all = false;
@@ -164,10 +164,10 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                     }
                     $eval = $row_rnd['rnd_rtWertung'];
                     
-                    if(($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeJump])
-                        || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeJumpNoWind])
-                        || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeThrow])
-                        || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeHigh]))
+                    if(($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeJump']])
+                        || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeJumpNoWind']])
+                        || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeThrow']])
+                        || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeHigh']]))
                     {
                         $show_all = true;        
                     }
@@ -209,9 +209,9 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                         $info = '';
                         if($row_rnd['rnd_qualiSieger'] > 0 || $row_rnd['rnd_qualiLeistung'] > 0) {
                             $content_res .= "<div class='ui-corner-all ui-shadow' style='padding: 5px; font-size: 13px;'>\r\n";
-                            $info = "$strQualification: "
-                                    . $row_rnd['rnd_qualiSieger'] . " $strQualifyTop, "
-                                    . $row_rnd['rnd_qualiLeistung'] . " $strQualifyPerformance";
+                            $info = $GLOBALS['strQualification'].": "
+                                    . $row_rnd['rnd_qualiSieger'] . $GLOBALS['strQualifyTop'].", "
+                                    . $row_rnd['rnd_qualiLeistung'] . $GLOBALS['strQualifyPerformance'];
                             $content_res .= "<p>".$info."</p>\r\n";                      
                             
                             // print qualification descriptions if required 
@@ -245,7 +245,7 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                     // If round evaluated per heat, group results accordingly    
                     $order_heat = "";
                     if ($row_rnd['rnd_status'] == $cfgRoundStatus['results_done']) {
-                        if($eval == $cfgEvalType[$strEvalTypeHeat]) {    // eval per heat
+                        if($eval == $cfgEvalType[$GLOBALS['strEvalTypeHeat']]) {    // eval per heat
                             $order_heat = "heat_id, ";
                         } 
                     } else{
@@ -261,12 +261,12 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                     // Order performance depending on discipline type
                     $perf_sort = "r.Leistung";
                     
-                    if(($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeJumpNoWind])
-                        || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeThrow]))
+                    if(($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeJumpNoWind']])
+                        || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeThrow']]))
                     {
                         $order_perf = "DESC";
                     }
-                    else if($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeJump])
+                    else if($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeJump']])
                     {
                         if ($row_rnd['rnd_wind'] == 1) {            // with wind
                             $order_perf = "DESC, r.Info ASC";
@@ -275,7 +275,7 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                             $order_perf = "DESC";
                         }
                     }
-                    else if($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeHigh])
+                    else if($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeHigh']])
                     {
                         $order_perf = "DESC";
                         if ($row_rnd['rnd_status'] == $cfgRoundStatus['results_in_progress'] || $row_rnd['rnd_status'] == $cfgRoundStatus['results_live']){
@@ -295,20 +295,29 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                     
                     $order_rank = "res_rang_sort,";
                     //  TODO: ??                
-                    if(($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeNone])
-                                            || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeTrack])
-                                            || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeTrackNoWind])
-                                            || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeDistance])
-                                            || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeRelay]))
+                    if(($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeNone']])
+                                            || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeTrack']])
+                                            || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeTrackNoWind']])
+                                            || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeDistance']])
+                                            || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeRelay']]))
                     {
                         if ($row_rnd['rnd_status_timing'] == 1){  
-                              $order_rank = "res_perf_sort, res_pos,"; 
+                            if($relay) {
+                                $order_rank = "res_perf_sort,";  
+                            } else {
+                                $order_rank = "res_perf_sort, res_pos,"; 
+                            }
                             
                         } 
                     } else {
                     
                             if ($row_rnd['rnd_status'] == $cfgRoundStatus['results_in_progress'] || $row_rnd['rnd_status'] == $cfgRoundStatus['results_live']){  
-                                $order_rank = "res_rang_sort, res_pos,"; 
+                                if($relay) {
+                                    $order_rank = "res_rang_sort,";  
+                                } else {
+                                    $order_rank = "res_rang_sort, res_pos,"; 
+                                }
+                                 
                             }
                         
                     }
@@ -443,14 +452,14 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                         while($row_res = mysql_fetch_assoc($res_res)) {
                             if($row_res['res_id_ss'] != $ath_act)
                             { 
-                                if(($row_res['heat_id'] != $heat_act && $eval == $cfgEvalType[$strEvalTypeHeat]) || $heat_act=='')
+                                if(($row_res['heat_id'] != $heat_act && $eval == $cfgEvalType[$GLOBALS['strEvalTypeHeat']]) || $heat_act=='')
                                 {
                                     $osvimg_name = str_pad($row_res['res_film'],3 ,'0', STR_PAD_LEFT)."01001.jpg";
                                                                         
                                     // heat name
-                                    if($eval == $cfgEvalType[$strEvalTypeHeat]) {
+                                    if($eval == $cfgEvalType[$GLOBALS['strEvalTypeHeat']]) {
                                         if(empty($roundName))    {            // no round type defined
-                                            $roundName = $strFinalround . " ";
+                                            $roundName = $GLOBALS['strFinalround'] . " ";
                                         }
                                         $title = $roundName." ".$row_res['res_heat'];    // heat name with nbr.
                                     }
@@ -461,9 +470,9 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                                     $title = trim($title);
                     
                                     // wind per heat
-                                    if(($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeTrack])
+                                    if(($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeTrack']])
                                             && ($row_rnd['rnd_wind'] == 1)
-                                            && ($eval == $cfgEvalType[$strEvalTypeHeat]))
+                                            && ($eval == $cfgEvalType[$GLOBALS['strEvalTypeHeat']]))
                                     {
                                         $heatwind = $row_res['res_wind'];        // wind per heat
                                     }
@@ -473,9 +482,9 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
 
                                     $wind= FALSE;
                                     if(($row_rnd['rnd_typ'] == 1) 
-                                        && ($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeJump]) 
-                                        || (($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeTrack]) 
-                                            && ($eval == $cfgEvalType[$strEvalTypeAll])))
+                                        && ($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeJump']]) 
+                                        || (($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeTrack']]) 
+                                            && ($eval == $cfgEvalType[$GLOBALS['strEvalTypeAll']])))
                                     {
                                         $wind= TRUE;
                                     }
@@ -517,7 +526,7 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                                         }
                                     }    // ET heat title set
                                     
-                                    if($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeTrack]) {
+                                    if($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeTrack']]) {
                                         $str_Pos = $GLOBALS['strTrack'];    
                                     } else {
                                         $str_Pos = $GLOBALS['strPositionShort'];
@@ -539,18 +548,20 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                                     $content_res .= "<thead>\r\n";
                                     $content_res .= "<tr>\r\n";
                                     if ($row_rnd['rnd_status'] == $cfgRoundStatus['results_done']){
-                                        $content_res .= "<th class='rank'><span class='long'>".$GLOBALS['strRank']."</span><span class='short'>R</span></th>\r\n";
+                                        $content_res .= "<th class='rank'><span class='long'>".$GLOBALS['strRank']."</span><span class='short'>".$GLOBALS['strRankShort']."</span></th>\r\n";
                                     } else {
-                                        if($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeTrack]) {
-                                            $content_res .= "<th class='rank'><span class='long'>".$str_Pos."</span><span class='short'>B</span></th>\r\n";    
+                                        if($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeTrack']]) {
+                                            $content_res .= "<th class='rank'><span class='long'>".$str_Pos."</span><span class='short'>".$GLOBALS['strLaneShort']."</span></th>\r\n";    
                                         }
                                     }
                                     if ($row_rnd['rnd_status'] != $cfgRoundStatus['results_done']){
                                         $content_res .= "<th class='bib'>".$GLOBALS['strNbr']."</th>\r\n";
                                     }
-                                    
-                                    $content_res .= "<th class='name'>".$GLOBALS['strName']."</th>\r\n";
-                                    if($relay == false) {
+                                    if($relay) {
+                                        $content_res .= "<th class='name'>".$GLOBALS['strRelay']."</th>\r\n";
+                                        
+                                    } else {
+                                        $content_res .= "<th class='name'>".$GLOBALS['strName']."</th>\r\n";
                                         $content_res .= "<th class='yob'>".$GLOBALS['strYearShort']."</th>\r\n";
                                         $content_res .= "<th class='country'>".$GLOBALS['strCountry']."</th>\r\n";    
                                     }
@@ -559,7 +570,7 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                                     } else{
                                         $content_res .= "<th class='club'>".$GLOBALS['strClub']."</th>\r\n";   
                                     }
-                                    $content_res .= "<th class='result'><span class='long'>".$GLOBALS['strPerformance']."</span><span class='short'>Res.</span></th>\r\n";
+                                    $content_res .= "<th class='result'><span class='long'>".$GLOBALS['strPerformance']."</span><span class='short'>".$GLOBALS['strPerformanceShort']."</span></th>\r\n";
                                     if($wind){
                                         $content_res .= "<th class='wind'>".$GLOBALS['strWind']."</th>\r\n";
                                     }
@@ -569,7 +580,7 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                                     if($qual_show) {
                                         $content_res .= "<th class='qual'></th>\r\n";
                                     }
-                                    $content_res .= "<th class='remark'><span class='long'>".$GLOBALS['strResultRemark']."</span><span class='short'>Bem.</span></th>\r\n";
+                                    $content_res .= "<th class='remark'><span class='long'>".$GLOBALS['strResultRemark']."</span><span class='short'>".$GLOBALS['strResultRemarkShort']."</span></th>\r\n";
                                     $content_res .= "</tr>\r\n";
                                     $content_res .= "</thead>\r\n";
                                     $content_res .= "<tbody>\r\n";
@@ -613,7 +624,7 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                                    $res_list_rang = ''; 
                                 }
                                 
-                                if($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeTrack]) {
+                                if($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeTrack']]) {
                                     $res_list_pos = $row_res['res_bahn'];
                                 } else {
                                     $res_list_pos = $row_res['res_pos'];
@@ -659,15 +670,15 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                                         }
                                     }
                                 }
-                                else if(($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeJump])
-                                    || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeJumpNoWind])
-                                    || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeThrow])
-                                    || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeHigh])) {
+                                else if(($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeJump']])
+                                    || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeJumpNoWind']])
+                                    || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeThrow']])
+                                    || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeHigh']])) {
                                     $res_list_perf = AA_formatResultMeter($row_res['res_perf']);
                                 }
                                 else {
-                                    if(($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeTrack])
-                                    || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeTrackNoWind])){
+                                    if(($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeTrack']])
+                                    || ($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeTrackNoWind']])){
                                         $res_list_perf = AA_formatResultTime($row_res['res_perf'], true, true);
                                     }else{
                                         $res_list_perf = AA_formatResultTime($row_res['res_perf'], true);
@@ -697,7 +708,7 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                                 $secondResult = false;
                                 if($rang_act != 0 || $row_rnd['rnd_status'] == $cfgRoundStatus['results_in_progress'] || $row_rnd['rnd_status'] == $cfgRoundStatus['results_live'])    // valid result
                                 {
-                                    if(($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeJump])
+                                    if(($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeJump']])
                                         && ($row_rnd['rnd_wind'] == 1))
                                     {
                                         $res_list_wind = $row_res[4];
@@ -730,9 +741,9 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                                             }
                                         }
                                     }
-                                    else if(($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeTrack])
+                                    else if(($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeTrack']])
                                         && ($row_rnd['rnd_wind'] == 1)
-                                        && ($eval == $cfgEvalType[$strEvalTypeAll])) 
+                                        && ($eval == $cfgEvalType[$GLOBALS['strEvalTypeAll']])) 
                                     {
                                         $res_list_wind = $row_res['res_wind'];
                                     }
@@ -788,7 +799,7 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                                     }
                                 } elseif($show_all) // show all attempts
                                 {
-                                    $query_sort = ($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeHigh]) ? "ORDER BY Leistung ASC": "ORDER BY xResultat ASC";
+                                    $query_sort = ($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeHigh']]) ? "ORDER BY Leistung ASC": "ORDER BY xResultat ASC";
                                         
                                     $res_att = mysql_query("
                                             SELECT * FROM 
@@ -819,10 +830,10 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                                                 $text_att .= " / ";
                                             }else{
                                                 $text_att .= ($row_att['Leistung']=='-') ? '-' : AA_formatResultMeter($row_att['Leistung']);
-                                                if ($saison == "O" ||  ($saison == "I"  && $row_rnd['rnd_typ'] != $cfgDisciplineType[$strDiscTypeJump])) {        // outdoor  or (indoor and not jump)
-                                                    if($row_att['Info'] != "-" && !empty($row_att['Info']) && $row_rnd['rnd_typ'] != $cfgDisciplineType[$strDiscTypeThrow]){
+                                                if ($saison == "O" ||  ($saison == "I"  && $row_rnd['rnd_typ'] != $cfgDisciplineType[$GLOBALS['strDiscTypeJump']])) {        // outdoor  or (indoor and not jump)
+                                                    if($row_att['Info'] != "-" && !empty($row_att['Info']) && $row_rnd['rnd_typ'] != $cfgDisciplineType[$GLOBALS['strDiscTypeThrow']]){
                                                             
-                                                            if ($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeHigh]){
+                                                            if ($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeHigh']]){
                                                                 $text_att .= " , ".$row_att['Info'];  
                                                             }
                                                             else {
@@ -831,7 +842,7 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                                                                  } 
                                                             }
                                                     }
-                                                    elseif ($row_att['Info'] == "-"  && $row_rnd['rnd_typ'] != $cfgDisciplineType[$strDiscTypeThrow] && $row_att['Leistung'] > 0){
+                                                    elseif ($row_att['Info'] == "-"  && $row_rnd['rnd_typ'] != $cfgDisciplineType[$GLOBALS['strDiscTypeThrow']] && $row_att['Leistung'] > 0){
                                                              $text_att .= " , ".$row_att['Info'];  
                                                     }  
                                                 }                              
@@ -847,7 +858,7 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                                 if ($row_rnd['rnd_status'] == $cfgRoundStatus['results_done']){
                                     $content_res .= "<td class='rank'>".$res_list_rang."</td>\r\n";
                                 } else {
-                                    if($row_rnd['rnd_typ'] == $cfgDisciplineType[$strDiscTypeTrack]) {
+                                    if($row_rnd['rnd_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeTrack']]) {
                                         $content_res .= "<td class='rank'>".$res_list_pos."</td>\r\n";    
                                     }
                                 }
@@ -855,14 +866,22 @@ if (!defined('AA_RANKINGLIST_SINGLE_LIB_INCLUDED'))
                                         $content_res .= "<td class='bib'>".$res_list_bib."\r\n";
                                 }
                                 $content_res .= "<td class='name'>".$res_list_name."\r\n";
-                                if($show_all || $relay) {
+                                if($show_all) {
                                     $content_res .= "<br>\r\n";
                                     if (empty($text_att)){
-                                        $content_res .= "<span id='attempts'>".$strAttempts."</span>: \r\n";
+                                        $content_res .= "<span id='attempts'>".$GLOBALS['strAttempts']."</span>: \r\n";
                                     }
                                     else {
-                                        $content_res .= "<span id='attempts'>".$strAttempts.": ( ".$text_att." )</span>\r\n"; 
+                                        $content_res .= "<span id='attempts'>".$GLOBALS['strAttempts'].": ( ".$text_att." )</span>\r\n"; 
                                     }
+                                } elseif ($relay){
+                                    $content_res .= "<br>\r\n";
+                                    if (empty($text_att)){
+                                        $content_res .= "";
+                                    }
+                                    else {
+                                        $content_res .= "<span id='attempts'>".$text_att."</span>\r\n"; 
+                                    }    
                                 }
                                 $content_res .= "</td>\r\n";
                                 if($relay == false) {

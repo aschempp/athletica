@@ -137,7 +137,7 @@ else
 		// Team sheet: Single
 		else
 		{  
-			AA_sheets_processSingle($row[0], $row[1], $selection2);
+			AA_sheets_processSingle($row[0], $row[1], $selection2, $row[2]);
 		}
 
 	}
@@ -153,7 +153,7 @@ $GLOBALS[$list]->endPage();	// end HTML page for printing
 //	process club single events
 //
 
-function AA_sheets_processSingle($xCategory, $category, $selection2)
+function AA_sheets_processSingle($xCategory, $category, $selection2, $wTyp)
 {  
 	require('./config.inc.php');
 
@@ -181,11 +181,19 @@ function AA_sheets_processSingle($xCategory, $category, $selection2)
 			, t.xTeam
 			, v.Name
 		FROM
-			team AS t
-			LEFT JOIN verein AS v ON (v.xVerein = t.xVerein)
+			anmeldung AS a
+            LEFT JOIN athlet AS at ON (at.xAthlet = a.xAthlet)
+            INNER JOIN team AS t ON (t.xTeam = a.xTeam   )
+            LEFT JOIN verein AS v ON (v.xVerein = t.xVerein)
+            LEFT JOIN start as st ON (st.xAnmeldung = a.xAnmeldung  )
+            LEFT JOIN wettkampf as w ON (w.xWettkampf = st.xWettkampf)
+            LEFT JOIN region AS re ON (at.xRegion = re.xRegion)
 		WHERE 
             t.xMeeting = " . $_COOKIE['meeting_id'] ."
-		    AND t.xKategorie = $xCategory 		
+		    AND w.xKategorie = $xCategory 
+            AND w.Typ = $wTyp	
+        GROUP BY
+            t.xTeam
 	");   
     
 	if(mysql_errno() > 0) {		// DB error

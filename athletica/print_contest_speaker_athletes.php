@@ -694,7 +694,7 @@ else
                                 $season_effort = "";
 
                             }
-                            if($row_base['best_effort']<$row_base['season_effort'] || $row_base['season_effort']==""){
+                            if($row_base['best_effort']<=$row_base['season_effort'] || $row_base['season_effort']==""){
                                 $best_effort_year = substr($row_base['pb_date'], -2,2);
                                              
                                 $timepices = explode(":", $row_base['best_effort']);
@@ -1050,7 +1050,7 @@ else
                             }
                             
                         }
-                        if($row_base['best_effort']>$row_base['season_effort']) {
+                        if($row_base['best_effort']>=$row_base['season_effort']) {
                             $best_effort_year = substr($row_base['pb_date'], -2,2);
                             $best_effort = AA_formatResultMeter(str_replace(".", "", $row_base['best_effort'])) . " (" . $best_effort_year . ")";
                         } else {

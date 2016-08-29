@@ -119,111 +119,631 @@ CREATE TABLE `t_translation` (
 
 /*Data for the table `t_translation` */
 
-insert  into `t_translation`(`translation_key`,`language_code`,`translation_text`) values 
-('AFTERWARDS','de','danach'),
-('AFTER_ATTEMPT','de','nach %n% Versuch'),
-('AFTER_ATTEMPTS','de','nach %n% Versuchen'),
-('AND','de','und'),
-('APPLICATION_NAME','de','Athletica - Technical Client'),
-('ATHLETICA_SERVER','de','Athletica Server'),
-('ATTEMPT','de','Versuch'),
-('ATTEMPTS','de','Versuche'),
-('CENTIMETER_SHORT','de','cm'),
-('CHOOSE','de','bitte wählen'),
-('CLOSE','de','Schliessen'),
-('CONFIGURATION','de','Konfiguration'),
-('DEFAULT','de','Standard'),
-('DELETING_RESULT','de','Resultat wird gelöscht...'),
-('DROP_POSITION','de','Reihenfolge drehen'),
-('ERROR_DB','de','Datenbankfehler'),
-('ERROR_DB_TEXT','de','Die Verbindung zur lokalen Datenbank ist fehlgeschlagen. Bitte überprüfen Sie die Einstellungen in der Datei \'inc.settings.php\' im Ordner \'athletica_technical\'.'),
-('ERROR_DB_TITLE','de','Verbindung fehlgeschlagen'),
-('ERROR_FUNCTION','de','Funktionsfehler'),
-('ERROR_INPUT','de','ungültige Eingabe'),
-('ERROR_INPUT_REQUIRED','de','Pflichtfeld!'),
-('ERROR_INPUT_RESULT','de','ungültiges Resultat'),
-('ERROR_INPUT_STARTHEIGHT','de','ungültige Anfangshöhe'),
-('ERROR_INPUT_VALUE','de','ungültiger Wert'),
-('ERROR_SERVER_TEXT','de','Bitte überprüfen Sie die Einstellungen für den Athletica Server.'),
-('ERROR_SERVER_TITLE','de','Verbindung zum Athletica Server fehlgeschlagen'),
-('EVENT','de','Wettkampf'),
-('EVENTS_EMPTY','de','keine Wettkämpfe gefunden'),
-('EVENT_FINISHED','de','Wettkampf abgeschlossen'),
-('EVENT_QUIT','de','Wettkampf verlassen'),
-('FINAL','de','Vor-/Endkampf'),
-('FINAL_AFTER','de','Final nach Versuch'),
-('FINAL_ATHLETES','de','Anz. Athleten im Endkampf'),
-('HEIGHTS','de','Sprunghöhen'),
-('HEIGHTS_DIFF','de','Höhensteigerung'),
-('HEIGHTS_START','de','Anfangshöhen'),
-('HEIGHTS_START_DEFINE','de','Anfangshöhen definieren!'),
-('HOME','de','Startseite'),
-('LANGUAGE','de','Sprache'),
-('LOADING_DATA','de','Daten werden geladen...'),
-('LOADING_HEIGHTS','de','Sprunghöhen werden geladen...'),
-('LOADING_RESULT','de','Resultat wird geladen...'),
-('LOADING_RESULTLIST','de','Rangliste wird geladen...'),
-('LOADING_RESULTS','de','Resultate werden geladen...'),
-('LOADING_SETTINGS','de','Einstellungen werden geladen...'),
-('LOADING_STARTHEIGHTS','de','Anfangshöhen werden geladen...'),
-('LOADING_STARTLIST','de','Startliste wird geladen...'),
-('MEETING','de','Meeting'),
-('METER_SHORT','de','m'),
-('MODE','de','Modus'),
-('MODE_LIVE','de','Live'),
-('MODE_LOCAL','de','Lokal'),
-('NEXT','de','Next'),
-('NO','de','Nein'),
-('OK','de','OK'),
-('PERFORMANCE','de','Leistung'),
-('PLEASE_WAIT','de','Bitte warten'),
-('POSITION_RESET','de','Reihenfolge zurücksetzen'),
-('QUIT','de','Verlassen'),
-('REFRESH','de','Aktualisieren'),
-('REMARK','de','Bemerkung'),
-('RESETING_POSITIONS','de','Startliste wird wiederhergestellt...'),
-('RESULTLIST','de','Rangliste'),
-('RESULTS','de','Resultate'),
-('RESULTS_CHANGE','de','Resultate ändern'),
-('RESULT_HIGH_FAILED_BUTTON','de','X'),
-('RESULT_HIGH_PASSED_BUTTON','de','O'),
-('RESULT_HIGH_WAIVED_BUTTON_LONG','de','verz.'),
-('RESULT_HIGH_WAIVED_BUTTON_SHORT','de','-'),
-('RESULT_INVALID_DNS_BUTTON','de','n. a.'),
-('RESULT_INVALID_DNS_DB','de','-1'),
-('RESULT_INVALID_DNS_RANKING','de','n. a.'),
-('RESULT_INVALID_DNS_SHORT','de','n. a.'),
-('RESULT_INVALID_DSQ_BUTTON','de','disq.'),
-('RESULT_INVALID_DSQ_DB','de','-3'),
-('RESULT_INVALID_DSQ_RANKING','de','disq.'),
-('RESULT_INVALID_DSQ_SHORT','de','disq.'),
-('RESULT_INVALID_NAA_BUTTON','de','X'),
-('RESULT_INVALID_NAA_DB','de','X'),
-('RESULT_INVALID_NAA_RANKING','de','k. Res.'),
-('RESULT_INVALID_NAA_SHORT','de','X'),
-('RESULT_INVALID_WAI_BUTTON','de','-'),
-('RESULT_INVALID_WAI_DB','de','-'),
-('RESULT_INVALID_WAI_RANKING','de','verz.'),
-('RESULT_INVALID_WAI_SHORT','de','-'),
-('SAVE','de','Speichern'),
-('SAVING_HEIGHTS','de','Sprunghöhen werden gespeichert...'),
-('SAVING_RESULT','de','Resultat wird gespeichert...'),
-('SAVING_STARTHEIGHTS','de','Anfangshöhen werden gespeichert...'),
-('SERVER_DATABASE','de','Datenbank'),
-('SERVER_HOST','de','IP Adresse'),
-('SERVER_PASSWORD','de','Passwort'),
-('SERVER_PORT','de','Port'),
-('SERVER_USERNAME','de','Benutzername'),
-('SETTINGS','de','Einstellungen'),
-('STARTLIST','de','Startliste'),
-('SUCCESS_SERVER_TEXT','de','Die Verbindung zum Athletica Server wurde erfolgreich hergestellt.'),
-('SUCCESS_SERVER_TITLE','de','Verbindung erfolgreich'),
-('TIME_CALL','de','Stellzeit'),
-('TIME_START','de','Startzeit'),
-('TO','de','bis'),
-('TO_TOP','de','nach oben'),
-('WIND','de','Wind'),
-('YES','de','Ja');
+insert  into `t_translation`(`translation_key`,`language_code`,`translation_text`) values 
+
+('AFTERWARDS','de','danach'),
+
+('AFTERWARDS','fr','ensuite'),
+
+('AFTERWARDS','it','poi'),
+
+('AFTER_ATTEMPT','de','nach %n% Versuch'),
+
+('AFTER_ATTEMPT','fr','après %n% essai'),
+
+('AFTER_ATTEMPT','it','dopo %n%  tentativo'),
+
+('AFTER_ATTEMPTS','de','nach %n% Versuchen'),
+
+('AFTER_ATTEMPTS','fr','après %n% essais'),
+
+('AFTER_ATTEMPTS','it','dopo %n%  tentativi'),
+
+('AND','de','und'),
+
+('AND','fr','et'),
+
+('AND','it','e'),
+
+('APPLICATION_NAME','de','Athletica - Technical Client'),
+
+('APPLICATION_NAME','fr','Athletica - Technical Client'),
+
+('APPLICATION_NAME','it','Athletica - Technical Client'),
+
+('ATHLETICA_SERVER','de','Athletica Server'),
+
+('ATHLETICA_SERVER','fr','Serveur Athletica'),
+
+('ATHLETICA_SERVER','it','Server Athletica '),
+
+('ATTEMPT','de','Versuch'),
+
+('ATTEMPT','fr','essai'),
+
+('ATTEMPT','it','tentativo'),
+
+('ATTEMPTS','de','Versuche'),
+
+('ATTEMPTS','fr','essais'),
+
+('ATTEMPTS','it','tentativi'),
+
+('CENTIMETER_SHORT','de','cm'),
+
+('CENTIMETER_SHORT','fr','cm'),
+
+('CENTIMETER_SHORT','it','cm'),
+
+('CHOOSE','de','bitte wählen'),
+
+('CHOOSE','fr','veuillez choisir'),
+
+('CHOOSE','it','Scegliere'),
+
+('CLOSE','de','Schliessen'),
+
+('CLOSE','fr','fermer'),
+
+('CLOSE','it','Chiudere'),
+
+('CONFIGURATION','de','Konfiguration'),
+
+('CONFIGURATION','fr','configuration'),
+
+('CONFIGURATION','it','Configurazione'),
+
+('DEFAULT','de','Standard'),
+
+('DEFAULT','fr','par défaut'),
+
+('DEFAULT','it','Default'),
+
+('DELETING_RESULT','de','Resultat wird gelöscht...'),
+
+('DELETING_RESULT','fr','le résultat est effacé'),
+
+('DELETING_RESULT','it','Il risultato viene cancellato...'),
+
+('DROP_POSITION','de','Reihenfolge drehen'),
+
+('DROP_POSITION','fr','inverser l\'ordre'),
+
+('DROP_POSITION','it','Invertire l\'ordine'),
+
+('ERROR_DB','de','Datenbankfehler'),
+
+('ERROR_DB','fr','erreur de base de données'),
+
+('ERROR_DB','it','Errore del database'),
+
+('ERROR_DB_TEXT','de','Die Verbindung zur lokalen Datenbank ist fehlgeschlagen. Bitte überprüfen Sie die Einstellungen in der Datei \'inc.settings.php\' im Ordner \'athletica_technical\'.'),
+
+('ERROR_DB_TEXT','fr','La connexion vers la base de données locale a échouée. Veuillez contrôler les paramètres du fichier \'inc.settings.php\' dans le classeur \'athletica_technical\'.'),
+
+('ERROR_DB_TEXT','it','Il collegamento con il database locale è fallito. PF verificare le impostazioni del file \'inc.settings.php\' nella cartella \'athletica_technical\'.'),
+
+('ERROR_DB_TITLE','de','Verbindung fehlgeschlagen'),
+
+('ERROR_DB_TITLE','fr','connexion échouée'),
+
+('ERROR_DB_TITLE','it','Collegamento fallito'),
+
+('ERROR_FUNCTION','de','Funktionsfehler'),
+
+('ERROR_FUNCTION','fr','erreur de fonctionnement'),
+
+('ERROR_FUNCTION','it','Errore di funzione'),
+
+('ERROR_INPUT','de','ungültige Eingabe'),
+
+('ERROR_INPUT','fr','saisie non valable'),
+
+('ERROR_INPUT','it','Immissione non valida'),
+
+('ERROR_INPUT_REQUIRED','de','Pflichtfeld!'),
+
+('ERROR_INPUT_REQUIRED','fr','donnée obligatoire'),
+
+('ERROR_INPUT_REQUIRED','it','Campo obbligatorio!'),
+
+('ERROR_INPUT_RESULT','de','ungültiges Resultat'),
+
+('ERROR_INPUT_RESULT','fr','résultat non valable'),
+
+('ERROR_INPUT_RESULT','it','Risultato non valido'),
+
+('ERROR_INPUT_STARTHEIGHT','de','ungültige Anfangshöhe'),
+
+('ERROR_INPUT_STARTHEIGHT','fr','hauteur de départ non valable'),
+
+('ERROR_INPUT_STARTHEIGHT','it','Altezza di partenza non valida'),
+
+('ERROR_INPUT_VALUE','de','ungültiger Wert'),
+
+('ERROR_INPUT_VALUE','fr','valeur non valable'),
+
+('ERROR_INPUT_VALUE','it','Valore non valido'),
+
+('ERROR_SERVER_TEXT','de','Bitte überprüfen Sie die Einstellungen für den Athletica Server.'),
+
+('ERROR_SERVER_TEXT','fr','Veuillez contrôler les paramètres pour le serveur Athletica'),
+
+('ERROR_SERVER_TEXT','it','PF verificare le impostazioni del server Athletica'),
+
+('ERROR_SERVER_TITLE','de','Verbindung zum Athletica Server fehlgeschlagen'),
+
+('ERROR_SERVER_TITLE','fr','connexion échouée vers le serveur Athletica'),
+
+('ERROR_SERVER_TITLE','it','Collegamento col server Athletica fallito'),
+
+('EVENT','de','Wettkampf'),
+
+('EVENT','fr','concours'),
+
+('EVENT','it','Gara'),
+
+('EVENTS_EMPTY','de','keine Wettkämpfe gefunden'),
+
+('EVENTS_EMPTY','fr','aucun concours a été trouvé'),
+
+('EVENTS_EMPTY','it','Nessuna gara trovata'),
+
+('EVENT_FINISHED','de','Wettkampf abgeschlossen'),
+
+('EVENT_FINISHED','fr','concours terminé'),
+
+('EVENT_FINISHED','it','Gara terminata'),
+
+('EVENT_QUIT','de','Wettkampf verlassen'),
+
+('EVENT_QUIT','fr','quitter le concours'),
+
+('EVENT_QUIT','it','Abbandono'),
+
+('FINAL','de','Vor-/Endkampf'),
+
+('FINAL','fr','èréliminaires/finale'),
+
+('FINAL','it','Finale'),
+
+('FINAL_AFTER','de','Final nach Versuch'),
+
+('FINAL_AFTER','fr','finale après essai'),
+
+('FINAL_AFTER','it','Finale dopo'),
+
+('FINAL_ATHLETES','de','Anz. Athleten im Endkampf'),
+
+('FINAL_ATHLETES','fr','nombre d\'athlètes en finale'),
+
+('FINAL_ATHLETES','it','Numero di atleti in finale'),
+
+('HEIGHTS','de','Sprunghöhen'),
+
+('HEIGHTS','fr','hauteurs de saut'),
+
+('HEIGHTS','it','Altezze'),
+
+('HEIGHTS_DIFF','de','Höhensteigerung'),
+
+('HEIGHTS_DIFF','fr','progression des hauteurs'),
+
+('HEIGHTS_DIFF','it','Incremento altezze'),
+
+('HEIGHTS_START','de','Anfangshöhen'),
+
+('HEIGHTS_START','fr','hauteurs de départ'),
+
+('HEIGHTS_START','it','Altezze di partenza'),
+
+('HEIGHTS_START_DEFINE','de','Anfangshöhen definieren!'),
+
+('HEIGHTS_START_DEFINE','fr','définition des hauteur de départ'),
+
+('HEIGHTS_START_DEFINE','it','Definire le altezze di partenza!'),
+
+('HOME','de','Startseite'),
+
+('HOME','fr','page de démarrage'),
+
+('HOME','it','Pagina iniziale'),
+
+('LANGUAGE','de','Sprache'),
+
+('LANGUAGE','fr','langue'),
+
+('LANGUAGE','it','Lingua'),
+
+('LOADING_DATA','de','Daten werden geladen...'),
+
+('LOADING_DATA','fr','les données sont chargées'),
+
+('LOADING_DATA','it','I dati vengono caricati...'),
+
+('LOADING_HEIGHTS','de','Sprunghöhen werden geladen...'),
+
+('LOADING_HEIGHTS','fr','les hauteurs de saut sont chargées'),
+
+('LOADING_HEIGHTS','it','Le altezze vengono caricate...'),
+
+('LOADING_RESULT','de','Resultat wird geladen...'),
+
+('LOADING_RESULT','fr','le résultat est chargé'),
+
+('LOADING_RESULT','it','Il risultato viene caricato...'),
+
+('LOADING_RESULTLIST','de','Rangliste wird geladen...'),
+
+('LOADING_RESULTLIST','fr','le classement est chargé'),
+
+('LOADING_RESULTLIST','it','La classifica viene caricata...'),
+
+('LOADING_RESULTS','de','Resultate werden geladen...'),
+
+('LOADING_RESULTS','fr','les résultats sont chargés'),
+
+('LOADING_RESULTS','it','I risultati vengono caricati...'),
+
+('LOADING_SETTINGS','de','Einstellungen werden geladen...'),
+
+('LOADING_SETTINGS','fr','les paramètres sont chargés'),
+
+('LOADING_SETTINGS','it','Le impostazioni vengono caricate...'),
+
+('LOADING_STARTHEIGHTS','de','Anfangshöhen werden geladen...'),
+
+('LOADING_STARTHEIGHTS','fr','les hauteurs de départ sont chargées'),
+
+('LOADING_STARTHEIGHTS','it','Le altezze di partenza vengono caricate...'),
+
+('LOADING_STARTLIST','de','Startliste wird geladen...'),
+
+('LOADING_STARTLIST','fr','la liste de départ est chargée'),
+
+('LOADING_STARTLIST','it','La lista di partenza viene caricata...'),
+
+('MEETING','de','Meeting'),
+
+('MEETING','fr','meeting'),
+
+('MEETING','it','Meeting'),
+
+('METER_SHORT','de','m'),
+
+('METER_SHORT','fr','m'),
+
+('METER_SHORT','it','m'),
+
+('MODE','de','Modus'),
+
+('MODE','fr','mode'),
+
+('MODE','it','Modo'),
+
+('MODE_LIVE','de','Live'),
+
+('MODE_LIVE','fr','en direct'),
+
+('MODE_LIVE','it','Live'),
+
+('MODE_LOCAL','de','Lokal'),
+
+('MODE_LOCAL','fr','locale'),
+
+('MODE_LOCAL','it','locale'),
+
+('NEXT','de','Next'),
+
+('NEXT','fr','suivant'),
+
+('NEXT','it','prossimo'),
+
+('NO','de','Nein'),
+
+('NO','fr','Non'),
+
+('NO','it','No'),
+
+('OK','de','OK'),
+
+('OK','fr','OK'),
+
+('OK','it','OK'),
+
+('PERFORMANCE','de','Leistung'),
+
+('PERFORMANCE','fr','performance'),
+
+('PERFORMANCE','it','Prestazione'),
+
+('PLEASE_WAIT','de','Bitte warten'),
+
+('PLEASE_WAIT','fr','veuillez attendre'),
+
+('PLEASE_WAIT','it','Attendere prego'),
+
+('POSITION_RESET','de','Reihenfolge zurücksetzen'),
+
+('POSITION_RESET','fr','reinitialiser l\'ordre'),
+
+('POSITION_RESET','it','Resettare'),
+
+('QUIT','de','Verlassen'),
+
+('QUIT','fr','quitter'),
+
+('QUIT','it','Abbandonare'),
+
+('REFRESH','de','Aktualisieren'),
+
+('REFRESH','fr','actualisation'),
+
+('REFRESH','it','Aggiornare'),
+
+('REMARK','de','Bemerkung'),
+
+('REMARK','fr','remarque'),
+
+('REMARK','it','Annotazione'),
+
+('RESETING_POSITIONS','de','Startliste wird wiederhergestellt...'),
+
+('RESETING_POSITIONS','fr','la liste de départ est restaurée'),
+
+('RESETING_POSITIONS','it','La lista di partenza viene resettata...'),
+
+('RESULTLIST','de','Rangliste'),
+
+('RESULTLIST','fr','classement'),
+
+('RESULTLIST','it','Classifica'),
+
+('RESULTS','de','Resultate'),
+
+('RESULTS','fr','modification du classement'),
+
+('RESULTS','it','Risultati'),
+
+('RESULTS_CHANGE','de','Resultate ändern'),
+
+('RESULTS_CHANGE','fr','modification des résultat'),
+
+('RESULTS_CHANGE','it','Modifica risultati'),
+
+('RESULT_HIGH_FAILED_BUTTON','de','X'),
+
+('RESULT_HIGH_FAILED_BUTTON','fr','X'),
+
+('RESULT_HIGH_FAILED_BUTTON','it','X'),
+
+('RESULT_HIGH_PASSED_BUTTON','de','O'),
+
+('RESULT_HIGH_PASSED_BUTTON','fr','O'),
+
+('RESULT_HIGH_PASSED_BUTTON','it','O'),
+
+('RESULT_HIGH_WAIVED_BUTTON_LONG','de','verz.'),
+
+('RESULT_HIGH_WAIVED_BUTTON_LONG','fr','renonce'),
+
+('RESULT_HIGH_WAIVED_BUTTON_LONG','it','rinunciato'),
+
+('RESULT_HIGH_WAIVED_BUTTON_SHORT','de','-'),
+
+('RESULT_HIGH_WAIVED_BUTTON_SHORT','fr','-'),
+
+('RESULT_HIGH_WAIVED_BUTTON_SHORT','it','-'),
+
+('RESULT_INVALID_DNS_BUTTON','de','n. a.'),
+
+('RESULT_INVALID_DNS_BUTTON','fr','pas venu'),
+
+('RESULT_INVALID_DNS_BUTTON','it','non part.'),
+
+('RESULT_INVALID_DNS_DB','de','-1'),
+
+('RESULT_INVALID_DNS_DB','fr','-1'),
+
+('RESULT_INVALID_DNS_DB','it','-1'),
+
+('RESULT_INVALID_DNS_RANKING','de','n. a.'),
+
+('RESULT_INVALID_DNS_RANKING','fr','pas venu'),
+
+('RESULT_INVALID_DNS_RANKING','it','non part.'),
+
+('RESULT_INVALID_DNS_SHORT','de','n. a.'),
+
+('RESULT_INVALID_DNS_SHORT','fr','pas venu'),
+
+('RESULT_INVALID_DNS_SHORT','it','non part.'),
+
+('RESULT_INVALID_DSQ_BUTTON','de','disq.'),
+
+('RESULT_INVALID_DSQ_BUTTON','fr','disq.'),
+
+('RESULT_INVALID_DSQ_BUTTON','it','squal.'),
+
+('RESULT_INVALID_DSQ_DB','de','-3'),
+
+('RESULT_INVALID_DSQ_DB','fr','-3'),
+
+('RESULT_INVALID_DSQ_DB','it','-3'),
+
+('RESULT_INVALID_DSQ_RANKING','de','disq.'),
+
+('RESULT_INVALID_DSQ_RANKING','fr','disq.'),
+
+('RESULT_INVALID_DSQ_RANKING','it','squal.'),
+
+('RESULT_INVALID_DSQ_SHORT','de','disq.'),
+
+('RESULT_INVALID_DSQ_SHORT','fr','disq.'),
+
+('RESULT_INVALID_DSQ_SHORT','it','squal.'),
+
+('RESULT_INVALID_NAA_BUTTON','de','X'),
+
+('RESULT_INVALID_NAA_BUTTON','fr','X'),
+
+('RESULT_INVALID_NAA_BUTTON','it','X'),
+
+('RESULT_INVALID_NAA_DB','de','X'),
+
+('RESULT_INVALID_NAA_DB','fr','X'),
+
+('RESULT_INVALID_NAA_DB','it','X'),
+
+('RESULT_INVALID_NAA_RANKING','de','k. Res.'),
+
+('RESULT_INVALID_NAA_RANKING','fr','aucun rés.'),
+
+('RESULT_INVALID_NAA_RANKING','it','nessun risultato'),
+
+('RESULT_INVALID_NAA_SHORT','de','X'),
+
+('RESULT_INVALID_NAA_SHORT','fr','X'),
+
+('RESULT_INVALID_NAA_SHORT','it','X'),
+
+('RESULT_INVALID_WAI_BUTTON','de','-'),
+
+('RESULT_INVALID_WAI_BUTTON','fr','-'),
+
+('RESULT_INVALID_WAI_BUTTON','it','-'),
+
+('RESULT_INVALID_WAI_DB','de','-'),
+
+('RESULT_INVALID_WAI_DB','fr','-'),
+
+('RESULT_INVALID_WAI_DB','it','-'),
+
+('RESULT_INVALID_WAI_RANKING','de','verz.'),
+
+('RESULT_INVALID_WAI_RANKING','fr','renonce'),
+
+('RESULT_INVALID_WAI_RANKING','it','rinunciato'),
+
+('RESULT_INVALID_WAI_SHORT','de','-'),
+
+('RESULT_INVALID_WAI_SHORT','fr','-'),
+
+('RESULT_INVALID_WAI_SHORT','it','-'),
+
+('SAVE','de','Speichern'),
+
+('SAVE','fr','enregistrement'),
+
+('SAVE','it','Salva'),
+
+('SAVING_HEIGHTS','de','Sprunghöhen werden gespeichert...'),
+
+('SAVING_HEIGHTS','fr','enregistrement des hauteurs de saut'),
+
+('SAVING_HEIGHTS','it','Le altezze vengono salvate...'),
+
+('SAVING_RESULT','de','Resultat wird gespeichert...'),
+
+('SAVING_RESULT','fr','enregistrement du résultat'),
+
+('SAVING_RESULT','it','Il risultato viene salvato...'),
+
+('SAVING_STARTHEIGHTS','de','Anfangshöhen werden gespeichert...'),
+
+('SAVING_STARTHEIGHTS','fr','enregistrement des hauteurs de départ'),
+
+('SAVING_STARTHEIGHTS','it','Le altezze di partenza vengono salvate...'),
+
+('SERVER_DATABASE','de','Datenbank'),
+
+('SERVER_DATABASE','fr','base de données'),
+
+('SERVER_DATABASE','it','Banca dati'),
+
+('SERVER_HOST','de','IP Adresse'),
+
+('SERVER_HOST','fr','adresse IP'),
+
+('SERVER_HOST','it','Indirizzo IP'),
+
+('SERVER_PASSWORD','de','Passwort'),
+
+('SERVER_PASSWORD','fr','mot de passe'),
+
+('SERVER_PASSWORD','it','Password'),
+
+('SERVER_PORT','de','Port'),
+
+('SERVER_PORT','fr','port'),
+
+('SERVER_PORT','it','Porta'),
+
+('SERVER_USERNAME','de','Benutzername'),
+
+('SERVER_USERNAME','fr','nom d\'utilisateur'),
+
+('SERVER_USERNAME','it','Nome utente'),
+
+('SETTINGS','de','Einstellungen'),
+
+('SETTINGS','fr','paramètres'),
+
+('SETTINGS','it','Impostazioni'),
+
+('STARTLIST','de','Startliste'),
+
+('STARTLIST','fr','liste de départ'),
+
+('STARTLIST','it','Lista di partenza'),
+
+('SUCCESS_SERVER_TEXT','de','Die Verbindung zum Athletica Server wurde erfolgreich hergestellt.'),
+
+('SUCCESS_SERVER_TEXT','fr','la connexion vers le serveur Athletica a été établie avec succès'),
+
+('SUCCESS_SERVER_TEXT','it','Il collegamento al server Athletica è stato effettuato in modo corretto.'),
+
+('SUCCESS_SERVER_TITLE','de','Verbindung erfolgreich'),
+
+('SUCCESS_SERVER_TITLE','fr','connexion avec succès'),
+
+('SUCCESS_SERVER_TITLE','it','Collegamento effettuato'),
+
+('TIME_CALL','de','Stellzeit'),
+
+('TIME_CALL','fr','heure de rassemblement'),
+
+('TIME_CALL','it','Orario di appello'),
+
+('TIME_START','de','Startzeit'),
+
+('TIME_START','fr','heure de départ'),
+
+('TIME_START','it','Orario di partenza'),
+
+('TO','de','bis'),
+
+('TO','fr','jusqu\'à'),
+
+('TO','it','Fino a'),
+
+('TO_TOP','de','nach oben'),
+
+('TO_TOP','fr','vers le haut'),
+
+('TO_TOP','it','Su'),
+
+('WIND','de','Wind'),
+
+('WIND','fr','vent'),
+
+('WIND','it','Vento'),
+
+('YES','de','Ja'),
+
+('YES','fr','Oui'),
+
+('YES','it','Sì');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

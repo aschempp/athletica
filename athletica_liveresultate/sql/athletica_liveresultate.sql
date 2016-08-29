@@ -22,17 +22,18 @@ DROP TABLE IF EXISTS `config`;
 
 CREATE TABLE `config` (
   `xConfig` int(11) NOT NULL DEFAULT '0',
-  `ftpHost` varchar(50) NOT NULL DEFAULT '',
+  `ftpHost` varchar(100) NOT NULL DEFAULT '',
   `ftpUser` varchar(30) NOT NULL DEFAULT '',
   `ftpPwd` varchar(30) NOT NULL DEFAULT '',
-  `url` varchar(50) NOT NULL DEFAULT '',
+  `url` varchar(100) NOT NULL DEFAULT '',
+  `dir` varchar(100) DEFAULT '',
   PRIMARY KEY (`xConfig`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 /*Data for the table `config` */
 
 insert  into `config`(`xConfig`,`ftpHost`,`ftpUser`,`ftpPwd`,`url`) values 
-(0,'','','','');
+(0,'','','','','');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

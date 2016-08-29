@@ -16,7 +16,7 @@ if (!defined('AA_RANKINGLIST_COMBINED_LIB_INCLUDED'))
         require('./lib/cl_gui_page.lib.php'); 
         require('./lib/common.lib.php');   
         require('./config.inc.php');  
-        require('./config.inc.end.php'); 
+        //require('./config.inc.end.php'); 
                  
         if(AA_connectToDB_live() == FALSE)	{ // invalid DB connection
 	        return;		// abort
@@ -25,6 +25,7 @@ if (!defined('AA_RANKINGLIST_COMBINED_LIB_INCLUDED'))
         if(AA_checkMeetingID() == FALSE) {		// no meeting selected
 	        return;		// abort
         }
+        
 
         $p = "./tmp";
         $fp = @fopen($p."/liveComb".$comb_id."_".$cat_id.".php",'w');
@@ -93,10 +94,10 @@ if (!defined('AA_RANKINGLIST_COMBINED_LIB_INCLUDED'))
             $content_res = "<?php\r\n ";
             $content_res .= "include('include/header.php');\r\n ";
             $content_res .= "?>\r\n ";
-            $content_res .= "<div data-role='page' id='page' data-title='Live Resultate'>\r\n";
+            $content_res .= "<div data-role='page' id='page' data-title='".$GLOBALS['strLiveResults']."'>\r\n";
             $content_res .= "<div data-role='header' data-theme='b' data-id='header' data-position='fixed' data-tap-toggle='false'>\r\n";
-            $content_res .= "<a href='timetable".$id_back.".php' data-icon='back' data-transition='slide' data-direction='reverse'>back</a>\r\n";
-            $content_res .= "<a data-icon='refresh' onclick='refreshPage();'>refresh</a>\r\n";
+            $content_res .= "<a href='timetable".$id_back.".php' data-icon='back' data-transition='slide' data-direction='reverse'>".$GLOBALS['strBack']."</a>\r\n";
+            $content_res .= "<a data-icon='refresh' onclick='refreshPage();'>".$GLOBALS['strRefresh']."</a>\r\n";
             
             while($row_comb = mysql_fetch_assoc($res_comb))
             {
@@ -134,7 +135,7 @@ if (!defined('AA_RANKINGLIST_COMBINED_LIB_INCLUDED'))
                     $content_res .= "<table class='table-results-combined ui-responsive table-stroke'>\r\n";
                     $content_res .= "<thead>\r\n";
                     $content_res .= "<tr>\r\n";
-                    $content_res .= "<th class='rank'><span class='long'>".$GLOBALS['strRank']."</span><span class='short'>R</span></th>\r\n";
+                    $content_res .= "<th class='rank'><span class='long'>".$GLOBALS['strRank']."</span><span class='short'>".$GLOBALS['strRankShort']."</span></th>\r\n";
                     $content_res .= "<th class='name'>".$GLOBALS['strName']."</th>\r\n";
                     $content_res .= "<th class='yob'>".$GLOBALS['strYearShort']."</th>\r\n";
                     $content_res .= "<th class='country'>".$GLOBALS['strCountry']."</th>\r\n";    
@@ -238,7 +239,7 @@ if (!defined('AA_RANKINGLIST_COMBINED_LIB_INCLUDED'))
                         $remark=$row_res['res_remark'];  
                         $lastTime = $row_res['res_time'];
                         
-                        if($row_res['dis_typ'] == $cfgDisciplineType[$strDiscTypeJump]){
+                        if($row_res['dis_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeJump']]){
                             $res2 = mysql_query("SELECT r.Info FROM 
                                         resultat as r
                                         LEFT JOIN serienstart as ss USING(xSerienstart)
@@ -252,10 +253,10 @@ if (!defined('AA_RANKINGLIST_COMBINED_LIB_INCLUDED'))
                         // set wind, if required
                         if($row_res['dis_wind'] == 1)
                         {
-                            if($row_res['dis_typ'] == $cfgDisciplineType[$strDiscTypeTrack]) {
+                            if($row_res['dis_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeTrack']]) {
                                 $wind = " / " . $row_res['res_wind'];
                             }
-                            else if($row_res['dis_typ'] == $cfgDisciplineType[$strDiscTypeJump]) {
+                            else if($row_res['dis_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeJump']]) {
                                 $wind = " / " . $row_res['res_info'];
                             }
                         }
@@ -264,10 +265,10 @@ if (!defined('AA_RANKINGLIST_COMBINED_LIB_INCLUDED'))
                         }
                         
                         // format output
-                        if(($row_res['dis_typ'] == $cfgDisciplineType[$strDiscTypeJump])
-                            || ($row_res['dis_typ'] == $cfgDisciplineType[$strDiscTypeJumpNoWind])
-                            || ($row_res['dis_typ'] == $cfgDisciplineType[$strDiscTypeThrow])
-                            || ($row_res['dis_typ'] == $cfgDisciplineType[$strDiscTypeHigh])) {
+                        if(($row_res['dis_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeJump']])
+                            || ($row_res['dis_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeJumpNoWind']])
+                            || ($row_res['dis_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeThrow']])
+                            || ($row_res['dis_typ'] == $cfgDisciplineType[$GLOBALS['strDiscTypeHigh']])) {
                             $perf = AA_formatResultMeter($row_res['res_perf']);
                         }
                         else {
@@ -336,7 +337,7 @@ if (!defined('AA_RANKINGLIST_COMBINED_LIB_INCLUDED'))
             if(!empty($a))        // add last athlete if any
             {
                 $points_arr[] = $points;    
-                $points_arr_more_disc_all[$xKat][] = $points_disc; 
+                $points_arr_more_disc_all[$cat_id][] = $points_disc; 
                 $name_arr[] = $name;
                 $year_arr[] = $year;
                 $club_arr[] = $club;
@@ -389,8 +390,8 @@ if (!defined('AA_RANKINGLIST_COMBINED_LIB_INCLUDED'))
                             $c=0;
                             $keep_c=0;
                             // first rule 
-                            for ($i=1; $i <= sizeof($points_disc); $i++){                                 
-                                 if  ($points_arr_more_disc_all[$xKat][$key_keep][$i] > $points_arr_more_disc_all[$xKat][$key][$i]){
+                            for ($i=1; $i <= sizeof($points_arr_more_disc_all[$cat_id][$key]); $i++){                                 
+                                 if  ($points_arr_more_disc_all[$cat_id][$key_keep][$i] > $points_arr_more_disc_all[$cat_id][$key][$i]){
                                       $keep_c ++;
                                  }
                                  else {
@@ -398,8 +399,8 @@ if (!defined('AA_RANKINGLIST_COMBINED_LIB_INCLUDED'))
                                  }
                             }
                             
-                            $more=ceil(sizeof($points_disc)/2);  
-                            if (sizeof($points_disc) % 2 == 0){              // combined with even number discs
+                            $more=ceil(sizeof($points_arr_more_disc_all[$cat_id][$key])/2);  
+                            if (sizeof($points_arr_more_disc_all[$cat_id][$key]) % 2 == 0){              // combined with even number discs
                                  $more++;                                   
                             }
                             if     ($keep_c >= $more && $keep_c > $c){
@@ -413,7 +414,7 @@ if (!defined('AA_RANKINGLIST_COMBINED_LIB_INCLUDED'))
                                       // second rule 
                                       // check the best points of the highest points of discipline<br>
                                       
-                                      $k = AA_get_AthletBestPointDisc($points_arr_more_disc_all[$xKat][$key_keep], $points_arr_more_disc_all[$xKat][$key], $key_keep, $key);
+                                      $k = AA_get_AthletBestPointDisc($points_arr_more_disc_all[$cat_id][$key_keep], $points_arr_more_disc_all[$cat_id][$key], $key_keep, $key);
                                       if ($k != 0){
                                            $rank_arr[$k]++;     
                                       }

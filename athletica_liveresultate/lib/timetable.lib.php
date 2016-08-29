@@ -23,7 +23,7 @@ if (!defined('AA_TIMETABLE_LIB_INCLUDED'))
         require_once('./lib/common.lib.php'); //include class  
      
         require('./config.inc.php');  
-        require('./config.inc.end.php');    
+        //require('./config.inc.end.php');    
         
         require('./lib/rankinglist_single.lib.php'); 
         require('./lib/rankinglist_combined.lib.php'); 
@@ -34,6 +34,10 @@ if (!defined('AA_TIMETABLE_LIB_INCLUDED'))
         if(AA_connectToDB() == FALSE)    { // invalid DB connection
             return;        // abort
         } 
+        
+        if(!empty($_COOKIE['language_trans'])) {
+            include ($_COOKIE['language_trans']);
+        }
               
         $res_ftp = mysql_query("
             SELECT
@@ -100,7 +104,7 @@ if (!defined('AA_TIMETABLE_LIB_INCLUDED'))
             
             
             
-            $content .= "<div data-role='page' id='page' data-title='Live Resultate'>\r\n ";
+            $content .= "<div data-role='page' id='page' data-title='".$GLOBALS['strLiveResults']."'>\r\n ";
             $content .= "<div data-role='header' data-theme='b' data-id='header' data-position='block' data-tap-toggle='false'>\r\n";
             if($cfgLogoHeader) {
                 $content .= "<div class='header_img' align='center' style='display: block;'><img src='img/header.png' width='100%'></div>\r\n";
@@ -108,8 +112,8 @@ if (!defined('AA_TIMETABLE_LIB_INCLUDED'))
             $content .= "</div>\r\n";
             $content .= "<div data-role='header' data-theme='b' data-id='header' data-position='block' data-tap-toggle='false'>\r\n ";
             $content .= "<a href='../index.php' data-icon='home' data-transition='slide' data-direction='reverse'>Home</a>\r\n";
-            $content .= "<a class='ui-btn-right' data-icon='refresh' onclick='refreshPage();'>refresh</a>\r\n";
-            $content .= "<h1>&copy; Dominik Hadorn, 2015</h1>\r\n";
+            $content .= "<a class='ui-btn-right' data-icon='refresh' onclick='refreshPage();'>".$GLOBALS['strRefresh']."</a>\r\n";
+            $content .= "<h1>&copy; Dominik Hadorn, 2016</h1>\r\n";
             $content .= "</div>\r\n";
             
             
@@ -174,8 +178,8 @@ if (!defined('AA_TIMETABLE_LIB_INCLUDED'))
                             while($row_comb = mysql_fetch_assoc($res_comb))
                             {
                                 $class = "results_combined";
-                                $class_short = "MK";
-                                $class_long = "Mehrkampf";
+                                $class_short = $GLOBALS['strCombinedShort'];
+                                $class_long = $GLOBALS['strCombinedLong'];
                                 
                                 $content .= "<tr onclick=\"document.location='liveComb".$row_comb['comb_id']."_".$row_cat['cat_id'].".php'\">\r\n";
                                 $content .= "<td class='dis'>".$row_comb['comb_name']."</td>\r\n";
@@ -281,43 +285,43 @@ if (!defined('AA_TIMETABLE_LIB_INCLUDED'))
                             switch($status) {
                                 case  $cfgRoundStatus['results_done']:
                                     $class = "results";
-                                    $class_short = "R";
-                                    $class_long = "Rangliste";
+                                    $class_short = $GLOBALS['strRankingListShort'];
+                                    $class_long = $GLOBALS['strRankingList'];
                                     break; 
                                 case  $cfgRoundStatus['results_live']:
                                     $class = "live";
-                                    $class_short = "L";
-                                    $class_long = "Live";
+                                    $class_short = $GLOBALS['strLiveShort'];
+                                    $class_long = $GLOBALS['strLive'];
                                     break;
                                 case  $cfgRoundStatus['results_in_progress']:
                                     $class = "results_pending";
-                                    $class_short = "R";
-                                    $class_long = "Resultate";
+                                    $class_short = $GLOBALS['strResultsShort'];
+                                    $class_long = $GLOBALS['strResults'];
                                     break;
                                 case  $cfgRoundStatus['heats_in_progress']:
                                     $class = "athletes";
-                                    $class_short = "T";
-                                    $class_long = "Teilnehmer";
+                                    $class_short = $GLOBALS['strParticipantShort'];
+                                    $class_long = $GLOBALS['strParticipant'];
                                     break;
                                 case  $cfgRoundStatus['heats_done']:
                                     $class = "startlist";
-                                    $class_short = "S";
-                                    $class_long = "Startliste";
+                                    $class_short = $GLOBALS['strStartlistShort'];
+                                    $class_long = $GLOBALS['strStartlist'];
                                     break;
                                 case  $cfgRoundStatus['open']:
                                     $class = "athletes";
-                                    $class_short = "T";
-                                    $class_long = "Teilnehmer";
+                                    $class_short = $GLOBALS['strParticipantShort'];
+                                    $class_long = $GLOBALS['strParticipant'];
                                     break;
                                 case  $cfgRoundStatus['enrolement_done']:
                                     $class = "athletes";
-                                    $class_short = "T";
-                                    $class_long = "Teilnehmer";
+                                    $class_short = $GLOBALS['strParticipantShort'];
+                                    $class_long = $GLOBALS['strParticipant'];
                                     break;
                                 case  $cfgRoundStatus['enrolement_pending']:
                                     $class = "athletes";
-                                    $class_short = "T";
-                                    $class_long = "Teilnehmer";
+                                    $class_short = $GLOBALS['strParticipantShort'];
+                                    $class_long = $GLOBALS['strParticipant'];
                                     break;  
                             }
                             
@@ -341,11 +345,11 @@ if (!defined('AA_TIMETABLE_LIB_INCLUDED'))
                                     $layout = AA_getDisciplineType($row_rnd['rnd_id_r']);    // type determines layout
                                     
                                     // track disciplines, with or without wind
-                                    if(($layout == $cfgDisciplineType[$strDiscTypeNone])
-                                            || ($layout == $cfgDisciplineType[$strDiscTypeTrack])
-                                            || ($layout == $cfgDisciplineType[$strDiscTypeTrackNoWind])
-                                            || ($layout == $cfgDisciplineType[$strDiscTypeDistance])
-                                            || ($layout == $cfgDisciplineType[$strDiscTypeRelay]))
+                                    if(($layout == $cfgDisciplineType[$GLOBALS['strDiscTypeNone']])
+                                            || ($layout == $cfgDisciplineType[$GLOBALS['strDiscTypeTrack']])
+                                            || ($layout == $cfgDisciplineType[$GLOBALS['strDiscTypeTrackNoWind']])
+                                            || ($layout == $cfgDisciplineType[$GLOBALS['strDiscTypeDistance']])
+                                            || ($layout == $cfgDisciplineType[$GLOBALS['strDiscTypeRelay']]))
                                     {  
                                         AA_results_Track($row_rnd['rnd_id_r'], $layout, $row_cat['cat_name'], $row_rnd['rnd_dis'] ,$row_rnd['rnd_typName'], $row_rnd['rnd_id_w'], $t, $class, $class_long, $row_rnd['rnd_status']);
                                     }
@@ -413,7 +417,7 @@ if (!defined('AA_TIMETABLE_LIB_INCLUDED'))
                 if ($m_statusChanged == 'y') {
                     $success = $ftp->put_file($local, $remote);
                     if(!$success){
-                         AA_printErrorMsg($strErrFtpNoPut); 
+                         AA_printErrorMsg($GLOBALS['strErrFtpNoPut']); 
                     }
                 }
                 

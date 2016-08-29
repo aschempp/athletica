@@ -22,7 +22,6 @@ if(!empty($_COOKIE['language_trans'])) {
 }
 
 
-
 /**
  * include user parameters
  */

@@ -37,31 +37,6 @@ if ($_POST['arg'] == 'change_clubSearch'){
 }  
 
              
- $athlete = 0;  
- if ($_POST['arg'] == 'change_athlete'){  
-    $enrolement=$_POST['athleteSearch']; 
-    
-    $sql_athlet = "SELECT    
-                        at.Vorname, 
-                        at.Name, 
-                        a.xAnmeldung 
-                   FROM                
-                        anmeldung AS a
-                        LEFT JOIN athlet AS at USING (xAthlet)
-                   WHERE 
-                        xMeeting = ".$_COOKIE['meeting_id'] . "
-                        AND a.xAnmeldung = " . $enrolement;   
-                                                             
-     $res=mysql_query($sql_athlet);
-     if(mysql_errno() > 0) {
-        AA_printErrorMsg("Line " . __LINE__ . ": ". mysql_errno() . ": " . mysql_error());
-     }else{
-        if(mysql_num_rows($res) > 0)  {                 // data found
-              $row=mysql_fetch_row($res);
-              $athlete=$row[1] . " " . $row[0];  
-        } 
-     }
- } 
  
 $page = new GUI_Page('meeting_entries_receipt');
 $page->startPage();
@@ -136,6 +111,7 @@ $page->printPageTitle($strReceipt);
                             $name_athlete=$row_athlets[1] . " " . $row_athlets[0];
                             $dropdown->addOption($name_athlete, $row_athlets[2]); 
                         }
+                        $dropdown->addOption("[".$strAll."]", "-1");
                         $dropdown->selectOption($athleteSearch);
                         $dropdown->addOptionNone();
                         $dropdown->printList();  

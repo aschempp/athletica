@@ -351,7 +351,7 @@ $menu->printMenu();
     </td>
     <td>
         <?php
-        if(!empty($row['BildT'])){
+        if(!empty($row['BildB'])){
             ?>
         <img src="layout/<?php echo $row['BildB'] ?>" height="30px" alt="">
         <input type="hidden" name="cpic_b" value="<?php echo $row['BildB'] ?>">

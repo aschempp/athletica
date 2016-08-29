@@ -15,7 +15,9 @@ if(!defined('CURRENT_PAGE')) {
 require_once(ROOT_PATH.'lib/inc.init.php');
 require_once(ROOT_PATH.'lib/cls.result_high.php');
 
-$athletes = getAthleteDetails(0, true, "ath_rank, ath_res DESC","","",true);
+$eval = getEvaluationType(CFG_CURRENT_EVENT);
+$all = ($eval != $cfgEvalType[$strEvalTypeHeat]) ? True : False;
+$athletes = getAthleteDetails(0, true, "ath_rank, ath_res DESC","","",$all);
 ?>
 <table>
     <colgroup>

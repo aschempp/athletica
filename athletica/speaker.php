@@ -93,18 +93,30 @@ $search->printSearchfield();
 <p />
 <?php AA_timetable_display('speaker');
 
-    $hour= date("H") - 2;   
-    $dateHour = date("Y-m-d") . $hour;        
+    $hour= date("H");   
+        
    
     ?>  
 <script type="text/javascript">
 <!--
 	window.setTimeout("updatePage()", <?php echo $cfgMonitorReload * 1000; ?>);
 
-	// scroll to put current time - 2 hours line approximately to the top of the screen     	                             
-	if(document.getElementById('<?php echo $dateHour; ?>'))  {   
-		document.getElementById('<?php echo $dateHour; ?>').scrollIntoView("true");   
-	}
+    <?php
+        for ($h = 0; $h <= $hour; $h++) {
+            if ($h < 10) {
+                $dateHour = date("Y-m-d") . "0" . $h;     
+            } else {
+                $dateHour = date("Y-m-d") . $h;   
+            }
+                
+            ?>
+	        // scroll to put current time - 2 hours line approximately to the top of the screen     	                             
+	        if(document.getElementById('<?php echo $dateHour; ?>'))  {   
+		        document.getElementById('<?php echo $dateHour; ?>').scrollIntoView("true");   
+	        }
+            <?php
+        }
+        ?>
 
 	function updatePage()
 	{

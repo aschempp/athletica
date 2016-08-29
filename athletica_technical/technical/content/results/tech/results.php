@@ -379,7 +379,7 @@ if(CFG_CURRENT_EVENT > 0) {
                     <?php
                     if($events['event_wind'] == 1){
                         ?>
-                        <input type="number" name="res_wind" id="res_wind" class="wind" autocomplete="off" tabindex="2">
+                        <input type="text" name="res_wind" id="res_wind" class="wind" autocomplete="off" tabindex="2">
                         <?php    
                     }
                     ?>

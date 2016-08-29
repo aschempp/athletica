@@ -85,7 +85,7 @@ $menu->printMenu();
 </td>
 
 <td>
-        <button type="button" onclick="window.open('print_contest_speaker.php?round=<?=$round?>&ranking=1')"><?=$strRankingListPDF?></button>
+        <button type="button" onclick="window.open('print_contest_speaker_results.php?round=<?=$round?>')"><?=$strRankingListPDF?></button>
 </td>
 
     <?php

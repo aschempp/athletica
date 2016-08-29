@@ -16,7 +16,9 @@ require_once(ROOT_PATH.'lib/inc.init.php');
 require_once(ROOT_PATH.'lib/cls.result_tech.php');
 
 $maxRang = checkFinal(CFG_CURRENT_EVENT);
-$athletes = getAthleteDetails(0, true, "ath_rank, ath_res DESC", 0, false, true);
+$eval = getEvaluationType(CFG_CURRENT_EVENT);
+$all = ($eval != $cfgEvalType[$strEvalTypeHeat]) ? True : False;
+$athletes = getAthleteDetails(0, true, "ath_rank, ath_res DESC", 0, false, $all);
 ?>
 <table>
     <colgroup>

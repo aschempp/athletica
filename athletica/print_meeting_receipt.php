@@ -50,6 +50,8 @@ $print = false;
 if($_GET['formaction'] == 'print') {        // page for printing 
     $print = true;
 } 
+
+$allAthletes = ($_GET['athleteSearch'] == -1) ? true : false;
                 
   
 // start a new HTML page for printing
@@ -88,8 +90,8 @@ if($_GET['formaction'] == 'print') {        // page for printing
                 , w.Startgeld  
                 , m.Name   
                 , m.Ort 
-                , m.DatumVon  
-                , m.DatumBis
+                , DATE_FORMAT(m.DatumVon, '".$cfgDBdateFormat."') as DatumVon  
+                , DATE_FORMAT(m.DatumBis, '".$cfgDBdateFormat."') as DatumBis  
                 , sd.Name    
                 , m.Organisator    
              FROM
@@ -136,7 +138,7 @@ else if(mysql_num_rows($result) > 0)  // data found
 		// print previous athlete, if any
 		if(($a != $row[0] || $v != $row[7]) && $a > 0)
 		{   
-            if ($club_clause!='' && $athlete_clause=='') {
+            if ($club_clause!='' && $athlete_clause=='' && !$allAthletes) {
                   if ($first) {  
                        $doc->printHeader($mname,$mDateFrom,$mDateTo,$stadion,$organisator);
                        $doc->printLineBreak(1); 
@@ -291,7 +293,7 @@ else if(mysql_num_rows($result) > 0)  // data found
 	
 	if($a > 0)
 	    {  
-         if ($club_clause!='' && $athlete_clause=='') { 
+         if ($club_clause!='' && $athlete_clause=='' && !$allAthletes) { 
                if ($first) {                                  
                        $doc->printHeader($mname,$mDateFrom,$mDateTo,$stadion,$organisator);
                        $doc->printLineBreak(1); 

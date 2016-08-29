@@ -39,11 +39,6 @@ require('./config.inc.php');
 											, "doc" => "doc/de/"
 											, "short" => "de"
 											)
-							, "English"
-								=> array	("file" => "./lang/english.inc.php"
-											, "doc" => "doc/de/"
-											, "short" => "en"
-											)
 							, "Français"
 								=> array 	("file" => "./lang/french.inc.php"
 											, "doc" => "doc/fr/"
@@ -71,6 +66,7 @@ require('./config.inc.php');
 			, time()+$cfgCookieExpires);
 		$_COOKIE['language'] = $cfgLanguage['Deutsch']['short'];
 	}
+    
 
 /*
  * ------------------------------------------------------
@@ -328,7 +324,11 @@ require('./config.inc.php');
 	 * @return	TRUE/FALSE
 	**/
 	function AA_checkSVM($event=0, $round=0){
-		global $cfgEventType, $strEventTypeSingleCombined, $strEventTypeTeamSM;
+		global $cfgEventType;
+        
+        if(!empty($_COOKIE['language_trans'])) {
+            include ($_COOKIE['language_trans']);
+        }
 		
 		if($event > 0){
 			
@@ -341,8 +341,8 @@ require('./config.inc.php');
 			}else{
 				
 				$row = mysql_fetch_array($res);
-				if($row[0] > $cfgEventType[$strEventTypeSingleCombined]
-					&& $row[0] != $cfgEventType[$strEventTypeTeamSM]){
+				if($row[0] > $cfgEventType[$GLOBALS['strEventTypeSingleCombined']]
+					&& $row[0] != $cfgEventType[$GLOBALS['strEventTypeTeamSM']]){
 					return true;
 				}else{
 					return false;
@@ -3527,17 +3527,16 @@ function AA_get_AthletBestPointDisc($points_disc_keep, $points_disc, $key_keep, 
     foreach($points_disc_keep as $key => $val) {
          $points_compare1[] = $val;
     }
-     
     foreach($points_disc as $key => $val) {
          $points_compare2[] = $val;
     }  
             
     foreach($points_compare1 as $key => $val) {           
         if ($points_compare1[$key] > $points_compare2[$key]) {                
-            return $key_keep;            
+            return $key_a;            
         }
         elseif  ($points_compare1[$key] < $points_compare2[$key]) {   
-                 return $key_a;                    
+                 return $key_keep;                    
         }           
         // same points --> check next discipline          
     }  

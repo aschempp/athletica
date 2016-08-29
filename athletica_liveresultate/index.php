@@ -37,6 +37,26 @@ require_once('./lib/cl_http_data.lib.php'); //include class
      $arg =  $_GET['arg'];    
  }
  
+ 
+ // change language
+if ($_POST['language']=="change")
+{
+    // store cookies on browser
+    setcookie("language_trans", $cfgLanguage[$_POST['lang']]['file']
+        , time()+$cfgCookieExpires);
+    setcookie("language_doc", $cfgLanguage[$_POST['lang']]['doc']
+        , time()+$cfgCookieExpires);
+    setcookie("language", $cfgLanguage[$_POST['lang']]['short']
+        , time()+$cfgCookieExpires);
+    // update current cookies
+    $_COOKIE['language_trans'] = $cfgLanguage[$_POST['lang']]['file'];
+    $_COOKIE['language_doc'] = $cfgLanguage[$_POST['lang']]['doc'];
+    $_COOKIE['language'] = $cfgLanguage[$_POST['lang']]['short'];
+    // load new language files
+    include ($_COOKIE['language_trans']);
+    $cfgURLDocumentation = $_COOKIE['language_doc'];
+}
+ 
       
   // set directory to the server  
  if (!empty($_GET['dir'])){       
@@ -77,6 +97,14 @@ require_once('./lib/cl_http_data.lib.php'); //include class
  }
  elseif (!empty($_POST['url'])){          
          $url = $_POST['url']; 
+ }
+ 
+    // DIR
+ if (!empty($_GET['dir'])){    
+     $dir = $_GET['dir'];
+ }
+ elseif (!empty($_POST['dir'])){          
+         $dir = $_POST['dir']; 
  }
         
     
@@ -128,6 +156,7 @@ if (!empty($GLOBALS['cfgDBhost'])) {
                 $user = $row[2];    
                 $pwd = $row[3];    
                 $url = $row[4];               
+                $dir = $row[5];               
                 mysql_free_result($result);  
             }   
             
@@ -149,7 +178,8 @@ if (!empty($GLOBALS['cfgDBhost'])) {
                         ftpHost = '". $host ."',
                         ftpUser = '". $user ."',    
                         ftpPwd = '". $pwd ."',  
-                        url = '". $url . "'";     
+                        url = '". $url . "',     
+                        dir = '". $dir . "'";     
                 
                 $result = mysql_query($sql, $db_con_local);  
                 if(mysql_errno() > 0) {
@@ -190,39 +220,60 @@ $timestamp = $now['mday']
                 . ", " . $now['hours']
                 . "." . $zero. $now['minutes'];
 
-$page = new GUI_Page('Live Resultate Upload');
+$page = new GUI_Page($GLOBALS['strTitleLiveRes']);
 $page->startPage();
-$page->printPageTitle("Live Resultate Upload  (". $timestamp. " Uhr)");
+$page->printPageTitle($GLOBALS['strTitleLiveRes']."  (". $timestamp. " Uhr)");
 
 ?>
+<form action='index.php' name='lang' method='post' target='_top'>
+    <input name='language' type='hidden' value='change'>
+    <table class='admin'>
+        <tr class='odd'>
+            <td width="80"><?php echo $GLOBALS['strLanguage']; ?></td>
+            <td class='forms'>
+                <?php
+                $dropdown = new GUI_Select('lang', 1, 'document.lang.submit()');
 
+                foreach($cfgLanguage as $key=>$value)
+                {
+                    $dropdown->addOption($key, $key);
+                    if($_COOKIE['language_trans'] == $cfgLanguage[$key]['file']) {
+                        $dropdown->selectOption($key);
+                    }
+                }
+                $dropdown->printList();
+                ?>
+            </td>
+        </tr>
+    </table>
+</form>
 <table width="300" border="0" cellpadding="0" cellspacing="0" >
 	<tr>
 		<td  style="vertical-align: top;">
 			<table class='dialog' width="100%">             
 				<tr>
-					<th><?php echo $strTitleLiveRes; ?></th>
+					<th><?php echo $GLOBALS['strTitleLiveRes']; ?></th>
 				</tr>
 				<tr>
 					<td>
-						<form action='index.php' name='lang' method='post' target='_top' >
+						<form action='index.php' name='live' method='post' target='_top' >
 							
 							<table class='admin'>
                             
 
                                 <tr class='dialog'>
-                                    <th colspan='2'><?php echo $strFtp; ?></th>
+                                    <th colspan='2'><?php echo $GLOBALS['strFtp']; ?></th>
                                 </tr>                                  
                                 <br />
                                 <tr>
-                                    <td><br/><?php echo $strHost; ?></td>
+                                    <td><br/><?php echo $GLOBALS['strHost']; ?></td>
                                
                                     <td><br/><input name="host" value='<?php echo $host; ?>' size="30" type="text" id="host" >                                  
                                      
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo $strUser; ?></td>
+                                    <td><?php echo $GLOBALS['strUser']; ?></td>
                                
                                     <td><input name="user" value='<?php echo $user; ?>' size="30" type="text" id="user" >                                  
                                      
@@ -230,11 +281,11 @@ $page->printPageTitle("Live Resultate Upload  (". $timestamp. " Uhr)");
                                 </tr>
                             
                                 <tr>
-                                    <td><?php echo $strPwd; ?></td>
+                                    <td><?php echo $GLOBALS['strPwd']; ?></td>
                                         <?php
                                         if (empty($pwd)){
                                               ?>
-                                                 <td><input name="pwd" value='<?php echo $pwd; ?>' size="30" type="password" id="pwd" onchange="this.form.submit()" >   
+                                                 <td><input name="pwd" value='<?php echo $pwd; ?>' size="30" type="password" id="pwd" onchange="this.form.submit()">   
                                             <?php
                                         }
                                         else {
@@ -245,39 +296,44 @@ $page->printPageTitle("Live Resultate Upload  (". $timestamp. " Uhr)");
                                          ?>
                                     </td>
                                 </tr>
-                                   <tr><td>&nbsp;</td></tr>  
+                                   <tr><td>&nbsp;</td>
+                                </tr>  
                             
                                 <tr>
-                                    <td><?php echo $strUrl; ?></td>
+                                    <td><?php echo $GLOBALS['strUrl']; ?></td>
                                
                                     <td><input name="url" value='<?php echo $url; ?>' size="30" type="text" id="url">                                  
                                      
                                     </td>
-                                </tr>  
+                                </tr> 
+                                </tr>
+                                   <tr><td>&nbsp;</td>
+                                </tr> 
+                                
+                                <tr>
+                                    <td><?php echo $strDir; ?></td>
+                                    <td>
+                                      
+                                      <input name="dir" value='<?php echo $dir; ?>' size="30" type="text" id="dir" >                                 
+                                     
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td></td>
+                                    <td class="forms">
+                              <input type="button" value="Dateien auf Server löschen" id="clear" onclick="document.location.href = 'index.php?xMeeting='+document.getElementById('xMeetingselectbox').value+'&amp;path='+document.getElementById('path').value+'&amp;dir='+document.getElementById('dir').value+'&amp;host='+document.getElementById('host').value+'&amp;user='+document.getElementById('user').value+'&amp;pwd='+document.getElementById('pwd').value+'&amp;url='+document.getElementById('url').value+'&amp;url='+document.getElementById('url').value+'&amp;arg=clear'"/></td> 
+                              
+                                </tr>
                                  <tr><td></td><td class="error"><?php echo $error_msg; ?></td></tr>     
                             
                                 <tr><td>&nbsp;</td></tr>  
                             
                             
                                 <tr class='dialog'>
-                                    <th colspan='2'><?php echo $strAthleticaServer; ?></th>  
-                                </tr> 
-                                <tr><td>&nbsp;</td></tr>                                 
+                                    <th colspan='2'><?php echo $GLOBALS['strAthleticaServer']; ?></th>  
+                                </tr>                
                                 <tr>
-                                    <td><?php echo $strDir; ?></td>
-                                </tr>                                  
-                                <tr>
-                                    <td>
-                                      
-                                 <input name="dir" value='<?php echo $GLOBALS['cfgDir'] ?>' size="30" type="text" id="dir" >                                 
-                                     
-                                    </td>
-                                    <td class="forms">
-                              <input type="button" value="Dateien auf Server löschen" id="clear" onclick="document.location.href = 'index.php?xMeeting='+document.getElementById('xMeetingselectbox').value+'&amp;path='+document.getElementById('path').value+'&amp;dir='+document.getElementById('dir').value+'&amp;host='+document.getElementById('host').value+'&amp;user='+document.getElementById('user').value+'&amp;pwd='+document.getElementById('pwd').value+'&amp;url='+document.getElementById('url').value+'&amp;url='+document.getElementById('url').value+'&amp;arg=clear'"/></td> 
-                              
-                                </tr>                    
-                                <tr>
-                                    <td><br/><?php echo $strServerIP; ?><br><i><?php echo $strServerIPInfo?></i></td>
+                                    <td><br/><?php echo $GLOBALS['strServerIP']; ?><br><i><?php echo $GLOBALS['strServerIPInfo']?></i></td>
                                
                                     <td><br/><?php echo $GLOBALS['cfgDBhost_live']?>                                 
                                     <input type="hidden" name="path" value="<?php echo $GLOBALS['cfgDBhost_live'] ?>" id="path">  
@@ -299,7 +355,7 @@ $page->printPageTitle("Live Resultate Upload  (". $timestamp. " Uhr)");
                                     
                                     
                                 <tr>
-                                <td><?=$strMeetingTitle?> 
+                                <td><?=$GLOBALS['strMeetingTitle']?> 
                                                 <?php
                                                 $dropdown = new GUI_Select('xMeeting', 1, '');
                                                 $dropdown->addOptionsFromDB("select xMeeting, Name from athletica.meeting order by DatumVon, DatumBis");
@@ -408,7 +464,7 @@ if(empty($xMeeting))
                     
           }
         if (!empty($host) && !empty($user) && !empty($pwd) && !empty($url)){ 
-			require('config.inc.end.php');
+			//require('config.inc.end.php');
             mysql_close($db_con_local);
             AA_timetable_display(); 
        }

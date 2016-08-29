@@ -2801,17 +2801,16 @@ function AA_get_AthletBestPointDisc($points_disc_keep, $points_disc, $key_keep, 
     foreach($points_disc_keep as $key => $val) {
          $points_compare1[] = $val;
     }
-     
     foreach($points_disc as $key => $val) {
          $points_compare2[] = $val;
     }  
             
     foreach($points_compare1 as $key => $val) {           
         if ($points_compare1[$key] > $points_compare2[$key]) {                
-            return $key_keep;            
+            return $key_a;            
         }
-        elseif  ($points_compare1[$key] < $points_compare2[$key]) {   
-                 return $key_a;                    
+        elseif  ($points_compare1[$key] < $points_compare2[$key]) {  
+            return $key_keep;                    
         }           
         // same points --> check next discipline          
     }  

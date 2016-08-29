@@ -140,7 +140,7 @@ document.getElementById("progress").width="150";
 		$totalbytes = 0;
 		while ($str = trim(fgets($sock, 4096))){
 			$headers .= "$str\n";
-			if(strpos($str, " 400 ") !== false || strpos($str, " 404 ") !== false || strpos($str, " 408 ") !== false || strpos($str, " 503 ") !== false){
+			if(strpos($str, " 400 ") !== false || strpos($str, " 404 ") !== false || strpos($str, " 408 ") !== false || strpos($str, " 503 ") !== false){           echo $data;
 				fclose($sock); // server return error (not found / bad request)
 				AA_printErrorMsg($GLOBALS['strErrHttpBad']);
 				return false;

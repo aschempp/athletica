@@ -493,17 +493,22 @@ class PRINT_ReceiptEntryPage_pdf extends PRINT_Page_pdf
 {
     function printHeader($mname,$mDateFrom,$mDateTo,$stadion,$organisator)
     {   
-		$this->printTextLineBox($GLOBALS['strReceipt'],$this->font,"B",24,40,$this->lp,515,40,'left bottom',24,2);
+		$this->printTextLineBox($GLOBALS['strReceipt'],$this->font,"B",24,20,$this->lp,515,40,'left bottom',24,2);
 		
-		$this->printTextLineBox($GLOBALS['strMeetingTitle']. ":  ",$this->font,"B",13,40,$this->lp,90,30,'left bottom',26,0);
-		$this->printTextLineBox($mname,$this->font,"",13,$this->posx+2,$this->lp,190,30,'left bottom',0,0);
-		$this->printTextLineBox($GLOBALS['strDate']. ":  ",$this->font,"B",13,$this->posx+2,$this->lp,90,30,'left bottom',0,0);
-		$this->printTextLineBox($mDateFrom ." / ". $mDateTo,$this->font,"",13,$this->posx+2,$this->lp,139,30,'left bottom',0,2);
+		$this->printTextLineBox($GLOBALS['strMeetingTitle']. ":  ",$this->font,"B",13,20,$this->lp,110,30,'left bottom',26,0);
+		$this->printTextLineBox($mname,$this->font,"",13,$this->posx+2,$this->lp,451,30,'left bottom',0,5);
+		$this->printTextLineBox($GLOBALS['strDate']. ":  ",$this->font,"B",13,20,$this->lp,110,30,'left bottom',13,0);
+        if($mDateFrom == $mDateTo) {
+            $this->printTextLineBox($mDateFrom,$this->font,"",13,$this->posx+2,$this->lp,242,30,'left bottom',0,5);    
+        } else {
+            $this->printTextLineBox($mDateFrom ." - ". $mDateTo,$this->font,"",13,$this->posx+2,$this->lp,242,30,'left bottom',0,5);
+        }
 		
-		$this->printTextLineBox($GLOBALS['strStadium']. ":  ",$this->font,"B",13,40,$this->lp,90,30,'left bottom',13,0);
-		$this->printTextLineBox($stadion,$this->font,"",13,$this->posx+2,$this->lp,190,30,'left bottom',0,0);
-		$this->printTextLineBox($GLOBALS['strOrganizer']. ":  ",$this->font,"B",13,$this->posx+2,$this->lp,90,30,'left bottom',0,0);
-		$this->printTextLineBox($organisator,$this->font,"",13,$this->posx+2,$this->lp,139,30,'left bottom',0,2);
+		
+		$this->printTextLineBox($GLOBALS['strOrganizer']. ":  ",$this->font,"B",13,20,$this->lp,110,30,'left bottom',13,0);
+		$this->printTextLineBox($organisator,$this->font,"",13,$this->posx+2,$this->lp,222,30,'left bottom',0,2);
+        $this->printTextLineBox($GLOBALS['strStadium']. ":  ",$this->font,"B",13,$this->posx,$this->lp,90,30,'left bottom',0,0);
+        $this->printTextLineBox($stadion,$this->font,"",13,$this->posx+2,$this->lp,221,30,'left bottom',0,2);
     }   
     
     function printHeaderLineCont()//seems unused
@@ -512,28 +517,28 @@ class PRINT_ReceiptEntryPage_pdf extends PRINT_Page_pdf
         {   
             $this->insertPageBreak();  
         }
-        $this->printTextLineBox($GLOBALS['strParticipant']. " " . $GLOBALS['strCont'],$fontbold,13,40,$this->lp,515,30,'left bottom',13,2);
+        $this->printTextLineBox($GLOBALS['strParticipant']. " " . $GLOBALS['strCont'],$this->font,"B",13,20,$this->lp,515,30,'left bottom',13,2);
     }       
 
     function printLine1($nbr, $name, $year)           // page per athlet (print athlet name and age)
     {  
-        $this->printTextLineBox($GLOBALS['strName']. ":  ",$this->font,"B",13,40,$this->lp,90,30,'left bottom',13,0);
-        $this->printTextLineBox($name,$this->font,"",13,$this->posx+2,$this->lp,190,30,'left bottom',0,0);
+        $this->printTextLineBox($GLOBALS['strName']. ":  ",$this->font,"B",13,20,$this->lp,110,30,'left bottom',13,0);
+        $this->printTextLineBox($name,$this->font,"",13,$this->posx+2,$this->lp,220,30,'left bottom',0,0);
         $this->printTextLineBox($GLOBALS['strYear']. ":  ",$this->font,"B",13,$this->posx+2,$this->lp,90,30,'left bottom',0,0);
-        $this->printTextLineBox($year,$this->font,"",13,$this->posx+2,$this->lp,139,30,'left bottom',0,2);
+        $this->printTextLineBox($year,$this->font,"",13,$this->posx+2,$this->lp,139,30,'left bottom',0,5);
     }
     
     function printLine2($club,$cat)                    // page per athlet (print athlet club and cat)    
     {  
-        $this->printTextLineBox($GLOBALS['strClub']. ":  ",$this->font,"B",13,40,$this->lp,90,30,'left bottom',13,0);
-        $this->printTextLineBox($club,$this->font,"",13,$this->posx+2,$this->lp,190,30,'left bottom',0,0);
+        $this->printTextLineBox($GLOBALS['strClub']. ":  ",$this->font,"B",13,20,$this->lp,110,30,'left bottom',13,0);
+        $this->printTextLineBox($club,$this->font,"",13,$this->posx+2,$this->lp,220,30,'left bottom',0,0);
         $this->printTextLineBox($GLOBALS['strCategory']. ":  ",$this->font,"B",13,$this->posx+2,$this->lp,90,30,'left bottom',0,0);
         $this->printTextLineBox($cat,$this->font,"",13,$this->posx+2,$this->lp,139,30,'left bottom',0,2);
     }  
     
     function printLine3($disc)                          // page per athlet (print disciplines)    
     {      
-        $this->printTextLineBox($GLOBALS['strDisciplines']. ":  ",$this->font,"B",13,40,$this->lp,90,30,'left bottom',13,0);
+        $this->printTextLineBox($GLOBALS['strDisciplines']. ":  ",$this->font,"B",13,20,$this->lp,110,30,'left bottom',40,0);
   
          // print seperate lines per discipline 
          
@@ -550,7 +555,7 @@ class PRINT_ReceiptEntryPage_pdf extends PRINT_Page_pdf
             if ($i==0) {
             $this->lp+=13; //first time print on same line
             }
-            $this->printTextLineBox(trim($key),$this->font,"",13,132,$this->lp,423,30,'left bottom',13,2);
+            $this->printTextLineBox(trim($key),$this->font,"",13,132,$this->lp,403,30,'left bottom',13,2);
             $i++;
          }  
     }  
@@ -594,49 +599,49 @@ class PRINT_ReceiptEntryPage_pdf extends PRINT_Page_pdf
             $this->insertPageBreak();
             $this->printHeader();
         }   
-        $this->lp-=13;
+        $this->lp-=20;
 
         if ($list) {
-			$this->printTextLineBox($GLOBALS['strTotal'] . " " . $GLOBALS['strFee']. ":  ",$this->font,"B",13,40,$this->lp,374,30,'left bottom',13,0);
-			$this->printTextLineBox($GLOBALS['strCHF'] . "   " . $fee. ".00",$this->font,"B",13,$this->posx+2,$this->lp,139,30,'right bottom',0,2);
+			$this->printTextLineBox($GLOBALS['strTotal'] . " " . $GLOBALS['strFee']. ":  ",$this->font,"B",13,20,$this->lp,374,30,'left bottom',13,0);
+			$this->printTextLineBox($GLOBALS['strCHF'] . "   " . $fee. ".00",$this->font,"B",13,$this->posx+2,$this->lp,179,30,'right bottom',0,2);
         }
         else {
-			$this->printTextLineBox($GLOBALS['strTotal'] . " " . $GLOBALS['strFee']. ":  ",$this->font,"B",13,40,$this->lp,90,30,'left bottom',13,0);
+			$this->printTextLineBox($GLOBALS['strTotal'] . " " . $GLOBALS['strFee']. ":  ",$this->font,"B",13,20,$this->lp,110,30,'left bottom',13,0);
 			$this->printTextLineBox($GLOBALS['strCHF'] . "   " . $fee. ".00",$this->font,"B",13,$this->posx+2,$this->lp,423,30,'left bottom',0,2);
         }
         $this->lp-=13;
-        $this->printTextLineBox($GLOBALS['strDate']. ":  ",$this->font,"B",13,40,$this->lp,90,30,'left bottom',13,0);
-        $this->printTextLineBox($date,$this->font,"",13,$this->posx+2,$this->lp,190,30,'left bottom',0,0);
+        $this->printTextLineBox($GLOBALS['strDate']. ":  ",$this->font,"B",13,20,$this->lp,110,30,'left bottom',25,0);
+        $this->printTextLineBox($date,$this->font,"",13,$this->posx+2,$this->lp,220,30,'left bottom',0,0);
         $this->printTextLineBox($GLOBALS['strPlace']. ":  ",$this->font,"B",13,$this->posx+2,$this->lp,90,30,'left bottom',0,0);
         $this->printTextLineBox($place,$this->font,"",13,$this->posx+2,$this->lp,139,30,'left bottom',0,2);
         
         $this->lp-=13;
         
-        $this->printTextLineBox($GLOBALS['strSubscribe']. ":  ",$this->font,"B",13,40,$this->lp,515,30,'left bottom',13,2); 
+        $this->printTextLineBox($GLOBALS['strSubscribe']. ":  ",$this->font,"B",13,20,$this->lp,515,30,'left bottom',13,2); 
     }
 
    
     
     function printLine4($first, $name, $year, $cat ,$disc, $fee)
     {   // page break check
-        if($this->lp < $this->footerheight + 97)        //Footer+FooterLine+ 1 line=36+84+13=133
+        if($this->lp < $this->footerheight)        //Footer+FooterLine+ 1 line=36+84+13=133
         {         
 			$this->insertPageBreak(); 
 			$this->printHeaderLineCont(); 
         }  
-        $this->printTextLineBox($name,$this->font,"",11,40,$this->lp,150,30,'left bottom',11,0);
+        $this->printTextLineBox($name,$this->font,"",11,20,$this->lp,130,30,'left bottom',11,0);
         $this->printTextLineBox($year,$this->font,"",11,$this->posx+2,$this->lp,30,30,'left bottom',0,0);
         $this->printTextLineBox($cat,$this->font,"",11,$this->posx+2,$this->lp,35,30,'left bottom',0,0);
-        $this->printTextLineBox($disc,$this->font,"",11,$this->posx+2,$this->lp,222,30,'left bottom',0,0);
+        $this->printTextLineBox($disc,$this->font,"",11,$this->posx+2,$this->lp,282,30,'left bottom',0,0);
         $this->printTextLineBox($GLOBALS['strCHF'] . "   " . $fee . ".00",$this->font,"",11,$this->posx+2,$this->lp,70,30,'right bottom',0,2);
     }
    
 	function printLineClub($club)
     {  
-        $this->printTextLineBox($GLOBALS['strClub']. ":  ",$this->font,"B",13,40,$this->lp,90,30,'left bottom',13,0);
+        $this->printTextLineBox($GLOBALS['strClub']. ":  ",$this->font,"B",13,20,$this->lp,110,30,'left bottom',13,0);
         $this->printTextLineBox($club,$this->font,"",13,$this->posx+2,$this->lp,423,30,'left bottom',0,2);
         $this->lp-=13;
-        $this->printTextLineBox($GLOBALS['strParticipant']. ":  ",$this->font,"B",13,40,$this->lp,515,30,'left bottom',13,2);
+        $this->printTextLineBox($GLOBALS['strParticipant']. ":  ",$this->font,"B",13,20,$this->lp,515,30,'left bottom',13,2);
     }   
    
     function  printLineBreak($count)

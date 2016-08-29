@@ -56,6 +56,7 @@ if($_GET['arg'] == 'results_done')
 			, start WRITE
 			, serienstart WRITE
             , serienstart AS ss WRITE 
+            , rundenset As rs READ
 	");
 
 	if ( ($eval == $cfgEvalType[$strEvalTypeAll])  ||  
@@ -1064,6 +1065,7 @@ if($round > 0)
 						$secflag = (intval($resrow['Strecke'])<=400);
 						$perf = AA_formatResultTime($resrow[1], false, $secflag);
 					}
+                
 
 					if($status != $cfgRoundStatus['results_done'])
 					{
@@ -1108,19 +1110,22 @@ if($round > 0)
 		<td class='forms_right'><?php echo $perf; ?></td>
 <?php
 					}
-
+                    
 					mysql_free_result($res);
 
 					if($status == $cfgRoundStatus['results_done'])
 					{
+            
 						if($row[10] > 0)	// rank OK, athlete has valid result
 						{
+                            
 ?>
 		<form action='event_results.php' method='post'
 			name='rank_<?php echo $i; ?>'>
+            
 		<td>
 			<input type='hidden' name='arg' value='save_rank' />
-			<input type='hidden' name='round' value='<?php echo $round; ?>' />
+            			<input type='hidden' name='round' value='<?php echo $round; ?>' />
 			<input type='hidden' name='focus' value='rank_<?php echo $i; ?>' />
 			<input type='hidden' name='item' value='<?php echo $row[8]; ?>' />
 			<input class='nbr' type='text' name='rank' maxlength='3'

@@ -21,7 +21,7 @@ class PRINT_TeamsPage_pdf extends PRINT_RelayPage_pdf
 	var $width;
     function printHeaderLine()
     {	// page break check
-        if($this->lp < 4)        
+        if($this->lp < $this->footerheight + 93)        
         {
             $this->insertPageBreak();
         }
@@ -59,7 +59,7 @@ class PRINT_TeamsPage_pdf extends PRINT_RelayPage_pdf
 
     function printLine($nbr, $name, $year, $disc)
     {	// page break check
-        if($this->lp < 2)        
+        if($this->lp < $this->footerheight + 26)        
         {
             $this->insertPageBreak();
             $this->printHeaderLine();
@@ -113,7 +113,7 @@ class PRINT_TeamPage_pdf extends PRINT_RelayPage_pdf
   {   
 
     // page break check (at least one further line left)
-		if($this->lp < 179)		//This, header, 6 lines (used often in 100m) and footer should fit on page=56+15+6*12+36=179
+		if($this->lp < $this->footerheight + 143)		//This, header, 6 lines (used often in 100m) and footer should fit on page=56+15+6*12+36=179
 		{
 			$this->insertPageBreak();
 		}
@@ -125,7 +125,7 @@ class PRINT_TeamPage_pdf extends PRINT_RelayPage_pdf
   
 	function printHeaderLine($enrolSheet=false)
 	{	// page break check
-		if($this->lp < 138)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+24=138
+		if($this->lp < $this->footerheight + 102)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+24=138
 		{
 			$this->insertPageBreak();
 		}
@@ -152,7 +152,7 @@ class PRINT_TeamPage_pdf extends PRINT_RelayPage_pdf
 
 	function printLine($name, $cat, $club, $disc, $perf, $nbr, $enrolSheet, $quali, $teamPerf)
 	{	//page breack check
-		if($this->lp < 62)		// Footer + line + athlete-line=36+12+14=62
+		if($this->lp < $this->footerheight + 26)		// Footer + line + athlete-line=36+12+14=62
 		{
 			$this->insertPageBreak();
 			$this->printHeaderLine($enrolSheet);
@@ -199,7 +199,7 @@ class PRINT_ClubTeamPage_pdf extends PRINT_RelayPage_pdf
   {   
 
     // page break check (at least one further line left)
-		if($this->lp < 179)		//This, header, 6 lines (used often in 100m) and footer should fit on page=56+15+6*12+36=179
+		if($this->lp < $this->footerheight + 143)		//This, header, 6 lines (used often in 100m) and footer should fit on page=56+15+6*12+36=179
 		{
 			$this->insertPageBreak();
 		}
@@ -211,7 +211,7 @@ class PRINT_ClubTeamPage_pdf extends PRINT_RelayPage_pdf
   
     function printHeaderLine($enrolSheet=false)
     {	// page break check
-		if($this->lp < 138)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+24=138
+		if($this->lp < $this->footerheight + 102)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+24=138
 		{
 			$this->insertPageBreak();
 		}
@@ -237,7 +237,7 @@ class PRINT_ClubTeamPage_pdf extends PRINT_RelayPage_pdf
 
     function printLine($name, $cat, $disc, $perf, $nbr,$enrolSheet, $quali, $teamPerf)
     {	// page break check
-		if($this->lp < 62)		// Footer + line + athlete-line=36+12+14=62
+		if($this->lp < $this->footerheight + 26)		// Footer + line + athlete-line=36+12+14=62
 		{
 			$this->insertPageBreak();
 			$this->printHeaderLine($enrolSheet);
@@ -283,7 +283,7 @@ class PRINT_CatTeamPage_pdf extends PRINT_RelayPage_pdf
   {   
 
     // page break check (at least one further line left)
-		if($this->lp < 179)		//This, header, 6 lines (used often in 100m) and footer should fit on page=56+15+6*12+36=179
+		if($this->lp < $this->footerheight + 143)		//This, header, 6 lines (used often in 100m) and footer should fit on page=56+15+6*12+36=179
 		{
 			$this->insertPageBreak();
 		}
@@ -295,7 +295,7 @@ class PRINT_CatTeamPage_pdf extends PRINT_RelayPage_pdf
   
     function printHeaderLine($enrolSheet=false)
     {	//page break check
-		if($this->lp < 138)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+24=138
+		if($this->lp < $this->footerheight + 102)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+24=138
 		{
 			$this->insertPageBreak();
 		}
@@ -321,7 +321,7 @@ class PRINT_CatTeamPage_pdf extends PRINT_RelayPage_pdf
 
     function printLine($name, $club, $disc, $perf, $nbr,$enrolSheet, $quali, $teamPerf)
     {
-		if($this->lp < 62)		// Footer + line + athleteLine=36+12+14=62
+		if($this->lp < $this->footerheight + 126)		// Footer + line + athleteLine=36+12+14=62
 		{
 			$this->insertPageBreak();
 			$this->printHeaderLine($enrolSheet);
@@ -367,7 +367,7 @@ class PRINT_ClubCatTeamPage_pdf extends PRINT_RelayPage_pdf
   {   
 
     // page break check (at least one further line left)
-		if($this->lp < 179)		//This, header, 6 lines (used often in 100m) and footer should fit on page=56+15+6*12+36=179
+		if($this->lp < $this->footerheight + 143)		//This, header, 6 lines (used often in 100m) and footer should fit on page=56+15+6*12+36=179
 		{
 			$this->insertPageBreak();
 		}
@@ -379,7 +379,7 @@ class PRINT_ClubCatTeamPage_pdf extends PRINT_RelayPage_pdf
   
     function printHeaderLine($enrolSheet=false)
     {
-		if($this->lp < 138)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+24=138
+		if($this->lp < $this->footerheight + 102)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+24=138
 		{
 			$this->insertPageBreak();
 		}
@@ -404,7 +404,7 @@ class PRINT_ClubCatTeamPage_pdf extends PRINT_RelayPage_pdf
 
     function printLine($name, $disc, $perf, $nbr, $enrolSheet, $quali, $teamPerf)
     {
-		if($this->lp < 62)		// Footer + line + athleteLine=36+12+14=62
+		if($this->lp < $this->footerheight + 26)		// Footer + line + athleteLine=36+12+14=62
 		{
 			$this->insertPageBreak();
 			$this->printHeaderLine($enrolSheet);
@@ -449,7 +449,7 @@ var $event;
   {   
 
     // page break check (at least one further line left)
-		if($this->lp < 179)		//This, header, 6 lines (used often in 100m) and footer should fit on page=56+15+6*12+36=179
+		if($this->lp < $this->footerheight + 143)		//This, header, 6 lines (used often in 100m) and footer should fit on page=56+15+6*12+36=179
 		{
 			$this->insertPageBreak();
 		}
@@ -461,7 +461,7 @@ var $event;
   
     function printHeaderLine($enrolSheet=false)
     {
-		if($this->lp < 138)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+24=138
+		if($this->lp < $this->footerheight + 102)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+24=138
 		{
 			$this->insertPageBreak();
 		}
@@ -486,7 +486,7 @@ var $event;
          
     function printLine($name, $club, $perf, $nbr,$enrolSheet, $quali, $teamPerf)
     {
-		if($this->lp < 62)		// Footer + line + athleteLine=36+12+14=62
+		if($this->lp < $this->footerheight + 26)		// Footer + line + athleteLine=36+12+14=62
 		{
 			$this->insertPageBreak();
 			$this->printHeaderLine($enrolSheet);
@@ -531,7 +531,7 @@ class PRINT_ClubDiscTeamPage_pdf extends PRINT_RelayPage_pdf
   {   
 
     // page break check (at least one further line left)
-		if($this->lp < 179)		//This, header, 6 lines (used often in 100m) and footer should fit on page=56+15+6*12+36=179
+		if($this->lp < $this->footerheight + 143)		//This, header, 6 lines (used often in 100m) and footer should fit on page=56+15+6*12+36=179
 		{
 			$this->insertPageBreak();
 		}
@@ -543,7 +543,7 @@ class PRINT_ClubDiscTeamPage_pdf extends PRINT_RelayPage_pdf
   
     function printHeaderLine($enrolSheet=false)
     {
-		if($this->lp < 138)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+24=138
+		if($this->lp < $this->footerheight + 102)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+24=138
 		{
 			$this->insertPageBreak();
 		}
@@ -568,7 +568,7 @@ class PRINT_ClubDiscTeamPage_pdf extends PRINT_RelayPage_pdf
                                    
     function printLine($name, $cat, $perf, $nbr,$enrolSheet, $quali, $teamPerf)
     {
-		if($this->lp < 62)		// Footer + line + athlete-line=36+12+14=62
+		if($this->lp < $this->footerheight + 26)		// Footer + line + athlete-line=36+12+14=62
 		{
 			$this->insertPageBreak();
 			$this->printHeaderLine($enrolSheet);
@@ -613,7 +613,7 @@ class PRINT_ClubCatDiscTeamPage_pdf extends PRINT_RelayPage_pdf
   {   
 
     // page break check (at least one further line left)
-		if($this->lp < 179)		//This, header, 6 lines (used often in 100m) and footer should fit on page=56+15+6*12+36=179
+		if($this->lp < $this->footerheight + 143)		//This, header, 6 lines (used often in 100m) and footer should fit on page=56+15+6*12+36=179
 		{
 			$this->insertPageBreak();
 		}
@@ -625,7 +625,7 @@ class PRINT_ClubCatDiscTeamPage_pdf extends PRINT_RelayPage_pdf
   
     function printHeaderLine($enrolSheet=false)
     {
-		if($this->lp < 138)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+24=138
+		if($this->lp < $this->footerheight + 102)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+24=138
 		{
 			$this->insertPageBreak();
 		}
@@ -648,7 +648,7 @@ class PRINT_ClubCatDiscTeamPage_pdf extends PRINT_RelayPage_pdf
 
     function printLine($name, $perf, $nbr,$enrolSheet, $quali, $teamPerf)
     {
-		if($this->lp < 62)		// Footer + line + athlete-line=36+12+14=62
+		if($this->lp < $this->footerheight + 26)		// Footer + line + athlete-line=36+12+14=62
 		{
 			$this->insertPageBreak();
 			$this->printHeaderLine($enrolSheet);
@@ -685,7 +685,7 @@ class PRINT_TeamDiscPage_pdf extends PRINT_RelayPage_pdf
 	var $width;
 	function printHeaderLine()
 	{	// page break check
-		if($this->lp < 87)		//Footer + 3 lines + header = 36 + 3*12 + 15 = 87
+		if($this->lp < $this->footerheight + 51)		//Footer + 3 lines + header = 36 + 3*12 + 15 = 87
 		{
 			$this->insertPageBreak();
 		}
@@ -704,7 +704,7 @@ class PRINT_TeamDiscPage_pdf extends PRINT_RelayPage_pdf
 
 	function printLine($disc, $nbr, $name, $year)
 	{	// page break check
-		if($this->lp < 48)		//Footer + line=36+12=48
+		if($this->lp < $this->footerheight + 12)		//Footer + line=36+12=48
 		{
 			$this->insertPageBreak();
 		}

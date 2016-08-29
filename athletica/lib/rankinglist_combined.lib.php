@@ -540,7 +540,7 @@ else
                                      $points_disc[$c]=$pointsUKC;                                        
                                 }
                                 else {
-                                      $points_disc[$row[9]]=$pt_row[4];    
+                                      $points_disc[$count_disc]=$pt_row[4];    
                                 }
                                
                                
@@ -599,7 +599,7 @@ else
         
 	}	// END WHILE athlete per category
   
-	if(!empty($a))		// add last athlete if any
+  	if(!empty($a))		// add last athlete if any
 	{
 		$points_arr[] = $points;    
         $points_arr_more_disc_all[$xKat][] = $points_disc; 
@@ -668,16 +668,15 @@ else
         asort($rank_arr, SORT_NUMERIC);    // sort descending by rank       
         
          $rank_keep = 0; 
-        
          foreach($rank_arr as $key => $v){
                 $val=$points_arr[$key];  
                 $rank=$v;   
                
-                if ($rank == $rank_keep){                       
+                if ($rank == $rank_keep){                     
                         $c=0;
                         $keep_c=0;
                         // first rule 
-                        for ($i=1; $i <= sizeof($points_disc); $i++){                                 
+                        for ($i=1; $i <= sizeof($points_arr_more_disc_all[$xKat][$key]); $i++){                                 
                              if  ($points_arr_more_disc_all[$xKat][$key_keep][$i] > $points_arr_more_disc_all[$xKat][$key][$i]){
                                   $keep_c ++;
                              }
@@ -685,8 +684,8 @@ else
                                  $c++;
                              }
                         }
-                        $more=ceil(sizeof($points_disc)/2);  
-                        if (sizeof($points_disc) % 2 == 0){              // combined with even number discs
+                        $more=ceil(sizeof($points_arr_more_disc_all[$xKat][$key])/2);  
+                        if (sizeof($points_arr_more_disc_all[$xKat][$key]) % 2 == 0){              // combined with even number discs
                              $more++;                                   
                         }
                         if     ($keep_c >= $more && $keep_c > $c){

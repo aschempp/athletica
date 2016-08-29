@@ -14,7 +14,7 @@ if (!defined('AA_RESULTS_TECH_LIB_INCLUDED'))
         global $content_list; 
              
         require('./config.inc.php');
-        require('./config.inc.end.php');   
+        //require('./config.inc.end.php');   
 
         require('./lib/common.lib.php');
         require('./lib/heats.lib.php');     
@@ -45,10 +45,10 @@ if (!defined('AA_RESULTS_TECH_LIB_INCLUDED'))
         $content_list = "<?php\r\n ";
         $content_list .= "include('include/header.php');\r\n ";
         $content_list .= "?>\r\n ";
-        $content_list .= "<div data-role='page' id='page' data-title='Live Resultate'>\r\n"; 
+        $content_list .= "<div data-role='page' id='page' data-title='".$GLOBALS['strLiveResults']."'>\r\n"; 
         $content_list .= "<div data-role='header' data-theme='b' data-id='header' data-position='fixed' data-tap-toggle='false'>\r\n";
-        $content_list .= "<a href='timetable".$id_back.".php' data-icon='back' data-transition='slide' data-direction='reverse'>back</a>\r\n";
-        $content_list .= "<a data-icon='refresh' onclick='refreshPage();'>refresh</a>\r\n";
+        $content_list .= "<a href='timetable".$id_back.".php' data-icon='back' data-transition='slide' data-direction='reverse'>".$GLOBALS['strBack']."</a>\r\n";
+        $content_list .= "<a data-icon='refresh' onclick='refreshPage();'>".$GLOBALS['strRefresh']."</a>\r\n";
         
         //$status = '';
         // get status round 
@@ -292,16 +292,16 @@ if (!defined('AA_RESULTS_TECH_LIB_INCLUDED'))
 
                 $table = true;          
     
-                $content_list .= "<th class='bib' data-sort='int'>".$strStartnumber."</th>\r\n";
-                $content_list .= "<th class='name' data-sort='string'>".$strAthlete."</th>\r\n";
-                $content_list .= "<th class='yob'>".$strYearShort."</th>\r\n";
-                $content_list .= "<th class='country'>".$strCountry."</th>\r\n";    
+                $content_list .= "<th class='bib' data-sort='int'>".$GLOBALS['strStartnumber']."</th>\r\n";
+                $content_list .= "<th class='name' data-sort='string'>".$GLOBALS['strAthlete']."</th>\r\n";
+                $content_list .= "<th class='yob'>".$GLOBALS['strYearShort']."</th>\r\n";
+                $content_list .= "<th class='country'>".$GLOBALS['strCountry']."</th>\r\n";    
                 if($svm){
-                    $content_list .= "<th class='club' data-sort='string'>".$strTeam."</th>\r\n";
+                    $content_list .= "<th class='club' data-sort='string'>".$GLOBALS['strTeam']."</th>\r\n";
                 } else{
-                    $content_list .= "<th class='club' data-sort='string'>".$strClub."</th>\r\n";   
+                    $content_list .= "<th class='club' data-sort='string'>".$GLOBALS['strClub']."</th>\r\n";   
                 }
-                $content_list .= "<th class='topPerf' data-sort='float'>".$strTopPerformance."</th>\r\n";
+                $content_list .= "<th class='topPerf' data-sort='float'>".$GLOBALS['strTopPerformance']."</th>\r\n";
                     
                 $content_list .= "</tr>\r\n";
                 $content_list .= "</thead>\r\n";
@@ -314,15 +314,15 @@ if (!defined('AA_RESULTS_TECH_LIB_INCLUDED'))
                         // format topPerf
                         $topPerf = $row[11];
                         
-                        if(($layout == $cfgDisciplineType[$strDiscTypeJump])
-                            || ($layout == $cfgDisciplineType[$strDiscTypeJumpNoWind])
-                            || ($layout == $cfgDisciplineType[$strDiscTypeThrow])
-                            || ($layout == $cfgDisciplineType[$strDiscTypeHigh])) {
+                        if(($layout == $cfgDisciplineType[$GLOBALS['strDiscTypeJump']])
+                            || ($layout == $cfgDisciplineType[$GLOBALS['strDiscTypeJumpNoWind']])
+                            || ($layout == $cfgDisciplineType[$GLOBALS['strDiscTypeThrow']])
+                            || ($layout == $cfgDisciplineType[$GLOBALS['strDiscTypeHigh']])) {
                             $list_topPerf = AA_formatResultMeter($topPerf);
                         }
                         else {
-                            if(($layout == $cfgDisciplineType[$strDiscTypeTrack])
-                            || ($layout == $cfgDisciplineType[$strDiscTypeTrackNoWind])){
+                            if(($layout == $cfgDisciplineType[$GLOBALS['strDiscTypeTrack']])
+                            || ($layout == $cfgDisciplineType[$GLOBALS['strDiscTypeTrackNoWind']])){
                                 $list_topPerf = AA_formatResultTime($topPerf, true, true);
                             }else{
                                 $list_topPerf = AA_formatResultTime($topPerf, true);
@@ -350,7 +350,7 @@ if (!defined('AA_RESULTS_TECH_LIB_INCLUDED'))
                 else{
                     $content_list .= "<tr class=''>\r\n";
                     $content_list .= "<td class='bib'>&nbsp;</td>\r\n";
-                    $content_list .= "<td class='name' colspan='4'><span id='empty'>" . $strNoEntries ."</span></td>\r\n";
+                    $content_list .= "<td class='name' colspan='4'><span id='empty'>" . $GLOBALS['strNoEntries'] ."</span></td>\r\n";
                     $content_list .= "</tr>";        
                 }
             }
@@ -366,7 +366,7 @@ if (!defined('AA_RESULTS_TECH_LIB_INCLUDED'))
                         $h = $row[2];                // keep heat ID
 
                         if(is_null($row[0])) {        // only one round
-                            $title = "$strFinalround";
+                            $title = $GLOBALS['strFinalround'];
                         }
                         else {        // more than one round
                             if($row[0] == "(ohne)"){  //TODO
@@ -405,18 +405,18 @@ if (!defined('AA_RESULTS_TECH_LIB_INCLUDED'))
                         $content_list .= "<tr>\r\n";
                         
                         $content_list .="<tr>";   
-                        $content_list .= "<th class='pos' data-sort='int'>". $strPositionShort ."</th>\r\n";   
-                        $content_list .= "<th class='bib' data-sort='int'>". $strStartnumber ."</th>\r\n";     
-                        $content_list .= "<th class='name' data-sort='string'>". $strAthlete ."</th>\r\n";   
-                        $content_list .= "<th class='yob'>". $strYearShort ."</th>\r\n";   
-                        $content_list .= "<th class='country'>". $strCountry ."</th>\r\n";   
+                        $content_list .= "<th class='pos' data-sort='int'>". $GLOBALS['strPositionShort'] ."</th>\r\n";   
+                        $content_list .= "<th class='bib' data-sort='int'>". $GLOBALS['strStartnumber'] ."</th>\r\n";     
+                        $content_list .= "<th class='name' data-sort='string'>". $GLOBALS['strAthlete'] ."</th>\r\n";   
+                        $content_list .= "<th class='yob'>". $GLOBALS['strYearShort'] ."</th>\r\n";   
+                        $content_list .= "<th class='country'>". $GLOBALS['strCountry'] ."</th>\r\n";   
                         $content_list .= "<th class='club' data-sort='string'>\r\n";
                         if($svm){ 
-                            $content_list .= $strTeam; 
+                            $content_list .= $GLOBALS['strTeam']; 
                         }else{ 
-                            $content_list .= $strClub;
+                            $content_list .= $GLOBALS['strClub'];
                         } 
-                        $content_list .= "<th class='topPerf' data-sort='float'>".$strTopPerformance."</th>\r\n";
+                        $content_list .= "<th class='topPerf' data-sort='float'>".$GLOBALS['strTopPerformance']."</th>\r\n";
                            
                         $content_list .=  "</th>\r\n"; 
                         
@@ -429,15 +429,15 @@ if (!defined('AA_RESULTS_TECH_LIB_INCLUDED'))
 
                     $topPerf = $row[21];
                         
-                    if(($layout == $cfgDisciplineType[$strDiscTypeJump])
-                        || ($layout == $cfgDisciplineType[$strDiscTypeJumpNoWind])
-                        || ($layout == $cfgDisciplineType[$strDiscTypeThrow])
-                        || ($layout == $cfgDisciplineType[$strDiscTypeHigh])) {
+                    if(($layout == $cfgDisciplineType[$GLOBALS['strDiscTypeJump']])
+                        || ($layout == $cfgDisciplineType[$GLOBALS['strDiscTypeJumpNoWind']])
+                        || ($layout == $cfgDisciplineType[$GLOBALS['strDiscTypeThrow']])
+                        || ($layout == $cfgDisciplineType[$GLOBALS['strDiscTypeHigh']])) {
                         $list_topPerf = AA_formatResultMeter($topPerf);
                     }
                     else {
-                        if(($layout == $cfgDisciplineType[$strDiscTypeTrack])
-                        || ($layout == $cfgDisciplineType[$strDiscTypeTrackNoWind])){
+                        if(($layout == $cfgDisciplineType[$GLOBALS['strDiscTypeTrack']])
+                        || ($layout == $cfgDisciplineType[$GLOBALS['strDiscTypeTrackNoWind']])){
                             $list_topPerf = AA_formatResultTime($topPerf, true, true);
                         }else{
                             $list_topPerf = AA_formatResultTime($topPerf, true);

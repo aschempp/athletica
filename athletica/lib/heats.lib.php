@@ -1526,7 +1526,8 @@ function AA_heats_deleteStart()
 	// OK: try to change
 	else
 	{   
-		mysql_query("LOCK TABLES resultat WRITE, serie WRITE, serienstart WRITE, runde WRITE, resultat as re READ, serie as s READ, serienstart as ss READ, runde as r READ");
+    		
+        mysql_query("LOCK TABLES resultat WRITE, serie WRITE, serienstart WRITE, runde WRITE, resultat as re READ, serie as s READ, serienstart as ss READ, runde as r READ, rundenset READ");
 
         AA_StatusChanged(0, 0,  $_GET['item']);  
         

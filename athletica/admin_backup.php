@@ -60,8 +60,8 @@ if($_GET['arg'] == 'backup')
 									  (22, 'rundenlog', 'SELECT\r\n    rundenlog.*\r\nFROM\r\n    athletica.runde\r\n    JOIN athletica.rundenlog \r\n        ON (runde.xRunde = rundenlog.xRunde)\r\n    JOIN athletica.wettkampf \r\n        ON (wettkampf.xWettkampf = runde.xWettkampf)\r\nWHERE (wettkampf.xMeeting =\'%d\') \r\nAND xRundenlog IS NOT NULL;'),
 									  (23, 'rundenset', 'SELECT * FROM rundenset WHERE xMeeting = \'%d\''),
 									  (24, 'rundentyp_de', 'SELECT * FROM rundentyp_de'),
-                                      (25, 'rundentyp_fr', 'SELECT * FROM rundentyp_de'), 
-                                      (26, 'rundentyp_it', 'SELECT * FROM rundentyp_de'), 
+                                      (25, 'rundentyp_fr', 'SELECT * FROM rundentyp_fr'), 
+                                      (26, 'rundentyp_it', 'SELECT * FROM rundentyp_it'), 
 									  (27, 'serie', 'SELECT\r\n    serie.*\r\nFROM\r\n    athletica.wettkampf\r\n    LEFT JOIN athletica.runde \r\n        ON (wettkampf.xWettkampf = runde.xWettkampf)\r\n    LEFT JOIN athletica.serie \r\n        ON (runde.xRunde = serie.xRunde)\r\nWHERE (wettkampf.xMeeting =\'%d\') \r\nAND xSerie IS NOT NULL;'),
 									  (28, 'serienstart', 'SELECT\r\n    serienstart.*\r\nFROM\r\n    athletica.wettkampf\r\n    LEFT JOIN athletica.runde \r\n        ON (wettkampf.xWettkampf = runde.xWettkampf)\r\n    LEFT JOIN athletica.serie \r\n        ON (runde.xRunde = serie.xRunde)\r\n    LEFT JOIN athletica.serienstart \r\n        ON (serie.xSerie = serienstart.xSerie)\r\nWHERE (wettkampf.xMeeting =\'%d\') \r\nAND xSerienstart IS NOT NULL;'),
 									  (29, 'stadion', 'SELECT * FROM stadion'),
@@ -2643,6 +2643,46 @@ else if ($_POST['arg'] == 'restore')
 									 ('YEM', 'Yemen', 209),
 									 ('ZAM', 'Zambia', 210),
 									 ('ZIM', 'Zimbabwe', 211);");
+                                     
+            // update rundentyp for all backups
+            mysql_query("TRUNCATE TABLE rundentyp_de;");
+            mysql_query("INSERT INTO rundentyp_de(xRundentyp, Typ, Name, Wertung, Code) VALUES 
+                                    (1,'V','Vorlauf',0,'V'),
+                                    (2,'F','Final',0,'F'),
+                                    (3,'Z','Zwischenlauf',0,'Z'),
+                                    (5,'Q','Qualifikation',1,'Q'),
+                                    (6,'S','Serie',0,'S'),
+                                    (7,'X','Halbfinal',0,'X'),
+                                    (8,'D','Mehrkampf',1,'D'),
+                                    (9,'0','(ohne)',2,'0'),
+                                    (10,'FZ','Zeitläufe',1,'FZ');");
+                                    
+                                    
+                                    
+            mysql_query("TRUNCATE TABLE rundentyp_fr;");
+            mysql_query("INSERT INTO rundentyp_fr(xRundentyp, Typ, Name, Wertung, Code) VALUES 
+                                    (1,'V','Eliminatoire',0,'V'),
+                                    (2,'F','Finale',0,'F'),
+                                    (3,'Z','Second Tour',0,'Z'),
+                                    (5,'Q','Qualification',1,'Q'),
+                                    (6,'S','Série',0,'S'),
+                                    (7,'X','Demi-finale',0,'X'),
+                                    (8,'D','Concour multiple',1,'D'),
+                                    (9,'0','(sans)',2,'0'),
+                                    (10,'FZ','Courses au temps',1,'FZ');");
+                                    
+                                    
+            mysql_query("TRUNCATE TABLE rundentyp_it;");
+            mysql_query("INSERT INTO rundentyp_it(xRundentyp, Typ, Name, Wertung, Code) VALUES 
+                                    (1,'V','Eliminatoria',0,'V'),
+                                    (2,'F','Finale',0,'F'),
+                                    (3,'Z','Secondo Tour',0,'Z'),
+                                    (5,'Q','Qualificazione',1,'Q'),
+                                    (6,'S','Serie',0,'S'),
+                                    (7,'X','Semifinale',0,'X'),
+                                    (8,'D','Gara multipla',1,'D'),
+                                    (9,'0','(senza)',2,'0'),
+                                    (10,'FZ','Zeitläufe',1,'FZ');");
 			
 			// check AUTO_INCREMENT (min. 100) of Wertungstabelle
 			$sql_wt = "SELECT xWertungstabelle 

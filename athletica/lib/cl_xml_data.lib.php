@@ -1820,7 +1820,6 @@ function gen_result_xml_UKC($file){
                         }
                             
                         if($row[0] == $cfgEventType[$strEventTypeSingleCombined]){     
-                               
                                 $rank = " ";
                                 $row_results['Bezeichnung'] = " ";
                                 //
@@ -1860,6 +1859,7 @@ function gen_result_xml_UKC($file){
                         }
                             
                         // output result data
+                        
                             
                         if($wind > "2" && $row[2] == $cfgDisciplineType[$strDiscTypeJump]){
                                 // since we get only the best result per xSerienstart,
@@ -1897,7 +1897,6 @@ function gen_result_xml_UKC($file){
            
             // check on last combined event             
             if(!empty($combined) && $combined_dis < 9000){ // combined codes 9000 and above are self made disciplines                   
-                    
                     // calc points
                     foreach($combined as $xathlet => $disc){                            
                         $points = 0;
@@ -1949,8 +1948,8 @@ function gen_result_xml_UKC($file){
                     $rank = 0;    // athletes rank
                     $cRank = 0;    // rank counter
                     $lp = 0;    // remembers points of last athlete
+                    
                     foreach($combined as $xathlet => $disc){   
-                        
                         $cRank++;
                         if($lp != $disc['points']){
                             $rank = $cRank;
@@ -2081,7 +2080,6 @@ function gen_result_xml_UKC_CM($file, $meeting_nr){
         // begin xml
         $this->write_xml_open("kidDataset", array('version'=>date('y-m-d')));
         $this->write_xml_open("event");
-        
         //
         // output contest data
         //   
@@ -2229,7 +2227,6 @@ function gen_result_xml_UKC_CM($file, $meeting_nr){
                 // generate results for combined events
                 //                     
                   
-               
                 //
                 // first of all, print all single results (athletes and relays)
                 //         

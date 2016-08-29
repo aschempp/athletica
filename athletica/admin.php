@@ -200,7 +200,7 @@ function removePassword(){
 									</td>
 								</tr>
 								<tr>
-									<td><input type="checkbox" value="included"  name="base" checked="checked" /><?php echo $strBasdataIncluded; ?></tr>
+									<td><input type="checkbox" value="included"  name="base"/><?php echo $strBasdataIncluded; ?></tr>
 								</tr>
 								<tr class="even">
 									<td>

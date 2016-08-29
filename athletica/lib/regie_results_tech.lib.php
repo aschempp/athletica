@@ -526,8 +526,15 @@ setcookie('sort_regie', $arg, time()+2419200);
                 if ($row[19] == 0){
                     $row[19] = '';
                 }
+                
+                $heatStart = AA_getCurrAthlete($row[2]);
                
-               if ($keep_ss > 0){
+               if ($heatStart > 0) {
+                    if ($row[6] == $heatStart){
+                         $curr_class = "active"; 
+                    }
+                }
+                elseif ($keep_ss > 0){
                          if ($keep_ss == $row[6]){
                              $curr_class = "active";
                          }  

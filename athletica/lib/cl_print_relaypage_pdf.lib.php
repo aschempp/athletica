@@ -20,7 +20,7 @@ class PRINT_RelayPage_pdf extends PRINT_Page_pdf
 	var $width;
 	function printHeaderLine()
 	{   
-		if($this->lp < 129)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+15=129
+		if($this->lp < $this->footerheight + 93)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+15=129
 		{
 			$this->insertPageBreak();
 		}
@@ -42,7 +42,7 @@ class PRINT_RelayPage_pdf extends PRINT_Page_pdf
 
 	function printLine($name, $cat, $club, $disc, $perf, $nbr)
 	{   
-		if($this->lp < 62)		// Footer + line + athlete-line=36+12+14=62
+		if($this->lp < $this->footerheight + 26)		// Footer + line + athlete-line=36+12+14=62
 		{
 			$this->insertPageBreak();
 			$this->printHeaderLine($enrolSheet);
@@ -68,7 +68,7 @@ class PRINT_RelayPage_pdf extends PRINT_Page_pdf
 
 	function printSubTitle($title)
 	{   //page break check
-		if($this->lp < 177)		//Footer + 3Lines + Header + Subtitle = 36 + 8*12 + 15 + 30 = 177
+		if($this->lp < $this->footerheight + 141)		//Footer + 3Lines + Header + Subtitle = 36 + 8*12 + 15 + 30 = 177
 		{
 			$this->insertPageBreak();
 		}
@@ -91,7 +91,7 @@ class PRINT_CatRelayPage_pdf extends PRINT_RelayPage_pdf
 	var $width;
 	function printHeaderLine()
 	{
-		if($this->lp < 129)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+15=129
+		if($this->lp < $this->footerheight + 93)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+15=129
 		{
 			$this->insertPageBreak();
 		}
@@ -111,7 +111,7 @@ class PRINT_CatRelayPage_pdf extends PRINT_RelayPage_pdf
 
 	function printLine($name, $club, $disc, $perf, $nbr)
 	{
-		if($this->lp < 62)		// Footer + line + athlete-line=36+12+14=62
+		if($this->lp < $this->footerheight + 26)		// Footer + line + athlete-line=36+12+14=62
 		{
 			$this->insertPageBreak();
 			$this->printHeaderLine($enrolSheet);
@@ -142,7 +142,7 @@ class PRINT_ClubRelayPage_pdf extends PRINT_RelayPage_pdf
 	var $width;
 	function printHeaderLine()
 	{
-		if($this->lp < 129)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+15=129
+		if($this->lp < $this->footerheight + 93)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+15=129
 		{
 			$this->insertPageBreak();
 		}
@@ -162,7 +162,7 @@ class PRINT_ClubRelayPage_pdf extends PRINT_RelayPage_pdf
 
 	function printLine($name, $cat, $disc, $perf, $nbr)
 	{  
-		if($this->lp < 62)		// Footer + line + athlete-line=36+12+14=62
+		if($this->lp < $this->footerheight + 26)		// Footer + line + athlete-line=36+12+14=62
 		{
 			$this->insertPageBreak();
 			$this->printHeaderLine($enrolSheet);
@@ -192,7 +192,7 @@ class PRINT_CatDiscRelayPage_pdf extends PRINT_RelayPage_pdf
 	var $width;
 	function printHeaderLine()
 	{  
-		if($this->lp < 129)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+15=129
+		if($this->lp < $this->footerheight + 93)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+15=129
 		{
 			$this->insertPageBreak();
 		}
@@ -211,7 +211,7 @@ class PRINT_CatDiscRelayPage_pdf extends PRINT_RelayPage_pdf
 
 	function printLine($name, $club, $perf, $nbr)
 	{
-		if($this->lp < 62)		// Footer + line + athlete-line=36+12+14=62
+		if($this->lp < $this->footerheight + 26)		// Footer + line + athlete-line=36+12+14=62
 		{
 			$this->insertPageBreak();
 			$this->printHeaderLine($enrolSheet);
@@ -241,7 +241,7 @@ class PRINT_ClubCatRelayPage_pdf extends PRINT_RelayPage_pdf
 	var $width;
 	function printHeaderLine()
 	{
-		if($this->lp < 129)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+15=129
+		if($this->lp < $this->footerheight + 93)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+15=129
 		{
 			$this->insertPageBreak();
 		}
@@ -260,7 +260,7 @@ class PRINT_ClubCatRelayPage_pdf extends PRINT_RelayPage_pdf
 
 	function printLine($name, $disc, $perf, $nbr)
 	{   
-		if($this->lp < 62)		// Footer + line + athlete-line=36+12+14=62
+		if($this->lp < $this->footerheight + 26)		// Footer + line + athlete-line=36+12+14=62
 		{
 			$this->insertPageBreak();
 			$this->printHeaderLine($enrolSheet);
@@ -290,7 +290,7 @@ class PRINT_ClubCatDiscRelayPage_pdf extends PRINT_RelayPage_pdf
 	var $width;
 	function printHeaderLine()
 	{	
-		if($this->lp < 129)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+15=129
+		if($this->lp < $this->footerheight + 93)		// Footer + 3 line + 3 athlete-line + header=36+3*12+3*14+15=129
 		{
 			$this->insertPageBreak();
 		}
@@ -308,7 +308,7 @@ class PRINT_ClubCatDiscRelayPage_pdf extends PRINT_RelayPage_pdf
 
 	function printLine($name, $perf, $nbr)
 	{   
-		if($this->lp < 62)		// Footer + line + athlete-line=36+12+14=62
+		if($this->lp < $this->footerheight + 26)		// Footer + line + athlete-line=36+12+14=62
 		{
 			$this->insertPageBreak();
 			$this->printHeaderLine($enrolSheet);

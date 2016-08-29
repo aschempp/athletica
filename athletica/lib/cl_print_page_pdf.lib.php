@@ -869,7 +869,7 @@ class PRINT_RankingList_pdf extends PRINT_Page_pdf
     
 		if(!empty($this->title))
 		{  
-			$this->printTextLineBox($this->title,$this->font,"",11,$this->marginLeft,$this->lp,172,30,'left bottom',11,0);
+			$this->printTextLineBox($this->title,$this->font,"",11,$this->marginLeft,$this->lp,127,30,'left bottom',11,0);
 			if(!empty($this->heatwind)) {
 				$text=$GLOBALS['strWind'] . ": " .$this->heatwind;
 			}else{
@@ -879,9 +879,10 @@ class PRINT_RankingList_pdf extends PRINT_Page_pdf
 			$this->printTextLineBox($time,$this->font,"",11,$this->posx,$this->lp,$this->pagewidth - $this->posx - $this->marginRight,30,'right bottom',0,5);
 			$this->lp-=2;
 		}
-        elseif ($eval == $cfgEvalType[$strEvalTypeDiscDefault]){
+        //elseif ($eval == $cfgEvalType[$strEvalTypeDiscDefault]){
+        else {
 			if(!empty($time)){
-                $this->printTextLineBox($time,$this->font,"",11,$this->marginLeft,$this->lp,$this->pagewidth - $this->marginLeft - $this->marginRight,30,'left bottom',5,5);
+                $this->printTextLineBox($time,$this->font,"",11,$this->marginLeft,$this->lp,$this->pagewidth - $this->marginLeft - $this->marginRight,30,'right bottom',5,5);
             }
         }
     
