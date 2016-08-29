@@ -376,16 +376,18 @@ else if(mysql_num_rows($result) > 0)  // data found
 	
 	$page->printPageTitle("$row[7], $row[8]");
 ?>
+
+<form action='meeting_definition_event.php' method='post' name='event'>
+<input name='arg' type='hidden' value='change_event' />
+<input name='item' type='hidden' value='<?php echo $row[0]; ?>' />
+<input name='cat' type='hidden' value='<?php echo $row[1]; ?>' />
+<input name='act_disc' type='hidden' value='<?php echo $i; ?>' />
+
 <table class='dialog'>
-<tr>
-	<form action='meeting_definition_event.php' method='post' name='event'>
+<tr style="display:none">
+
 	<th class='dialog'><?php echo $strInfo; ?></th>
 	<td class='forms'>
-		<input name='arg' type='hidden' value='change_event' />
-		<input name='item' type='hidden' value='<?php echo $row[0]; ?>' />
-		<input name='cat' type='hidden' value='<?php echo $row[1]; ?>' />
-		<input name='act_disc' type='hidden' value='<?php echo $i; ?>' />
-
 		<input class='text' name='info' id='info' type='text' maxlength='15'
 			value="<?php echo $row[12]; ?>" 
 			onChange='info_warning()' />
@@ -454,7 +456,7 @@ else if(mysql_num_rows($result) > 0)  // data found
 			$t2 = "";
 		}
 ?>
-<tr>
+<tr style="display:none">
 	<th class='dialog'><?php echo $strTiming; ?></th>
 	<td class='forms'>
 		<input type="checkbox" name="timing" value="yes" onChange='document.event.submit()' <?php echo $t1 ?>>
@@ -552,8 +554,8 @@ else			// no DB error
 	<th class='dialog'><?php echo $strType; ?></th>
 	<th class='dialog'><?php echo $strDate; ?></th>
 	<th class='dialog'><?php echo $strTimeFormat; ?></th>
-	<th class='dialog'><?php echo $strEnrolementTime; ?></th>
-	<th class='dialog'><?php echo $strManipulationTime; ?></th>
+	<th class='dialog' style="display:none"><?php echo $strEnrolementTime; ?></th>
+	<th class='dialog' style="display:none"><?php echo $strManipulationTime; ?></th>
 </tr>
 			<?php
 		}
@@ -584,11 +586,11 @@ else			// no DB error
 		<input size="4" type='text' name='time' maxlength='5'
 			value='<?php echo $row[6]; ?>' />
 	</td>
-	<td class='forms'>
+	<td class='forms' style="display:none">
 		<input size="4" type='text' name='etime' maxlength='5'
 			value='<?php echo $row[7]; ?>' />
 	</td>
-	<td class='forms'>
+	<td class='forms' style="display:none">
 		<input size="4" type='text' name='mtime' maxlength='5'
 			value='<?php echo $row[8]; ?>' />
 	</td>
@@ -642,11 +644,11 @@ else			// no DB error
 		<input size="4" type='text' name='time' maxlength='5'
 			value='' />
 	</td>
-	<td class='forms'>
+	<td class='forms' style="display:none">
 		<input size="4" type='text' name='etime' maxlength='5'
 			value='' />
 	</td>
-	<td class='forms'>
+	<td class='forms' style="display:none">
 		<input size="4" type='text' name='mtime' maxlength='5'
 			value='' />
 	</td>

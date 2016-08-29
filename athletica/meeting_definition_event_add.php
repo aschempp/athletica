@@ -281,7 +281,7 @@ else		// no DB error
 		$dropdown->printList();
 ?>
     </td>
-    <td>
+    <td style="display:none">
 	</td>
 </tr>
      <?php
@@ -329,7 +329,7 @@ else		// no DB error
 	</td>
 </tr>
 
-<tr>
+<tr style="display:none">
 	<th class='dialog'><?php echo $strInfo; ?></th>
 	<td class='forms' colspan='3'>
 		<input class='text' name='info' type='text' maxlength='15'
@@ -338,17 +338,17 @@ else		// no DB error
 </tr>
 
 <tr id="timing" style="display:none">
-	<th class='dialog'><?php echo $strTiming; ?></th>
-	<td class='forms' colspan='3'>
-		<input type="hidden" name="timing" value="yes">
-		<input type="hidden" name="timingAuto" value="">
-	</td>
-	<script language="javascript">
-		document.getElementById('timing').style.visibility = "hidden";
-		/*timingrow = document.getElementById('timing');
-		var tmp = timingrow.parentNode;
-		tmp.removeChild(timingrow);*/
-	</script>
+    <th class='dialog'><?php echo $strTiming; ?></th>
+    <td class='forms' colspan='3'>
+        <input type="checkbox" name="timing" value="yes"> <?php echo $strOn ?> /
+        <input type="checkbox" name="timingAuto" value="yes"> <?php echo $strAutomatic ?>
+    </td>
+    <script language="javascript">
+        document.getElementById('timing').style.visibility = "hidden";
+        /*timingrow = document.getElementById('timing');
+         var tmp = timingrow.parentNode;
+         tmp.removeChild(timingrow);*/
+    </script>
 </tr>
 
 </table>
@@ -376,6 +376,7 @@ else		// no DB error
 		<input size="4" type='text' name='time_1' maxlength='5'
 			value='' />
 	</td>
+
 </tr>
 
 </table>
