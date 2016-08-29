@@ -311,7 +311,7 @@ else
          $doc->cat = "$titel";  
     }        
 	
-	if($row[10] == '0'){ // do not show "(ohne)"
+	if(true || $row[10] == '0'){ // do not show "(ohne)"
 		$doc->event = "$row[6]";
 	}else{
 		if($combined && !empty($row[12])){
@@ -348,10 +348,10 @@ else
 	
 	$et = '';	// set enrolement and manipulation time
 	if($row[14] != '00:00'){
-		$et = "($strEnrolementTime $row[14]";
+		//$et = "($strEnrolementTime $row[14]";
 	}
 	if($row[15] != '00:00'){
-		$et .= ", $strManipulationTime $row[15]";
+		//$et .= ", $strManipulationTime $row[15]";
 	}
 	if(!empty($et)){ $et.=")"; }
 	$doc->time = "$row[0], $row[1]";
