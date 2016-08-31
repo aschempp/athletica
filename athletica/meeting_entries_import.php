@@ -85,26 +85,48 @@ if(isset($_POST["submit"])) {
             }
 
             if (!isset($vereinMap[$row[4]])) {
-                mysql_query("INSERT INTO verein SET Name='{$row[4]}', Sortierwert='{$row[4]}'");
+                mysql_query(
+                    sprintf(
+                        "INSERT INTO verein SET Name='%s', Sortierwert='%s'",
+                        utf8_decode($row[4]),
+                        utf8_decode($row[4])
+                    )
+                );
+
                 $vereinMap[$row[4]] = mysql_insert_id();
             }
 
-            $res = mysql_query("SELECT xAthlet FROM athlet WHERE Name='{$row[1]}' AND Vorname='{$row[0]}' AND Jahrgang='{$row[2]}' AND Geschlecht='{$row[3]}'");
+            $res = mysql_query(
+                sprintf(
+                    "SELECT xAthlet FROM athlet WHERE Name='%s' AND Vorname='%s' AND Jahrgang='%s' AND Geschlecht='%s'",
+                    utf8_decode($row[1]),
+                    utf8_decode($row[0]),
+                    $row[2],
+                    $row[3]
+                )
+            );
 
             if (mysql_num_rows($res) > 0) {
                 $athletId = mysql_fetch_row($res);
                 $athletId = $athletId[0];
             } else {
-                mysql_query("
-                    INSERT INTO athlet 
-                    SET
-                        Name = '{$row[1]}',
-                        Vorname = '{$row[0]}',
-                        Jahrgang = '{$row[2]}',
-                        Geschlecht = '{$row[3]}',
-                        Lizenztyp = 3,
-                        xVerein = {$vereinMap[$row[4]]}
-                ");
+                mysql_query(
+                    sprintf(
+                        "INSERT INTO athlet 
+                        SET
+                            Name = '%s',
+                            Vorname = '%s',
+                            Jahrgang = '%s',
+                            Geschlecht = '%s',
+                            Lizenztyp = 3,
+                            xVerein = '%s'",
+                        utf8_decode($row[1]),
+                        utf8_decode($row[0]),
+                        $row[2],
+                        $row[3],
+                        $vereinMap[$row[4]]
+                    )
+                );
 
                 if (mysql_errno() > 0) {
                     AA_printErrorMsg(mysql_errno() . ": " . mysql_error());
