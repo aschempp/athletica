@@ -154,7 +154,7 @@ if(isset($_POST["submit"])) {
         }
 ?>
         <p>Anmeldungen wurden importiert.</p><br>
-        <input type="submit" onclick="window.top.location.reload()" value="Seite neu laden">
+        <input type="submit" onclick="window.top.location.href = window.top.location.href" value="Seite neu laden">
 <?php
     }
 } else {
