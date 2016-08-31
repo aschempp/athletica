@@ -21,7 +21,7 @@ if(isset($_POST["submit"])) {
     if ($_FILES['file']['error'] > 0) {
         AA_printErrorMsg(sprintf('Fehler %s beim Import', $_FILES['file']['error']));
     } else {
-        require_once __DIR__ . '/lib/PHPExcel.php';
+        require_once 'lib/PHPExcel.php';
 
         $kategorieMap = array();
         $res = mysql_query("SELECT xKategorie, Geschlecht, Alterslimite FROM kategorie WHERE aktiv=1 AND Kurzname LIKE 'J%'");
