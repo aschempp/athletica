@@ -27,6 +27,7 @@ if(isset($_POST["submit"])) {
         $res = mysql_query("SELECT xKategorie, Geschlecht, Alterslimite FROM kategorie WHERE aktiv=1 AND Kurzname LIKE 'J%'");
         if(mysql_errno() > 0){
             AA_printErrorMsg(mysql_errno().": ".mysql_error());
+            return;
         }
         while($row = mysql_fetch_row($res)) {
             $kategorieMap[$row[1]][$row[2]] = $row[0];
@@ -36,6 +37,7 @@ if(isset($_POST["submit"])) {
         $res = mysql_query("SELECT xVerein, Name, Sortierwert FROM verein");
         if(mysql_errno() > 0){
             AA_printErrorMsg(mysql_errno().": ".mysql_error());
+            return;
         }
         while($row = mysql_fetch_row($res)) {
             $vereinMap[$row[1]] = $row[0];
@@ -46,10 +48,13 @@ if(isset($_POST["submit"])) {
         $res = mysql_query("SELECT xWettkampf, xKategorie FROM wettkampf");
         if(mysql_errno() > 0){
             AA_printErrorMsg(mysql_errno().": ".mysql_error());
+            return;
         }
         while($row = mysql_fetch_row($res)) {
             $wettkampfMap[$row[1]] = $row[0];
         }
+
+        $athleten = array();
 
         $data = PHPExcel_IOFactory::createReader('Excel5')
             ->load($_FILES['file']['tmp_name'])
@@ -100,9 +105,17 @@ if(isset($_POST["submit"])) {
 
                 if (mysql_errno() > 0) {
                     AA_printErrorMsg(mysql_errno() . ": " . mysql_error());
+                    continue;
                 }
 
                 $athletId = mysql_insert_id();
+            }
+
+            // Check for duplicates
+            if ($athleten[$athletId]) {
+                AA_printErrorMsg(sprintf('Athlet "%s %s" ist mehrfach im Excel-Dokument vorhanden!', $row[0], $row[1]));
+            } else {
+                $athleten[$athletId] = true;
             }
 
             mysql_query("
@@ -125,6 +138,7 @@ if(isset($_POST["submit"])) {
 
             if (mysql_errno() > 0) {
                 AA_printErrorMsg(mysql_errno() . ": " . mysql_error());
+                continue;
             }
         }
     }
