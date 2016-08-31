@@ -17,6 +17,9 @@ if(AA_checkMeetingID() == FALSE) {		// no meeting selected
     return;		// abort
 }
 
+$page = new GUI_Page('meeting_entries_import',false,'stylesheet_small-fonts.css');
+$page->startPage();
+
 if(isset($_POST["submit"])) {
     if ($_FILES['file']['error'] > 0) {
         AA_printErrorMsg(sprintf('Fehler %s beim Import', $_FILES['file']['error']));
@@ -113,9 +116,17 @@ if(isset($_POST["submit"])) {
 
             // Check for duplicates
             if ($athleten[$athletId]) {
-                AA_printErrorMsg(sprintf('Athlet "%s %s" ist mehrfach im Excel-Dokument vorhanden!', $row[0], $row[1]));
+                AA_printErrorMsg(sprintf('%s %s ist mehrfach im Excel-Dokument vorhanden!', $row[0], $row[1]));
+                continue;
             } else {
                 $athleten[$athletId] = true;
+            }
+
+            $res = mysql_query("SELECT COUNT(*) FROM anmeldung WHERE xAthlet=$athletId AND xMeeting=$meetingId AND xKategorie=$kategorieId");
+
+            if (!mysql_errno() && ($anmeldung = mysql_fetch_row($res)) && $anmeldung[0] > 0) {
+                AA_printErrorMsg(sprintf('%s %s ist bereits angemeldet!', $row[0], $row[1]));
+                continue;
             }
 
             mysql_query("
@@ -141,29 +152,31 @@ if(isset($_POST["submit"])) {
                 continue;
             }
         }
+?>
+        <p>Anmeldungen wurden importiert.</p><br>
+        <input type="submit" onclick="window.top.location.reload()" value="Seite neu laden">
+<?php
     }
+} else {
+    ?>
+
+    <form name="layout" method="POST" action="meeting_entries_import.php" enctype="multipart/form-data">
+        <table class='dialog'>
+            <tr>
+                <th class='dialog'>Anmeldungen importieren</th>
+            </tr>
+            <tr>
+                <td class='forms'>
+                    <input type="file" name="file">
+                </td>
+            </tr>
+        </table>
+
+        <br>
+        <input type="submit" name="submit" value="Import starten">
+    </form>
+
+    <?php
 }
 
-
-$page = new GUI_Page('meeting_entries_import',false,'stylesheet_small-fonts.css');
-$page->startPage();
-?>
-
-<form name="layout" method="POST" action="meeting_entries_import.php" enctype="multipart/form-data">
-<table class='dialog'>
-<tr>
-<th class='dialog'>Anmeldungen importieren</th>
-</tr>
-<tr>
-    <td class='forms'>
-        <input type="file" name="file">
-    </td>
-</tr>
-</table>
-
-<br>
-<input type="submit" name="submit" value="Import starten">
-</form>
-
-<?php
 $page->endPage();
