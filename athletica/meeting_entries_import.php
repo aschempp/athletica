@@ -29,7 +29,7 @@ if(isset($_POST["submit"])) {
         $kategorieMap = array();
         $res = mysql_query("SELECT xKategorie, Geschlecht, Alterslimite FROM kategorie WHERE aktiv=1 AND Kurzname LIKE 'J%'");
         if(mysql_errno() > 0){
-            AA_printErrorMsg(mysql_errno().": ".mysql_error());
+            AA_printErrorMsg('Fehler SELECT kategorie: '.mysql_errno().": ".mysql_error());
             return;
         }
         while($row = mysql_fetch_row($res)) {
@@ -39,7 +39,7 @@ if(isset($_POST["submit"])) {
         $vereinMap = array();
         $res = mysql_query("SELECT xVerein, Name, Sortierwert FROM verein");
         if(mysql_errno() > 0){
-            AA_printErrorMsg(mysql_errno().": ".mysql_error());
+            AA_printErrorMsg('Fehler SELECT verein: '.mysql_errno().": ".mysql_error());
             return;
         }
         while($row = mysql_fetch_row($res)) {
@@ -50,7 +50,7 @@ if(isset($_POST["submit"])) {
         $wettkampfMap = array();
         $res = mysql_query("SELECT xWettkampf, xKategorie FROM wettkampf");
         if(mysql_errno() > 0){
-            AA_printErrorMsg(mysql_errno().": ".mysql_error());
+            AA_printErrorMsg('Fehler SELECT wettkampf: '.mysql_errno().": ".mysql_error());
             return;
         }
         while($row = mysql_fetch_row($res)) {
@@ -76,7 +76,7 @@ if(isset($_POST["submit"])) {
             $verein = trim(utf8_decode($row[4]));
 
             if (!$kategorieId) {
-                AA_printErrorMsg(sprintf('Keine Kategorie für Jahrgang %s (Altersgrenze %s)', $row[2], $alter));
+                AA_printErrorMsg(sprintf('Keine Kategorie für "%s %s" / Jahrgang %s (Altersgrenze %s)', $row[0], $row[1], $row[2], $alter));
                 continue;
             }
 
@@ -93,6 +93,11 @@ if(isset($_POST["submit"])) {
                         $verein
                     )
                 );
+
+                if (mysql_errno() > 0) {
+                    AA_printErrorMsg(sprintf('Fehler %s beim Erstellen des Vereins %s: %s', mysql_errno(), $verein, mysql_error()));
+                    continue;
+                }
 
                 $vereinMap[strtolower($verein)] = mysql_insert_id();
             }
@@ -130,7 +135,7 @@ if(isset($_POST["submit"])) {
                 );
 
                 if (mysql_errno() > 0) {
-                    AA_printErrorMsg(mysql_errno() . ": " . mysql_error());
+                    AA_printErrorMsg(sprintf('Fehler %s bei neuem Athlet (%s %s): %s', mysql_errno(), utf8_decode($row[1]), utf8_decode($row[0]), mysql_error()));
                     continue;
                 }
 
@@ -162,7 +167,7 @@ if(isset($_POST["submit"])) {
             ");
 
             if (mysql_errno() > 0) {
-                AA_printErrorMsg(mysql_errno() . ": " . mysql_error());
+                AA_printErrorMsg(sprintf('Fehler %s beim Erstellen der Anmeldung (%s %s): %s', mysql_errno(), utf8_decode($row[1]), utf8_decode($row[0]), mysql_error()));
                 continue;
             }
 
@@ -171,7 +176,7 @@ if(isset($_POST["submit"])) {
             mysql_query("INSERT INTO start SET xWettkampf=$wettkampfId, xAnmeldung=$anmeldungId");
 
             if (mysql_errno() > 0) {
-                AA_printErrorMsg(mysql_errno() . ": " . mysql_error());
+                AA_printErrorMsg(sprintf('Fehler %s beim Erstellen des Starts (%s %s): %s', mysql_errno(), utf8_decode($row[1]), utf8_decode($row[0]), mysql_error()));
                 continue;
             }
         }
