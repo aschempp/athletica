@@ -43,8 +43,8 @@ if(isset($_POST["submit"])) {
             return;
         }
         while($row = mysql_fetch_row($res)) {
-            $vereinMap[$row[1]] = $row[0];
-            $vereinMap[$row[2]] = $row[0];
+            $vereinMap[trim(strtolower($row[1]))] = $row[0];
+            $vereinMap[trim(strtolower($row[2]))] = $row[0];
         }
 
         $wettkampfMap = array();
@@ -60,9 +60,9 @@ if(isset($_POST["submit"])) {
         $athleten = array();
 
         $data = PHPExcel_IOFactory::createReader('Excel5')
-            ->load($_FILES['file']['tmp_name'])
-            ->getSheet(0)
-            ->toArray()
+                                  ->load($_FILES['file']['tmp_name'])
+                                  ->getSheet(0)
+                                  ->toArray()
         ;
 
         // Remove header
@@ -73,6 +73,7 @@ if(isset($_POST["submit"])) {
             $meetingId   = (int) $_COOKIE['meeting_id'];
             $kategorieId = $kategorieMap[$row[3]][$alter];
             $wettkampfId = $wettkampfMap[$kategorieId];
+            $verein = trim(utf8_decode($row[4]));
 
             if (!$kategorieId) {
                 AA_printErrorMsg(sprintf('Keine Kategorie für Jahrgang %s (Altersgrenze %s)', $row[2], $alter));
@@ -84,16 +85,16 @@ if(isset($_POST["submit"])) {
                 continue;
             }
 
-            if (!isset($vereinMap[$row[4]])) {
+            if (!isset($vereinMap[strtolower($verein)])) {
                 mysql_query(
                     sprintf(
                         "INSERT INTO verein SET Name='%s', Sortierwert='%s'",
-                        utf8_decode($row[4]),
-                        utf8_decode($row[4])
+                        $verein,
+                        $verein
                     )
                 );
 
-                $vereinMap[$row[4]] = mysql_insert_id();
+                $vereinMap[strtolower($verein)] = mysql_insert_id();
             }
 
             $res = mysql_query(
@@ -124,7 +125,7 @@ if(isset($_POST["submit"])) {
                         utf8_decode($row[0]),
                         $row[2],
                         $row[3],
-                        $vereinMap[$row[4]]
+                        $vereinMap[strtolower($verein)]
                     )
                 );
 
@@ -174,10 +175,10 @@ if(isset($_POST["submit"])) {
                 continue;
             }
         }
-?>
+        ?>
         <p>Anmeldungen wurden importiert.</p><br>
         <input type="submit" onclick="window.top.location.href = window.top.location.href" value="Seite neu laden">
-<?php
+        <?php
     }
 } else {
     ?>
@@ -202,3 +203,4 @@ if(isset($_POST["submit"])) {
 }
 
 $page->endPage();
+
